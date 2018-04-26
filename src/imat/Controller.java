@@ -1,4 +1,4 @@
-package sample;
+package imat;
 
 public class Controller {
 }
