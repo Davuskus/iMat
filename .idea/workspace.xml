@@ -2,161 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06b8b84e-0a5a-403b-b493-9b88f1850593" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/res/images/product_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_100.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_101.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_102.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_102.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_103.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_104.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_105.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_106.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_107.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_108.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_109.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_110.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_111.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_112.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_113.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_114.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_115.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_116.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_117.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_118.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_119.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_120.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_121.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_122.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_123.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_124.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_125.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_126.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_127.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_128.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_129.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_130.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_131.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_132.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_133.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_134.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_135.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_136.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_137.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_138.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_139.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_140.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_141.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_142.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_143.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_144.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_145.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_146.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_147.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_148.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_149.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_150.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_151.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_152.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_153.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_154.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_19.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_22.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_23.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_24.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_25.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_26.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_27.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_28.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_29.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_30.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_31.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_32.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_33.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_34.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_35.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_36.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_37.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_38.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_39.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_40.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_42.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_43.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_45.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_46.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_47.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_48.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_49.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_51.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_52.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_53.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_54.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_55.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_56.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_57.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_58.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_59.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_60.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_61.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_62.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_63.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_64.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_65.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_66.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_67.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_68.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_69.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_70.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_71.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_72.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_73.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_74.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_75.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_76.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_77.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_78.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_79.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_80.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_81.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_82.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_83.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_84.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_85.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_86.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_87.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_88.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_89.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_90.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_91.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_92.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_93.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_94.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_95.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_96.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_97.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_98.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/images/product_99.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -167,7 +13,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -176,6 +32,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/imat/Controller.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -338,7 +195,7 @@
       <option name="presentableId" value="Default" />
       <updated>1524734490250</updated>
       <workItem from="1524734492182" duration="14000" />
-      <workItem from="1524746846390" duration="609000" />
+      <workItem from="1524746846390" duration="800000" />
     </task>
     <task id="LOCAL-00001" summary="Made a dependency to backend and added resources to the project.">
       <created>1524747337321</created>
@@ -347,14 +204,22 @@
       <option name="project" value="LOCAL" />
       <updated>1524747337321</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added more resources to the project.">
+      <created>1524747494000</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1524747494000</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1072000" />
+    <option name="totallyTimeSpent" value="1263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -394,7 +259,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made a dependency to backend and added resources to the project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a dependency to backend and added resources to the project." />
+    <MESSAGE value="Added more resources to the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more resources to the project." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
@@ -439,6 +305,13 @@
     <entry file="file://$PROJECT_DIR$/res/products.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -456,7 +329,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
