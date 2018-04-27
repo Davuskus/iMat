@@ -1,7 +1,7 @@
 package imat.controls.cartitem;
 
 import imat.controller.MainController;
-import imat.util.FXMLLoader;
+import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

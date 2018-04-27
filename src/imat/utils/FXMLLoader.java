@@ -1,4 +1,4 @@
-package imat.util;
+package imat.utils;
 
 import java.io.IOException;
 
