@@ -12,11 +12,11 @@
    <children>
       <ScrollPane layoutY="46.0" prefHeight="364.0" prefWidth="605.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
          <content>
-            <WebView fx:id="helptextView" prefHeight="409.0" prefWidth="586.0" />
+            <WebView fx:id="helpTextView" prefHeight="409.0" prefWidth="586.0" />
          </content>
       </ScrollPane>
-      <Label layoutX="517.0" layoutY="14.0" text="Stäng" />
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="567.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="helpViewCloseLabel" layoutX="517.0" layoutY="14.0" text="Stäng" />
+      <ImageView fx:id="helpViewCloseButton" fitHeight="31.0" fitWidth="31.0" layoutX="567.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../res/images/closeX.png" />
          </image>
