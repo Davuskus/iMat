@@ -1,16 +1,19 @@
 package imat.controls.productspinner;
 
-import imat.util.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class ProductSpinner extends AnchorPane {
+public class ProductSpinner extends AnchorPane implements Initializable {
 
     @FXML
     private Button subtractButton;
@@ -21,12 +24,8 @@ public class ProductSpinner extends AnchorPane {
     @FXML
     private TextField valueTextField;
 
-    /**
-     * Initializes the spinner.
-     */
-    public ProductSpinner() {
-        FXMLLoader.loadFXMLFromRootPackage("product_spinner.fxml", this, this);
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         // Forces the text field to only accept positive integers as input
         valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
