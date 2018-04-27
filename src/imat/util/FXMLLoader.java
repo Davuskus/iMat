@@ -2,8 +2,18 @@ package imat.util;
 
 import java.io.IOException;
 
+/**
+ * Sets the root and controller for the relevant .fxml file and loads it after initialization.
+ */
 public final class FXMLLoader {
 
+    /**
+     * Sets the root and the controller for a .fxml file and loads it afterwards.
+     *
+     * @param fxmlFilePath The file path to a .fxml file, relative to the root class.
+     * @param root The root of the .fxml object hierarchy.
+     * @param controller The controller associated with the root.
+     */
     public static void loadFXMLFromRootPackage(String fxmlFilePath, Object root, Object controller) {
         javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(root.getClass().getResource(fxmlFilePath));
         fxmlLoader.setRoot(root);
@@ -16,6 +26,13 @@ public final class FXMLLoader {
         }
     }
 
+    /**
+     * Sets the root and the controller for a .fxml file and loads it afterwards.
+     *
+     * @param fxmlFilePath The file path to a .fxml file.
+     * @param root The root of the .fxml object hierarchy.
+     * @param controller The controller associated with the root.
+     */
     public static void loadFXML(String fxmlFilePath, Object root, Object controller) {
         javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(FXMLLoader.class.getResource(fxmlFilePath));
         fxmlLoader.setRoot(root);
