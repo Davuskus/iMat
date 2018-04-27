@@ -1,5 +1,4 @@
-package imat;
+package imat.controller;
 
 public class Controller {
-
 }
