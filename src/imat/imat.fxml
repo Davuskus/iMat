@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <fx:include fx:id="productSpinner" source="controls/productspinner/product_spinner.fxml"/>
-</AnchorPane>
+<!--<?import imat.controls.header.Header?>-->
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/9.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controller.MainController">
+    <children>
+        <StackPane fx:id="ViewsStackPane" prefHeight="150.0" prefWidth="200.0">
+            <!--<children>-->
+                <!--<fx:include fx:id="header" source="controls/header/header.fxml"></fx:include>-->
+            <!--</children>-->
+        </StackPane>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+</GridPane>

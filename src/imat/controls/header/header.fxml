@@ -7,14 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<javafx.scene.layout.AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.header.Header">
    <children>
       <Button mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../res/images/imat%20logo.png" />
+                  <Image url="@../../../../res/images/imat_logo.png" />
                </image>
             </ImageView>
          </graphic>
@@ -32,4 +31,4 @@
          </children>
       </VBox>
    </children>
-</fx:root>
+</javafx.scene.layout.AnchorPane>
