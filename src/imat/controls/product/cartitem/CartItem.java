@@ -1,6 +1,8 @@
-package imat.controls.cartitem;
+package imat.controls.product.cartitem;
 
 import imat.controller.MainController;
+import imat.controls.product.spinner.ProductCountSpinner;
+import imat.interfaces.ChangeListener;
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -15,7 +17,7 @@ public class CartItem extends AnchorPane {
     private Label nameLabel;
 
     @FXML
-    private AnchorPane productSpinner;
+    private ProductCountSpinner productCountSpinner;
 
     @FXML
     private Label priceLabel;
@@ -40,6 +42,14 @@ public class CartItem extends AnchorPane {
     @FXML
     private void removeButtonOnAction(Event event) {
         mainController.removeCartItem(this);
+    }
+
+    /**
+     * Adds a a listener that will get notified when the product count spinner's value changes.
+     * @param listener The listener to add.
+     */
+    public void addChangeListener(ChangeListener<Integer> listener) {
+        productCountSpinner.addChangeListener(listener);
     }
 
 }

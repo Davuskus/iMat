@@ -13,6 +13,6 @@
          </cursor></ImageView>
       <Label fx:id="nameLabel" text="Product name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="5.0" />
       <Label fx:id="priceLabel" layoutX="171.0" layoutY="29.0" text="Total price" AnchorPane.topAnchor="29.0" />
-      <fx:include source="../productspinner/product_spinner.fxml" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0" />
+      <fx:include source="../product/product_spinner.fxml" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0" />
    </children>
 </AnchorPane>

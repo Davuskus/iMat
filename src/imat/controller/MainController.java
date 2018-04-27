@@ -1,6 +1,6 @@
 package imat.controller;
 
-import imat.controls.cartitem.CartItem;
+import imat.controls.product.cartitem.CartItem;
 import javafx.fxml.Initializable;
 
 import java.net.URL;

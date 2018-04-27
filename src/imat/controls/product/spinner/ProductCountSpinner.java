@@ -1,5 +1,6 @@
-package imat.controls.productspinner;
+package imat.controls.product.spinner;
 
+import imat.interfaces.ChangeListener;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,12 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class ProductSpinner extends AnchorPane implements Initializable {
+public class ProductCountSpinner extends AnchorPane implements Initializable {
 
     @FXML
     private Button subtractButton;
@@ -23,6 +26,13 @@ public class ProductSpinner extends AnchorPane implements Initializable {
 
     @FXML
     private TextField valueTextField;
+
+    private final List<ChangeListener<Integer>> changeListeners;
+
+    public ProductCountSpinner() {
+        super();
+        changeListeners = new ArrayList<>(1);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,9 +55,11 @@ public class ProductSpinner extends AnchorPane implements Initializable {
     }
 
     private void changeValue(int value) {
-        int newValue = getValue() + value;
+        int oldValue = getValue();
+        int newValue = oldValue + value;
         if (newValue >= 0) {
             valueTextField.setText(String.valueOf(newValue));
+            notifyAllChangeListeners(oldValue, newValue);
         }
     }
 
@@ -58,6 +70,20 @@ public class ProductSpinner extends AnchorPane implements Initializable {
      */
     public int getValue() {
         return Integer.valueOf(valueTextField.getText());
+    }
+
+    /**
+     * Adds a a listener that will get notified when the spinner's value changes.
+     * @param listener The listener to add.
+     */
+    public void addChangeListener(ChangeListener<Integer> listener) {
+        changeListeners.add(listener);
+    }
+
+    private void notifyAllChangeListeners(int oldValue, int newValue) {
+        for (ChangeListener<Integer> listener : changeListeners) {
+            listener.onChange(oldValue, newValue);
+        }
     }
 
 }
