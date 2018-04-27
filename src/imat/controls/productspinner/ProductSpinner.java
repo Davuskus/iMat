@@ -21,13 +21,13 @@ public class ProductSpinner extends AnchorPane {
     @FXML
     private TextField valueTextField;
 
+    /**
+     * Initializes the spinner.
+     */
     public ProductSpinner() {
-
         FXMLLoader.loadFXMLFromRootPackage("product_spinner.fxml", this, this);
 
-        // TODO valueTextField should only accept integers greater than, or equal to zero.
-
-        // Forces the text field to only accept numeric input
+        // Forces the text field to only accept positive integers as input
         valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 valueTextField.setText(newValue.replaceAll("[^\\d]", ""));
@@ -36,12 +36,12 @@ public class ProductSpinner extends AnchorPane {
     }
 
     @FXML
-    private void addButtonOnClick(Event event) {
+    private void addButtonOnAction(Event event) {
         changeValue(1);
     }
 
     @FXML
-    private void subtractButtonOnClick(Event event) {
+    private void subtractButtonOnAction(Event event) {
         changeValue(-1);
     }
 
