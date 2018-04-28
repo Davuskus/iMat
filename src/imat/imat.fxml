@@ -9,7 +9,9 @@
    <children>
       <StackPane fx:id="viewsStackPane" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" />
+            <fx:include fx:id="browseScene" source="scenes/browse/browse.fxml"/>
+            <fx:include fx:id="payScene"    source="scenes/pay/pay.fxml"/>
+            <fx:include fx:id="modalScene"  source="scenes/modal/modal.fxml"/>
          </children>
       </StackPane>
    </children>
