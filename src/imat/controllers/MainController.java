@@ -28,7 +28,7 @@ public class MainController implements Initializable {
 
     //Temporary for debugging the different scenes
     @FXML
-    private void changeScene() {
+    private void changeView() {
         viewsStackPane.getChildren().get(0).toFront();
     }
 
