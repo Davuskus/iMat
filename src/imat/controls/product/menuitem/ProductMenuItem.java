@@ -61,13 +61,8 @@ public class ProductMenuItem extends AnchorPane {
         return product;
     }
 
-    /**
-     * Adds a a listener that will get notified when the product count spinner's value changes.
-     *
-     * @param listener The listener to add.
-     */
-    public void addChangeListener(ChangeListener<Integer> listener) {
-        ((ProductCountSpinner)spinner).addChangeListener(listener);
-    }
+//    public void addChangeListener(ChangeListener<Integer> listener) {
+//        spinner.addChangeListener(listener);
+//    }
 
 }

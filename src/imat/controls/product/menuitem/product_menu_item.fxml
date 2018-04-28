@@ -4,12 +4,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="120.0" style="-fx-background-color: white;" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="120.0" style="-fx-background-color: gray;" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0" />
-      <Label fx:id="nameLabel" layoutX="10.0" layoutY="18.0" text="Product name" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Label fx:id="ecoLabel" layoutX="49.0" layoutY="120.0" text="Ekologisk" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="140.0" />
-      <Label fx:id="priceLabel" layoutX="10.0" layoutY="157.0" text="Product price" />
-      <fx:include fx:id="spinner" source="../spinner/product_count_spinner.fxml" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="17.5" />
+      <ImageView fx:id="imageView" fitHeight="75.0" fitWidth="100.0" layoutX="25.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="nameLabel" layoutX="10.0" layoutY="18.0" prefHeight="20.0" text="Product name" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0" />
+      <Label fx:id="ecoLabel" layoutX="49.0" layoutY="120.0" text="Ekologisk" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="priceLabel" layoutX="10.0" layoutY="157.0" text="Product price" AnchorPane.topAnchor="140.0" />
+      <fx:include fx:id="spinner" source="../spinner/product_count_spinner.fxml" AnchorPane.leftAnchor="17.5" AnchorPane.topAnchor="170.0" />
    </children>
 </fx:root>

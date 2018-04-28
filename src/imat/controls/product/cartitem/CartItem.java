@@ -17,7 +17,7 @@ public class CartItem extends AnchorPane {
     private Label nameLabel;
 
     @FXML
-    private ProductCountSpinner productCountSpinner;
+    private AnchorPane productCountSpinner;
 
     @FXML
     private Label priceLabel;
@@ -36,7 +36,6 @@ public class CartItem extends AnchorPane {
 
         nameLabel.setText(this.product.getName());
         priceLabel.setText(String.valueOf(this.product.getPrice()));
-
     }
 
     @FXML
@@ -44,12 +43,8 @@ public class CartItem extends AnchorPane {
         mainController.removeCartItem(this);
     }
 
-    /**
-     * Adds a a listener that will get notified when the product count spinner's value changes.
-     * @param listener The listener to add.
-     */
-    public void addChangeListener(ChangeListener<Integer> listener) {
-        productCountSpinner.addChangeListener(listener);
-    }
+//    public void addChangeListener(ChangeListener<Integer> listener) {
+//        productCountSpinner.addChangeListener(listener);
+//    }
 
 }

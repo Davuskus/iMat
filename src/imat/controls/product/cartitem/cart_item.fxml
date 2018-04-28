@@ -2,17 +2,21 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="cartItem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="removeButton" fitHeight="25.0" fitWidth="25.0" focusTraversable="true" layoutX="-86.0" layoutY="-50.0" onKeyPressed="#removeButtonOnAction" onMouseClicked="#removeButtonOnAction" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="25.0">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ImageView>
+         </cursor>
+         <image>
+            <Image url="@../../../../../res/images/icons/close/icon_close.png" />
+         </image></ImageView>
       <Label fx:id="nameLabel" text="Product name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="5.0" />
       <Label fx:id="priceLabel" layoutX="171.0" layoutY="29.0" text="Total price" AnchorPane.topAnchor="29.0" />
-      <fx:include source="../product/product_spinner.fxml" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0" />
+      <fx:include fx:id="countSpinner" source="../spinner/product_count_spinner.fxml" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0" />
    </children>
 </AnchorPane>

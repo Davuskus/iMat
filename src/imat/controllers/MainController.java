@@ -2,14 +2,11 @@ package imat.controllers;
 
 import imat.controls.product.cartitem.CartItem;
 import imat.controls.product.menuitem.ProductMenuItem;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
@@ -24,14 +21,10 @@ public class MainController implements Initializable {
     @FXML
     private StackPane viewsStackPane;
 
-    @FXML
-    private AnchorPane mainPane;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // testProductMenuItem();
+        testProductMenuItem();
     }
-
 
     //Temporary for debugging the different scenes
     @FXML
@@ -40,8 +33,7 @@ public class MainController implements Initializable {
     }
 
     // Temporary
-    private void testProductMenuItem() {
-        ProductMenuItem productMenuItem = new ProductMenuItem();
+    private Product getTestProduct() {
         Product product = new Product();
         product.setName("Product 1");
         product.setCategory(ProductCategory.BERRY);
@@ -50,8 +42,14 @@ public class MainController implements Initializable {
         product.setProductId(1);
         product.setUnit("kr/kg");
         product.setImageName("product_1.jpg");
-        productMenuItem.setProduct(product);
-        mainPane.getChildren().add(productMenuItem);
+        return product;
+    }
+
+    // Temporary
+    private void testProductMenuItem() {
+        ProductMenuItem productMenuItem = new ProductMenuItem();
+        productMenuItem.setProduct(getTestProduct());
+        ((AnchorPane) viewsStackPane.getChildren().get(0)).getChildren().add(productMenuItem);
     }
 
     public void removeCartItem(CartItem cartItem) {
