@@ -2,6 +2,7 @@ package imat.controls.product.menuitem;
 
 import imat.controls.product.spinner.ProductCountSpinner;
 import imat.interfaces.ChangeListener;
+import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,7 +16,7 @@ public class ProductMenuItem extends AnchorPane {
     private ImageView imageView;
 
     @FXML
-    private ProductCountSpinner spinner;
+    private AnchorPane spinner;
 
     @FXML
     private Label nameLabel;
@@ -28,6 +29,10 @@ public class ProductMenuItem extends AnchorPane {
 
     private Product product;
 
+    public ProductMenuItem() {
+        FXMLLoader.loadFXMLFromRootPackage("product_menu_item.fxml", this, this);
+    }
+
     /**
      * Sets the product and updates the menu item's information accordingly.
      *
@@ -35,7 +40,11 @@ public class ProductMenuItem extends AnchorPane {
      */
     public void setProduct(Product product) {
         this.product = product;
-        imageView.setImage(new Image("res/images/" + product.getImageName()));
+
+        if (product == null) {
+            System.out.println(true);
+        }
+        imageView.setImage(new Image("/images/products/" + product.getImageName()));
         nameLabel.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + " kr");
         if (!product.isEcological()) {
@@ -58,7 +67,7 @@ public class ProductMenuItem extends AnchorPane {
      * @param listener The listener to add.
      */
     public void addChangeListener(ChangeListener<Integer> listener) {
-        spinner.addChangeListener(listener);
+        ((ProductCountSpinner)spinner).addChangeListener(listener);
     }
 
 }
