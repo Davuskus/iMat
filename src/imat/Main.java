@@ -1,8 +1,8 @@
 package imat;
 
-import imat.scenes.browse.Browse;
-import imat.scenes.modal.Modal;
-import imat.scenes.pay.Pay;
+import imat.views.browse.Browse;
+import imat.views.modal.Modal;
+import imat.views.pay.Pay;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,17 +23,17 @@ public class Main extends Application {
 
         //Model m = ... ;
 
-        Browse browseSceneController = new Browse(/*m*/);
-        Modal modalSceneController = new Modal(/*m*/);
-        Pay paySceneController = new Pay(/*m*/);
+        Browse browseViewController = new Browse(/*m*/);
+        Modal modalViewController = new Modal(/*m*/);
+        Pay payViewController = new Pay(/*m*/);
 
         Callback<Class<?>, Object> controllerFactory = type -> {
             if (type == Browse.class) {
-                return browseSceneController;
+                return browseViewController;
             } else if (type == Modal.class) {
-                return modalSceneController;
+                return modalViewController;
             } else if (type == Pay.class) {
-                return paySceneController;
+                return payViewController;
             } else {
                 // default behavior for controllerFactory:
                 try {

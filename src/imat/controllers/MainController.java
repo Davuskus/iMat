@@ -2,8 +2,11 @@ package imat.controllers;
 
 import imat.controls.product.cartitem.CartItem;
 import imat.controls.product.menuitem.ProductMenuItem;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -27,6 +30,13 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // testProductMenuItem();
+    }
+
+
+    //Temporary for debugging the different scenes
+    @FXML
+    private void changeScene() {
+        viewsStackPane.getChildren().get(0).toFront();
     }
 
     // Temporary
