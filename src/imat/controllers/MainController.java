@@ -1,10 +1,14 @@
 package imat.controllers;
 
 import imat.controls.product.cartitem.CartItem;
+import imat.controls.product.menuitem.ProductMenuItem;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +26,22 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // testProductMenuItem();
+    }
 
+    // Temporary
+    private void testProductMenuItem() {
+        ProductMenuItem productMenuItem = new ProductMenuItem();
+        Product product = new Product();
+        product.setName("Product 1");
+        product.setCategory(ProductCategory.BERRY);
+        product.setIsEcological(true);
+        product.setPrice(100);
+        product.setProductId(1);
+        product.setUnit("kr/kg");
+        product.setImageName("product_1.jpg");
+        productMenuItem.setProduct(product);
+        mainPane.getChildren().add(productMenuItem);
     }
 
     public void removeCartItem(CartItem cartItem) {
