@@ -1,5 +1,6 @@
 package imat;
 
+import imat.controls.header.Header;
 import imat.views.browse.Browse;
 import imat.views.modal.Modal;
 import imat.views.pay.Pay;
@@ -21,22 +22,28 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("imat.fxml"));
 
+        //TODO explicitly define a model class somewhere (if backend is not sufficient)
         //Model m = ... ;
 
         Browse browseViewController = new Browse(/*m*/);
         Modal modalViewController = new Modal(/*m*/);
         Pay payViewController = new Pay(/*m*/);
 
+        //TODO Instantiation of the controller(s) below should probably be moved
+
+        Header headerController = new Header(/*m*/);
+
+        //TODO This factory method looks quite messy, a cleaner method might be worth investigating
+
         Callback<Class<?>, Object> controllerFactory = type -> {
-            if (type == Browse.class) {
-                return browseViewController;
-            } else if (type == Modal.class) {
-                return modalViewController;
-            } else if (type == Pay.class) {
-                return payViewController;
-            } else {
+            if      (type == Browse.class) return browseViewController;
+            else if (type == Modal.class)  return modalViewController;
+            else if (type == Pay.class)    return payViewController;
+            else if (type == Header.class) return headerController;
+            else {
                 // default behavior for controllerFactory:
                 try {
+                    System.out.println("Unexpected " + type.getName());
                     return type.newInstance();
                 } catch (Exception exc) {
                     exc.printStackTrace();
