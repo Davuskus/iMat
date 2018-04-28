@@ -10,7 +10,7 @@
       <URL value="@../../debug.css" />
    </stylesheets>
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-antiquewhite" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+      <AnchorPane onMouseClicked="#consumeEvent" prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-antiquewhite" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
          <children>
             <Label text="Here we will have some modal content" />
          </children>
