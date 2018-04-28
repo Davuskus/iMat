@@ -1,4 +1,4 @@
-package imat.modaldialogs;
+package imat.views.helpview;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 
-public class HelpViewController extends AnchorPane {
+public class HelpView extends AnchorPane {
     @FXML
     ImageView helpViewCloseButton;
 
@@ -16,7 +16,7 @@ public class HelpViewController extends AnchorPane {
     @FXML
     WebView helpTextView;
 
-    public HelpViewController (String htmlPath) {
+    public HelpView(String htmlPath) {
         String htmlContent = imat.utils.FileUtils.readAllTextFromFile(htmlPath);
         helpTextView.getEngine().loadContent(htmlContent, "text/html");
     }
