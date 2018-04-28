@@ -1,4 +1,4 @@
-package imat.controller;
+package imat.controllers;
 
 public class SearchController {
 }
