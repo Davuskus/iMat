@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<javafx.scene.layout.AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.header.Header">
+<javafx.scene.layout.AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.header.Header">
    <children>
       <Button mnemonicParsing="false">
          <graphic>
-            <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../res/images/logo/imat_logo.png" />
                </image>
@@ -23,7 +23,7 @@
             <Image url="@../../../../res/images/icons/search.png" />
          </image>
       </ImageView>
-      <TextField minHeight="40.0" minWidth="300.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0" />
+      <TextField fx:id="searchBox" minHeight="40.0" minWidth="300.0" onKeyTyped="#onSearchBoxUpdate" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0" />
       <VBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="100.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Button mnemonicParsing="false" text="Help" />
