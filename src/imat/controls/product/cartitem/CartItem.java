@@ -1,6 +1,6 @@
 package imat.controls.product.cartitem;
 
-import imat.controller.MainController;
+import imat.controllers.MainController;
 import imat.controls.product.spinner.ProductCountSpinner;
 import imat.interfaces.ChangeListener;
 import imat.utils.FXMLLoader;
