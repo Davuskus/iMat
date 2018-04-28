@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class ProductCountSpinner extends AnchorPane implements Initializable {
+public class ProductCountSpinner implements Initializable {
 
     @FXML
     private Button subtractButton;
@@ -74,6 +73,7 @@ public class ProductCountSpinner extends AnchorPane implements Initializable {
 
     /**
      * Adds a a listener that will get notified when the spinner's value changes.
+     *
      * @param listener The listener to add.
      */
     public void addChangeListener(ChangeListener<Integer> listener) {

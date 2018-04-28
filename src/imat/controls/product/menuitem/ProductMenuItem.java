@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 
-public class ProductMenuItem extends AnchorPane {
+public class ProductMenuItem {
 
     @FXML
     private ImageView imageView;
@@ -28,10 +28,6 @@ public class ProductMenuItem extends AnchorPane {
     private Label ecoLabel;
 
     private Product product;
-
-    public ProductMenuItem() {
-        FXMLLoader.loadFXMLFromRootPackage("product_menu_item.fxml", this, this);
-    }
 
     /**
      * Sets the product and updates the menu item's information accordingly.

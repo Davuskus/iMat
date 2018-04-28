@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import imat.controls.header.Header?>-->
-
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controllers.MainController">
-   <children>
-      <StackPane fx:id="viewsStackPane" layoutX="10.0" layoutY="10.0" onMouseClicked="#changeView" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <fx:include fx:id="payView" source="views/pay/pay.fxml" />
-            <fx:include fx:id="modalView" source="views/modal/modal.fxml" />
-            <fx:include fx:id="browseView" source="views/browse/browse.fxml" />
-         </children>
-      </StackPane>
-   </children>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controllers.MainController">
+    <children>
+        <StackPane fx:id="viewsStackPane" layoutX="10.0" layoutY="10.0" onMouseClicked="#changeView" prefHeight="150.0"
+                   prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <fx:include fx:id="payView" source="views/pay/pay.fxml"/>
+                <fx:include fx:id="modalView" source="views/modal/modal.fxml"/>
+                <fx:include fx:id="browseView" source="views/browse/browse.fxml"/>
+            </children>
+        </StackPane>
+    </children>
 </AnchorPane>

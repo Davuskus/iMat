@@ -23,7 +23,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        testProductMenuItem();
+
     }
 
     //Temporary for debugging the different scenes
@@ -43,13 +43,6 @@ public class MainController implements Initializable {
         product.setUnit("kr/kg");
         product.setImageName("product_1.jpg");
         return product;
-    }
-
-    // Temporary
-    private void testProductMenuItem() {
-        ProductMenuItem productMenuItem = new ProductMenuItem();
-        productMenuItem.setProduct(getTestProduct());
-        ((AnchorPane) viewsStackPane.getChildren().get(0)).getChildren().add(productMenuItem);
     }
 
     public void removeCartItem(CartItem cartItem) {
