@@ -13,14 +13,14 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../res/images/imat_logo.png" />
+                  <Image url="@../../../../res/images/logo/imat_logo.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <ImageView fitHeight="30.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
          <image>
-            <Image url="@../../../../res/images/search.png" />
+            <Image url="@../../../../res/images/icons/search.png" />
          </image>
       </ImageView>
       <TextField minHeight="40.0" minWidth="300.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0" />

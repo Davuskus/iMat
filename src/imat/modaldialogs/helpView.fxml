@@ -18,7 +18,7 @@
       <Label fx:id="helpViewCloseLabel" layoutX="517.0" layoutY="14.0" text="Stäng" />
       <ImageView fx:id="helpViewCloseButton" fitHeight="31.0" fitWidth="31.0" layoutX="567.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../res/images/closeX.png" />
+            <Image url="@../../../res/images/icons/close/icon_close.png" />
          </image>
       </ImageView>
    </children>
