@@ -1,5 +1,7 @@
 package imat;
 
+import imat.controls.cartsidebar.CartSidebar;
+import imat.controls.categorysidebar.CategorySidebar;
 import imat.controls.header.Header;
 import imat.views.browse.Browse;
 import imat.views.modal.Modal;
@@ -32,6 +34,8 @@ public class Main extends Application {
         //TODO Instantiation of the controller(s) below should probably be moved
 
         Header headerController = new Header(/*m*/);
+        CategorySidebar categorySidebarController = new CategorySidebar(/*m*/);
+        CartSidebar cartSidebarController = new CartSidebar(/*m*/);
 
         //TODO This factory method looks quite messy, a cleaner method might be worth investigating
 
@@ -40,6 +44,8 @@ public class Main extends Application {
             else if (type == Modal.class)  return modalViewController;
             else if (type == Pay.class)    return payViewController;
             else if (type == Header.class) return headerController;
+            else if (type == CategorySidebar.class) return categorySidebarController;
+            else if (type == CartSidebar.class) return cartSidebarController;
             else {
                 // default behavior for controllerFactory:
                 try {

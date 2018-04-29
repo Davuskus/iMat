@@ -44,24 +44,8 @@
     -fx-background-color: #C0C0C0;
 }
 
-.debug-background-fxDefault {
+.background-fxDefault {
     -fx-background-color: -fx-background;
-}
-
-.debug-background-blue {
-    -fx-background-color: blue;
-}
-
-.debug-background-red {
-    -fx-background-color: red;
-}
-
-.debug-background-pink {
-    -fx-background-color: pink;
-}
-
-.debug-background-yellow {
-    -fx-background-color: yellow;
 }
 
 
