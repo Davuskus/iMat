@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
 
@@ -75,5 +76,11 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                IMatDataHandler.getInstance().shutDown();
+            }
+        }));
     }
 }

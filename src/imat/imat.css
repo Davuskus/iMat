@@ -48,4 +48,12 @@
     -fx-background-color: -fx-background;
 }
 
+.text-area .content {
+   -fx-background-color: white;
+}
+
+.text-area  {
+    -fx-background-color: white;
+}
+
 
