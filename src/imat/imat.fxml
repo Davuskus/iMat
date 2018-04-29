@@ -11,7 +11,6 @@
                 <fx:include fx:id="paymentView" source="views/payment/payment.fxml" />
                 <fx:include fx:id="modalView" source="views/modal/modal.fxml" />
                 <fx:include fx:id="browseView" source="views/browse/browse.fxml" />
-
             </children>
         </StackPane>
     </children>

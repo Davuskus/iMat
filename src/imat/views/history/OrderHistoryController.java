@@ -63,7 +63,6 @@ public class OrderHistoryController implements Initializable {
             orderHistoryItems.add(new OrderHistoryItem(order, this));
         }
         cartsFlowPane.getChildren().addAll(orderHistoryItems);
-
     }
 
     public void showProductsPane(OrderHistoryItem orderHistoryItem) {
