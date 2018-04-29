@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<fx:root focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" styleClass="scene-default" stylesheets="@../../imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="cartTitleLabel" styleClass="title-normal" text="Kundvagn: " wrapText="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="dateLabel" styleClass="title-normal" text="YYYY-MM-DD" wrapText="true">
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fx:id="cartButton" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@../../../../res/images/icons/cart/icon_cart.png" />
+         </image>
+      </ImageView>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</fx:root>

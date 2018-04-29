@@ -20,7 +20,7 @@
       </Button>
       <ImageView fitHeight="30.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
          <image>
-            <Image url="@../../../../res/images/icons/search.png" />
+            <Image url="@../../../../res/images/icons/search/icon_search.png" />
          </image>
       </ImageView>
       <TextField fx:id="searchBox" minHeight="40.0" minWidth="300.0" onKeyTyped="#onSearchBoxUpdate" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0" />
