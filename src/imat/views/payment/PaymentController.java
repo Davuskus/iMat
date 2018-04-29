@@ -14,90 +14,96 @@ import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class paymentController implements  Initializable{
+public class PaymentController implements Initializable {
 
     @FXML
-    Button ClientInfoDoneButton;
+    Button clientInfoDoneButton;
 
     @FXML
-    Button creditcardDoneButton;
+    Button creditCardDoneButton;
 
     @FXML
-    Button creditcardBackButton;
+    Button creditCardBackButton;
 
     @FXML
-    Button changeCreditcardInfoButton;
+    Button changeCreditCardInfoButton;
 
     @FXML
     Button changeClientInfoButton;
 
     @FXML
-    AnchorPane sammanfattning;
+    AnchorPane conclusionPane;
 
     @FXML
-    AnchorPane kunduppgifter;
+    AnchorPane customerInfoPane;
 
     @FXML
-    AnchorPane kreditkortsuppgifter;
-
-
-    @FXML
-    VBox firstSidebarVbox;
+    AnchorPane creditCardInfoPane;
 
     @FXML
-    VBox secondSidebarVbox;
+    VBox firstSidebarVBox;
 
     @FXML
-    VBox thirdSidebarVbox;
-
+    VBox secondSidebarVBox;
 
     @FXML
-    TextField fistnameField ;
+    VBox thirdSidebarVBox;
+
     @FXML
-    TextField lastnameField;
+    TextField firstNameField;
+
+    @FXML
+    TextField lastNameField;
+
     @FXML
     TextField addressField;
+
     @FXML
     TextField postcodeField;
+
     @FXML
-    TextField phonenumberField;
+    TextField phoneNumberField;
+
     @FXML
-    TextField creditcardnumberField;
+    TextField creditCardNumberField;
+
     @FXML
     TextField validMonthField;
+
     @FXML
     TextField validYearField;
+
     @FXML
     TextField cvcField;
 
     @FXML
     TextArea clientSummeryArea;
     @FXML
-    TextArea creditcardSummeryArea;
+    TextArea creditCardSummeryArea;
 
     @FXML
-    CheckBox SaveuserInfoCheckBox;
+    CheckBox saveUserInfoCheckBox;
 
+    private final IMatDataHandler iMatDataHandler;
 
-    IMatDataHandler imatH=IMatDataHandler.getInstance();
+    private final Customer customer;
 
-    Customer costomer=  imatH.getCustomer();
+    private final CreditCard creditCard;
 
-    CreditCard creditCard=  imatH.getCreditCard();
-
-
-
+    public PaymentController() {
+        iMatDataHandler = IMatDataHandler.getInstance();
+        customer = iMatDataHandler.getCustomer();
+        creditCard = iMatDataHandler.getCreditCard();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fillUserData();
         updateTextArea();
-
 
         validMonthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -126,43 +132,41 @@ public class paymentController implements  Initializable{
                 }
             }
         });
-        creditcardnumberField.textProperty().addListener(new ChangeListener<String>() {
+        creditCardNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
                 if (!newValue.matches("\\d*")) {
-                    creditcardnumberField.setText(newValue.replaceAll("[^\\d]", ""));
+                    creditCardNumberField.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }
         });
 
-
     }
 
     private void fillUserData() {
-     fistnameField.appendText(costomer.getFirstName());
-     lastnameField.appendText(costomer.getLastName());
-     addressField.appendText(costomer.getAddress());
-     postcodeField.appendText(costomer.getPostCode());
-     phonenumberField.appendText(costomer.getPhoneNumber());
+        firstNameField.appendText(customer.getFirstName());
+        lastNameField.appendText(customer.getLastName());
+        addressField.appendText(customer.getAddress());
+        postcodeField.appendText(customer.getPostCode());
+        phoneNumberField.appendText(customer.getPhoneNumber());
 
-
-     creditcardnumberField.appendText(creditCard.getCardNumber());
-     validMonthField.appendText(Integer.toString(creditCard.getValidMonth()));
-     validYearField.appendText(Integer.toString(creditCard.getValidYear()));
-     cvcField.appendText(Integer.toString(creditCard.getVerificationCode()));
+        creditCardNumberField.appendText(creditCard.getCardNumber());
+        validMonthField.appendText(Integer.toString(creditCard.getValidMonth()));
+        validYearField.appendText(Integer.toString(creditCard.getValidYear()));
+        cvcField.appendText(Integer.toString(creditCard.getVerificationCode()));
     }
 
     @FXML
-    private void SaveUserinfo(){
-        if( SaveuserInfoCheckBox.isSelected()) {
-            costomer.setFirstName(fistnameField.getText());
-            costomer.setLastName(lastnameField.getText());
-            costomer.setAddress(addressField.getText());
-            costomer.setPostCode(postcodeField.getText());
-            costomer.setPhoneNumber(phonenumberField.getText());
+    private void SaveUserInfo() {
+        if (saveUserInfoCheckBox.isSelected()) {
+            customer.setFirstName(firstNameField.getText());
+            customer.setLastName(lastNameField.getText());
+            customer.setAddress(addressField.getText());
+            customer.setPostCode(postcodeField.getText());
+            customer.setPhoneNumber(phoneNumberField.getText());
 
-            creditCard.setCardNumber(creditcardnumberField.getText());
+            creditCard.setCardNumber(creditCardNumberField.getText());
             creditCard.setValidMonth(Integer.parseInt(validMonthField.getText()));
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
@@ -170,23 +174,22 @@ public class paymentController implements  Initializable{
     }
 
 
-
-    private void updateTextArea(){
-        updatCreditcardTextArea();
+    private void updateTextArea() {
+        updateCreditCardTextArea();
         updateClientTextArea();
     }
 
-    private void updatCreditcardTextArea() {
-        creditcardSummeryArea.clear();
-        creditcardSummeryArea.appendText(creditcardToString());
+    private void updateCreditCardTextArea() {
+        creditCardSummeryArea.clear();
+        creditCardSummeryArea.appendText(creditCardToString());
     }
 
-    private String creditcardToString(){
+    private String creditCardToString() {
 
-        StringBuilder strB=new StringBuilder();
-        strB.append(creditcardnumberField.getText()+"\n");
-        strB.append(validMonthField.getText()+" / ");
-        strB.append(validYearField.getText()+"\n");
+        StringBuilder strB = new StringBuilder();
+        strB.append(creditCardNumberField.getText() + "\n");
+        strB.append(validMonthField.getText() + " / ");
+        strB.append(validYearField.getText() + "\n");
         strB.append(cvcField.getText());
         return strB.toString();
     }
@@ -195,34 +198,36 @@ public class paymentController implements  Initializable{
         clientSummeryArea.clear();
         clientSummeryArea.appendText(clientToString());
     }
-    private String clientToString(){
 
-        StringBuilder strB=new StringBuilder();
-        strB.append(fistnameField.getText()+" ");
-        strB.append(lastnameField.getText()+"\n");
-        strB.append(addressField.getText()+"\n");
-        strB.append(postcodeField.getText()+"\n");
-        strB.append(phonenumberField.getText());
+    private String clientToString() {
+
+        StringBuilder strB = new StringBuilder();
+        strB.append(firstNameField.getText() + " ");
+        strB.append(lastNameField.getText() + "\n");
+        strB.append(addressField.getText() + "\n");
+        strB.append(postcodeField.getText() + "\n");
+        strB.append(phoneNumberField.getText());
         return strB.toString();
     }
 
     @FXML
-    private void credidcardViewToFront(){
-        kreditkortsuppgifter.toFront();
-        secondSidebarVbox.toFront();
-    }
-    @FXML
-    private void summaryViewToFront(){
-        updateTextArea();
-        sammanfattning.toFront();
-        thirdSidebarVbox.toFront();
-    }
-    @FXML
-    private void clientViewToFront(){
-        kunduppgifter.toFront();
-        firstSidebarVbox.toFront();
+    private void credidcardViewToFront() {
+        creditCardInfoPane.toFront();
+        secondSidebarVBox.toFront();
     }
 
+    @FXML
+    private void summaryViewToFront() {
+        updateTextArea();
+        conclusionPane.toFront();
+        thirdSidebarVBox.toFront();
+    }
+
+    @FXML
+    private void clientViewToFront() {
+        customerInfoPane.toFront();
+        firstSidebarVBox.toFront();
+    }
 
 
     @FXML
@@ -231,13 +236,9 @@ public class paymentController implements  Initializable{
     }
 
 
-
-
     @FXML
-    private void moveToBack(){
+    private void moveToBack() {
 
     }
-
-
 
 }
