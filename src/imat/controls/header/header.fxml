@@ -11,7 +11,7 @@
    <children>
       <Button mnemonicParsing="false">
          <graphic>
-            <ImageView fitHeight="80.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../res/images/logo/imat_logo.png" />
                </image>
