@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -90,10 +91,12 @@ public class paymentController implements  Initializable{
     CreditCard creditCard=  imatH.getCreditCard();
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fillUserData();
-
+        updateTextArea();
 
 
         validMonthField.textProperty().addListener(new ChangeListener<String>() {
@@ -134,7 +137,6 @@ public class paymentController implements  Initializable{
         });
 
 
-        
     }
 
     private void fillUserData() {
@@ -168,6 +170,42 @@ public class paymentController implements  Initializable{
     }
 
 
+
+    private void updateTextArea(){
+        updatCreditcardTextArea();
+        updateClientTextArea();
+    }
+
+    private void updatCreditcardTextArea() {
+        creditcardSummeryArea.clear();
+        creditcardSummeryArea.appendText(creditcardToString());
+    }
+
+    private String creditcardToString(){
+
+        StringBuilder strB=new StringBuilder();
+        strB.append(creditcardnumberField.getText()+"\n");
+        strB.append(validMonthField.getText()+" / ");
+        strB.append(validYearField.getText()+"\n");
+        strB.append(cvcField.getText());
+        return strB.toString();
+    }
+
+    private void updateClientTextArea() {
+        clientSummeryArea.clear();
+        clientSummeryArea.appendText(clientToString());
+    }
+    private String clientToString(){
+
+        StringBuilder strB=new StringBuilder();
+        strB.append(fistnameField.getText()+" ");
+        strB.append(lastnameField.getText()+"\n");
+        strB.append(addressField.getText()+"\n");
+        strB.append(postcodeField.getText()+"\n");
+        strB.append(phonenumberField.getText());
+        return strB.toString();
+    }
+
     @FXML
     private void credidcardViewToFront(){
         kreditkortsuppgifter.toFront();
@@ -175,6 +213,7 @@ public class paymentController implements  Initializable{
     }
     @FXML
     private void summaryViewToFront(){
+        updateTextArea();
         sammanfattning.toFront();
         thirdSidebarVbox.toFront();
     }
