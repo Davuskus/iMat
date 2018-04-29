@@ -9,6 +9,23 @@
     -fx-text-fill: #C0C0C0;
 }
 
+.title-normal {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.title-large {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.button-text-normal {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+}
+
 .scene-default {
     -fx-background-color: white;
 }
@@ -17,7 +34,11 @@
     -fx-background-color: rgba(0,0,0,0.5);
 }
 
-.debug-background-fxDefult {
+.background-gray {
+    -fx-background-color: #C0C0C0;
+}
+
+.debug-background-fxDefault {
     -fx-background-color: -fx-background;
 }
 
