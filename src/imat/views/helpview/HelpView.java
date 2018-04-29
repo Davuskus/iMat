@@ -1,5 +1,6 @@
 package imat.views.helpview;
 
+import imat.controllers.MainController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,12 +20,14 @@ public class HelpView extends AnchorPane {
     @FXML
     WebView helpTextView;
 
+    MainController mainController;
+
     AnchorPane parentWindow;
 
-    public HelpView() {
+    public HelpView(MainController mainController) {
         FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
         loadHtmlTextFromFile("res/helpText.html");
-
+        this.mainController = mainController;
     }
 
     private void loadHtmlTextFromFile(String htmlPath) {

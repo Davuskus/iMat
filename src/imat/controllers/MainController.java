@@ -2,6 +2,7 @@ package imat.controllers;
 
 import imat.controls.product.cartitem.CartItem;
 import imat.controls.product.menuitem.ProductMenuItem;
+import imat.views.helpview.HelpView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -50,4 +51,11 @@ public class MainController implements Initializable {
         // TODO Show a "regret"-button after removal
     }
 
+    public void showHelpView() {
+        // TODO load the help view and move to front
+    }
+
+    public void closeHelpView(HelpView helpView) {
+        // TODO close the help view
+    }
 }
