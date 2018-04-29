@@ -5,30 +5,45 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <javafx.scene.layout.AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.header.Header">
    <children>
-      <Button mnemonicParsing="false">
-         <graphic>
-            <ImageView fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+      <GridPane hgap="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="150.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../res/images/logo/imat_logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <VBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Help" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Historik" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="30.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                <image>
-                  <Image url="@../../../../res/images/logo/imat_logo.png" />
+                  <Image url="@../../../../res/images/icons/search.png" />
                </image>
             </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fitHeight="30.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
-         <image>
-            <Image url="@../../../../res/images/icons/search.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="searchBox" minHeight="40.0" minWidth="300.0" onKeyTyped="#onSearchBoxUpdate" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0" />
-      <VBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="100.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Button mnemonicParsing="false" text="Help" />
-            <Button mnemonicParsing="false" text="Historik" />
+            <TextField fx:id="searchBox" minHeight="40.0" minWidth="300.0" onKeyTyped="#onSearchBoxUpdate" GridPane.columnIndex="1" />
          </children>
-      </VBox>
+      </GridPane>
    </children>
 </javafx.scene.layout.AnchorPane>
