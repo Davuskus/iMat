@@ -16,8 +16,12 @@ public class HelpView extends AnchorPane {
     @FXML
     WebView helpTextView;
 
-    public HelpView(String htmlPath) {
+    public void loadHtmlTextFromFile(String htmlPath) {
         String htmlContent = imat.utils.FileUtils.readAllTextFromFile(htmlPath);
+        loadHtmlTextFromString(htmlContent);
+    }
+
+    public void loadHtmlTextFromString(String htmlContent) {
         helpTextView.getEngine().loadContent(htmlContent, "text/html");
     }
 }
