@@ -10,8 +10,10 @@
                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <fx:include fx:id="payView" source="views/pay/pay.fxml"/>
+                <fx:include fx:id="paymentView" source="views/payment/payment.fxml"/>
                 <fx:include fx:id="modalView" source="views/modal/modal.fxml"/>
                 <fx:include fx:id="browseView" source="views/browse/browse.fxml"/>
+
             </children>
         </StackPane>
     </children>

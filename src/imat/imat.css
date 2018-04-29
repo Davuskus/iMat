@@ -2,12 +2,23 @@
     -fx-font-family: "Tahoma";
     -fx-font-size: 12px;
 }
+
+.text-normal-gray {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 12px;
+    -fx-text-fill: #C0C0C0;
+}
+
 .scene-default {
     -fx-background-color: white;
 }
 
 .scene-transparent {
     -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.debug-background-fxDefult {
+    -fx-background-color: -fx-background;
 }
 
 .debug-background-blue {
@@ -26,4 +37,4 @@
     -fx-background-color: yellow;
 }
 
-.de
+

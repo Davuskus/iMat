@@ -1,5 +1,6 @@
 package imat.views.payment;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -41,5 +42,15 @@ public class paymentController {
     @FXML
     private void clientViewToFront(){
         kunduppgifter.toFront();
+    }
+
+    @FXML
+    public void consumeEvent(Event event) {
+        event.consume();
+    }
+
+    @FXML
+    private void moveToBack(){
+
     }
 }
