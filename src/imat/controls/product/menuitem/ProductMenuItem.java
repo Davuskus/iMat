@@ -1,8 +1,5 @@
 package imat.controls.product.menuitem;
 
-import imat.controls.product.spinner.ProductCountSpinner;
-import imat.interfaces.ChangeListener;
-import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

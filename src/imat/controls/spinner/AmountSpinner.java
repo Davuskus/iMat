@@ -1,4 +1,4 @@
-package imat.controls.product.spinner;
+package imat.controls.spinner;
 
 import imat.interfaces.ChangeListener;
 import javafx.event.Event;
@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class ProductCountSpinner implements Initializable {
+public class AmountSpinner implements Initializable {
 
     @FXML
     private Button subtractButton;
@@ -28,7 +28,7 @@ public class ProductCountSpinner implements Initializable {
 
     private final List<ChangeListener<Integer>> changeListeners;
 
-    public ProductCountSpinner() {
+    public AmountSpinner() {
         super();
         changeListeners = new ArrayList<>(1);
     }

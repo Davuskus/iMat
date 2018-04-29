@@ -1,7 +1,7 @@
 package imat.views.history;
 
-import imat.controls.carthistory.CartHistoryItem;
-import imat.controls.product.history.ProductHistoryItem;
+import imat.controls.history.order.OrderHistoryItem;
+import imat.controls.history.shoppingitem.HistoryShoppingItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,14 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HistoryController implements Initializable {
+public class OrderHistoryController implements Initializable {
 
     @FXML
     private AnchorPane historyTitlePane;
@@ -48,24 +50,24 @@ public class HistoryController implements Initializable {
     @FXML
     private Button backButton;
 
-    private final List<CartHistoryItem> cartHistoryItems;
+    private final List<OrderHistoryItem> orderHistoryItems;
 
-    public HistoryController() {
-        cartHistoryItems = new ArrayList<>();
-
+    public OrderHistoryController() {
+        orderHistoryItems = new ArrayList<>();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Load all history from the file using the backend somehow and add it to cartHistoryItems
+
+        for (Order order : IMatDataHandler.getInstance().getOrders()) {
+            orderHistoryItems.add(new OrderHistoryItem(order, this));
+        }
+        cartsFlowPane.getChildren().addAll(orderHistoryItems);
+
     }
 
-    private void addAllPreviousCartsToList() {
-        cartsFlowPane.getChildren().addAll(cartHistoryItems);
-    }
-
-    private void showProductsPane(CartHistoryItem cartHistoryItem) {
-        populateProductList(cartHistoryItem);
+    public void showProductsPane(OrderHistoryItem orderHistoryItem) {
+        populateProductList(orderHistoryItem);
         backButton.setFocusTraversable(true);
         copyCartButton.setFocusTraversable(true);
         productsFlowPane.toFront();
@@ -74,13 +76,13 @@ public class HistoryController implements Initializable {
     private void hideProductsPane() {
         productsFlowPane.getChildren().clear();
         backButton.setFocusTraversable(false);
-        copyCartButton.setFocusTraversable(true);
+        copyCartButton.setFocusTraversable(false);
         productsFlowPane.toBack();
     }
 
-    private void populateProductList(CartHistoryItem cartHistoryItem) {
-        for (Product product : cartHistoryItem.getProducts()) {
-            productsFlowPane.getChildren().add(new ProductHistoryItem(product, this));
+    private void populateProductList(OrderHistoryItem orderHistoryItem) {
+        for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
+            productsFlowPane.getChildren().add(new HistoryShoppingItem(shoppingItem, this));
         }
     }
 

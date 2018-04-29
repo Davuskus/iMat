@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.history.HistoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.history.OrderHistoryController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -39,7 +39,7 @@
                                         <AnchorPane fx:id="cartTitlePane" prefHeight="50.0" prefWidth="200.0" styleClass="scene-default">
                                             <children>
                                                 <Label alignment="CENTER" styleClass="title-large" text="Kundvagn: Datum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                <Button fx:id="backButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" styleClass="button-text-normal" text="Tillbaka" wrapText="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="13.0">
+                                                <Button fx:id="backButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#backButtonOnAction" styleClass="button-text-normal" text="Tillbaka" wrapText="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="13.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></Button>
@@ -52,7 +52,7 @@
                                                     <children>
                                                         <AnchorPane prefHeight="50.0" prefWidth="200.0">
                                                             <children>
-                                                                <Button fx:id="copyCartButton" mnemonicParsing="false" styleClass="button-text-normal" text="Kopiera kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                <Button fx:id="copyCartButton" mnemonicParsing="false" onAction="#copyCartButtonOnAction" styleClass="button-text-normal" text="Kopiera kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor></Button>

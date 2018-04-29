@@ -1,7 +1,6 @@
 package imat.controls.product.cartitem;
 
 import imat.controllers.MainController;
-import imat.controls.product.spinner.ProductCountSpinner;
 import imat.interfaces.ChangeListener;
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
@@ -9,9 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
-public class CartItem extends AnchorPane {
+public class CartItem extends AnchorPane implements ChangeListener<Integer> {
 
     @FXML
     private Label nameLabel;
@@ -27,15 +26,15 @@ public class CartItem extends AnchorPane {
 
     private final MainController mainController;
 
-    private final Product product;
+    private final ShoppingItem shoppingItem;
 
-    public CartItem(Product product, MainController mainController) {
-        this.product = product;
+    public CartItem(ShoppingItem shoppingItem, MainController mainController) {
+        this.shoppingItem = shoppingItem;
         this.mainController = mainController;
         FXMLLoader.loadFXMLFromRootPackage("cart_item.fxml", this, this);
 
-        nameLabel.setText(this.product.getName());
-        priceLabel.setText(String.valueOf(this.product.getPrice()));
+        nameLabel.setText(this.shoppingItem.getProduct().getName());
+        updatePriceLabel();
     }
 
     @FXML
@@ -43,7 +42,17 @@ public class CartItem extends AnchorPane {
         mainController.removeCartItem(this);
     }
 
-//    public void addChangeListener(ChangeListener<Integer> listener) {
+    @Override
+    public void onChange(Integer oldValue, Integer newValue) {
+        shoppingItem.setAmount(newValue);
+        updatePriceLabel();
+    }
+
+    private void updatePriceLabel() {
+        priceLabel.setText(String.valueOf(this.shoppingItem.getTotal()));
+    }
+
+    //    public void addChangeListener(ChangeListener<Integer> listener) {
 //        productCountSpinner.addChangeListener(listener);
 //    }
 
