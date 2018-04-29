@@ -17,24 +17,5 @@
     -fx-background-color: rgba(0,0,0,0.5);
 }
 
-.debug-background-fxDefult {
-    -fx-background-color: -fx-background;
-}
-
-.debug-background-blue {
-    -fx-background-color: blue;
-}
-
-.debug-background-red {
-    -fx-background-color: red;
-}
-
-.debug-background-pink {
-    -fx-background-color: pink;
-}
-
-.debug-background-yellow {
-    -fx-background-color: yellow;
-}
 
 
