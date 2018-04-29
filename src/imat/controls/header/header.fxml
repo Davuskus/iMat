@@ -39,7 +39,7 @@
             </VBox>
             <ImageView fitHeight="30.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                <image>
-                  <Image url="@../../../../res/images/icons/search.png" />
+                  <Image url="@../../../../res/images/icons/search/icon_search.png" />
                </image>
             </ImageView>
             <TextField fx:id="searchBox" minHeight="40.0" minWidth="300.0" onKeyTyped="#onSearchBoxUpdate" GridPane.columnIndex="1" />
