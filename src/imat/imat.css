@@ -1,21 +1,27 @@
 .text-normal {
     -fx-font-family: "Tahoma";
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
 }
 
 .text-normal-gray {
     -fx-font-family: "Tahoma";
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
     -fx-text-fill: #C0C0C0;
 }
 
 .title-normal {
     -fx-font-family: "Tahoma";
-    -fx-font-size: 18px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
 .title-large {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.title-xlarge {
     -fx-font-family: "Tahoma";
     -fx-font-size: 24px;
     -fx-font-weight: bold;
