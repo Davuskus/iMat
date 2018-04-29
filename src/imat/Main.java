@@ -77,10 +77,8 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
 
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            public void run() {
-                IMatDataHandler.getInstance().shutDown();
-            }
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            IMatDataHandler.getInstance().shutDown();
         }));
     }
 }

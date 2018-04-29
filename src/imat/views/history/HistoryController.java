@@ -52,6 +52,7 @@ public class HistoryController implements Initializable {
 
     public HistoryController() {
         cartHistoryItems = new ArrayList<>();
+
     }
 
     @Override
