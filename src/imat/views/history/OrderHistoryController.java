@@ -1,13 +1,14 @@
 package imat.views.history;
 
-import imat.controls.history.order.OrderHistoryItem;
 import imat.controls.history.article.ArticleHistoryItem;
+import imat.controls.history.order.OrderHistoryItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 public class OrderHistoryController implements Initializable {
 
     @FXML
-    private Button copyCartButton;
+    private Button copyToCartButton;
 
     @FXML
     private FlowPane articlesFlowPane;
@@ -49,15 +50,49 @@ public class OrderHistoryController implements Initializable {
     @FXML
     private Label totalPriceLabel;
 
+    @FXML
+    private ScrollPane ordersScrollPane;
+
+    @FXML
+    private ScrollPane articlesScrollPane;
+
     private final Insets separatorPaddingInsets;
+
+    private final List<OrderHistoryItem> orderHistoryItems;
+
+    private final List<ArticleHistoryItem> articleHistoryItems;
 
     public OrderHistoryController() {
         separatorPaddingInsets = new Insets(0.5, 0, 0, 0);
+        orderHistoryItems = new ArrayList<>();
+        articleHistoryItems = new ArrayList<>();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         updateOrderList();
+
+        articlesScrollPane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            updateArticleHistoryItemWidths(newValue.doubleValue());
+        });
+
+        ordersScrollPane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            updateOrderHistoryItemWidths(newValue.doubleValue());
+        });
+
+    }
+
+    private void updateArticleHistoryItemWidths(double width) {
+        for (ArticleHistoryItem articleHistoryItem : articleHistoryItems) {
+            articleHistoryItem.setPrefWidth(width);
+        }
+    }
+
+    private void updateOrderHistoryItemWidths(double width) {
+        for (OrderHistoryItem orderHistoryItem : orderHistoryItems) {
+            orderHistoryItem.setPrefWidth(width);
+        }
     }
 
     /**
@@ -65,11 +100,14 @@ public class OrderHistoryController implements Initializable {
      */
     public void updateOrderList() {
         ordersFlowPane.getChildren().clear();
+        orderHistoryItems.clear();
+
         addOrdersToFlowPane();
+
+        updateOrderHistoryItemWidths(ordersScrollPane.getWidth());
     }
 
     private void addOrdersToFlowPane() {
-
         List<Order> iMatOrderList = IMatDataHandler.getInstance().getOrders();
         List<Order> orders = new ArrayList<>(IMatDataHandler.getInstance().getOrders().size());
         for (int i = iMatOrderList.size() - 1; i >= 0; i--) {
@@ -81,6 +119,7 @@ public class OrderHistoryController implements Initializable {
         for (Order order : orders) {
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem(order, this);
             ordersFlowPane.getChildren().add(orderHistoryItem);
+            orderHistoryItems.add(orderHistoryItem);
 
             // Add separators between the "list" items
             if (index < orders.size() - 1) {
@@ -93,19 +132,24 @@ public class OrderHistoryController implements Initializable {
 
     public void showArticlesPane(OrderHistoryItem orderHistoryItem) {
         populateArticleList(orderHistoryItem);
+
+        updateArticleHistoryItemWidths(articlesScrollPane.getWidth());
+
         backButton.setFocusTraversable(true);
-        copyCartButton.setFocusTraversable(true);
+        copyToCartButton.setFocusTraversable(true);
         updateOrderListButton.setFocusTraversable(false);
         dateLabel.setText(orderHistoryItem.getDate(orderHistoryItem.getDateFormat()));
         totalNumArticlesLabel.setText(orderHistoryItem.getNumShoppingItems() + " st");
         totalPriceLabel.setText(orderHistoryItem.getOrderPrice() + " kr");
+
         switchViews();
     }
 
     private void hideProductsPane() {
         articlesFlowPane.getChildren().clear();
+        articleHistoryItems.clear();
         backButton.setFocusTraversable(false);
-        copyCartButton.setFocusTraversable(false);
+        copyToCartButton.setFocusTraversable(false);
         updateOrderListButton.setFocusTraversable(true);
         switchViews();
     }
@@ -117,7 +161,7 @@ public class OrderHistoryController implements Initializable {
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
             ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem, this);
             articlesFlowPane.getChildren().add(articleHistoryItem);
-
+            articleHistoryItems.add(articleHistoryItem);
             // Add separators between the "list" items
             if (index < orderHistoryItem.getShoppingItems().size() - 1) {
                 articlesFlowPane.getChildren().add(createSeparator(articleHistoryItem.getPrefWidth(), false));

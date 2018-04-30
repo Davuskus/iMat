@@ -17,7 +17,7 @@
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane fx:id="historyTitlePane" prefHeight="30.0" prefWidth="200.0" styleClass="scene-default">
+                <AnchorPane fx:id="historyTitlePane" prefHeight="50.0" prefWidth="200.0" styleClass="scene-default">
                     <children>
                         <Label fx:id="historyTitleLabel" alignment="CENTER" styleClass="title-large-dark-gray" text="Köphistorik" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <font>
@@ -89,15 +89,15 @@
                                             <children>
                                                 <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <children>
-                                                        <AnchorPane prefHeight="30.0" prefWidth="200.0">
+                                                        <AnchorPane prefHeight="40.0" prefWidth="200.0">
                                                             <children>
-                                                                <Button fx:id="copyCartButton" mnemonicParsing="false" onAction="#copyCartButtonOnAction" styleClass="button-text-normal" text="Kopiera order till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyCartButtonOnAction" styleClass="button-text-normal" text="Kopiera order till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor></Button>
                                                             </children>
                                                         </AnchorPane>
-                                                        <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                        <ScrollPane fx:id="articlesScrollPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                             <content>
                                                                 <FlowPane fx:id="articlesFlowPane" prefHeight="200.0" prefWidth="200.0" />
                                                             </content>
@@ -117,7 +117,7 @@
                             <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane prefHeight="30.0" prefWidth="200.0">
+                              <AnchorPane prefHeight="40.0" prefWidth="200.0">
                                  <children>
                                     <Button fx:id="updateOrderListButton" mnemonicParsing="false" onAction="#updateOrderListButtonOnAction" styleClass="button-text-normal" text="Uppdatera listan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <cursor>
@@ -126,7 +126,7 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                                      <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                      <ScrollPane fx:id="ordersScrollPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                           <content>
                                               <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0">
                                        <padding>
