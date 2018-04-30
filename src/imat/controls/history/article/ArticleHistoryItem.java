@@ -44,7 +44,7 @@ public class ArticleHistoryItem extends AnchorPane {
 
         Product product = shoppingItem.getProduct();
 
-        productImageView.setImage(ImageUtils.getSquareImage(new Image("/images/products/" + product.getImageName())));
+        productImageView.setImage(ImageUtils.getSquareImage(new Image("/imat/resources/images/products/" + product.getImageName())));
 
         productNameLabel.setText(product.getName());
 

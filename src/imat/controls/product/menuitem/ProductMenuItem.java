@@ -33,7 +33,7 @@ public class ProductMenuItem {
      */
     public void setProduct(Product product) {
         this.product = product;
-        imageView.setImage(new Image("/images/products/" + product.getImageName()));
+        imageView.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         nameLabel.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + " kr");
         if (!product.isEcological()) {

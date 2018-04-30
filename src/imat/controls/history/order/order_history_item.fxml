@@ -8,11 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root fx:id="rootPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="500.0" styleClass="clickable-list-item" stylesheets="@../../../imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="500.0" styleClass="clickable-list-item" stylesheets="@../../../imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="cartTitleLabel" styleClass="title-normal-dark-gray" text="Order: " wrapText="true">
+            <ImageView fx:id="cartImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/images/icons/cart/icon_cart.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Order: " wrapText="true">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -24,11 +32,6 @@
             </Label>
          </children>
       </HBox>
-      <ImageView fx:id="cartButton" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <image>
-            <Image url="@../../../../../res/images/icons/cart/icon_cart.png" />
-         </image>
-      </ImageView>
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />
