@@ -99,11 +99,11 @@
                                                         </AnchorPane>
                                                         <ScrollPane fx:id="articlesScrollPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                                             <content>
-                                                                <FlowPane fx:id="articlesFlowPane" prefHeight="200.0" prefWidth="200.0" />
+                                                                <FlowPane fx:id="articlesFlowPane" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding></FlowPane>
                                                             </content>
-                                             <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                             </padding>
                                                         </ScrollPane>
                                                     </children>
                                                 </VBox>
@@ -128,7 +128,7 @@
                               </AnchorPane>
                                       <ScrollPane fx:id="ordersScrollPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                           <content>
-                                              <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0">
+                                              <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>

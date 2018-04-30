@@ -108,25 +108,18 @@ public class OrderHistoryController implements Initializable {
     }
 
     private void addOrdersToFlowPane() {
+
+        // Reverse a copy of the iMat order list
         List<Order> iMatOrderList = IMatDataHandler.getInstance().getOrders();
         List<Order> orders = new ArrayList<>(IMatDataHandler.getInstance().getOrders().size());
         for (int i = iMatOrderList.size() - 1; i >= 0; i--) {
             orders.add(iMatOrderList.get(i));
         }
 
-        int index = 0;
-
         for (Order order : orders) {
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem(order, this);
             ordersFlowPane.getChildren().add(orderHistoryItem);
             orderHistoryItems.add(orderHistoryItem);
-
-            // Add separators between the "list" items
-            if (index < orders.size() - 1) {
-                ordersFlowPane.getChildren().add(createSeparator(orderHistoryItem.getPrefWidth(), false));
-            }
-
-            index++;
         }
     }
 
@@ -155,21 +148,11 @@ public class OrderHistoryController implements Initializable {
     }
 
     private void populateArticleList(OrderHistoryItem orderHistoryItem) {
-
-        int index = 0;
-
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
             ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem, this);
             articlesFlowPane.getChildren().add(articleHistoryItem);
             articleHistoryItems.add(articleHistoryItem);
-            // Add separators between the "list" items
-            if (index < orderHistoryItem.getShoppingItems().size() - 1) {
-                articlesFlowPane.getChildren().add(createSeparator(articleHistoryItem.getPrefWidth(), false));
-            }
-
-            index++;
         }
-
     }
 
     private Separator createSeparator(double prefWidth, boolean visible) {
