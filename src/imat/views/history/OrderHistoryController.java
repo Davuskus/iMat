@@ -59,6 +59,9 @@ public class OrderHistoryController implements Initializable {
     @FXML
     private Label dateLabel;
 
+    @FXML
+    private Button updateOrderListButton;
+
     private final Insets separatorPaddingInsets;
 
     public OrderHistoryController() {
@@ -67,6 +70,14 @@ public class OrderHistoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        updateOrderList();
+    }
+
+    /**
+     * Updates the list containing previous orders.
+     */
+    public void updateOrderList() {
+        ordersFlowPane.getChildren().clear();
         addOrdersToFlowPane();
     }
 
@@ -97,6 +108,7 @@ public class OrderHistoryController implements Initializable {
         populateProductList(orderHistoryItem);
         backButton.setFocusTraversable(true);
         copyCartButton.setFocusTraversable(true);
+        updateOrderListButton.setFocusTraversable(false);
         dateLabel.setText(orderHistoryItem.getDate(orderHistoryItem.getDateFormat()));
         switchViews();
     }
@@ -105,6 +117,7 @@ public class OrderHistoryController implements Initializable {
         productsFlowPane.getChildren().clear();
         backButton.setFocusTraversable(false);
         copyCartButton.setFocusTraversable(false);
+        updateOrderListButton.setFocusTraversable(true);
         switchViews();
     }
 
@@ -136,6 +149,11 @@ public class OrderHistoryController implements Initializable {
 
     private void switchViews() {
         stackPane.getChildren().get(0).toFront();
+    }
+
+    @FXML
+    private void updateOrderListButtonOnAction(Event event) {
+        updateOrderList();
     }
 
     @FXML

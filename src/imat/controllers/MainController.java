@@ -1,11 +1,9 @@
 package imat.controllers;
 
 import imat.controls.product.cartitem.CartItem;
-import imat.controls.product.menuitem.ProductMenuItem;
 import imat.views.helpview.HelpView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -14,6 +12,7 @@ import se.chalmers.cse.dat216.project.ProductCategory;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -26,25 +25,27 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
-        IMatDataHandler.getInstance().placeOrder(true);
-
+        makeTestPurchases(getRandomInteger(1, 15));
     }
 
     //Temporary for debugging the different scenes
     @FXML
     private void changeView() {
         // viewsStackPane.getChildren().get(0).toFront();
+    }
+
+    // Temporary
+    private int getRandomInteger(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min) + min;
+    }
+
+    // Temporary
+    private void makeTestPurchases(int numberOfPurchases) {
+        for (int i = 0; i < numberOfPurchases; i++) {
+            IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        }
+        IMatDataHandler.getInstance().placeOrder(true);
     }
 
     // Temporary
