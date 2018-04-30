@@ -49,19 +49,4 @@ public class OrderHistoryItem extends AnchorPane {
         orderHistoryController.showProductsPane(this);
     }
 
-    @FXML
-    private void onMouseEntered(Event event) {
-        // TODO Change the background color
-    }
-
-    @FXML
-    private void onMouseExited(Event event) {
-        // TODO Change the background color
-    }
-
-    @FXML
-    private void onMousePressed(Event event) {
-        // TODO Change the background color
-    }
-
 }

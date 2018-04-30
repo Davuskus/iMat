@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -50,6 +51,9 @@ public class OrderHistoryController implements Initializable {
     @FXML
     private Button backButton;
 
+    @FXML
+    private StackPane stackPane;
+
     private final List<OrderHistoryItem> orderHistoryItems;
 
     public OrderHistoryController() {
@@ -69,20 +73,24 @@ public class OrderHistoryController implements Initializable {
         populateProductList(orderHistoryItem);
         backButton.setFocusTraversable(true);
         copyCartButton.setFocusTraversable(true);
-        productsFlowPane.toFront();
+        switchViews();
     }
 
     private void hideProductsPane() {
         productsFlowPane.getChildren().clear();
         backButton.setFocusTraversable(false);
         copyCartButton.setFocusTraversable(false);
-        productsFlowPane.toBack();
+        switchViews();
     }
 
     private void populateProductList(OrderHistoryItem orderHistoryItem) {
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
             productsFlowPane.getChildren().add(new HistoryShoppingItem(shoppingItem, this));
         }
+    }
+
+    private void switchViews() {
+        stackPane.getChildren().get(0).toFront();
     }
 
     @FXML
