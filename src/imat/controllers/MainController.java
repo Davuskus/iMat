@@ -8,7 +8,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ProductCategory;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
@@ -42,23 +41,18 @@ public class MainController implements Initializable {
 
     // Temporary
     private void makeTestPurchases(int numberOfPurchases) {
-        for (int i = 0; i < numberOfPurchases; i++) {
-            IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        if (!IMatDataHandler.getInstance().getProducts().isEmpty()) {
+            for (int i = 0; i < numberOfPurchases; i++) {
+                IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+            }
+            IMatDataHandler.getInstance().placeOrder(true);
         }
-        IMatDataHandler.getInstance().placeOrder(true);
     }
 
     // Temporary
     private Product getTestProduct() {
-        Product product = new Product();
-        product.setName("Product 1");
-        product.setCategory(ProductCategory.BERRY);
-        product.setIsEcological(true);
-        product.setPrice(100);
-        product.setProductId(1);
-        product.setUnit("kr/kg");
-        product.setImageName("product_1.jpg");
-        return product;
+        int randomId = getRandomInteger(1, IMatDataHandler.getInstance().getProducts().size());
+        return IMatDataHandler.getInstance().getProduct(randomId);
     }
 
     public void removeCartItem(CartItem cartItem) {
