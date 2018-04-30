@@ -1,4 +1,4 @@
-package imat.controls.history.shoppingitem;
+package imat.controls.history.article;
 
 import imat.utils.FXMLLoader;
 import imat.utils.ImageUtils;
@@ -9,10 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
-public class HistoryShoppingItem extends AnchorPane {
+public class ArticleHistoryItem extends AnchorPane {
 
     @FXML
     private ImageView productImageView;
@@ -29,14 +30,17 @@ public class HistoryShoppingItem extends AnchorPane {
     @FXML
     private Label priceLabel;
 
+    @FXML
+    private VBox articleInfoVBox;
+
     private final ShoppingItem shoppingItem;
 
     private final OrderHistoryController orderHistoryController;
 
-    public HistoryShoppingItem(ShoppingItem shoppingItem, OrderHistoryController orderHistoryController) {
+    public ArticleHistoryItem(ShoppingItem shoppingItem, OrderHistoryController orderHistoryController) {
         this.shoppingItem = shoppingItem;
         this.orderHistoryController = orderHistoryController;
-        FXMLLoader.loadFXMLFromRootPackage("history_shopping_item.fxml", this, this);
+        FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
 
         Product product = shoppingItem.getProduct();
 
@@ -45,7 +49,7 @@ public class HistoryShoppingItem extends AnchorPane {
         productNameLabel.setText(product.getName());
 
         if (!product.isEcological()) {
-            ecoLabel.setVisible(false);
+            articleInfoVBox.getChildren().remove(ecoLabel);
         }
 
         priceLabel.setText(String.valueOf(shoppingItem.getTotal()) + " kr");

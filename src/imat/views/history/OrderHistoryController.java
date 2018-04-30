@@ -1,7 +1,7 @@
 package imat.views.history;
 
 import imat.controls.history.order.OrderHistoryItem;
-import imat.controls.history.shoppingitem.HistoryShoppingItem;
+import imat.controls.history.article.ArticleHistoryItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +9,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -24,28 +23,10 @@ import java.util.ResourceBundle;
 public class OrderHistoryController implements Initializable {
 
     @FXML
-    private AnchorPane historyTitlePane;
-
-    @FXML
-    private Label historyTitleLabel;
-
-    @FXML
-    private AnchorPane productsPane;
-
-    @FXML
-    private AnchorPane cartTitlePane;
-
-    @FXML
-    private AnchorPane cartProductsPane;
-
-    @FXML
     private Button copyCartButton;
 
     @FXML
-    private FlowPane productsFlowPane;
-
-    @FXML
-    private AnchorPane ordersPane;
+    private FlowPane articlesFlowPane;
 
     @FXML
     private FlowPane ordersFlowPane;
@@ -110,8 +91,8 @@ public class OrderHistoryController implements Initializable {
         }
     }
 
-    public void showProductsPane(OrderHistoryItem orderHistoryItem) {
-        populateProductList(orderHistoryItem);
+    public void showArticlesPane(OrderHistoryItem orderHistoryItem) {
+        populateArticleList(orderHistoryItem);
         backButton.setFocusTraversable(true);
         copyCartButton.setFocusTraversable(true);
         updateOrderListButton.setFocusTraversable(false);
@@ -122,24 +103,24 @@ public class OrderHistoryController implements Initializable {
     }
 
     private void hideProductsPane() {
-        productsFlowPane.getChildren().clear();
+        articlesFlowPane.getChildren().clear();
         backButton.setFocusTraversable(false);
         copyCartButton.setFocusTraversable(false);
         updateOrderListButton.setFocusTraversable(true);
         switchViews();
     }
 
-    private void populateProductList(OrderHistoryItem orderHistoryItem) {
+    private void populateArticleList(OrderHistoryItem orderHistoryItem) {
 
         int index = 0;
 
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
-            HistoryShoppingItem historyShoppingItem = new HistoryShoppingItem(shoppingItem, this);
-            productsFlowPane.getChildren().add(historyShoppingItem);
+            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem, this);
+            articlesFlowPane.getChildren().add(articleHistoryItem);
 
             // Add separators between the "list" items
             if (index < orderHistoryItem.getShoppingItems().size() - 1) {
-                productsFlowPane.getChildren().add(createSeparator(historyShoppingItem.getPrefWidth(), false));
+                articlesFlowPane.getChildren().add(createSeparator(articleHistoryItem.getPrefWidth(), false));
             }
 
             index++;

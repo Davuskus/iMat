@@ -93,7 +93,7 @@ public class OrderHistoryItem extends AnchorPane {
 
     @FXML
     private void onAction(Event Event) {
-        orderHistoryController.showProductsPane(this);
+        orderHistoryController.showArticlesPane(this);
     }
 
 }
