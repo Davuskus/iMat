@@ -56,4 +56,12 @@
     -fx-background-color: white;
 }
 
+.background-hover-lightGray:hover {
+    -fx-background-color: #FCFCFC;
+}
+
+.background-pressed-darkGray:pressed {
+    -fx-background-color: #D0D0D0;
+}
+
 

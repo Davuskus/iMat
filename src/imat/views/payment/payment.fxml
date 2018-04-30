@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -27,36 +28,21 @@
                               <Label text="Betalning" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                               <StackPane layoutY="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="16.0">
                                  <children>
-                                    <VBox fx:id="thirdSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="debug-background-fxDefult">
-                                       <children>
-                                          <Separator prefWidth="200.0" />
-                                          <Label fx:id="kunduppgifterLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal-gray" text="1. Kunduppgifter">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                          <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal-gray" text="2. kreditkortsuppgifter">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                          <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="3. sammanfattning">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                          <Separator prefWidth="200.0" />
-                                       </children>
-                                    </VBox>
                                     <VBox fx:id="secondSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="debug-background-fxDefult">
                                        <children>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="kunduppgifterLabel1" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal-gray" text="1. Kunduppgifter">
+                                          <Label fx:id="kunduppgifterLabel1" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="text-normal-gray" />
+                                                <String fx:value="background-hover-lightGray" />
+                                                <String fx:value="background-pressed-darkGray" />
+                                             </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
                                           <Label fx:id="KreditkortLabel1" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="2. kreditkortsuppgifter">
@@ -65,7 +51,54 @@
                                              </padding>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel1" prefHeight="50.0" styleClass="text-normal-gray" text="3. sammanfattning">
+                                          <Label fx:id="samanfattningLabel1" onMousePressed="#summaryViewToFront" prefHeight="50.0" prefWidth="180.0" text="3. sammanfattning">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="text-normal-gray" />
+                                                <String fx:value="background-hover-lightGray" />
+                                                <String fx:value="background-pressed-darkGray" />
+                                             </styleClass>
+                                          </Label>
+                                          <Separator prefWidth="200.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="thirdSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="debug-background-fxDefult">
+                                       <children>
+                                          <Separator prefWidth="200.0" />
+                                          <Label fx:id="kunduppgifterLabel2" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="text-normal-gray" />
+                                                <String fx:value="background-hover-lightGray" />
+                                                <String fx:value="background-pressed-darkGray" />
+                                             </styleClass>
+                                          </Label>
+                                          <Separator prefWidth="200.0" />
+                                          <Label fx:id="KreditkortLabel2" onMousePressed="#credidcardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. kreditkortsuppgifter">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="text-normal-gray" />
+                                                <String fx:value="background-hover-lightGray" />
+                                                <String fx:value="background-pressed-darkGray" />
+                                             </styleClass>
+                                          </Label>
+                                          <Separator prefWidth="200.0" />
+                                          <Label fx:id="samanfattningLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="3. sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -82,16 +115,32 @@
                                              </padding>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel" prefHeight="50.0" styleClass="text-normal-gray" text="2. kreditkortsuppgifter">
+                                          <Label fx:id="KreditkortLabel" onMousePressed="#credidcardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. kreditkortsuppgifter">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="text-normal-gray" />
+                                                <String fx:value="background-hover-lightGray" />
+                                                <String fx:value="background-pressed-darkGray" />
+                                             </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel" prefHeight="50.0" styleClass="text-normal-gray" text="3. sammanfattning">
+                                          <Label fx:id="samanfattningLabel" onMousePressed="#summaryViewToFront" prefHeight="50.0" prefWidth="180.0" text="3. sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <styleClass>
+                                                <String fx:value="text-normal-gray" />
+                                                <String fx:value="background-hover-lightGray" />
+                                                <String fx:value="background-pressed-darkGray" />
+                                             </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
                                        </children>
@@ -104,28 +153,47 @@
                            <children>
                               <StackPane prefHeight="252.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane fx:id="conclusionPane" prefHeight="200.0" prefWidth="200.0" styleClass="scene-default">
+                                    <AnchorPane fx:id="conclusionPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                                        <children>
-                                          <Label layoutX="25.0" layoutY="24.0" text="Kunduppgifter" underline="true" />
-                                          <Label layoutX="25.0" layoutY="188.0" text="Kreditkort" underline="true" />
-                                          <Button layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#SaveUserInfo" prefHeight="26.0" prefWidth="134.0" text="Betala och beställ" />
-                                          <Button fx:id="changeClientInfoButton" layoutX="234.0" layoutY="89.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Ändra kunduppgifter" />
-                                          <Button fx:id="changeCreditCardInfoButton" layoutX="234.0" layoutY="221.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Ändra kreditkortsuppgifter" />
-                                          <TextArea fx:id="clientSummeryArea" layoutX="25.0" layoutY="54.0" prefHeight="122.0" prefWidth="192.0" text="Hjördis Svensson&#10;kallebäck&#10;41101" />
-                                          <TextArea fx:id="creditCardSummeryArea" editable="false" layoutX="25.0" layoutY="214.0" prefHeight="110.0" prefWidth="198.0" text="8888 8888 8888 8888&#10;04 / 18&#10;023&#10;" />
-                                          <CheckBox fx:id="saveUserInfoCheckBox" layoutX="234.0" layoutY="331.0" mnemonicParsing="false" selected="true" text="Spara mina uppgifter" />
-                                          <Button layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="tillbaka" />
+                                          <Label layoutX="35.0" layoutY="23.0" text="Kunduppgifter" underline="true" />
+                                          <Label layoutX="35.0" layoutY="187.0" text="Kreditkort" underline="true" />
+                                          <Button layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#SaveUserInfo" prefHeight="26.0" prefWidth="134.0" text="Betala och beställ" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+                                          <TextArea fx:id="clientSummeryArea" layoutX="35.0" layoutY="53.0" prefHeight="122.0" prefWidth="167.0" text="Hjördis Svensson&#10;kallebäck&#10;41101" />
+                                          <TextArea fx:id="creditCardSummeryArea" editable="false" layoutX="35.0" layoutY="213.0" prefHeight="110.0" prefWidth="167.0" text="8888 8888 8888 8888&#10;04 / 18&#10;023&#10;" />
+                                          <CheckBox fx:id="saveUserInfoCheckBox" layoutX="234.0" layoutY="331.0" mnemonicParsing="false" selected="true" text="Spara mina uppgifter" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="48.0" />
+                                          <Button layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
+                                          <Button fx:id="changeClientInfoButton" layoutX="202.0" layoutY="71.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Ändra kunduppgifter" />
+                                          <Button fx:id="changeCreditCardInfoButton" layoutX="202.0" layoutY="231.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Ändra kreditkortsuppgifter" />
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="customerInfoPane" minWidth="-Infinity" prefHeight="200.0" prefWidth="450.0" styleClass="scene-default">
+                                    <AnchorPane fx:id="creditCardInfoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                                        <children>
-                                          <Label layoutX="24.0" layoutY="30.0" text="Kunduppgifter" underline="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="30.0">
+                                          <Label layoutX="36.0" layoutY="90.0" text="Kortuppgifter" underline="true" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="90.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Nästa Steg" />
-                                          <VBox alignment="TOP_RIGHT" layoutX="6.0" layoutY="71.0" prefHeight="284.0" prefWidth="90.0" spacing="25.0">
+                                          <Label layoutX="36.0" layoutY="136.0" styleClass="text-normal" text="Kortnummer:" />
+                                          <TextField fx:id="creditCardNumberField" layoutX="126.0" layoutY="132.0" AnchorPane.leftAnchor="126.0" AnchorPane.topAnchor="132.0" />
+                                          <Label layoutX="37.0" layoutY="181.0" styleClass="text-normal" text="Giltighetstid:" />
+                                          <TextField fx:id="validMonthField" layoutX="126.0" layoutY="177.0" prefHeight="26.0" prefWidth="38.0" />
+                                          <TextField fx:id="validYearField" layoutX="187.0" layoutY="176.0" prefHeight="26.0" prefWidth="38.0" />
+                                          <Label layoutX="171.0" layoutY="179.0" styleClass="title-normal" text="/" />
+                                          <TextField fx:id="cvcField" layoutX="126.0" layoutY="220.0" prefHeight="26.0" prefWidth="50.0" />
+                                          <Label layoutX="86.0" layoutY="224.0" styleClass="text-normal" text="cvc:" />
+                                          <Button fx:id="creditCardDoneButton" layoutX="258.0" layoutY="227.0" mnemonicParsing="false" onAction="#summaryViewToFront" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+                                          <Button fx:id="creditCardBackButton" layoutX="48.0" layoutY="227.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="customerInfoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
+                                       <children>
+                                          <Label layoutX="47.0" layoutY="37.0" text="Kunduppgifter" underline="true" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="37.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="90.0" spacing="25.0">
                                              <children>
                                                 <Label text="Förnamn:" />
                                                 <Label text="Efternamn:" />
@@ -134,7 +202,7 @@
                                                 <Label text="Telefonnummer:" />
                                              </children>
                                           </VBox>
-                                          <VBox fillWidth="false" layoutX="115.0" layoutY="63.0" prefHeight="200.0" prefWidth="156.0" spacing="18.0">
+                                          <VBox fillWidth="false" layoutX="137.0" layoutY="70.0" prefHeight="200.0" prefWidth="156.0" spacing="18.0">
                                              <children>
                                                 <TextField fx:id="firstNameField" />
                                                 <TextField fx:id="lastNameField" />
@@ -145,28 +213,9 @@
                                           </VBox>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="creditCardInfoPane" prefHeight="200.0" prefWidth="200.0" styleClass="scene-default">
-                                       <children>
-                                          <Label layoutX="25.0" layoutY="50.0" text="Kortuppgifter" underline="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="50.0">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="25.0" layoutY="96.0" styleClass="text-normal" text="Kortnummer:" />
-                                          <TextField fx:id="creditCardNumberField" layoutX="115.0" layoutY="92.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="92.0" />
-                                          <Label layoutX="26.0" layoutY="141.0" styleClass="text-normal" text="Giltighetstid:" />
-                                          <TextField fx:id="validMonthField" layoutX="115.0" layoutY="137.0" prefHeight="26.0" prefWidth="58.0" />
-                                          <TextField fx:id="validYearField" layoutX="205.0" layoutY="137.0" prefHeight="26.0" prefWidth="58.0" />
-                                          <Label layoutX="187.0" layoutY="143.0" text="/" />
-                                          <TextField fx:id="cvcField" layoutX="115.0" layoutY="180.0" prefHeight="26.0" prefWidth="50.0" />
-                                          <Label layoutX="75.0" layoutY="184.0" styleClass="text-normal" text="cvc:" />
-                                          <Button fx:id="creditCardDoneButton" layoutX="258.0" layoutY="227.0" mnemonicParsing="false" onAction="#summaryViewToFront" text="Nästa steg" />
-                                          <Button fx:id="creditCardBackButton" layoutX="48.0" layoutY="227.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Tillbaka" />
-                                       </children>
-                                    </AnchorPane>
                                  </children>
                               </StackPane>
-                              <Button fx:id="closeButton" layoutX="366.0" layoutY="2.0" mnemonicParsing="false" text="Stäng" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                              <Button fx:id="closeButton" layoutX="366.0" layoutY="2.0" mnemonicParsing="false" text="Stäng" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                            </children>
                         </AnchorPane>
                     </items>

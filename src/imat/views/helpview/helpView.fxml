@@ -7,18 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.helpview.HelpView">
    <children>
       <ScrollPane layoutY="46.0" prefHeight="364.0" prefWidth="605.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
          <content>
             <WebView fx:id="helpTextView" prefHeight="409.0" prefWidth="586.0" />
          </content>
       </ScrollPane>
-      <Label fx:id="helpViewCloseLabel" layoutX="517.0" layoutY="14.0" text="Stäng" />
-      <ImageView fx:id="helpViewCloseButton" fitHeight="31.0" fitWidth="31.0" layoutX="567.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="helpViewCloseLabel" layoutX="519.0" layoutY="15.0" text="Stäng" />
+      <ImageView fx:id="helpViewCloseButton" fitHeight="24.0" fitWidth="24.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../res/images/icons/close/icon_close.png" />
+            <Image url="@../../../../res/images/icons/close/icon_close.png" />
          </image>
       </ImageView>
    </children>
