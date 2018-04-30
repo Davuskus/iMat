@@ -21,7 +21,7 @@ public class Main extends Application {
     // Backend JavaDoc: http://www.cse.chalmers.se/research/group/idc/ituniv/courses/18/dkgg/p/backend/javadoc/
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("imat.fxml"));
 
@@ -41,9 +41,9 @@ public class Main extends Application {
         //TODO This factory method looks quite messy, a cleaner method might be worth investigating
 
         Callback<Class<?>, Object> controllerFactory = type -> {
-            if      (type == Browse.class) return browseViewController;
-            else if (type == Modal.class)  return modalViewController;
-            else if (type == Pay.class)    return payViewController;
+            if (type == Browse.class) return browseViewController;
+            else if (type == Modal.class) return modalViewController;
+            else if (type == Pay.class) return payViewController;
             else if (type == Header.class) return headerController;
             else if (type == CategorySidebar.class) return categorySidebarController;
             else if (type == CartSidebar.class) return cartSidebarController;

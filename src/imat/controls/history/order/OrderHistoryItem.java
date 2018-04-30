@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,8 @@ public class OrderHistoryItem extends AnchorPane {
         this.shoppingItems = new ArrayList<>();
         FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
 
-        dateLabel.setText(order.getDate().toString());
+        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        dateLabel.setText(formatter.format(order.getDate()));
 
         shoppingItems.addAll(order.getItems());
 
