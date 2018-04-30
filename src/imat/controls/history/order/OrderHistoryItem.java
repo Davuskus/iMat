@@ -24,24 +24,49 @@ public class OrderHistoryItem extends AnchorPane {
 
     private final OrderHistoryController orderHistoryController;
 
-    private final List<ShoppingItem> shoppingItems;
+    private final Order order;
+
+    private final String dateFormat;
 
     public OrderHistoryItem(Order order, OrderHistoryController orderHistoryController) {
         this.orderHistoryController = orderHistoryController;
-        this.shoppingItems = new ArrayList<>();
+        this.order = order;
         FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
 
-        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-        dateLabel.setText(formatter.format(order.getDate()));
-
-        shoppingItems.addAll(order.getItems());
+        dateFormat = "yyyy/MM/dd - HH:mm";
+        dateLabel.setText(getDate(dateFormat));
 
     }
 
+    /**
+     * Returns the orders shopping items in a list.
+     *
+     * @return The order's shopping items.
+     */
     public List<ShoppingItem> getShoppingItems() {
-        List<ShoppingItem> copiedShoppingItemList = new ArrayList<>(shoppingItems.size());
-        copiedShoppingItemList.addAll(shoppingItems);
+        List<ShoppingItem> copiedShoppingItemList = new ArrayList<>(order.getItems().size());
+        copiedShoppingItemList.addAll(order.getItems());
         return copiedShoppingItemList;
+    }
+
+    /**
+     * Returns the order date. Some format examples: "yyyy/MM/dd" and "yyyy/MM/dd - HH:mm"
+     *
+     * @param format The date format.
+     * @return The date in the given format.
+     */
+    public String getDate(String format) {
+        DateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(order.getDate());
+    }
+
+    /**
+     * Returns the date format used in this class.
+     *
+     * @return The date format String used in this class.
+     */
+    public String getDateFormat() {
+        return dateFormat;
     }
 
     @FXML

@@ -16,12 +16,12 @@
          <image>
             <Image url="@../../../../../res/images/icons/close/icon_close.png" />
          </image></ImageView>
-      <Label fx:id="nameLabel" text="Product name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="5.0" />
+      <Label fx:id="nameLabel" styleClass="title-normal" text="Product name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="5.0" />
       <Label fx:id="priceLabel" layoutX="171.0" layoutY="29.0" text="Total price" AnchorPane.topAnchor="29.0" />
       <fx:include fx:id="countSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0" />
    </children>
    <styleClass>
-      <String fx:value="scene-default" />
-      <String fx:value="border-thin" />
+      <String fx:value="background-light-gray" />
+      <String fx:value="border-thin-round" />
    </styleClass>
 </AnchorPane>

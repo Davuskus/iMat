@@ -8,7 +8,7 @@ import java.io.IOException;
  *  Utility class for reading and writing files
  */
 
-public class FileUtils {
+public final class FileUtils {
 
     /**
      *  Reads all text from a file, including newlines, returning it as a single string

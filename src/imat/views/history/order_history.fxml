@@ -84,11 +84,11 @@
                                 </VBox>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="cartsPane" prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0">
                             <children>
                                 <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <content>
-                                        <FlowPane fx:id="cartsFlowPane" prefHeight="200.0" prefWidth="200.0">
+                                        <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding></FlowPane>

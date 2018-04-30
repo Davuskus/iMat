@@ -28,6 +28,15 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+        IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
         IMatDataHandler.getInstance().placeOrder(true);
 
     }

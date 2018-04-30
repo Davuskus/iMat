@@ -1,6 +1,7 @@
 package imat.controls.history.shoppingitem;
 
 import imat.utils.FXMLLoader;
+import imat.utils.ImageUtils;
 import imat.views.history.OrderHistoryController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -39,7 +40,7 @@ public class HistoryShoppingItem extends AnchorPane {
 
         Product product = shoppingItem.getProduct();
 
-        productImageView.setImage(new Image("/images/products/" + product.getImageName()));
+        productImageView.setImage(ImageUtils.getSquareImage(new Image("/images/products/" + product.getImageName())));
 
         productNameLabel.setText(product.getName());
 
