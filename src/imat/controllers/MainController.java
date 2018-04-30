@@ -24,7 +24,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        makeTestPurchases(getRandomInteger(1, 15));
+        placeRandomOrder(getRandomInteger(1, 15));
     }
 
     //Temporary for debugging the different scenes
@@ -40,17 +40,19 @@ public class MainController implements Initializable {
     }
 
     // Temporary
-    private void makeTestPurchases(int numberOfPurchases) {
+    private void placeRandomOrder(int numberOfPurchases) {
         if (!IMatDataHandler.getInstance().getProducts().isEmpty()) {
             for (int i = 0; i < numberOfPurchases; i++) {
-                IMatDataHandler.getInstance().getShoppingCart().addItem(new ShoppingItem(getTestProduct()));
+                ShoppingItem shoppingItem = new ShoppingItem(getRandomProduct());
+                shoppingItem.setAmount(getRandomInteger(1, 20));
+                IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingItem);
             }
             IMatDataHandler.getInstance().placeOrder(true);
         }
     }
 
     // Temporary
-    private Product getTestProduct() {
+    private Product getRandomProduct() {
         int randomId = getRandomInteger(1, IMatDataHandler.getInstance().getProducts().size());
         return IMatDataHandler.getInstance().getProduct(randomId);
     }

@@ -28,6 +28,32 @@
                 </AnchorPane>
                 <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
+                        <AnchorPane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="updateOrderListButton" mnemonicParsing="false" onAction="#updateOrderListButtonOnAction" styleClass="button-text-normal" text="Uppdatera listan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                                      <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                          <content>
+                                              <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </FlowPane>
+                                          </content>
+                                      </ScrollPane>
+                           </children>
+                        </VBox>
+                            </children>
+                        </AnchorPane>
                         <AnchorPane fx:id="productsPane" prefHeight="200.0" prefWidth="200.0">
                             <children>
                                 <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background-light-gray" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -43,12 +69,12 @@
                                        </HBox.margin>
                                     </Button>
                                     <Separator orientation="VERTICAL" prefHeight="200.0" />
-                                    <Label fx:id="orderTitleLabel" styleClass="title-large" text="Order: " wrapText="true">
+                                    <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true">
                                        <HBox.margin>
                                           <Insets top="8.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="dateLabel" styleClass="title-large" text="YYYY-MM-DD" wrapText="true">
+                                    <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true">
                                        <HBox.margin>
                                           <Insets top="8.0" />
                                        </HBox.margin>
@@ -56,6 +82,35 @@
                                  </children>
                               </HBox>
                                         <Separator prefWidth="200.0" />
+                              <HBox prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <Label styleClass="title-normal-dark-gray" text="Antal artiklar: " wrapText="true">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalNumArticlesLabel" styleClass="title-normal-dark-gray" text="# st" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Separator orientation="VERTICAL" prefHeight="200.0">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </Separator>
+                                    <Label styleClass="title-normal-dark-gray" text="Totalt pris: " wrapText="true">
+                                       <HBox.margin>
+                                          <Insets top="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalPriceLabel" styleClass="title-normal-dark-gray" text="- kr" wrapText="true">
+                                       <HBox.margin>
+                                          <Insets top="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
                                         <AnchorPane fx:id="cartProductsPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-light-gray" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -82,32 +137,6 @@
                                         </AnchorPane>
                                     </children>
                                 </VBox>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0">
-                            <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <AnchorPane prefHeight="30.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="updateOrderListButton" mnemonicParsing="false" onAction="#updateOrderListButtonOnAction" styleClass="button-text-normal" text="Uppdatera listan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                                      <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                          <content>
-                                              <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </FlowPane>
-                                          </content>
-                                      </ScrollPane>
-                           </children>
-                        </VBox>
                             </children>
                         </AnchorPane>
                     </children>

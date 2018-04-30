@@ -61,6 +61,28 @@ public class OrderHistoryItem extends AnchorPane {
     }
 
     /**
+     * Returns the total order price.
+     *
+     * @return The total order price.
+     */
+    public double getOrderPrice() {
+        double price = 0;
+        for (ShoppingItem shoppingItem : order.getItems()) {
+            price += shoppingItem.getTotal();
+        }
+        return price;
+    }
+
+    /**
+     * Returns the total number of shopping items (articles).
+     *
+     * @return The total number of shopping items (articles).
+     */
+    public int getNumShoppingItems() {
+        return order.getItems().size();
+    }
+
+    /**
      * Returns the date format used in this class.
      *
      * @return The date format String used in this class.

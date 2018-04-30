@@ -49,7 +49,7 @@ public class HistoryShoppingItem extends AnchorPane {
         }
 
         priceLabel.setText(String.valueOf(shoppingItem.getTotal()) + " kr");
-        countLabel.setText(String.valueOf(shoppingItem.getAmount()) + " st");
+        countLabel.setText(String.valueOf((int) shoppingItem.getAmount()) + " st");
 
     }
 

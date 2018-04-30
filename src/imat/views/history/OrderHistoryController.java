@@ -62,6 +62,12 @@ public class OrderHistoryController implements Initializable {
     @FXML
     private Button updateOrderListButton;
 
+    @FXML
+    private Label totalNumArticlesLabel;
+
+    @FXML
+    private Label totalPriceLabel;
+
     private final Insets separatorPaddingInsets;
 
     public OrderHistoryController() {
@@ -110,6 +116,8 @@ public class OrderHistoryController implements Initializable {
         copyCartButton.setFocusTraversable(true);
         updateOrderListButton.setFocusTraversable(false);
         dateLabel.setText(orderHistoryItem.getDate(orderHistoryItem.getDateFormat()));
+        totalNumArticlesLabel.setText(orderHistoryItem.getNumShoppingItems() + " st");
+        totalPriceLabel.setText(orderHistoryItem.getOrderPrice() + " kr");
         switchViews();
     }
 
