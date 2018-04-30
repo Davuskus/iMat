@@ -10,6 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import imat.utils.FXMLLoader;
 
+// TODO: Match background color of anchorpane and webview
+// TODO: Change X-icon?
+
 public class HelpView extends AnchorPane {
     @FXML
     ImageView helpViewCloseButton;
@@ -28,6 +31,7 @@ public class HelpView extends AnchorPane {
         FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
         loadHtmlTextFromFile("res/helpText.html");
         this.mainController = mainController;
+        this.toFront();
     }
 
     private void loadHtmlTextFromFile(String htmlPath) {
@@ -39,12 +43,12 @@ public class HelpView extends AnchorPane {
         helpTextView.getEngine().loadContent(htmlContent, "text/html");
     }
 
-    /*
+
     @FXML
     public void closeHelpView() {
-
+        this.toBack();
     }
-    */
+
 
     @FXML
     public void mouseTrap(Event event) {
