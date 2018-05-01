@@ -44,6 +44,8 @@ public class ArticleHistoryItem extends AnchorPane {
 
         Product product = shoppingItem.getProduct();
 
+        product.getUnitSuffix();
+
         productImageView.setImage(ImageUtils.getSquareImage(new Image("/imat/resources/images/products/" + product.getImageName())));
 
         productNameLabel.setText(product.getName());
@@ -53,7 +55,7 @@ public class ArticleHistoryItem extends AnchorPane {
         }
 
         priceLabel.setText(String.valueOf(shoppingItem.getTotal()) + " kr");
-        countLabel.setText(String.valueOf((int) shoppingItem.getAmount()) + " st");
+        countLabel.setText(String.valueOf((int) shoppingItem.getAmount()) + " " + product.getUnitSuffix());
 
     }
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="500.0" stylesheets="@../../../imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="500.0" stylesheets="@../../../resources/css/imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,40 +23,29 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </AnchorPane>
-            <VBox fx:id="articleInfoVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="articleInfoVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Separator prefWidth="200.0" />
-                  <Label fx:id="productNameLabel" styleClass="title-normal" stylesheets="@../../../imat.css" text="Produktnamn" wrapText="true" />
+                  <Label fx:id="productNameLabel" styleClass="title-normal" stylesheets="@../../../resources/css/imat.css" text="Produktnamn" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
                   <Separator prefWidth="200.0" />
                   <Label fx:id="ecoLabel" styleClass="text-normal" text="Ekologisk" wrapText="true">
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </Label>
-                  <HBox fx:id="countHBox" prefHeight="25.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="countTitleLabel" styleClass="text-normal" text="Antal: " wrapText="true">
-                           <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="countLabel" styleClass="text-normal" text="# st" wrapText="true">
-                           <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <Label fx:id="countLabel" styleClass="text-normal" text="# st" wrapText="true" />
                   <HBox fx:id="priceHBox" prefHeight="25.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="priceTitleLabel" styleClass="text-normal" text="Pris: " wrapText="true">
+                        <Label fx:id="priceTitleLabel" styleClass="text-normal" text="Totalt pris: " wrapText="true">
                            <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="priceLabel" styleClass="text-normal" text="- kr" wrapText="true">
                            <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                      </children>

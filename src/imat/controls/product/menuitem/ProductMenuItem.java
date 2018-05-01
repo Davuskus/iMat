@@ -35,7 +35,7 @@ public class ProductMenuItem {
         this.product = product;
         imageView.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         nameLabel.setText(product.getName());
-        priceLabel.setText(String.valueOf(product.getPrice()) + " kr");
+        priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnitSuffix());
         if (!product.isEcological()) {
             ecoLabel.setVisible(false);
         }

@@ -5,8 +5,8 @@
 <AnchorPane prefHeight="500.0" styleClass="scene-default" xmlns="http://javafx.com/javafx/9.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.browse.Browse">
     <stylesheets>
-        <URL value="@../../imat.css"/>
-        <URL value="@../../debug.css"/>
+        <URL value="@../../resources/css/imat.css"/>
+        <URL value="@../../resources/css/debug.css"/>
     </stylesheets>
     <children>
         <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"

@@ -23,7 +23,7 @@ public final class ImageUtils {
             x = 0;
             y = (int) (image.getHeight() - height) / 2;
         } else {
-            //Width equals Height, return original image
+            // Width equals Height, return original image
             return image;
         }
         return new WritableImage(image.getPixelReader(), x, y, width, height);

@@ -49,7 +49,7 @@
                     </content>
                 </ScrollPane>
                 <Label text="Kundvagn" GridPane.halignment="CENTER" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="debug-background-limegreen" stylesheets="@../../debug.css" text="Gå till kassan" GridPane.rowIndex="3" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="debug-background-limegreen" stylesheets="@../../resources/css/debug.css" text="Gå till kassan" GridPane.rowIndex="3" />
             <Label text="Totalsumma av varorna här" GridPane.rowIndex="2" />
             </children>
         </GridPane>
