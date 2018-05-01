@@ -3,10 +3,22 @@
     -fx-font-size: 14px;
 }
 
+.text-normal {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
 .text-normal-gray {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
     -fx-text-fill: #C0C0C0;
+}
+
+.text-normal-white {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
 }
 
 .title-normal {
@@ -53,6 +65,12 @@
     -fx-font-size: 14px;
 }
 
+.button-text-normal-bold {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
 .scene-default {
     -fx-background-color: white;
 }
@@ -65,7 +83,11 @@
     -fx-background-color: #C0C0C0;
 }
 
-.background-light-gray {
+.background-green-lime {
+    -fx-background-color: #87ff4c;
+}
+
+.background-gray-light {
     -fx-background-color: #f0f0f0;
 }
 
@@ -115,6 +137,24 @@
 
 .clickable-list-item:pressed {
     -fx-background-color: #e1e1e1;
+    -fx-border-width: 2px;
+    -fx-border-color: #00adff;
+}
+
+.to-checkout-button-bg {
+    -fx-background-color: #7af04c;
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.to-checkout-button-bg:hover {
+    -fx-background-color: #87ff4c;
+}
+
+.to-checkout-button-bg:pressed {
+    -fx-background-color: #69e143;
     -fx-border-width: 2px;
     -fx-border-color: #00adff;
 }

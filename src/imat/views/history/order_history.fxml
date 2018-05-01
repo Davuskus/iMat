@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -7,17 +8,16 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" styleClass="background-fxDefault" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.history.OrderHistoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.history.OrderHistoryController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane fx:id="historyTitlePane" prefHeight="50.0" prefWidth="200.0" styleClass="scene-default">
+                <AnchorPane fx:id="historyTitlePane" prefHeight="50.0" prefWidth="200.0">
                     <children>
                         <Label fx:id="historyTitleLabel" alignment="CENTER" styleClass="title-large-dark-gray" text="Köphistorik" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <font>
@@ -25,14 +25,18 @@
                             </font>
                         </Label>
                     </children>
+               <styleClass>
+                  <String fx:value="scene-default" />
+                  <String fx:value="border-thin" />
+               </styleClass>
                 </AnchorPane>
                 <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
                         <AnchorPane fx:id="productsPane" prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background-light-gray" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background-gray-light" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                              <HBox prefHeight="30.0" prefWidth="200.0" styleClass="background-light-gray">
+                              <HBox prefHeight="30.0" prefWidth="200.0" styleClass="background-gray-light">
                                  <children>
                                                 <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" styleClass="button-text-normal" text="Tillbaka" wrapText="true">
                                        <cursor>
@@ -85,7 +89,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                                        <AnchorPane fx:id="cartProductsPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-light-gray" VBox.vgrow="ALWAYS">
+                                        <AnchorPane fx:id="cartProductsPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-gray-light" VBox.vgrow="ALWAYS">
                                             <children>
                                                 <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <children>
@@ -97,13 +101,13 @@
                                                    </cursor></Button>
                                                             </children>
                                                         </AnchorPane>
-                                                        <ScrollPane fx:id="articlesScrollPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                                            <content>
-                                                                <FlowPane fx:id="articlesFlowPane" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
+                                                        <ScrollPane fx:id="articlesScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <VBox fx:id="articlesVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                                                    <padding>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </padding></FlowPane>
-                                                            </content>
+                                                   </padding></VBox>
+                                             </content>
                                                         </ScrollPane>
                                                     </children>
                                                 </VBox>
@@ -126,13 +130,13 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                                      <ScrollPane fx:id="ordersScrollPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                      <ScrollPane fx:id="ordersScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                           <content>
-                                              <FlowPane fx:id="ordersFlowPane" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
+                                              <VBox fx:id="ordersVBox" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
-                                    </FlowPane>
+                                    </VBox>
                                           </content>
                                       </ScrollPane>
                            </children>
@@ -144,4 +148,8 @@
             </children>
         </VBox>
     </children>
+   <styleClass>
+      <String fx:value="background-fxDefault" />
+      <String fx:value="border-thin" />
+   </styleClass>
 </AnchorPane>

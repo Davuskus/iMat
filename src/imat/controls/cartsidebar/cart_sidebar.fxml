@@ -1,57 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                    <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+<AnchorPane prefHeight="600.0" prefWidth="300.0" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="headerHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="cartImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/icons/cart/icon_cart.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="cartTitlePane" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
-                        <Label text="Någon vara med något pris som ligger i kundvagnen" />
+                        <Label fx:id="cartTitleLabel" styleClass="title-large-dark-gray" stylesheets="@../../resources/css/imat.css" text="Kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
-                        </VBox>
-                    </content>
-                </ScrollPane>
-                <Label text="Kundvagn" GridPane.halignment="CENTER" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="debug-background-limegreen" stylesheets="@../../resources/css/debug.css" text="Gå till kassan" GridPane.rowIndex="3" />
-            <Label text="Totalsumma av varorna här" GridPane.rowIndex="2" />
-            </children>
-        </GridPane>
-    </children>
+                  </AnchorPane>
+                  <Button fx:id="trashButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images/icons/trash/icon_trash_can.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip styleClass="text-normal-white" text="Rensa kundvagnen" wrapText="true" />
+                     </tooltip>
+                  </Button>
+               </children>
+               <styleClass>
+                  <String fx:value="scene-default" />
+                  <String fx:value="border-thin" />
+               </styleClass>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </HBox>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox fx:id="cartItemVBox" prefHeight="200.0" prefWidth="100.0" />
+               </content>
+            </ScrollPane>
+            <VBox fx:id="footerVBox" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <HBox fx:id="sumHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="border-thin">
+                     <children>
+                        <Label fx:id="sumTitleLabel" styleClass="text-normal" text="Summa: " />
+                        <Label fx:id="sumLabel" styleClass="text-normal" text="- kr" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <AnchorPane prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Gå till kassan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <styleClass>
+                              <String fx:value="button-text-normal-bold" />
+                              <String fx:value="to-checkout-button-bg" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="border-thin" />
+      <String fx:value="scene-default" />
+   </styleClass>
 </AnchorPane>

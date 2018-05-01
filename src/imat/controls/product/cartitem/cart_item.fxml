@@ -21,7 +21,7 @@
       <fx:include fx:id="countSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0" />
    </children>
    <styleClass>
-      <String fx:value="background-light-gray" />
+      <String fx:value="background-gray-light" />
       <String fx:value="border-thin-round" />
    </styleClass>
 </AnchorPane>

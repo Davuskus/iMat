@@ -5,13 +5,11 @@ import imat.controls.history.order.OrderHistoryItem;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -27,10 +25,10 @@ public class OrderHistoryController implements Initializable {
     private Button copyToCartButton;
 
     @FXML
-    private FlowPane articlesFlowPane;
+    private VBox articlesVBox;
 
     @FXML
-    private FlowPane ordersFlowPane;
+    private VBox ordersVBox;
 
     @FXML
     private Button backButton;
@@ -56,14 +54,11 @@ public class OrderHistoryController implements Initializable {
     @FXML
     private ScrollPane articlesScrollPane;
 
-    private final Insets separatorPaddingInsets;
-
     private final List<OrderHistoryItem> orderHistoryItems;
 
     private final List<ArticleHistoryItem> articleHistoryItems;
 
     public OrderHistoryController() {
-        separatorPaddingInsets = new Insets(0.5, 0, 0, 0);
         orderHistoryItems = new ArrayList<>();
         articleHistoryItems = new ArrayList<>();
     }
@@ -73,13 +68,11 @@ public class OrderHistoryController implements Initializable {
 
         updateOrderList();
 
-        articlesScrollPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            updateArticleHistoryItemWidths(newValue.doubleValue());
-        });
+        articlesScrollPane.widthProperty().addListener((observable, oldValue, newValue) ->
+                updateArticleHistoryItemWidths(newValue.doubleValue()));
 
-        ordersScrollPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            updateOrderHistoryItemWidths(newValue.doubleValue());
-        });
+        ordersScrollPane.widthProperty().addListener((observable, oldValue, newValue) ->
+                updateOrderHistoryItemWidths(newValue.doubleValue()));
 
     }
 
@@ -99,7 +92,7 @@ public class OrderHistoryController implements Initializable {
      * Updates the list containing previous orders.
      */
     public void updateOrderList() {
-        ordersFlowPane.getChildren().clear();
+        ordersVBox.getChildren().clear();
         orderHistoryItems.clear();
 
         addOrdersToFlowPane();
@@ -118,7 +111,7 @@ public class OrderHistoryController implements Initializable {
 
         for (Order order : orders) {
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem(order, this);
-            ordersFlowPane.getChildren().add(orderHistoryItem);
+            ordersVBox.getChildren().add(orderHistoryItem);
             orderHistoryItems.add(orderHistoryItem);
         }
     }
@@ -139,7 +132,7 @@ public class OrderHistoryController implements Initializable {
     }
 
     private void hideProductsPane() {
-        articlesFlowPane.getChildren().clear();
+        articlesVBox.getChildren().clear();
         articleHistoryItems.clear();
         backButton.setFocusTraversable(false);
         copyToCartButton.setFocusTraversable(false);
@@ -150,17 +143,9 @@ public class OrderHistoryController implements Initializable {
     private void populateArticleList(OrderHistoryItem orderHistoryItem) {
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
             ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem, this);
-            articlesFlowPane.getChildren().add(articleHistoryItem);
+            articlesVBox.getChildren().add(articleHistoryItem);
             articleHistoryItems.add(articleHistoryItem);
         }
-    }
-
-    private Separator createSeparator(double prefWidth, boolean visible) {
-        Separator separator = new Separator();
-        separator.setPrefWidth(prefWidth);
-        separator.setPadding(separatorPaddingInsets);
-        separator.setVisible(visible);
-        return separator;
     }
 
     private void switchViews() {

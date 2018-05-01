@@ -65,7 +65,7 @@
       </HBox>
    </children>
    <styleClass>
-      <String fx:value="background-light-gray" />
+      <String fx:value="background-gray-light" />
       <String fx:value="border-thin-round" />
    </styleClass>
 </fx:root>

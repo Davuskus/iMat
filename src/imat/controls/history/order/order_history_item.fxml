@@ -3,31 +3,21 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
 <fx:root focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="500.0" styleClass="clickable-list-item" stylesheets="@../../../resources/css/imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox prefHeight="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="cartImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/images/icons/cart/icon_cart.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="5.0" top="5.0" />
-               </HBox.margin>
-            </ImageView>
             <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Order: " wrapText="true">
                <HBox.margin>
-                  <Insets left="10.0" top="15.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Label>
             <Label fx:id="dateLabel" styleClass="title-normal-dark-gray" text="YYYY-MM-DD" wrapText="true">
                <HBox.margin>
-                  <Insets top="15.0" />
+                  <Insets />
                </HBox.margin>
             </Label>
          </children>
