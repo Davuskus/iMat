@@ -2,12 +2,15 @@ package imat.views.history;
 
 import imat.controls.history.article.ArticleHistoryItem;
 import imat.controls.history.order.OrderHistoryItem;
+import imat.interfaces.ShoppingListener;
+import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -19,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderHistoryController implements Initializable {
+public class OrderHistoryPane extends AnchorPane implements Initializable {
 
     @FXML
     private Button copyToCartButton;
@@ -58,9 +61,14 @@ public class OrderHistoryController implements Initializable {
 
     private final List<ArticleHistoryItem> articleHistoryItems;
 
-    public OrderHistoryController() {
+    private final List<ShoppingListener> shoppingListeners;
+
+    public OrderHistoryPane() {
+        super();
         orderHistoryItems = new ArrayList<>();
         articleHistoryItems = new ArrayList<>();
+        shoppingListeners = new ArrayList<>(1);
+        FXMLLoader.loadFXMLFromRootPackage("order_history.fxml", this, this);
     }
 
     @Override
@@ -75,6 +83,22 @@ public class OrderHistoryController implements Initializable {
         ordersVBox.getChildren().clear();
         orderHistoryItems.clear();
         addOrdersToFlowPane();
+    }
+
+    private void copyOrderToCart(Order order) {
+        for (ShoppingItem shoppingItem : order.getItems()) {
+            copyArticleToCart(shoppingItem);
+        }
+    }
+
+    private void copyArticleToCart(ShoppingItem shoppingItem) {
+        for (ShoppingListener shoppingListener : shoppingListeners) {
+            shoppingListener.onAddShoppingItem(shoppingItem);
+        }
+    }
+
+    public void addShoppingListener(ShoppingListener shoppingItem) {
+        shoppingListeners.add(shoppingItem);
     }
 
     private void addOrdersToFlowPane() {
@@ -138,9 +162,10 @@ public class OrderHistoryController implements Initializable {
     }
 
     @FXML
-    private void copyCartButtonOnAction(Event event) {
+    private void copyOrderToCartButtonOnAction(Event event) {
         // TODO If no products in current cart: Copy all products from the relevant cart to the current cart
         // TODO If products in current cart: Open dialog asking "Replace" or"Add".
+        // copyOrderToCart();
     }
 
 }

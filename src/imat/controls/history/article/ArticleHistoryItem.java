@@ -2,7 +2,7 @@ package imat.controls.history.article;
 
 import imat.utils.FXMLLoader;
 import imat.utils.ImageUtils;
-import imat.views.history.OrderHistoryController;
+import imat.views.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -35,11 +35,11 @@ public class ArticleHistoryItem extends AnchorPane {
 
     private final ShoppingItem shoppingItem;
 
-    private final OrderHistoryController orderHistoryController;
+    private final OrderHistoryPane orderHistoryPane;
 
-    public ArticleHistoryItem(ShoppingItem shoppingItem, OrderHistoryController orderHistoryController) {
+    public ArticleHistoryItem(ShoppingItem shoppingItem, OrderHistoryPane orderHistoryPane) {
         this.shoppingItem = shoppingItem;
-        this.orderHistoryController = orderHistoryController;
+        this.orderHistoryPane = orderHistoryPane;
         FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
 
         Product product = shoppingItem.getProduct();

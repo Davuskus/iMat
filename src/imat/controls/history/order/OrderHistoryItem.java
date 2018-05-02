@@ -1,7 +1,7 @@
 package imat.controls.history.order;
 
 import imat.utils.FXMLLoader;
-import imat.views.history.OrderHistoryController;
+import imat.views.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -22,14 +22,14 @@ public class OrderHistoryItem extends AnchorPane {
     @FXML
     private Label dateLabel;
 
-    private final OrderHistoryController orderHistoryController;
+    private final OrderHistoryPane orderHistoryPane;
 
     private final Order order;
 
     private final String dateFormat;
 
-    public OrderHistoryItem(Order order, OrderHistoryController orderHistoryController) {
-        this.orderHistoryController = orderHistoryController;
+    public OrderHistoryItem(Order order, OrderHistoryPane orderHistoryPane) {
+        this.orderHistoryPane = orderHistoryPane;
         this.order = order;
         FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
 
@@ -93,7 +93,7 @@ public class OrderHistoryItem extends AnchorPane {
 
     @FXML
     private void onAction(Event Event) {
-        orderHistoryController.showArticlesPane(this);
+        orderHistoryPane.showArticlesPane(this);
     }
 
 }
