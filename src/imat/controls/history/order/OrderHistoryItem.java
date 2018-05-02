@@ -91,6 +91,10 @@ public class OrderHistoryItem extends AnchorPane {
         return dateFormat;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
     @FXML
     private void onAction(Event Event) {
         orderHistoryPane.showArticlesPane(this);

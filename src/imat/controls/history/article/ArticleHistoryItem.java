@@ -2,6 +2,7 @@ package imat.controls.history.article;
 
 import imat.interfaces.ShoppingListener;
 import imat.utils.FXMLLoader;
+import imat.utils.IMatUtils;
 import imat.utils.ImageUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -78,7 +79,7 @@ public class ArticleHistoryItem extends AnchorPane {
     }
 
     public ShoppingItem getShoppingItem() {
-        return shoppingItem;
+        return IMatUtils.cloneShoppingItem(shoppingItem);
     }
 
 }
