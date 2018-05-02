@@ -114,6 +114,15 @@ public class AmountSpinner extends AnchorPane implements Initializable {
 
     @FXML
     private void onEnterPressed(Event event) {
+
+        if (valueTextField.getText().length() == 0) {
+            if (isAcceptingDoubles) {
+                valueTextField.setText("0.0");
+            } else {
+                valueTextField.setText("0");
+            }
+        }
+
         notifyAllChangeListeners(oldValue, getAmount());
         oldValue = getAmount();
     }
