@@ -7,12 +7,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
@@ -32,13 +35,7 @@ public class AmountSpinner extends AnchorPane implements Initializable {
 
     private final List<ChangeListener<Double>> changeListeners;
 
-    private javafx.beans.value.ChangeListener<String> inputChangeListener;
-
-    private javafx.beans.value.ChangeListener<String> integerInputListener;
-
-    private javafx.beans.value.ChangeListener<String> doubleInputListener;
-
-    private boolean isAcceptingBooleans;
+    private boolean isAcceptingDoubles;
 
     public AmountSpinner() {
         super();
@@ -48,33 +45,15 @@ public class AmountSpinner extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        integerInputListener = (observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                valueTextField.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        };
-
-        doubleInputListener = (observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                if (newValue.charAt(newValue.length() - 1) != '.') {
-                    valueTextField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-            }
-        };
-
-        inputChangeListener = integerInputListener;
-
-        valueTextField.textProperty().addListener(inputChangeListener);
+        Pattern pattern = Pattern.compile("\\d*|\\d+\\.\\d*");
+        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        valueTextField.setTextFormatter(formatter);
     }
 
     public void setAcceptDoubles(boolean acceptDoubles) {
-        isAcceptingBooleans = acceptDoubles;
-        if (isAcceptingBooleans) {
-            inputChangeListener = doubleInputListener;
-        } else {
-            inputChangeListener = integerInputListener;
-        }
+        isAcceptingDoubles = acceptDoubles;
     }
 
     @FXML
@@ -111,7 +90,7 @@ public class AmountSpinner extends AnchorPane implements Initializable {
      * @param amount The amount.
      */
     public void setAmount(double amount) {
-        if (isAcceptingBooleans) {
+        if (isAcceptingDoubles) {
             valueTextField.setText(String.valueOf(amount));
         } else {
             valueTextField.setText(String.valueOf((int) amount));

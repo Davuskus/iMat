@@ -28,7 +28,7 @@
                         <Label fx:id="cartTitleLabel" styleClass="title-large-dark-gray" stylesheets="@../../resources/css/imat.css" text="Kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="trashButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                  <Button fx:id="trashButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#trashButtonOnAction" prefHeight="30.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +70,7 @@
                   </HBox>
                   <AnchorPane prefHeight="40.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Gå till kassan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="toCheckoutButton" mnemonicParsing="false" onAction="#toCheckoutButtonOnAction" text="Gå till kassan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <styleClass>
                               <String fx:value="button-text-normal-bold" />
                               <String fx:value="to-checkout-button-bg" />
