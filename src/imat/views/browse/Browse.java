@@ -14,10 +14,10 @@ public class Browse implements Initializable {
     private CartSidebar cartSidebar;
 
     @FXML
-    private OrderHistoryPane orderHistoryView;
+    private OrderHistoryPane orderHistoryPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        orderHistoryPane.addShoppingListener(cartSidebar);
     }
 }

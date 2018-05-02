@@ -1,8 +1,8 @@
 package imat.controls.history.article;
 
+import imat.interfaces.ShoppingListener;
 import imat.utils.FXMLLoader;
 import imat.utils.ImageUtils;
-import imat.views.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,6 +12,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArticleHistoryItem extends AnchorPane {
 
@@ -35,11 +38,11 @@ public class ArticleHistoryItem extends AnchorPane {
 
     private final ShoppingItem shoppingItem;
 
-    private final OrderHistoryPane orderHistoryPane;
+    private final List<ShoppingListener> shoppingListeners;
 
-    public ArticleHistoryItem(ShoppingItem shoppingItem, OrderHistoryPane orderHistoryPane) {
+    public ArticleHistoryItem(ShoppingItem shoppingItem) {
         this.shoppingItem = shoppingItem;
-        this.orderHistoryPane = orderHistoryPane;
+        shoppingListeners = new ArrayList<>(1);
         FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
 
         Product product = shoppingItem.getProduct();
@@ -59,9 +62,19 @@ public class ArticleHistoryItem extends AnchorPane {
 
     }
 
+    public void addShoppingListener(ShoppingListener shoppingListener) {
+        shoppingListeners.add(shoppingListener);
+    }
+
+    public void addShoppingListeners(List<ShoppingListener> shoppingListeners) {
+        this.shoppingListeners.addAll(shoppingListeners);
+    }
+
     @FXML
-    private void addToCartButtonOnAction(Event event) {
-        // TODO Add the right number of the relevant product to the current cart
+    private void copyToCartButtonOnAction(Event event) {
+        for (ShoppingListener shoppingListener : shoppingListeners) {
+            shoppingListener.onAddShoppingItem(getShoppingItem());
+        }
     }
 
     public ShoppingItem getShoppingItem() {

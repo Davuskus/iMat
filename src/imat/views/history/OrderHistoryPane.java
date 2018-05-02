@@ -97,8 +97,8 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
         }
     }
 
-    public void addShoppingListener(ShoppingListener shoppingItem) {
-        shoppingListeners.add(shoppingItem);
+    public void addShoppingListener(ShoppingListener shoppingListener) {
+        shoppingListeners.add(shoppingListener);
     }
 
     private void addOrdersToFlowPane() {
@@ -141,7 +141,8 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
 
     private void populateArticleList(OrderHistoryItem orderHistoryItem) {
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
-            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem, this);
+            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem);
+            articleHistoryItem.addShoppingListeners(shoppingListeners);
             articlesVBox.getChildren().add(articleHistoryItem);
             articleHistoryItems.add(articleHistoryItem);
         }

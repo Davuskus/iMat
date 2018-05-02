@@ -62,9 +62,9 @@
                                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-                            <AnchorPane fx:id="orderHistoryPane" prefHeight="200.0" prefWidth="200.0">
-                                <OrderHistoryPane fx:id="orderHistoryView" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
-                                <!--<fx:include fx:id="orderHistoryView" source="../history/order_history.fxml"-->
+                            <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="200.0" prefWidth="200.0">
+                                <OrderHistoryPane fx:id="orderHistoryPane" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
+                                <!--<fx:include fx:id="orderHistoryPane" source="../history/order_history.fxml"-->
                                             <!--AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"-->
                                             <!--AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>-->
                             </AnchorPane>
