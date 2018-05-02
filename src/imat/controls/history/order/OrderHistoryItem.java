@@ -1,6 +1,7 @@
 package imat.controls.history.order;
 
 import imat.utils.FXMLLoader;
+import imat.utils.IMatUtils;
 import imat.views.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,7 +12,6 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderHistoryItem extends AnchorPane {
@@ -30,7 +30,7 @@ public class OrderHistoryItem extends AnchorPane {
 
     public OrderHistoryItem(Order order, OrderHistoryPane orderHistoryPane) {
         this.orderHistoryPane = orderHistoryPane;
-        this.order = order;
+        this.order = IMatUtils.cloneOrder(order);
         FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
 
         dateFormat = "yyyy/MM/dd - HH:mm";
@@ -44,9 +44,7 @@ public class OrderHistoryItem extends AnchorPane {
      * @return The order's shopping items.
      */
     public List<ShoppingItem> getShoppingItems() {
-        List<ShoppingItem> copiedShoppingItemList = new ArrayList<>(order.getItems().size());
-        copiedShoppingItemList.addAll(order.getItems());
-        return copiedShoppingItemList;
+        return IMatUtils.cloneShoppingItemList(order.getItems());
     }
 
     /**
@@ -57,6 +55,9 @@ public class OrderHistoryItem extends AnchorPane {
      */
     public String getDate(String format) {
         DateFormat dateFormat = new SimpleDateFormat(format);
+        if (order == null) {
+            System.out.println("OrderHistoryItem, is null");
+        }
         return dateFormat.format(order.getDate());
     }
 
@@ -92,7 +93,7 @@ public class OrderHistoryItem extends AnchorPane {
     }
 
     public Order getOrder() {
-        return order;
+        return IMatUtils.cloneOrder(order);
     }
 
     @FXML

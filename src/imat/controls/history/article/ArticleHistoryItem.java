@@ -42,13 +42,11 @@ public class ArticleHistoryItem extends AnchorPane {
     private final List<ShoppingListener> shoppingListeners;
 
     public ArticleHistoryItem(ShoppingItem shoppingItem) {
-        this.shoppingItem = shoppingItem;
+        this.shoppingItem = IMatUtils.cloneShoppingItem(shoppingItem);
         shoppingListeners = new ArrayList<>(1);
         FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
 
-        Product product = shoppingItem.getProduct();
-
-        product.getUnitSuffix();
+        Product product = this.shoppingItem.getProduct();
 
         productImageView.setImage(ImageUtils.getSquareImage(new Image("/imat/resources/images/products/" + product.getImageName())));
 
@@ -58,8 +56,8 @@ public class ArticleHistoryItem extends AnchorPane {
             articleInfoVBox.getChildren().remove(ecoLabel);
         }
 
-        priceLabel.setText(String.valueOf(shoppingItem.getTotal()) + " kr");
-        countLabel.setText(String.valueOf((int) shoppingItem.getAmount()) + " " + product.getUnitSuffix());
+        priceLabel.setText(String.valueOf(this.shoppingItem.getTotal()) + " kr");
+        countLabel.setText(String.valueOf((int) this.shoppingItem.getAmount()) + " " + product.getUnitSuffix());
 
     }
 
@@ -74,7 +72,7 @@ public class ArticleHistoryItem extends AnchorPane {
     @FXML
     private void copyToCartButtonOnAction(Event event) {
         for (ShoppingListener shoppingListener : shoppingListeners) {
-            shoppingListener.onAddShoppingItem(getShoppingItem());
+            shoppingListener.onAddShoppingItem(shoppingItem);
         }
     }
 
