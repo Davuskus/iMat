@@ -3,17 +3,22 @@ package imat.views.helpview;
 import imat.controllers.MainController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import imat.utils.FXMLLoader;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 // TODO: Match background color of anchorpane and webview
 // TODO: Change X-icon?
 
-public class HelpView extends AnchorPane {
+public class HelpView implements Initializable {
     @FXML
     ImageView helpViewCloseButton;
 
@@ -23,15 +28,25 @@ public class HelpView extends AnchorPane {
     @FXML
     WebView helpTextView;
 
-    MainController mainController;
+    @FXML
+    AnchorPane basePane;
 
-    AnchorPane parentWindow;
+    @FXML
+    ScrollPane helpScrollPane;
 
-    public HelpView(MainController mainController) {
-        FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
-        loadHtmlTextFromFile("res/helpText.html");
+    @FXML MainController mainController;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
+        //loadHtmlTextFromFile("res/helpText.html");
+        //basePane.toBack();
+        //helpTextView.toBack();
+        //helpScrollPane.toBack();
+    }
+
+    public void setMainController(MainController mainController) {
         this.mainController = mainController;
-        this.toFront();
     }
 
     private void loadHtmlTextFromFile(String htmlPath) {
@@ -46,9 +61,8 @@ public class HelpView extends AnchorPane {
 
     @FXML
     public void closeHelpView() {
-        this.toBack();
-    }
 
+    }
 
     @FXML
     public void mouseTrap(Event event) {

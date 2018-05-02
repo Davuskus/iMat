@@ -22,9 +22,12 @@ public class MainController implements Initializable {
     @FXML
     private StackPane viewsStackPane;
 
+    @FXML AnchorPane helpView;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         placeRandomOrder(getRandomInteger(1, 15));
+        helpView.toBack();
     }
 
     //Temporary for debugging the different scenes
@@ -63,10 +66,10 @@ public class MainController implements Initializable {
     }
 
     public void showHelpView() {
-        // TODO load the help view and move to front
+        helpView.toFront();
     }
 
-    public void closeHelpView(HelpView helpView) {
-        // TODO close the help view
+    public void closeHelpView() {
+        helpView.toBack();
     }
 }
