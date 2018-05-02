@@ -65,27 +65,7 @@ public class OrderHistoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         updateOrderList();
-
-        articlesScrollPane.widthProperty().addListener((observable, oldValue, newValue) ->
-                updateArticleHistoryItemWidths(newValue.doubleValue()));
-
-        ordersScrollPane.widthProperty().addListener((observable, oldValue, newValue) ->
-                updateOrderHistoryItemWidths(newValue.doubleValue()));
-
-    }
-
-    private void updateArticleHistoryItemWidths(double width) {
-        for (ArticleHistoryItem articleHistoryItem : articleHistoryItems) {
-            articleHistoryItem.setPrefWidth(width);
-        }
-    }
-
-    private void updateOrderHistoryItemWidths(double width) {
-        for (OrderHistoryItem orderHistoryItem : orderHistoryItems) {
-            orderHistoryItem.setPrefWidth(width);
-        }
     }
 
     /**
@@ -94,10 +74,7 @@ public class OrderHistoryController implements Initializable {
     public void updateOrderList() {
         ordersVBox.getChildren().clear();
         orderHistoryItems.clear();
-
         addOrdersToFlowPane();
-
-        updateOrderHistoryItemWidths(ordersScrollPane.getWidth());
     }
 
     private void addOrdersToFlowPane() {
@@ -118,8 +95,6 @@ public class OrderHistoryController implements Initializable {
 
     public void showArticlesPane(OrderHistoryItem orderHistoryItem) {
         populateArticleList(orderHistoryItem);
-
-        updateArticleHistoryItemWidths(articlesScrollPane.getWidth());
 
         backButton.setFocusTraversable(true);
         copyToCartButton.setFocusTraversable(true);
