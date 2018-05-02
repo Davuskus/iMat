@@ -37,19 +37,31 @@ public class AmountSpinner extends AnchorPane implements Initializable {
 
     private boolean isAcceptingDoubles;
 
+    private final TextFormatter doubleFormatter;
+    private final TextFormatter intFormatter;
+
     public AmountSpinner() {
         super();
         FXMLLoader.loadFXMLFromRootPackage("amount_spinner.fxml", this, this);
         changeListeners = new ArrayList<>(1);
+
+        Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
+
+        doubleFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return doublePattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        Pattern intPattern = Pattern.compile("\\d*");
+
+        intFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return intPattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        valueTextField.setTextFormatter(intFormatter);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Pattern pattern = Pattern.compile("\\d*|\\d+\\.\\d*");
-        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        valueTextField.setTextFormatter(formatter);
+
     }
 
     public void setAcceptDoubles(boolean acceptDoubles) {
@@ -91,8 +103,10 @@ public class AmountSpinner extends AnchorPane implements Initializable {
      */
     public void setAmount(double amount) {
         if (isAcceptingDoubles) {
+            valueTextField.setTextFormatter(doubleFormatter);
             valueTextField.setText(String.valueOf(amount));
         } else {
+            valueTextField.setTextFormatter(intFormatter);
             valueTextField.setText(String.valueOf((int) amount));
         }
     }
