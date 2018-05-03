@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+// TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
+
 public class CartSidebar implements Initializable, ShoppingListener, RemoveRequestListener<CartItem>, IFXMLController {
 
     @FXML
