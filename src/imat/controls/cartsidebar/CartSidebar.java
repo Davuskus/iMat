@@ -109,16 +109,14 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
     }
 
     private void disableCheckoutButtonIfPriceIsZero() {
-        if (cartPrice <= 0) {
-            toCheckoutButton.setDisable(true);
-        }
+        toCheckoutButton.setDisable(cartPrice <= 0);
     }
 
     @FXML
     private void toCheckoutButtonOnAction(Event event) {
         if (!isSavingCartAtShutdown)
            // updateShoppingCart(); // Should be used if the cart should NOT be saved at shutdown
-        model.openCheckoutView();
+        model.navigate("pay");
     }
 
     @FXML

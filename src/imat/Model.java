@@ -1,13 +1,12 @@
 package imat;
 
-import imat.controls.spinner.AmountSpinner;
 import imat.interfaces.ICategoryListener;
+import imat.interfaces.INavigationListener;
 import imat.interfaces.ShoppingListener;
 import se.chalmers.cse.dat216.project.*;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Model {
 
@@ -17,10 +16,16 @@ public class Model {
 
     private final List<ShoppingListener> shoppingListeners;
     private final List<ICategoryListener> categoryListeners;
+    private final List<INavigationListener> navigationListeners;
 
     public Model() {
         shoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
+        navigationListeners = new ArrayList<>(1);
+    }
+
+    public void navigate(String destination) {
+        navigationListeners.forEach(x->x.navigateTo(destination));
     }
 
     public void addShoppingListener(ShoppingListener shoppingListener) {
@@ -57,7 +62,7 @@ public class Model {
     }
 
     public void addToShoppingCart(Product product, double amount) {
-        updateShoppingCart(product, cart.get(product) + amount);
+        updateShoppingCart(product, cart.getOrDefault(product,0.0) + amount);
     }
 
     public void addCategoryListener(ICategoryListener categoryListener) { categoryListeners.add(categoryListener); }
@@ -85,8 +90,15 @@ public class Model {
         System.out.println("Model exists!");
     }
 
+    public void openHistoryView() {
+
+    }
+
     public void openCheckoutView() {
         System.out.println("Checkout");
     }
 
+    public void addNavigationListener(INavigationListener navigationListener) {
+        navigationListeners.add(navigationListener);
+    }
 }

@@ -1,6 +1,8 @@
 package imat.controllers;
 
+import imat.FXMLController;
 import imat.controls.product.cartitem.CartItem;
+import imat.interfaces.INavigationListener;
 import imat.views.helpview.HelpView;
 import imat.views.modal.Modal;
 import javafx.fxml.FXML;
@@ -15,7 +17,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController extends FXMLController implements INavigationListener {
 
     // TODO: Add helpview to modal stackpane
 
@@ -32,13 +34,22 @@ public class MainController implements Initializable {
     private Modal modalViewController;
 
     @FXML
+    private AnchorPane payView;
+
+    @FXML
     private AnchorPane helpView;
+
+    @FXML
+    private AnchorPane browseView;
+
 
     @FXML HelpView helpViewController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         placeRandomOrder(getRandomInteger(1, 15));
+
+        model.addNavigationListener(this);
 
         // This is temporary, to test out the html loading
         helpViewController.setMainController(this);
@@ -48,7 +59,7 @@ public class MainController implements Initializable {
     //Temporary for debugging the different scenes
     @FXML
     private void changeView() {
-        // viewsStackPane.getChildren().get(0).toFront();
+       // viewsStackPane.getChildren().get(0).toFront();
     }
 
     // Temporary
@@ -86,5 +97,17 @@ public class MainController implements Initializable {
 
     public void closeHelpView() {
         helpView.toBack();
+    }
+
+    @Override
+    public void navigateTo(String destination) {
+        switch (destination.toLowerCase()) {
+            case "help":
+                helpView.toFront(); break;
+            case "pay":
+                payView.toFront(); break;
+            default:
+                browseView.toFront(); break;
+        }
     }
 }

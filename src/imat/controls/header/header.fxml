@@ -19,7 +19,7 @@
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false">
+                <Button onAction="#onHomeButtonAction" mnemonicParsing="false">
                     <graphic>
                         <ImageView fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -30,8 +30,8 @@
                 </Button>
                 <VBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="100.0" GridPane.columnIndex="2">
                     <children>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Help"/>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Historik"/>
+                        <Button onAction="#onHelpButtonAction" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Help"/>
+                        <Button onAction="#onHistoryButtonAction" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Historik"/>
                     </children>
                 </VBox>
                 <AnchorPane GridPane.columnIndex="1">
