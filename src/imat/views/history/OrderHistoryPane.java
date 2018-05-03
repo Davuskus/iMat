@@ -4,8 +4,6 @@ import imat.Model;
 import imat.controls.history.article.ArticleHistoryItem;
 import imat.controls.history.order.OrderHistoryItem;
 import imat.interfaces.IFXMLController;
-import imat.interfaces.ShoppingListener;
-import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,12 +50,6 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
 
     @FXML
     private Label totalPriceLabel;
-
-    @FXML
-    private ScrollPane ordersScrollPane;
-
-    @FXML
-    private ScrollPane articlesScrollPane;
 
     private final List<OrderHistoryItem> orderHistoryItems;
 
@@ -141,7 +133,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
 
     private void populateArticleList(OrderHistoryItem orderHistoryItem) {
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
-            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem();
+            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(model);
             articlesVBox.getChildren().add(articleHistoryItem);
             articleHistoryItem.setShoppingItem(shoppingItem);
             articleHistoryItems.add(articleHistoryItem);

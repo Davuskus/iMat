@@ -16,17 +16,7 @@ import java.util.ResourceBundle;
 
 public class Browse implements Initializable, IFXMLController {
 
-    Model model;
-
-    @FXML
-    private AnchorPane cartSidebar;
-
-    @FXML
-    private AnchorPane orderHistoryPane;
-
-    private Modal modal;
-
-    private StackPane stackPane;
+    private Model model;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

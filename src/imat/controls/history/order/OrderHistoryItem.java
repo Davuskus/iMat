@@ -1,5 +1,6 @@
 package imat.controls.history.order;
 
+import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.views.history.OrderHistoryPane;
 import javafx.event.Event;
@@ -30,6 +31,7 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
     public OrderHistoryItem() {
         super();
         dateFormat = "yyyy/MM/dd - HH:mm";
+        FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
     }
 
     /**
@@ -95,7 +97,6 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //dateLabel.setText(getDate(dateFormat));
     }
 
     public void setOrderHistoryPane(OrderHistoryPane orderHistoryPane) {
@@ -104,5 +105,7 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
 
     public void setOrder(Order order) {
         this.order = order;
+        dateLabel.setText(getDate(dateFormat));
     }
+
 }

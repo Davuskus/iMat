@@ -1,8 +1,7 @@
 package imat.controls.history.article;
 
 import imat.Model;
-import imat.interfaces.IFXMLController;
-import imat.interfaces.ShoppingListener;
+import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.utils.ImageUtils;
 import javafx.event.Event;
@@ -19,7 +18,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ArticleHistoryItem extends AnchorPane implements Initializable, IFXMLController {
+public class ArticleHistoryItem extends AnchorPane implements Initializable {
 
     @FXML
     private ImageView productImageView;
@@ -43,6 +42,12 @@ public class ArticleHistoryItem extends AnchorPane implements Initializable, IFX
 
     private Model model;
 
+    public ArticleHistoryItem(Model model) {
+        super();
+        this.model = model;
+        FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
+    }
+
     @FXML
     private void copyToCartButtonOnAction(Event event) {
         model.addToCart(shoppingItem);
@@ -50,11 +55,6 @@ public class ArticleHistoryItem extends AnchorPane implements Initializable, IFX
 
     public ShoppingItem getShoppingItem() {
         return IMatUtils.cloneShoppingItem(shoppingItem);
-    }
-
-    @Override
-    public void setModel(Model m) {
-        this.model = m;
     }
 
     public void setShoppingItem(ShoppingItem shoppingItem) {
@@ -75,6 +75,5 @@ public class ArticleHistoryItem extends AnchorPane implements Initializable, IFX
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

@@ -23,7 +23,7 @@ public class Model {
 
     }
 
-    public void verifyExistance(){
+    public void verifyExistence(){
         System.out.println("Model exists!");
     }
 }
