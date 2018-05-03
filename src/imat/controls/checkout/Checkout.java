@@ -50,9 +50,10 @@ public class Checkout implements Initializable,IFXMLController{
         updateLabels();
     }
     private void updateList(){
-
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
         List<ShoppingItem> list=iMatDataHandler.getShoppingCart().getItems();
 
+        System.out.println(list.size() +"gömbkgfmknmgf");
         flow.getChildren().clear();
 
         for (ShoppingItem i:list) {
