@@ -51,7 +51,7 @@ public class ArticleHistoryItem extends AnchorPane implements Initializable {
 
     @FXML
     private void copyToCartButtonOnAction(Event event) {
-        model.addToCart(shoppingItem);
+        model.updateShoppingCart(shoppingItem.getProduct(), shoppingItem.getAmount());
     }
 
     public ShoppingItem getShoppingItem() {

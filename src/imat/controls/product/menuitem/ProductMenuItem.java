@@ -1,11 +1,15 @@
 package imat.controls.product.menuitem;
 
 import imat.FXMLController;
+import imat.controls.spinner.AmountSpinner;
+import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -28,6 +32,8 @@ public class ProductMenuItem extends FXMLController {
     @FXML
     private Label ecoLabel;
 
+    @FXML private VBox elementsVBox;
+
     private Product product;
 
     public ProductMenuItem(Product product) {
@@ -48,6 +54,11 @@ public class ProductMenuItem extends FXMLController {
         if (!product.isEcological()) {
             ecoLabel.setVisible(false);
         }
+
+        AmountSpinner spinnerController = new AmountSpinner(product);
+        spinnerController.setModel(model);
+        Node amountSpinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
+        elementsVBox.getChildren().add(amountSpinnerNode);
     }
 
     /**

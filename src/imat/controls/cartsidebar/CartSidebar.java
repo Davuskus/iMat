@@ -5,10 +5,12 @@ import imat.controls.product.cartitem.CartItem;
 import imat.interfaces.IFXMLController;
 import imat.interfaces.RemoveRequestListener;
 import imat.interfaces.ShoppingListener;
+import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -17,9 +19,7 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 // TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
 
@@ -36,6 +36,8 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
 
     @FXML
     private Button trashButton;
+
+    private Map<Product, Node>  productsInSidebar = new HashMap<>();
 
     private double cartPrice;
 
@@ -78,65 +80,32 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
     }
 
     private void loadCart() {
-        if (!hasLoadedCartItems) {
-            for (ShoppingItem shoppingItem : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
-                onAddShoppingItem(shoppingItem);
-            }
-            hasLoadedCartItems = true;
-        }
+        model.getProductsInCart().forEach(this::addCartNode);
     }
 
-    private boolean isProductAlreadyInCart(Product product) {
-        if (getProductIndexInCart(product) == -1) {
-            return false;
-        } else {
-            return true;
-        }
+    private void addCartNode(Product product) {
+        if(productsInSidebar.containsKey(product)) return;
+        CartItem cartItemController = new CartItem(product);
+        cartItemController.setModel(model);
+        Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("../product/cartitem/cart_item.fxml",this,cartItemController);
+        productsInSidebar.put(product, cartItemNode);
+        cartItemVBox.getChildren().add(cartItemNode);
     }
 
-    private boolean isShoppingItemProductAlreadyInCart(ShoppingItem shoppingItem) {
-        return isProductAlreadyInCart(shoppingItem.getProduct());
+    private void removeCartNode(Product product) {
+        cartItemVBox.getChildren().remove(productsInSidebar.get(product));
+        productsInSidebar.remove(product);
     }
 
-    private int getProductIndexInCart(Product product) {
-        for (int i = 0; i < cartItems.size(); i++) {
-            if (cartItems.get(i).getShoppingItem().getProduct().equals(product)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    @Override
-    public void onAddShoppingItem(ShoppingItem shoppingItem) {
-
-        int productIndexInCart = getProductIndexInCart(shoppingItem.getProduct());
-        boolean productIsInCart = productIndexInCart != -1;
-
-        if (productIsInCart) {
-            cartItems.get(productIndexInCart).changeAmount(shoppingItem.getAmount());
-        } else {
-            CartItem cartItem = new CartItem(IMatUtils.cloneShoppingItem(shoppingItem));
-            cartItem.addRemoveRequestListener(this);
-            cartItem.addPriceChangeListener(this::onCartItemPriceChanged);
-            cartItemVBox.getChildren().add(cartItem);
-            cartItems.add(cartItem);
-            changeCartPrice(shoppingItem.getTotal());
-            toCheckoutButton.setDisable(false);
-            if (isSavingCartAtShutdown && hasLoadedCartItems)
-                updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
-        }
-
-    }
 
     @Override
     public void onRemoveRequest(CartItem cartItem) {
         cartItemVBox.getChildren().remove(cartItem);
         cartItems.remove(cartItem);
-        changeCartPrice(-cartItem.getShoppingItem().getTotal());
+        //changeCartPrice(-cartItem.getShoppingItem().getTotal());
         disableCheckoutButtonIfPriceIsZero();
-        if (isSavingCartAtShutdown)
-            updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
+        if (isSavingCartAtShutdown){}
+           // updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
     }
 
     private void disableCheckoutButtonIfPriceIsZero() {
@@ -145,42 +114,39 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
         }
     }
 
-    private void clearCart() {
-        cartItemVBox.getChildren().clear();
-        cartItems.clear();
-        setCartPrice(0);
-        IMatDataHandler.getInstance().getShoppingCart().clear();
-        toCheckoutButton.setDisable(true);
-    }
-
     @FXML
     private void toCheckoutButtonOnAction(Event event) {
         if (!isSavingCartAtShutdown)
-            updateShoppingCart(); // Should be used if the cart should NOT be saved at shutdown
+           // updateShoppingCart(); // Should be used if the cart should NOT be saved at shutdown
         model.openCheckoutView();
     }
 
     @FXML
     private void trashButtonOnAction(Event event) {
-        clearCart();
-    }
-
-    private void updateShoppingCart() {
-        IMatDataHandler.getInstance().getShoppingCart().clear();
-        for (CartItem cartItem : cartItems) {
-            IMatDataHandler.getInstance().getShoppingCart().addItem(cartItem.getShoppingItem());
-        }
-    }
-
-    private void onCartItemPriceChanged(double oldPrice, double newPrice) {
-        changeCartPrice(newPrice - oldPrice);
-        disableCheckoutButtonIfPriceIsZero();
-        if (isSavingCartAtShutdown)
-            updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
+        model.clearCart();
     }
 
     @Override
     public void setModel(Model m) {
         this.model = m;
+    }
+
+    @Override
+    public void onProductAdded(Product product, Double amount) {
+        addCartNode(product);
+    }
+
+    @Override
+    public void onProductRemoved(Product product, Double oldAmount) {
+        removeCartNode(product);
+    }
+
+    @Override
+    public void onProductUpdate(Product product, Double newAmount) {
+        cartPrice = model.getCartPrice();
+        updateSumLabel();
+        disableCheckoutButtonIfPriceIsZero();
+        if (isSavingCartAtShutdown) {}
+          //  updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
     }
 }

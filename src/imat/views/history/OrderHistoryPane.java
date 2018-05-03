@@ -86,7 +86,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     }
 
     private void copyArticleToCart(ShoppingItem shoppingItem) {
-        model.addToCart(shoppingItem);
+        model.addToShoppingCart(shoppingItem.getProduct(), shoppingItem.getAmount());
     }
 
     private void addOrdersToFlowPane() {

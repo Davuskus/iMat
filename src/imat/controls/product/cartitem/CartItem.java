@@ -1,7 +1,10 @@
 package imat.controls.product.cartitem;
 
+import imat.FXMLController;
+import imat.controls.spinner.AmountSpinner;
 import imat.interfaces.ChangeListener;
 import imat.interfaces.RemoveRequestListener;
+import imat.interfaces.ShoppingListener;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.utils.MathUtils;
@@ -9,6 +12,7 @@ import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
@@ -25,7 +30,7 @@ import java.util.*;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
-public class CartItem extends AnchorPane implements Initializable {
+public class CartItem extends FXMLController implements ShoppingListener {
 
     @FXML
     private StackPane stackPane;
@@ -72,11 +77,7 @@ public class CartItem extends AnchorPane implements Initializable {
     @FXML
     private Label unitLabel;
 
-    private final ShoppingItem shoppingItem;
-
-    private final List<RemoveRequestListener<CartItem>> removeRequestListeners;
-
-    private final List<ChangeListener<Double>> priceChangeListeners;
+    private final Product product;
 
     private final boolean isAcceptingDoubles;
 
@@ -84,17 +85,12 @@ public class CartItem extends AnchorPane implements Initializable {
 
     private boolean shouldBeRemoved;
 
-    public CartItem(ShoppingItem shoppingItem) {
-        this.shoppingItem = shoppingItem;
-        removeRequestListeners = new ArrayList<>(1);
-        priceChangeListeners = new ArrayList<>(1);
+    private Pattern textPattern;
 
-        FXMLLoader.loadFXMLFromRootPackage("cart_item.fxml", this, this);
+    public CartItem(Product product) {
+        this.product = product;
 
-        nameLabel.setText(this.shoppingItem.getProduct().getName());
-
-        Pattern textPattern;
-        switch (shoppingItem.getProduct().getUnitSuffix()) {
+        switch (product.getUnitSuffix()) {
             case "l":
             case "kg":
                 textPattern = Pattern.compile("\\d*|\\d+\\.\\d*");
@@ -105,39 +101,44 @@ public class CartItem extends AnchorPane implements Initializable {
                 isAcceptingDoubles = false;
                 break;
         }
-        amountTextField.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return textPattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-
-        if (!shoppingItem.getProduct().isEcological()) {
-            infoVBox.getChildren().remove(ecoLabel);
-        }
-
-        unitLabel.setText("(" + shoppingItem.getProduct().getUnit() + ")");
-
-        updateInfo();
     }
 
     private void updateInfo() {
-        updateTextFieldValue();
-        updatePriceLabel();
+        /*updateTextFieldValue();
+        updatePriceLabel();*/
     }
 
-    private void updateTextFieldValue() {
+    private void updateTextFieldValue(double value) {
         if (isAcceptingDoubles) {
-            amountTextField.setText(String.valueOf(shoppingItem.getAmount()));
+            amountTextField.setText(String.valueOf(value));
         } else {
-            amountTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
+            amountTextField.setText(String.valueOf((int) value));
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        AmountSpinner spinnerController = new AmountSpinner(product);
+        spinnerController.setModel(model);
+        Node spinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
+        itemHBox.getChildren().add(spinnerNode);
+
+        nameLabel.setText(this.product.getName());
+
+        if (!product.isEcological()) {
+            infoVBox.getChildren().remove(ecoLabel);
+        }
+
+        unitLabel.setText("(" + product.getUnit() + ")");
+
+        model.addShoppingListener(this);
+
+        updateInfo();
     }
 
     @FXML
     private void onEnterPressed(Event event) {
-        submitNewAmount(Double.valueOf(amountTextField.getText()));
+        /*submitNewAmount(Double.valueOf(amountTextField.getText()));*/
     }
 
     @FXML
@@ -151,31 +152,6 @@ public class CartItem extends AnchorPane implements Initializable {
         startRemovalProcess();
     }
 
-    @FXML
-    private void addButtonOnAction(Event event) {
-        changeValue(1);
-    }
-
-    @FXML
-    private void subtractButtonOnAction(Event event) {
-        changeValue(-1);
-    }
-
-    private void changeValue(double value) {
-        double oldValue = shoppingItem.getAmount();
-        double newValue = oldValue + value;
-        if (newValue >= 0) {
-            submitNewAmount(newValue);
-        }
-    }
-
-    private void submitNewAmount(double value) {
-        double oldPrice = shoppingItem.getTotal();
-        shoppingItem.setAmount(value);
-        updateInfo();
-        sendPriceChangeNotification(oldPrice, shoppingItem.getTotal());
-        removeIfAmountIsZero();
-    }
 
     private void removeIfAmountIsZero() {
         if (Double.valueOf(amountTextField.getText()) == 0 || amountTextField.getText().equals("")) {
@@ -199,7 +175,7 @@ public class CartItem extends AnchorPane implements Initializable {
             public void run() {
                 Platform.runLater(() -> {
                     if (shouldBeRemoved) {
-                        sendRemoveRequest();
+                       // sendRemoveRequest();
                     }
                 });
                 timer.cancel();
@@ -208,35 +184,23 @@ public class CartItem extends AnchorPane implements Initializable {
 
     }
 
-    private void sendRemoveRequest() {
-        for (RemoveRequestListener<CartItem> removeRequestListener : removeRequestListeners) {
-            removeRequestListener.onRemoveRequest(this);
-        }
+    private void updatePriceLabel(double total) {
+        priceLabel.setText("Pris: " + String.valueOf(MathUtils.round(total, 2)) + " kr");
     }
 
-    public void changeAmount(double change) {
-        submitNewAmount(shoppingItem.getAmount() + change);
+    @Override
+    public void onProductAdded(Product product, Double amount) {
+
     }
 
-    private void sendPriceChangeNotification(double oldPrice, double newPrice) {
-        for (ChangeListener<Double> changeListener : priceChangeListeners) {
-            changeListener.onChange(oldPrice, newPrice);
-        }
+    @Override
+    public void onProductRemoved(Product product, Double oldAmount) {
+
     }
 
-    public void addRemoveRequestListener(RemoveRequestListener<CartItem> removeRequestListener) {
-        removeRequestListeners.add(removeRequestListener);
-    }
-
-    public void addPriceChangeListener(ChangeListener<Double> priceChangeListener) {
-        priceChangeListeners.add(priceChangeListener);
-    }
-
-    private void updatePriceLabel() {
-        priceLabel.setText("Pris: " + String.valueOf(MathUtils.round(this.shoppingItem.getTotal(), 2)) + " kr");
-    }
-
-    public ShoppingItem getShoppingItem() {
-        return IMatUtils.cloneShoppingItem(shoppingItem);
+    @Override
+    public void onProductUpdate(Product product, Double newAmount) {
+        if(product != this.product) return;
+        updatePriceLabel(product.getPrice() * newAmount);
     }
 }
