@@ -22,22 +22,7 @@
          <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 1" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 2" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 3" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 4" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 5" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 6" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 7" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 8" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 9" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 10" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 11" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Kategori 12" />
-                     </children>
-                  </VBox>
+                  <VBox fx:id="categoryButtonsVBox" prefHeight="200.0" prefWidth="100.0" />
                </content>
             </ScrollPane>
             <Label text="Sortiment" GridPane.halignment="CENTER" />
