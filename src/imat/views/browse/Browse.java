@@ -22,7 +22,7 @@ public class Browse implements Initializable, IFXMLController {
     private AnchorPane cartSidebar;
 
     @FXML
-    private OrderHistoryPane orderHistoryPane;
+    private AnchorPane orderHistoryPane;
 
     private Modal modal;
 
