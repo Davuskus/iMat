@@ -52,7 +52,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                      <tooltip>
-                        <Tooltip styleClass="text-normal-white" text="Ta bort ur kundvagnen" />
+                        <Tooltip styleClass="text-normal-white" text="Ta bort" />
                      </tooltip>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="200.0">
