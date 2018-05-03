@@ -3,6 +3,7 @@ package imat;
 import imat.controls.cartsidebar.CartSidebar;
 import imat.controls.categorysidebar.CategorySidebar;
 import imat.controls.header.Header;
+import imat.interfaces.IFXMLController;
 import imat.views.browse.Browse;
 import imat.views.modal.Modal;
 import imat.views.pay.Pay;
@@ -15,6 +16,7 @@ import javafx.util.Callback;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
+import java.util.Arrays;
 
 public class Main extends Application {
 
@@ -25,41 +27,21 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("imat.fxml"));
 
-        //TODO explicitly define a model class somewhere (if backend is not sufficient)
-        //Model m = ... ;
+        Model m = new Model();
 
-        Browse browseViewController = new Browse(/*m*/);
-        Modal modalViewController = new Modal(/*m*/);
-        Pay payViewController = new Pay(/*m*/);
-
-        //TODO Instantiation of the controller(s) below should probably be moved
-
-        Header headerController = new Header(/*m*/);
-        CategorySidebar categorySidebarController = new CategorySidebar(/*m*/);
-        CartSidebar cartSidebarController = new CartSidebar(/*m*/);
-
-        //TODO This factory method looks quite messy, a cleaner method might be worth investigating
-
-        Callback<Class<?>, Object> controllerFactory = type -> {
-            if (type == Browse.class) return browseViewController;
-            else if (type == Modal.class) return modalViewController;
-            else if (type == Pay.class) return payViewController;
-            else if (type == Header.class) return headerController;
-            else if (type == CategorySidebar.class) return categorySidebarController;
-            else if (type == CartSidebar.class) return cartSidebarController;
-            else {
-                // default behavior for controllerFactory:
-                try {
-                    System.out.println("Unexpected " + type.getName());
-                    return type.newInstance();
-                } catch (Exception exc) {
-                    exc.printStackTrace();
-                    throw new RuntimeException(exc); // fatal, just bail...
+        loader.setControllerFactory(type -> {
+            try {
+                if(Arrays.stream(type.getInterfaces()).anyMatch(x->x == IFXMLController.class)){
+                    IFXMLController controller = (IFXMLController) type.newInstance();
+                    controller.setModel(m);
+                    return controller;
                 }
+                return type.newInstance();
+            } catch (Exception exc) {
+                exc.printStackTrace();
+                throw new RuntimeException(exc); // fatal, just bail...
             }
-        };
-
-        loader.setControllerFactory(controllerFactory);
+        });
 
         Parent root = loader.load();
 
