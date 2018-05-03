@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="85.0" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="85.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.spinner.AmountSpinner">
     <children>
         <TextField fx:id="valueTextField" layoutX="-46.0" onAction="#onEnterPressed" text="0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
         <Button fx:id="addButton" layoutX="50.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -19,4 +19,4 @@
             </cursor>
         </Button>
     </children>
-</fx:root>
+</AnchorPane>

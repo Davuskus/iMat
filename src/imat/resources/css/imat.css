@@ -71,6 +71,13 @@
     -fx-font-weight: bold;
 }
 
+.button-text-normal-bold-white {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
 .scene-default {
     -fx-background-color: white;
 }
@@ -161,6 +168,14 @@
 
 .see-through-bg {
     -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.background-black {
+    -fx-background-color: black;
+}
+
+.background-black-transparent-little {
+    -fx-background-color: rgba(0, 0, 0, 0.95);
 }
 
 

@@ -42,7 +42,7 @@ public class AmountSpinner extends AnchorPane implements Initializable {
 
     public AmountSpinner() {
         super();
-        FXMLLoader.loadFXMLFromRootPackage("amount_spinner.fxml", this, this);
+        // FXMLLoader.loadFXMLFromRootPackage("amount_spinner.fxml", this, this);
         changeListeners = new ArrayList<>(1);
 
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
@@ -56,12 +56,11 @@ public class AmountSpinner extends AnchorPane implements Initializable {
         intFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return intPattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
-        valueTextField.setTextFormatter(intFormatter);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        valueTextField.setTextFormatter(intFormatter);
     }
 
     public void setAcceptDoubles(boolean acceptDoubles) {
