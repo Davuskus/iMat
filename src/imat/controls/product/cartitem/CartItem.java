@@ -202,6 +202,7 @@ public class CartItem extends AnchorPane implements Initializable {
                         sendRemoveRequest();
                     }
                 });
+                timer.cancel();
             }
         }, millisBeforeRemoval);
 
