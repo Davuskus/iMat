@@ -9,6 +9,12 @@
     -fx-font-weight: bold;
 }
 
+.text-normal-dark-gray {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-text-fill: #484848;
+}
+
 .text-normal-gray {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
@@ -56,6 +62,19 @@
 .title-xlarge-dark-gray {
     -fx-font-family: "Tahoma";
     -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #484848;
+}
+
+.subtitle {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.subtitle-dark-gray {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #484848;
 }

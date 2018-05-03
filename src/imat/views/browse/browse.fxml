@@ -7,66 +7,45 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="scene-default" xmlns="http://javafx.com/javafx/9.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.browse.Browse">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="scene-default" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.browse.Browse">
     <stylesheets>
-        <URL value="@../../resources/css/imat.css"/>
-        <URL value="@../../resources/css/debug.css"/>
+        <URL value="@../../resources/css/imat.css" />
+        <URL value="@../../resources/css/debug.css" />
     </stylesheets>
     <children>
-        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                  AnchorPane.topAnchor="0.0">
+        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="20.0"
-                                   prefWidth="300.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="400.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="20.0"
-                                   prefWidth="300.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="20.0" prefWidth="300.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="400.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="20.0" prefWidth="300.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="0.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" valignment="TOP" vgrow="ALWAYS"/>
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" valignment="TOP" vgrow="ALWAYS" />
             </rowConstraints>
             <children>
-                <AnchorPane prefHeight="200.0" prefWidth="150.0" styleClass="debug-background-lightgreen"
-                            GridPane.rowIndex="1">
+                <AnchorPane prefHeight="200.0" prefWidth="150.0" styleClass="debug-background-lightgreen" GridPane.rowIndex="1">
                     <children>
-                         <fx:include source="../../controls/categorysidebar/category_sidebar.fxml"
-                                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                         <fx:include source="../../controls/categorysidebar/category_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="80.0" prefWidth="69.0" styleClass="debug-background-lightblue"
-                            GridPane.columnSpan="3">
+                <AnchorPane prefHeight="80.0" prefWidth="69.0" styleClass="debug-background-lightblue" GridPane.columnSpan="3">
                     <children>
-                        <fx:include source="../../controls/header/header.fxml" AnchorPane.bottomAnchor="0.0"
-                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                    AnchorPane.topAnchor="0.0"/>
+                        <fx:include source="../../controls/header/header.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-lightyellow"
-                            GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-lightyellow" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
                         <fx:include fx:id="cartSidebar" source="../../controls/cartsidebar/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <!--<CartSidebar fx:id="cartSidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"-->
                                      <!--AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>-->
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="middlePane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
-                            GridPane.rowIndex="1">
+                <AnchorPane fx:id="middlePane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <StackPane fx:id="sceneStackPane" prefHeight="150.0" prefWidth="200.0"
-                                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-
-                            <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="200.0" prefWidth="200.0">
-                                <fx:include fx:id="orderHistoryPane" source="../history/order_history.fxml"
-                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-                            </AnchorPane>
-                            <fx:include source="../products/products.fxml"
-                                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        <StackPane fx:id="sceneStackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <fx:include source="../history/order_history.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                            <fx:include source="../products/products.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </StackPane>
                     </children>
                 </AnchorPane>
