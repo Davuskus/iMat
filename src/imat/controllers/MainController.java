@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    // TODO: Add helpview to modal stackpane
+
     @FXML
     private AnchorPane rootPane;
 
@@ -24,9 +26,14 @@ public class MainController implements Initializable {
 
     @FXML AnchorPane helpView;
 
+    @FXML HelpView helpViewController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         placeRandomOrder(getRandomInteger(1, 15));
+
+        // This is temporary, to test out the html loading
+        helpViewController.setMainController(this);
         helpView.toBack();
     }
 

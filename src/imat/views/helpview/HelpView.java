@@ -39,10 +39,9 @@ public class HelpView implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
-        //loadHtmlTextFromFile("res/helpText.html");
-        //basePane.toBack();
-        //helpTextView.toBack();
-        //helpScrollPane.toBack();
+        //loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
+        loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
+        helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../resources/helptext/helpStyle.css").toString());
     }
 
     public void setMainController(MainController mainController) {
@@ -51,17 +50,16 @@ public class HelpView implements Initializable {
 
     private void loadHtmlTextFromFile(String htmlPath) {
         String htmlContent = imat.utils.FileUtils.readAllTextFromFile(htmlPath);
-        loadHtmlTextFromString(htmlContent);
-    }
-
-    private void loadHtmlTextFromString(String htmlContent) {
         helpTextView.getEngine().loadContent(htmlContent, "text/html");
     }
 
+    private void setStyleFromFile(String cssPath) {
+        //helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource(cssPath).toString());
+    }
 
     @FXML
     public void closeHelpView() {
-
+        mainController.closeHelpView();
     }
 
     @FXML

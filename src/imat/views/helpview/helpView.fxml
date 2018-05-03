@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="basePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.helpview.HelpView">
+<AnchorPane fx:id="basePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="605.0" style="-fx-background-color: #c9c9c9;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.helpview.HelpView">
    <children>
-      <ScrollPane fx:id="helpScrollPane" layoutY="46.0" prefHeight="364.0" prefWidth="605.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
-         <content>
-            <WebView fx:id="helpTextView" prefHeight="409.0" prefWidth="586.0" />
-         </content>
-      </ScrollPane>
-      <Label fx:id="helpViewCloseLabel" layoutX="519.0" layoutY="15.0" text="Stäng" />
-      <ImageView fx:id="helpViewCloseButton" fitHeight="24.0" fitWidth="24.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <WebView fx:id="helpTextView" layoutY="43.0" prefHeight="366.0" prefWidth="605.0" />
+      <Label fx:id="helpViewCloseLabel" layoutX="519.0" layoutY="15.0" onMouseClicked="#closeHelpView" text="Stäng" />
+      <ImageView fx:id="helpViewCloseButton" fitHeight="24.0" fitWidth="24.0" layoutX="567.0" layoutY="11.0" onMouseClicked="#closeHelpView" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../res/images/icons/close/icon_close.png" />
+            <Image url="@../../resources/images/icons/close/icon_close.png" />
          </image>
       </ImageView>
    </children>
