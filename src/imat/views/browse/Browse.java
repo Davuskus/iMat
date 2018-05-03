@@ -1,7 +1,10 @@
 package imat.views.browse;
 
+
 import imat.Model;
+import imat.controls.cartsidebar.CartSidebar;
 import imat.interfaces.IFXMLController;
+import imat.views.history.OrderHistoryPane;
 import imat.views.modal.Modal;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,8 +30,6 @@ public class Browse implements Initializable, IFXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // orderHistoryPane.addShoppingListener(cartSidebar);
-        // cartSidebar.setSavingCartAtShutdown(true);
     }
 
     @Override

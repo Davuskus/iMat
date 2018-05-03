@@ -1,12 +1,12 @@
 package imat;
-
+import se.chalmers.cse.dat216.project.ShoppingItem;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 public class Model {
 
     ProductCategory selectedCategory;
 
-    public void addToCart(){
+    public void addToCart(ShoppingItem shoppingItem){
         //...
     }
 
