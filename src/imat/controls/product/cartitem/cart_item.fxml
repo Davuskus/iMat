@@ -18,6 +18,19 @@
     <children>
       <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+             <AnchorPane fx:id="regretPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-black-transparent-little">
+                 <children>
+                     <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         <styleClass>
+                             <String fx:value="scene-transparent" />
+                             <String fx:value="button-text-normal-bold-white" />
+                         </styleClass>
+                         <cursor>
+                             <Cursor fx:constant="HAND" />
+                         </cursor>
+                     </Button>
+                 </children>
+             </AnchorPane>
             <HBox fx:id="itemHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="scene-default">
                <children>
                   <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" prefHeight="20.0" prefWidth="20.0" styleClass="see-through-bg">

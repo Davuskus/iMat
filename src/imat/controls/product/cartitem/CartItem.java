@@ -175,7 +175,7 @@ public class CartItem extends FXMLController implements ShoppingListener {
             public void run() {
                 Platform.runLater(() -> {
                     if (shouldBeRemoved) {
-                       // sendRemoveRequest();
+                       model.updateShoppingCart(product,0.0);
                     }
                 });
                 timer.cancel();

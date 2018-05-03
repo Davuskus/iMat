@@ -139,6 +139,8 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
         removeCartNode(product);
+        cartPrice = model.getCartPrice();
+        updateSumLabel();
     }
 
     @Override

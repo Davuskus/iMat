@@ -32,6 +32,9 @@ public class Model {
         double oldAmount = existed ? cart.get(product) : 0.0;
         if(newAmount <= 0) {
             if(!cart.containsKey(product)) return;
+            for (int i = 0; i < shoppingListeners.size(); i++) {
+                shoppingListeners.get(i).onProductUpdate(product, newAmount);
+            }
             cart.remove(product);
             for (int i = 0; i < shoppingListeners.size(); i++) {
                 shoppingListeners.get(i).onProductRemoved(product, oldAmount);
@@ -68,7 +71,9 @@ public class Model {
     }
 
     public void clearCart() {
-        cart.keySet().forEach(k->updateShoppingCart(k,0));
+        while(0 < cart.size()) {
+            updateShoppingCart(cart.keySet().iterator().next(), 0);
+        }
     }
 
     public void selectCategory(ProductCategory category) {

@@ -61,16 +61,12 @@ public class CheckoutItem extends FXMLController implements ChangeListener<Doubl
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         VBoxSpinner.getChildren().clear();
-        AmountSpinner spinner = new AmountSpinner();
+        AmountSpinner spinner = new AmountSpinner(item.getProduct());
         spinner.setModel(model);
         Node btn = FXMLLoader.loadFXMLNodeFromRootPackage("../spinner/amount_spinner.fxml",this, spinner);
         VBoxSpinner.getChildren().add(btn);
 
-        spinner.addChangeListener(this);
-        spinner.setAmount(item.getAmount());
         updateInfo();
-
-
     }
 
 
