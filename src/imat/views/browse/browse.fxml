@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<?import imat.controls.cartsidebar.CartSidebar?>
-<?import imat.views.history.OrderHistoryPane?>
+<!--<?import imat.controls.cartsidebar.CartSidebar?>-->
+<!--<?import imat.views.history.OrderHistoryPane?>-->
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="scene-default" xmlns="http://javafx.com/javafx/9.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.browse.Browse">
@@ -50,9 +50,9 @@
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-lightyellow"
                             GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
-                        <!--<fx:include fx:id="cartSidebar" source="../../controls/cartsidebar/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />-->
-                        <CartSidebar fx:id="cartSidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        <fx:include fx:id="cartSidebar" source="../../controls/cartsidebar/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <!--<CartSidebar fx:id="cartSidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"-->
+                                     <!--AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>-->
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="middlePane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
@@ -63,10 +63,10 @@
                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
                             <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="200.0" prefWidth="200.0">
-                                <OrderHistoryPane fx:id="orderHistoryPane" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
-                                <!--<fx:include fx:id="orderHistoryPane" source="../history/order_history.fxml"-->
-                                            <!--AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"-->
-                                            <!--AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>-->
+                                <!--<OrderHistoryPane fx:id="orderHistoryPane" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>-->
+                                <fx:include fx:id="orderHistoryPane" source="../history/order_history.fxml"
+                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                             </AnchorPane>
                         </StackPane>
                     </children>

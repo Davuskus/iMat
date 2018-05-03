@@ -1,10 +1,10 @@
 package imat.views.browse;
 
-import imat.controls.cartsidebar.CartSidebar;
 import imat.views.history.OrderHistoryPane;
 import imat.views.modal.Modal;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class Browse implements Initializable {
 
     @FXML
-    private CartSidebar cartSidebar;
+    private AnchorPane cartSidebar;
 
     @FXML
     private OrderHistoryPane orderHistoryPane;
@@ -24,8 +24,8 @@ public class Browse implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        orderHistoryPane.addShoppingListener(cartSidebar);
-        cartSidebar.setSavingCartAtShutdown(true);
+        // orderHistoryPane.addShoppingListener(cartSidebar);
+        // cartSidebar.setSavingCartAtShutdown(true);
     }
 
 }

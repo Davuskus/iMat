@@ -7,6 +7,7 @@ import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -14,10 +15,12 @@ import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class CartSidebar extends AnchorPane implements ShoppingListener, RemoveRequestListener<CartItem> {
+public class CartSidebar implements Initializable, ShoppingListener, RemoveRequestListener<CartItem> {
 
     @FXML
     private VBox cartItemVBox;
@@ -41,8 +44,11 @@ public class CartSidebar extends AnchorPane implements ShoppingListener, RemoveR
 
     public CartSidebar() {
         super();
-        FXMLLoader.loadFXMLFromRootPackage("cart_sidebar.fxml", this, this);
         cartItems = new ArrayList<>();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         updateSumLabel();
         loadCart();
     }
