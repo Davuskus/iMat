@@ -1,5 +1,7 @@
 package imat.utils;
 
+import javafx.scene.Node;
+
 import java.io.IOException;
 
 /**
@@ -40,6 +42,14 @@ public final class FXMLLoader {
 
         try {
             fxmlLoader.load();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static Node loadFXMLNodeFromRootPackage(String fxmlFilePath, Object root, Object controller) {
+        try {
+            return javafx.fxml.FXMLLoader.load(root.getClass().getResource(fxmlFilePath),null,null,type->controller);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }

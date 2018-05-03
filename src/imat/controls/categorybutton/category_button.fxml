@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+
+
+<Button fx:id="button" maxWidth="1.7976931348623157E308" onAction="#onButtonClick" prefHeight="30.0" prefWidth="600.0" text="Produkt" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.categorybutton.CategoryButton">
+</Button>
