@@ -1,7 +1,9 @@
 package imat.views.history;
 
+import imat.Model;
 import imat.controls.history.article.ArticleHistoryItem;
 import imat.controls.history.order.OrderHistoryItem;
+import imat.interfaces.IFXMLController;
 import imat.interfaces.ShoppingListener;
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderHistoryPane extends AnchorPane implements Initializable {
+public class OrderHistoryPane extends AnchorPane implements Initializable, IFXMLController {
 
     @FXML
     private Button copyToCartButton;
@@ -61,16 +63,14 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
 
     private final List<ArticleHistoryItem> articleHistoryItems;
 
-    private final List<ShoppingListener> shoppingListeners;
-
     private Order currentOrder;
+
+    private Model model;
 
     public OrderHistoryPane() {
         super();
         orderHistoryItems = new ArrayList<>();
         articleHistoryItems = new ArrayList<>();
-        shoppingListeners = new ArrayList<>(1);
-        // FXMLLoader.loadFXMLFromRootPackage("order_history.fxml", this, this);
     }
 
     @Override
@@ -94,13 +94,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
     }
 
     private void copyArticleToCart(ShoppingItem shoppingItem) {
-        for (ShoppingListener shoppingListener : shoppingListeners) {
-            shoppingListener.onAddShoppingItem(shoppingItem);
-        }
-    }
-
-    public void addShoppingListener(ShoppingListener shoppingListener) {
-        shoppingListeners.add(shoppingListener);
+        model.addToCart(shoppingItem);
     }
 
     private void addOrdersToFlowPane() {
@@ -113,8 +107,10 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
         }
 
         for (Order order : orders) {
-            OrderHistoryItem orderHistoryItem = new OrderHistoryItem(order, this);
+            OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
             ordersVBox.getChildren().add(orderHistoryItem);
+            orderHistoryItem.setOrder(order);
+            orderHistoryItem.setOrderHistoryPane(this);
             orderHistoryItems.add(orderHistoryItem);
         }
     }
@@ -145,9 +141,9 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
 
     private void populateArticleList(OrderHistoryItem orderHistoryItem) {
         for (ShoppingItem shoppingItem : orderHistoryItem.getShoppingItems()) {
-            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem(shoppingItem);
-            articleHistoryItem.addShoppingListeners(shoppingListeners);
+            ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem();
             articlesVBox.getChildren().add(articleHistoryItem);
+            articleHistoryItem.setShoppingItem(shoppingItem);
             articleHistoryItems.add(articleHistoryItem);
         }
     }
@@ -171,6 +167,11 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
         // TODO If no products in current cart: Copy all products from the relevant cart to the current cart
         // TODO If products in current cart: Open dialog asking "Replace" or "Add".
         copyOrderToCart(currentOrder);
+    }
+
+    @Override
+    public void setModel(Model model) {
+        this.model = model;
     }
 
 }

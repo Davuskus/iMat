@@ -1,11 +1,13 @@
 package imat;
 
+import se.chalmers.cse.dat216.project.ShoppingItem;
+
 public class Model {
-    void addToCart(){
+    public void addToCart(ShoppingItem shoppingItem){
         //...
     }
 
-    void addShoppingCartListener(){
+    public void addShoppingCartListener(){
         //...
     }
 }

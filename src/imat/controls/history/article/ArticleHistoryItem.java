@@ -1,11 +1,13 @@
 package imat.controls.history.article;
 
+import imat.Model;
+import imat.interfaces.IFXMLController;
 import imat.interfaces.ShoppingListener;
-import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.utils.ImageUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,10 +16,10 @@ import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ArticleHistoryItem extends AnchorPane {
+public class ArticleHistoryItem extends AnchorPane implements Initializable, IFXMLController {
 
     @FXML
     private ImageView productImageView;
@@ -37,15 +39,26 @@ public class ArticleHistoryItem extends AnchorPane {
     @FXML
     private VBox articleInfoVBox;
 
-    private final ShoppingItem shoppingItem;
+    private ShoppingItem shoppingItem;
 
-    private final List<ShoppingListener> shoppingListeners;
+    private Model model;
 
-    public ArticleHistoryItem(ShoppingItem shoppingItem) {
+    @FXML
+    private void copyToCartButtonOnAction(Event event) {
+        model.addToCart(shoppingItem);
+    }
+
+    public ShoppingItem getShoppingItem() {
+        return IMatUtils.cloneShoppingItem(shoppingItem);
+    }
+
+    @Override
+    public void setModel(Model m) {
+        this.model = m;
+    }
+
+    public void setShoppingItem(ShoppingItem shoppingItem) {
         this.shoppingItem = IMatUtils.cloneShoppingItem(shoppingItem);
-        shoppingListeners = new ArrayList<>(1);
-        FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
-
         Product product = this.shoppingItem.getProduct();
 
         productImageView.setImage(ImageUtils.getSquareImage(new Image("/imat/resources/images/products/" + product.getImageName())));
@@ -58,26 +71,10 @@ public class ArticleHistoryItem extends AnchorPane {
 
         priceLabel.setText(String.valueOf(this.shoppingItem.getTotal()) + " kr");
         countLabel.setText(String.valueOf((int) this.shoppingItem.getAmount()) + " " + product.getUnitSuffix());
-
     }
 
-    public void addShoppingListener(ShoppingListener shoppingListener) {
-        shoppingListeners.add(shoppingListener);
-    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-    public void addShoppingListeners(List<ShoppingListener> shoppingListeners) {
-        this.shoppingListeners.addAll(shoppingListeners);
     }
-
-    @FXML
-    private void copyToCartButtonOnAction(Event event) {
-        for (ShoppingListener shoppingListener : shoppingListeners) {
-            shoppingListener.onAddShoppingItem(shoppingItem);
-        }
-    }
-
-    public ShoppingItem getShoppingItem() {
-        return IMatUtils.cloneShoppingItem(shoppingItem);
-    }
-
 }

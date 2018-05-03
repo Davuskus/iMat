@@ -1,41 +1,35 @@
 package imat.controls.history.order;
 
-import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.views.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class OrderHistoryItem extends AnchorPane {
-
-    @FXML
-    private AnchorPane rootPane;
+public class OrderHistoryItem extends AnchorPane implements Initializable {
 
     @FXML
     private Label dateLabel;
 
-    private final OrderHistoryPane orderHistoryPane;
+    private OrderHistoryPane orderHistoryPane;
 
-    private final Order order;
+    private Order order;
 
     private final String dateFormat;
 
-    public OrderHistoryItem(Order order, OrderHistoryPane orderHistoryPane) {
-        this.orderHistoryPane = orderHistoryPane;
-        this.order = IMatUtils.cloneOrder(order);
-        FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
-
+    public OrderHistoryItem() {
+        super();
         dateFormat = "yyyy/MM/dd - HH:mm";
-        dateLabel.setText(getDate(dateFormat));
-
     }
 
     /**
@@ -55,9 +49,6 @@ public class OrderHistoryItem extends AnchorPane {
      */
     public String getDate(String format) {
         DateFormat dateFormat = new SimpleDateFormat(format);
-        if (order == null) {
-            System.out.println("OrderHistoryItem, is null");
-        }
         return dateFormat.format(order.getDate());
     }
 
@@ -101,4 +92,17 @@ public class OrderHistoryItem extends AnchorPane {
         orderHistoryPane.showArticlesPane(this);
     }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //dateLabel.setText(getDate(dateFormat));
+    }
+
+    public void setOrderHistoryPane(OrderHistoryPane orderHistoryPane) {
+        this.orderHistoryPane = orderHistoryPane;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }

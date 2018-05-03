@@ -27,8 +27,6 @@ public class Browse implements Initializable, IFXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // orderHistoryPane.addShoppingListener(cartSidebar);
-        // cartSidebar.setSavingCartAtShutdown(true);
     }
 
     @Override
