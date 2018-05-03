@@ -28,7 +28,7 @@
                               <Label text="Betalning" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                               <StackPane layoutY="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="16.0">
                                  <children>
-                                    <VBox fx:id="secondSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="debug-background-fxDefult">
+                                    <VBox fx:id="secondSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="background-fxDefault">
                                        <children>
                                           <Separator prefWidth="200.0" />
                                           <Label fx:id="kunduppgifterLabel1" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
@@ -67,7 +67,7 @@
                                           <Separator prefWidth="200.0" />
                                        </children>
                                     </VBox>
-                                    <VBox fx:id="thirdSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="debug-background-fxDefult">
+                                    <VBox fx:id="thirdSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="background-fxDefault">
                                        <children>
                                           <Separator prefWidth="200.0" />
                                           <Label fx:id="kunduppgifterLabel2" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
@@ -106,7 +106,7 @@
                                           <Separator prefWidth="200.0" />
                                        </children>
                                     </VBox>
-                                    <VBox fx:id="firstSidebarVBox" styleClass="debug-background-fxDefult">
+                                    <VBox fx:id="firstSidebarVBox" styleClass="background-fxDefault">
                                        <children>
                                           <Separator prefWidth="200.0" />
                                           <Label fx:id="kunduppgifterLabel" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="1. Kunduppgifter">

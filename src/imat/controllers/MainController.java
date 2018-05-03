@@ -2,6 +2,7 @@ package imat.controllers;
 
 import imat.controls.product.cartitem.CartItem;
 import imat.views.helpview.HelpView;
+import imat.views.modal.Modal;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -23,6 +24,12 @@ public class MainController implements Initializable {
 
     @FXML
     private StackPane viewsStackPane;
+
+    @FXML
+    private AnchorPane modalView;
+
+    @FXML
+    private Modal modalViewController;
 
     @FXML
     private AnchorPane helpView;
