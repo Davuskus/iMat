@@ -1,7 +1,10 @@
 package imat.views.browse;
 
+
 import imat.Model;
+import imat.controls.cartsidebar.CartSidebar;
 import imat.interfaces.IFXMLController;
+import imat.views.history.OrderHistoryPane;
 import imat.views.modal.Modal;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +22,7 @@ public class Browse implements Initializable, IFXMLController {
     private AnchorPane cartSidebar;
 
     @FXML
-    private AnchorPane orderHistoryPane;
+    private OrderHistoryPane orderHistoryPane;
 
     private Modal modal;
 
