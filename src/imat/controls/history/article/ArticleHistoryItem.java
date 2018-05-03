@@ -4,6 +4,7 @@ import imat.Model;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.utils.ImageUtils;
+import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -69,8 +70,15 @@ public class ArticleHistoryItem extends AnchorPane implements Initializable {
             articleInfoVBox.getChildren().remove(ecoLabel);
         }
 
-        priceLabel.setText(String.valueOf(this.shoppingItem.getTotal()) + " kr");
-        countLabel.setText(String.valueOf((int) this.shoppingItem.getAmount()) + " " + product.getUnitSuffix());
+        priceLabel.setText(String.valueOf(Math.round(this.shoppingItem.getTotal())) + " kr");
+
+        boolean suffixIsKg = shoppingItem.getProduct().getUnitSuffix().equals("kg");
+        boolean suffixIsL = shoppingItem.getProduct().getUnitSuffix().equals("l");
+        if (suffixIsKg || suffixIsL) {
+            countLabel.setText(String.valueOf(MathUtils.round(shoppingItem.getAmount(), 1)) + " " + product.getUnitSuffix());
+        } else {
+            countLabel.setText(String.valueOf((int) this.shoppingItem.getAmount()) + " " + product.getUnitSuffix());
+        }
     }
 
     @Override

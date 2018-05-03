@@ -1,6 +1,7 @@
 package imat.controls.checkout;
 
 import imat.FXMLController;
+
 import imat.interfaces.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -18,7 +19,6 @@ public class CheckoutItem extends FXMLController implements ChangeListener<Doubl
 
     @FXML
     private Label total;
-
 
 
     private ShoppingItem item;

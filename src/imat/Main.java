@@ -1,22 +1,14 @@
 package imat;
 
-import imat.controls.cartsidebar.CartSidebar;
-import imat.controls.categorysidebar.CategorySidebar;
-import imat.controls.header.Header;
 import imat.interfaces.IFXMLController;
-import imat.views.browse.Browse;
-import imat.views.modal.Modal;
-import imat.views.pay.Pay;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class Main extends Application {
 
@@ -36,7 +28,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("iMat");
 
-        double ratio = 1.0 / 2;
+        double ratio = 3.0 / 4;
         int stageWidth = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().width * ratio);
         int stageHeight = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().height * ratio);
 

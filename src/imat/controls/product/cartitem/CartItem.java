@@ -4,6 +4,7 @@ import imat.interfaces.ChangeListener;
 import imat.interfaces.RemoveRequestListener;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
+import imat.utils.MathUtils;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
@@ -61,6 +63,15 @@ public class CartItem extends AnchorPane implements Initializable {
     @FXML
     private Button subtractButton;
 
+    @FXML
+    private VBox infoVBox;
+
+    @FXML
+    private Label ecoLabel;
+
+    @FXML
+    private Label unitLabel;
+
     private final ShoppingItem shoppingItem;
 
     private final List<RemoveRequestListener<CartItem>> removeRequestListeners;
@@ -97,6 +108,12 @@ public class CartItem extends AnchorPane implements Initializable {
         amountTextField.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return textPattern.matcher(change.getControlNewText()).matches() ? change : null;
         }));
+
+        if (!shoppingItem.getProduct().isEcological()) {
+            infoVBox.getChildren().remove(ecoLabel);
+        }
+
+        unitLabel.setText("(" + shoppingItem.getProduct().getUnit() + ")");
 
         updateInfo();
     }
@@ -216,7 +233,7 @@ public class CartItem extends AnchorPane implements Initializable {
     }
 
     private void updatePriceLabel() {
-        priceLabel.setText(String.valueOf(this.shoppingItem.getTotal()) + " kr");
+        priceLabel.setText("Pris: " + String.valueOf(MathUtils.round(this.shoppingItem.getTotal(), 2)) + " kr");
     }
 
     public ShoppingItem getShoppingItem() {
