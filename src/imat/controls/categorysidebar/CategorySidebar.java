@@ -1,5 +1,7 @@
 package imat.controls.categorysidebar;
 
+import imat.Model;
+import imat.interfaces.IFXMLController;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.fxml.FXML;
@@ -10,17 +12,26 @@ import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import static imat.utils.IMatUtils.getCategories;
 
-public class CategorySidebar extends AnchorPane{
+public class CategorySidebar implements IFXMLController, Initializable{
+
+    Model model;
 
     @FXML
     private VBox categoryButtonsVBox;
 
-    public CategorySidebar() {
 
-        FXMLLoader.loadFXMLFromRootPackage("category_sidebar.fxml",this,this);
+    @Override
+    public void setModel(Model m) {
+        this.model = model;
+    }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         for(ProductCategory category: IMatUtils.getCategories()){
             Button btn = new Button(category.name());
             btn.setMaxWidth(Double.MAX_VALUE);
