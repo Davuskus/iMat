@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -50,6 +51,9 @@
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
+                     <tooltip>
+                        <Tooltip styleClass="text-normal-white" text="Ta bort ur kundvagnen" />
+                     </tooltip>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="200.0">
                      <HBox.margin>
