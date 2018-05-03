@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="scene-default" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.pay.Pay">
     <children>
@@ -19,13 +18,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-             <AnchorPane prefHeight="80.0" prefWidth="69.0" styleClass="debug-background-lightblue" GridPane.columnSpan="3">
+             <AnchorPane prefHeight="80.0" prefWidth="69.0" styleClass="debug-background-lightblue" stylesheets="@../../resources/css/debug.css" GridPane.columnSpan="3">
                  <children>
                      <fx:include source="../../controls/header/header.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                  </children>
              </AnchorPane>
 
-             <AnchorPane prefHeight="80.0" prefWidth="69.0"  GridPane.rowIndex="1">
+             <AnchorPane prefHeight="80.0" prefWidth="69.0" GridPane.rowIndex="1">
                  <children>
                      <fx:include source="../../controls/checkout/checkout.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       
