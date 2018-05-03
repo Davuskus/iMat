@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="221.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.modal.views.productdetails.ProductDetails">
+<AnchorPane prefHeight="221.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.modal.views.productdetails.ProductDetails">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../../../../resources/images/products/product_4.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="233.0" layoutY="14.0" text="Produktnamn" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="14.0">
+      <Label fx:id="productNameLabel" layoutX="233.0" layoutY="14.0" text="Produktnamn" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="29.0" />
          </font>
