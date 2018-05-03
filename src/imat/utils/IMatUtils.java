@@ -1,13 +1,9 @@
 package imat.utils;
 
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public final class IMatUtils {
 
@@ -35,6 +31,10 @@ public final class IMatUtils {
             shoppingItemsClone.add(cloneShoppingItem(shoppingItem));
         }
         return shoppingItemsClone;
+    }
+
+    public static Set<ProductCategory> getCategories(){
+        return IMatDataHandler.getInstance().getProducts().stream().map(product->product.getCategory()).collect(Collectors.toSet());
     }
 
 }
