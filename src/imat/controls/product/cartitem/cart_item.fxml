@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" stylesheets="@../../../resources/css/imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="280.0" stylesheets="@../../../resources/css/imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -47,40 +47,49 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
                   </Button>
                   <Separator orientation="VERTICAL" prefHeight="200.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Separator>
-                  <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0">
+                  <VBox fx:id="infoVBox" prefHeight="200.0" prefWidth="130.0" spacing="10.0">
                      <children>
-                          <Label fx:id="nameLabel" styleClass="title-normal" text="Product name" />
-                          <Label fx:id="priceLabel" styleClass="button-text-normal" text="Totalt pris: - kr" wrapText="true" />
+                          <Label fx:id="nameLabel" styleClass="title-normal-dark-gray" text="Product name" wrapText="true" />
+                        <Label fx:id="ecoLabel" styleClass="text-normal-dark-gray" text="Ekologisk" wrapText="true" />
+                          <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Pris: - kr" wrapText="true" />
                      </children>
                      <padding>
-                        <Insets top="5.0" />
+                        <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <AnchorPane fx:id="amountSpinnerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="95.0">
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="amountTextField" layoutX="-46.0" onAction="#onEnterPressed" text="0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
-                        <Button fx:id="addButton" layoutX="50.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="subtractButton" layoutX="60.0" layoutY="10.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#subtractButtonOnAction" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                        <AnchorPane fx:id="amountSpinnerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="95.0">
+                           <children>
+                              <TextField fx:id="amountTextField" layoutX="-46.0" onAction="#onEnterPressed" text="0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+                              <Button fx:id="addButton" layoutX="50.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="25.0" prefWidth="25.0" text="+" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="subtractButton" layoutX="60.0" layoutY="10.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#subtractButtonOnAction" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
                      </children>
-                  </AnchorPane>
+                     <padding>
+                        <Insets right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
                </children>
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
             </HBox>
          </children>
       </StackPane>

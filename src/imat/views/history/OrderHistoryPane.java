@@ -4,12 +4,12 @@ import imat.Model;
 import imat.controls.history.article.ArticleHistoryItem;
 import imat.controls.history.order.OrderHistoryItem;
 import imat.interfaces.IFXMLController;
+import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -117,7 +117,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
         updateOrderListButton.setFocusTraversable(false);
         dateLabel.setText(orderHistoryItem.getDate(orderHistoryItem.getDateFormat()));
         totalNumArticlesLabel.setText(orderHistoryItem.getNumShoppingItems() + " st");
-        totalPriceLabel.setText(orderHistoryItem.getOrderPrice() + " kr");
+        totalPriceLabel.setText(String.valueOf(MathUtils.round(orderHistoryItem.getOrderPrice(), 2)) + " kr");
 
         switchViews();
     }
