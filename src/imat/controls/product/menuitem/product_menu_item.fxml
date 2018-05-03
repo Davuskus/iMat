@@ -37,6 +37,8 @@
                   </Button>
                </children>
             </AnchorPane>
+            <fx:include source="../../spinner/amount_spinner.fxml" />
+
          </children>
          <opaqueInsets>
             <Insets />

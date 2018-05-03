@@ -68,4 +68,16 @@ public class ProductMenuItem extends FXMLController {
 //        spinner.addChangeListener(listener);
 //    }
 
+    @FXML private void onEnterPressed() {
+
+    }
+
+    @FXML private void addButtonOnAction() {
+
+    }
+
+    @FXML private void subtractButtonOnAction() {
+
+    }
+
 }

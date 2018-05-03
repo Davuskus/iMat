@@ -29,19 +29,8 @@ public class Main extends Application {
 
         Model m = new Model();
 
-        loader.setControllerFactory(type -> {
-            try {
-                if(IFXMLController.class.isAssignableFrom(type)){
-                    IFXMLController controller = (IFXMLController) type.newInstance();
-                    controller.setModel(m);
-                    return controller;
-                }
-                return type.newInstance();
-            } catch (Exception exc) {
-                exc.printStackTrace();
-                throw new RuntimeException(exc); // fatal, just bail...
-            }
-        });
+        imat.utils.FXMLLoader.trySetModel(m);
+        loader.setControllerFactory(imat.utils.FXMLLoader::controllerFactoryMethod);
 
         Parent root = loader.load();
 

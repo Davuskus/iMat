@@ -1,6 +1,9 @@
 package imat.utils;
 
+import imat.Model;
+import imat.interfaces.IFXMLController;
 import javafx.scene.Node;
+import javafx.util.Callback;
 
 import java.io.IOException;
 
@@ -8,6 +11,28 @@ import java.io.IOException;
  * Sets the root and controllers for the relevant .fxml file and loads it after initialization.
  */
 public final class FXMLLoader {
+    private static Model model;
+
+    public static boolean trySetModel(Model m) {
+        if(model == null) {
+            model = m;
+            return true;
+        } return false;
+    }
+
+    public static Object controllerFactoryMethod(Class type) {
+        try {
+            if(IFXMLController.class.isAssignableFrom(type)){
+                IFXMLController controller = (IFXMLController) type.newInstance();
+                controller.setModel(model);
+                return controller;
+            }
+            return type.newInstance();
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            throw new RuntimeException(exc); // fatal, just bail...
+        }
+    }
 
     /**
      * Sets the root and the controllers for a .fxml file and loads it afterwards.
@@ -49,7 +74,11 @@ public final class FXMLLoader {
 
     public static Node loadFXMLNodeFromRootPackage(String fxmlFilePath, Object root, Object controller) {
         try {
-            return javafx.fxml.FXMLLoader.load(root.getClass().getResource(fxmlFilePath),null,null,type->controller);
+            return javafx.fxml.FXMLLoader.load(
+                    root.getClass().getResource(fxmlFilePath),
+                    null,
+                    null,
+                    new ControllerFactoryGate(type->controller, FXMLLoader::controllerFactoryMethod));
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
