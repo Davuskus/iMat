@@ -31,7 +31,7 @@ public class Main extends Application {
 
         loader.setControllerFactory(type -> {
             try {
-                if(Arrays.stream(type.getInterfaces()).anyMatch(x->x == IFXMLController.class)){
+                if(IFXMLController.class.isAssignableFrom(type)){
                     IFXMLController controller = (IFXMLController) type.newInstance();
                     controller.setModel(m);
                     return controller;
