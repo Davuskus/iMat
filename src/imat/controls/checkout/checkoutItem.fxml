@@ -37,7 +37,7 @@
                        <children>
                            <VBox alignment="CENTER" GridPane.columnIndex="1">
                                <children>
-                                   <Label fx:id="produktName" styleClass="text-normal" text="ProduktName" />
+                                   <Label fx:id="productName" styleClass="text-normal" text="ProduktName" />
                                </children>
                            </VBox>
                            <VBox alignment="CENTER" GridPane.columnIndex="2">

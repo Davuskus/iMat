@@ -42,6 +42,9 @@ public class MainController extends FXMLController implements INavigationListene
     @FXML
     private AnchorPane browseView;
 
+    @FXML
+    private AnchorPane paymentView;
+
 
     @FXML HelpView helpViewController;
 
@@ -106,6 +109,8 @@ public class MainController extends FXMLController implements INavigationListene
                 helpView.toFront(); break;
             case "pay":
                 payView.toFront(); break;
+            case "payment":
+                paymentView.toFront(); break;
             default:
                 browseView.toFront(); break;
         }

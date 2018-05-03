@@ -3,21 +3,20 @@ package imat.controls.checkout;
 import imat.FXMLController;
 
 import imat.controls.spinner.AmountSpinner;
-import imat.interfaces.ChangeListener;
+import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.ShoppingItem;
+import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CheckoutItem extends FXMLController implements ChangeListener<Double>{
+public class CheckoutItem extends FXMLController implements IShoppingListener {
     @FXML
-    private Label produktName;
+    private Label productName;
 
     @FXML
     private Label price;
@@ -28,46 +27,46 @@ public class CheckoutItem extends FXMLController implements ChangeListener<Doubl
     @FXML
     private VBox VBoxSpinner;
 
-    private ShoppingItem item;
-
-    private Checkout checkout;
-
-    public CheckoutItem(ShoppingItem item, Checkout c) {
-
-        checkout=c;
-        this.item=item;
+    private Product product;
 
 
+    public CheckoutItem(Product product) {
+        this.product = product;
     }
 
 
-    @Override
-    public void onChange(Double oldValue, Double newValue) {
 
-        item.setAmount(newValue);
-        updateInfo();
-        checkout.update();
-
+    private void updateTotal(double amount){
+        total.setText(String.valueOf(amount*product.getPrice())+ "kr");
     }
-
-    private void updateInfo(){
-        produktName.setText(item.getProduct().getName());
-        price.setText(String.valueOf(item.getProduct().getPrice())+" kr");
-        total.setText(String.valueOf(item.getTotal())+ "kr");
-
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         VBoxSpinner.getChildren().clear();
-        AmountSpinner spinner = new AmountSpinner(item.getProduct());
+        AmountSpinner spinner = new AmountSpinner(product);
         spinner.setModel(model);
         Node btn = FXMLLoader.loadFXMLNodeFromRootPackage("../spinner/amount_spinner.fxml",this, spinner);
         VBoxSpinner.getChildren().add(btn);
+        model.addShoppingListener(this);
 
-        updateInfo();
+        productName.setText(product.getName());
+        price.setText(String.valueOf(product.getPrice())+" kr");
+        updateTotal(model.getProductAmount(product));
     }
 
 
+    @Override
+    public void onProductAdded(Product product, Double amount) {
+
+    }
+
+    @Override
+    public void onProductRemoved(Product product, Double oldAmount) {
+
+    }
+
+    @Override
+    public void onProductUpdate(Product product, Double newAmount) {
+        if(product == this.product) updateTotal(newAmount);
+    }
 }

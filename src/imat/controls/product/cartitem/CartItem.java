@@ -2,35 +2,28 @@ package imat.controls.product.cartitem;
 
 import imat.FXMLController;
 import imat.controls.spinner.AmountSpinner;
-import imat.interfaces.ChangeListener;
-import imat.interfaces.RemoveRequestListener;
-import imat.interfaces.ShoppingListener;
+import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
-import imat.utils.IMatUtils;
 import imat.utils.MathUtils;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.*;
-import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
-public class CartItem extends FXMLController implements ShoppingListener {
+public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private StackPane stackPane;

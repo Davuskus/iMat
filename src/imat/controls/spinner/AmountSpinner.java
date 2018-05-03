@@ -1,23 +1,15 @@
 package imat.controls.spinner;
 
 import imat.FXMLController;
-import imat.interfaces.ChangeListener;
-import imat.interfaces.ShoppingListener;
-import imat.utils.FXMLLoader;
+import imat.interfaces.IShoppingListener;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.layout.AnchorPane;
-import se.chalmers.cse.dat216.project.CartEvent;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -25,7 +17,7 @@ import java.util.regex.Pattern;
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class AmountSpinner extends FXMLController implements ShoppingListener {
+public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     @FXML
     private Button subtractButton;

@@ -1,21 +1,20 @@
 package imat.controls.checkout;
 
-import imat.Model;
-import imat.interfaces.IFXMLController;
+import imat.FXMLController;
+import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
-public class Checkout implements Initializable,IFXMLController, ShoppingCartListener {
+public class Checkout extends FXMLController implements IShoppingListener {
 
     @FXML
     private Label PriceLabel;
@@ -26,74 +25,71 @@ public class Checkout implements Initializable,IFXMLController, ShoppingCartList
     @FXML
     private Label totalCostLable;
 
-    private final IMatDataHandler iMatDataHandler;
-
-    private Model model;
-
     @FXML
     private VBox VBoxflow;
 
+    private Map<Product, Node> productsInCheckout = new HashMap<>();
+
     public Checkout() {
-        iMatDataHandler = IMatDataHandler.getInstance();
-        iMatDataHandler.getShoppingCart().addShoppingCartListener(this);
+        /*iMatDataHandler = IMatDataHandler.getInstance();
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(this);*/
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      update();
+        model.addShoppingListener(this);
+        model.getProductsInCart().forEach(this::addItemNode);
+        updateLabels(model.getCartPrice());
     }
 
 
-    protected void update(){
-        updateList();
-        updateLabels();
-    }
-    private void updateList(){
-
-
-        List<ShoppingItem> list=iMatDataHandler.getShoppingCart().getItems();
-
-
-
-        VBoxflow.getChildren().clear();
-
-        for (ShoppingItem i:list) {
-            CheckoutItem checkoutItem =new CheckoutItem(i,this);
-            checkoutItem.setModel(model);
-            Node item=FXMLLoader.loadFXMLNodeFromRootPackage("checkoutItem.fxml",this, checkoutItem);
-            VBoxflow.getChildren().add(item);
-        }
-
-
-    }
-
-    private void updateLabels(){
+    private void updateLabels(double totalPrice){
         
-        String price=iMatDataHandler.getShoppingCart().getTotal()+ " kr";
+        String price = totalPrice + " kr";
         PriceLabel.setText(price);
         shippingCostLabel.setText("35 kr");
-        double tot =iMatDataHandler.getShoppingCart().getTotal()+35;
+        double tot = totalPrice + 35;
         totalCostLable.setText( tot +" kr");
 
     }
 
-
-    @Override
-    public void setModel(Model m) {
-        this.model=m;
-    }
-
-
-    @Override
-    public void shoppingCartChanged(CartEvent cartEvent) {
-            update();
-    }
-
     @FXML
     private void addItem(){
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
-        update();
+        //update();
+    }
 
+    private void addItemNode(Product product) {
+        if(productsInCheckout.containsKey(product)) return;
+        System.out.println("adding node");
+        CheckoutItem checkoutItemController = new CheckoutItem(product);
+        checkoutItemController.setModel(model);
+        Node checkoutItemNode=FXMLLoader.loadFXMLNodeFromRootPackage("checkoutItem.fxml",this, checkoutItemController);
+        productsInCheckout.put(product, checkoutItemNode);
+        VBoxflow.getChildren().add(checkoutItemNode);
+    }
+
+    private void removeItemNode(Product product) {
+        VBoxflow.getChildren().remove(productsInCheckout.get(product));
+        productsInCheckout.remove(product);
+    }
+
+    @FXML private void onPayButtonAction() {
+        model.navigate("payment");
+    }
+
+    @Override
+    public void onProductAdded(Product product, Double amount) {
+        addItemNode(product);
+    }
+
+    @Override
+    public void onProductRemoved(Product product, Double oldAmount) {
+        removeItemNode(product);
+    }
+
+    @Override
+    public void onProductUpdate(Product product, Double newAmount) {
+        updateLabels(model.getCartPrice());
     }
 }

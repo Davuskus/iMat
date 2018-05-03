@@ -2,7 +2,7 @@ package imat;
 
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.INavigationListener;
-import imat.interfaces.ShoppingListener;
+import imat.interfaces.IShoppingListener;
 import se.chalmers.cse.dat216.project.*;
 
 
@@ -14,12 +14,12 @@ public class Model {
 
     private Map<Product, Double> cart = new HashMap<>();
 
-    private final List<ShoppingListener> shoppingListeners;
+    private final List<IShoppingListener> IShoppingListeners;
     private final List<ICategoryListener> categoryListeners;
     private final List<INavigationListener> navigationListeners;
 
     public Model() {
-        shoppingListeners = new ArrayList<>(1);
+        IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
         navigationListeners = new ArrayList<>(1);
     }
@@ -28,8 +28,8 @@ public class Model {
         navigationListeners.forEach(x->x.navigateTo(destination));
     }
 
-    public void addShoppingListener(ShoppingListener shoppingListener) {
-        shoppingListeners.add(shoppingListener);
+    public void addShoppingListener(IShoppingListener IShoppingListener) {
+        IShoppingListeners.add(IShoppingListener);
     }
 
     public void updateShoppingCart(Product product, double newAmount) {
@@ -37,23 +37,23 @@ public class Model {
         double oldAmount = existed ? cart.get(product) : 0.0;
         if(newAmount <= 0) {
             if(!cart.containsKey(product)) return;
-            for (int i = 0; i < shoppingListeners.size(); i++) {
-                shoppingListeners.get(i).onProductUpdate(product, newAmount);
+            for (int i = 0; i < IShoppingListeners.size(); i++) {
+                IShoppingListeners.get(i).onProductUpdate(product, newAmount);
             }
             cart.remove(product);
-            for (int i = 0; i < shoppingListeners.size(); i++) {
-                shoppingListeners.get(i).onProductRemoved(product, oldAmount);
+            for (int i = 0; i < IShoppingListeners.size(); i++) {
+                IShoppingListeners.get(i).onProductRemoved(product, oldAmount);
             }
             return;
         }
         cart.put(product, newAmount);
         if(!existed) {
-            for (int i = 0; i < shoppingListeners.size(); i++) {
-                shoppingListeners.get(i).onProductAdded(product, newAmount);
+            for (int i = 0; i < IShoppingListeners.size(); i++) {
+                IShoppingListeners.get(i).onProductAdded(product, newAmount);
             }
         }
-        for (int i = 0; i < shoppingListeners.size(); i++) {
-            shoppingListeners.get(i).onProductUpdate(product, newAmount);
+        for (int i = 0; i < IShoppingListeners.size(); i++) {
+            IShoppingListeners.get(i).onProductUpdate(product, newAmount);
         }
     }
 

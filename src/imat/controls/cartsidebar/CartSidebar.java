@@ -4,9 +4,8 @@ import imat.Model;
 import imat.controls.product.cartitem.CartItem;
 import imat.interfaces.IFXMLController;
 import imat.interfaces.RemoveRequestListener;
-import imat.interfaces.ShoppingListener;
+import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
-import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,16 +13,14 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.*;
 
 // TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
 
-public class CartSidebar implements Initializable, ShoppingListener, RemoveRequestListener<CartItem>, IFXMLController {
+public class CartSidebar implements Initializable, IShoppingListener, RemoveRequestListener<CartItem>, IFXMLController {
 
     @FXML
     private VBox cartItemVBox;
