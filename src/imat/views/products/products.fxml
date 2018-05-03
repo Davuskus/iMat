@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background-fxDefault" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.products.Products">
    <children>
@@ -20,8 +20,12 @@
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <Label fx:id="categoryLabel" styleClass="title-large" text="Kategori" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <content>
+                  <FlowPane fx:id="productsFlowPane" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </ScrollPane>
          </children>
       </GridPane>
    </children>
