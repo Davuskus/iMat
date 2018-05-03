@@ -197,4 +197,9 @@
     -fx-background-color: rgba(0, 0, 0, 0.95);
 }
 
-
+.checkout-list-item {
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
