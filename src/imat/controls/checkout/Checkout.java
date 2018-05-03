@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Checkout implements Initializable,IFXMLController{
+public class Checkout implements Initializable,IFXMLController, ShoppingCartListener {
 
     @FXML
     private Label PriceLabel;
@@ -26,19 +26,16 @@ public class Checkout implements Initializable,IFXMLController{
     @FXML
     private Label totalCostLable;
 
-    @FXML
-    private FlowPane flow;
-
     private final IMatDataHandler iMatDataHandler;
 
     private Model model;
 
     @FXML
-    private VBox vboxflow;
+    private VBox VBoxflow;
 
     public Checkout() {
         iMatDataHandler = IMatDataHandler.getInstance();
-
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(this);
     }
 
 
@@ -48,35 +45,31 @@ public class Checkout implements Initializable,IFXMLController{
     }
 
 
-    private  void update(){
+    protected void update(){
         updateList();
         updateLabels();
     }
     private void updateList(){
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
-        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+
 
         List<ShoppingItem> list=iMatDataHandler.getShoppingCart().getItems();
 
 
-        vboxflow.getChildren().clear();
+
+        VBoxflow.getChildren().clear();
 
         for (ShoppingItem i:list) {
-            CheckoutItem checkoutItem =new CheckoutItem(i);
+            CheckoutItem checkoutItem =new CheckoutItem(i,this);
             checkoutItem.setModel(model);
             Node item=FXMLLoader.loadFXMLNodeFromRootPackage("checkoutItem.fxml",this, checkoutItem);
-            vboxflow.getChildren().add(item);
+            VBoxflow.getChildren().add(item);
         }
 
 
     }
 
     private void updateLabels(){
-
+        
         String price=iMatDataHandler.getShoppingCart().getTotal()+ " kr";
         PriceLabel.setText(price);
         shippingCostLabel.setText("35 kr");
@@ -89,5 +82,18 @@ public class Checkout implements Initializable,IFXMLController{
     @Override
     public void setModel(Model m) {
         this.model=m;
+    }
+
+
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+            update();
+    }
+
+    @FXML
+    private void addItem(){
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+        update();
+
     }
 }

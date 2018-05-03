@@ -45,13 +45,13 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel1" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="2. kreditkortsuppgifter">
+                                          <Label fx:id="KreditkortLabel1" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="2. Kreditkort">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel1" onMousePressed="#summaryViewToFront" prefHeight="50.0" prefWidth="180.0" text="3. sammanfattning">
+                                          <Label fx:id="samanfattningLabel1" onMousePressed="#summaryViewToFront" prefHeight="50.0" prefWidth="180.0" text="3. Sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -84,7 +84,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel2" onMousePressed="#credidcardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. kreditkortsuppgifter">
+                                          <Label fx:id="KreditkortLabel2" onMousePressed="#credidcardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. Kreditkort">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -98,7 +98,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="3. sammanfattning">
+                                          <Label fx:id="samanfattningLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="3. Sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -115,7 +115,7 @@
                                              </padding>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel" onMousePressed="#credidcardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. kreditkortsuppgifter">
+                                          <Label fx:id="KreditkortLabel" onMousePressed="#credidcardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. Kreditkort">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -129,7 +129,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel" onMousePressed="#summaryViewToFront" prefHeight="50.0" prefWidth="180.0" text="3. sammanfattning">
+                                          <Label fx:id="samanfattningLabel" onMousePressed="#summaryViewToFront" prefHeight="50.0" prefWidth="180.0" text="3. Sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
