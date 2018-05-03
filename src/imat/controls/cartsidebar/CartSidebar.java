@@ -1,6 +1,8 @@
 package imat.controls.cartsidebar;
 
+import imat.Model;
 import imat.controls.product.cartitem.CartItem;
+import imat.interfaces.IFXMLController;
 import imat.interfaces.RemoveRequestListener;
 import imat.interfaces.ShoppingListener;
 import imat.utils.FXMLLoader;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CartSidebar implements Initializable, ShoppingListener, RemoveRequestListener<CartItem> {
+public class CartSidebar implements Initializable, ShoppingListener, RemoveRequestListener<CartItem>, IFXMLController {
 
     @FXML
     private VBox cartItemVBox;
@@ -42,6 +44,8 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
 
     private boolean hasLoadedCartItems;
 
+    private Model model;
+
     public CartSidebar() {
         super();
         cartItems = new ArrayList<>();
@@ -49,6 +53,7 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        model.addShoppingListener(this);
         updateSumLabel();
         loadCart();
     }
@@ -133,4 +138,8 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
             updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
     }
 
+    @Override
+    public void setModel(Model m) {
+        this.model = m;
+    }
 }
