@@ -159,4 +159,8 @@
     -fx-border-color: #00adff;
 }
 
+.see-through-bg {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
 
