@@ -39,4 +39,9 @@ public class Model {
     public void verifyExistence() {
         System.out.println("Model exists!");
     }
+
+    public void openCheckoutView() {
+        System.out.println("Checkout");
+    }
+
 }

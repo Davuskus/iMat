@@ -5,16 +5,15 @@ import imat.controls.product.cartitem.CartItem;
 import imat.interfaces.IFXMLController;
 import imat.interfaces.RemoveRequestListener;
 import imat.interfaces.ShoppingListener;
-import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
@@ -56,6 +55,7 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
         model.addShoppingListener(this);
         updateSumLabel();
         loadCart();
+        disableCheckoutButtonIfPriceIsZero();
     }
 
     public void setCartPrice(double cartPrice) {
@@ -84,16 +84,47 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
         }
     }
 
+    private boolean isProductAlreadyInCart(Product product) {
+        if (getProductIndexInCart(product) == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean isShoppingItemProductAlreadyInCart(ShoppingItem shoppingItem) {
+        return isProductAlreadyInCart(shoppingItem.getProduct());
+    }
+
+    private int getProductIndexInCart(Product product) {
+        for (int i = 0; i < cartItems.size(); i++) {
+            if (cartItems.get(i).getShoppingItem().getProduct().equals(product)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public void onAddShoppingItem(ShoppingItem shoppingItem) {
-        CartItem cartItem = new CartItem(IMatUtils.cloneShoppingItem(shoppingItem));
-        cartItem.addRemoveRequestListener(this);
-        cartItem.addPriceChangeListener(this::onCartItemPriceChanged);
-        cartItemVBox.getChildren().add(cartItem);
-        cartItems.add(cartItem);
-        changeCartPrice(shoppingItem.getTotal());
-        if (isSavingCartAtShutdown && hasLoadedCartItems)
-            updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
+
+        int productIndexInCart = getProductIndexInCart(shoppingItem.getProduct());
+        boolean productIsInCart = productIndexInCart != -1;
+
+        if (productIsInCart) {
+            cartItems.get(productIndexInCart).changeAmount(shoppingItem.getAmount());
+        } else {
+            CartItem cartItem = new CartItem(IMatUtils.cloneShoppingItem(shoppingItem));
+            cartItem.addRemoveRequestListener(this);
+            cartItem.addPriceChangeListener(this::onCartItemPriceChanged);
+            cartItemVBox.getChildren().add(cartItem);
+            cartItems.add(cartItem);
+            changeCartPrice(shoppingItem.getTotal());
+            toCheckoutButton.setDisable(false);
+            if (isSavingCartAtShutdown && hasLoadedCartItems)
+                updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
+        }
+
     }
 
     @Override
@@ -101,8 +132,15 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
         cartItemVBox.getChildren().remove(cartItem);
         cartItems.remove(cartItem);
         changeCartPrice(-cartItem.getShoppingItem().getTotal());
+        disableCheckoutButtonIfPriceIsZero();
         if (isSavingCartAtShutdown)
             updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
+    }
+
+    private void disableCheckoutButtonIfPriceIsZero() {
+        if (cartPrice <= 0) {
+            toCheckoutButton.setDisable(true);
+        }
     }
 
     private void clearCart() {
@@ -110,14 +148,14 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
         cartItems.clear();
         setCartPrice(0);
         IMatDataHandler.getInstance().getShoppingCart().clear();
+        toCheckoutButton.setDisable(true);
     }
 
     @FXML
     private void toCheckoutButtonOnAction(Event event) {
         if (!isSavingCartAtShutdown)
             updateShoppingCart(); // Should be used if the cart should NOT be saved at shutdown
-        // TODO Go to the check out view.
-        System.out.println("To checkout...");
+        model.openCheckoutView();
     }
 
     @FXML
@@ -134,6 +172,7 @@ public class CartSidebar implements Initializable, ShoppingListener, RemoveReque
 
     private void onCartItemPriceChanged(double oldPrice, double newPrice) {
         changeCartPrice(newPrice - oldPrice);
+        disableCheckoutButtonIfPriceIsZero();
         if (isSavingCartAtShutdown)
             updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
     }

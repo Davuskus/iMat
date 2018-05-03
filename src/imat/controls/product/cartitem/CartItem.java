@@ -43,6 +43,8 @@ public class CartItem extends AnchorPane implements Initializable {
         FXMLLoader.loadFXMLFromRootPackage("cart_item.fxml", this, this);
         removeRequestListeners = new ArrayList<>(1);
         priceChangeListeners = new ArrayList<>(1);
+        nameLabel.setText(this.shoppingItem.getProduct().getName());
+        updateInfo();
     }
 
     @Override
@@ -54,9 +56,10 @@ public class CartItem extends AnchorPane implements Initializable {
                 break;
         }
         amountSpinner.addChangeListener(this::onSpinnerChange);
-        amountSpinner.setAmount(shoppingItem.getAmount());
+    }
 
-        nameLabel.setText(this.shoppingItem.getProduct().getName());
+    private void updateInfo() {
+        amountSpinner.setAmount(shoppingItem.getAmount());
         updatePriceLabel();
     }
 
@@ -69,6 +72,13 @@ public class CartItem extends AnchorPane implements Initializable {
         for (RemoveRequestListener<CartItem> removeRequestListener : removeRequestListeners) {
             removeRequestListener.onRemoveRequest(this);
         }
+    }
+
+    public void changeAmount(double change) {
+        double oldPrice = shoppingItem.getTotal();
+        shoppingItem.setAmount(shoppingItem.getAmount() + change);
+        updateInfo();
+        sendPriceChangeNotification(oldPrice, shoppingItem.getTotal());
     }
 
     private void sendPriceChangeNotification(double oldPrice, double newPrice) {
