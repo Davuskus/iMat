@@ -70,7 +70,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
         orderHistoryItems = new ArrayList<>();
         articleHistoryItems = new ArrayList<>();
         shoppingListeners = new ArrayList<>(1);
-        FXMLLoader.loadFXMLFromRootPackage("order_history.fxml", this, this);
+        // FXMLLoader.loadFXMLFromRootPackage("order_history.fxml", this, this);
     }
 
     @Override
