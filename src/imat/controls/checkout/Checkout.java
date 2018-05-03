@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
@@ -32,6 +33,8 @@ public class Checkout implements Initializable,IFXMLController{
 
     private Model model;
 
+    @FXML
+    private VBox vboxflow;
 
     public Checkout() {
         iMatDataHandler = IMatDataHandler.getInstance();
@@ -50,16 +53,23 @@ public class Checkout implements Initializable,IFXMLController{
         updateLabels();
     }
     private void updateList(){
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
+        iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProduct(87));
 
         List<ShoppingItem> list=iMatDataHandler.getShoppingCart().getItems();
 
-        flow.getChildren().clear();
+
+        vboxflow.getChildren().clear();
 
         for (ShoppingItem i:list) {
             CheckoutItem checkoutItem =new CheckoutItem(i);
             checkoutItem.setModel(model);
             Node item=FXMLLoader.loadFXMLNodeFromRootPackage("checkoutItem.fxml",this, checkoutItem);
-            flow.getChildren().add(item);
+            vboxflow.getChildren().add(item);
         }
 
 

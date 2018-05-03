@@ -1,6 +1,7 @@
 package imat.controls.checkout;
 
 import imat.FXMLController;
+
 import imat.interfaces.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,7 +10,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CheckoutItem extends FXMLController implements ChangeListener<Double> {
+public class CheckoutItem extends FXMLController implements ChangeListener<Double>{
     @FXML
     private Label produktName;
 
@@ -19,11 +20,16 @@ public class CheckoutItem extends FXMLController implements ChangeListener<Doubl
     @FXML
     private Label total;
 
+
     private ShoppingItem item;
 
+
     public CheckoutItem(ShoppingItem item) {
-        this.item = item;
+
+        this.item=item;
+
     }
+
 
     @Override
     public void onChange(Double oldValue, Double newValue) {
@@ -31,10 +37,10 @@ public class CheckoutItem extends FXMLController implements ChangeListener<Doubl
         updateInfo();
     }
 
-    private void updateInfo() {
+    private void updateInfo(){
         produktName.setText(item.getProduct().getName());
-        price.setText(String.valueOf(item.getProduct().getPrice()) + " kr");
-        total.setText(String.valueOf(item.getTotal()) + "kr");
+        price.setText(String.valueOf(item.getProduct().getPrice())+" kr");
+        total.setText(String.valueOf(item.getTotal())+ "kr");
 
     }
 
