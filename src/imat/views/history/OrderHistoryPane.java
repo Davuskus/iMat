@@ -169,7 +169,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable {
     @FXML
     private void copyOrderToCartButtonOnAction(Event event) {
         // TODO If no products in current cart: Copy all products from the relevant cart to the current cart
-        // TODO If products in current cart: Open dialog asking "Replace" or"Add".
+        // TODO If products in current cart: Open dialog asking "Replace" or "Add".
         copyOrderToCart(currentOrder);
     }
 

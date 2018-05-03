@@ -22,7 +22,8 @@ public class MainController implements Initializable {
     @FXML
     private StackPane viewsStackPane;
 
-    @FXML AnchorPane helpView;
+    @FXML
+    private AnchorPane helpView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
