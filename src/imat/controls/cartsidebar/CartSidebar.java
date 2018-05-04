@@ -11,11 +11,15 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 // TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
 
@@ -33,11 +37,17 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     @FXML
     private Button trashButton;
 
-    private Map<Product, Node>  productsInSidebar = new HashMap<>();
+    @FXML
+    private AnchorPane regretPane;
+
+    @FXML
+    private ScrollPane scrollPane;
+
+    private final Map<Product, Node> productsInSidebar = new HashMap<>();
+
+    private final Map<Product, Node> productsInTrash = new HashMap<>();
 
     private double cartPrice;
-
-    private boolean isSavingCartAtShutdown;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,10 +60,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     public void setCartPrice(double cartPrice) {
         this.cartPrice = cartPrice;
         updateSumLabel();
-    }
-
-    public void setSavingCartAtShutdown(boolean savingCartAtShutdown) {
-        this.isSavingCartAtShutdown = savingCartAtShutdown;
     }
 
     private void changeCartPrice(double change) {
@@ -69,12 +75,12 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     }
 
     private void addCartNode(Product product) {
-        if(productsInSidebar.containsKey(product)) return;
+        if (productsInSidebar.containsKey(product)) return;
         CartItem cartItemController = new CartItem(product, () -> {
             removeCartNode(product);
         });
         cartItemController.setModel(model);
-        Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("../product/cartitem/cart_item.fxml",this,cartItemController);
+        Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("../product/cartitem/cart_item.fxml", this, cartItemController);
         productsInSidebar.put(product, cartItemNode);
         cartItemVBox.getChildren().add(cartItemNode);
     }
@@ -90,19 +96,25 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private void toCheckoutButtonOnAction(Event event) {
-        if (!isSavingCartAtShutdown)
-           // updateShoppingCart(); // Should be used if the cart should NOT be saved at shutdown
         model.navigate(NavigationTarget.PAY);
     }
 
     @FXML
     private void trashButtonOnAction(Event event) {
-
+        productsInTrash.putAll(productsInSidebar);
+        for (int i = 0; i < productsInSidebar.keySet().size(); i++) {
+            removeCartNode(productsInSidebar.keySet().iterator().next());
+        }
+        switchView(regretPane);
     }
 
     @FXML
     private void regretButtonOnAction(Event event) {
-
+        for (Product product : productsInTrash.keySet()) {
+            addCartNode(product);
+        }
+        productsInTrash.clear();
+        switchView(scrollPane);
     }
 
     @Override
@@ -112,7 +124,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
-        // removeCartNode(product);
         cartPrice = model.getCartPrice();
         updateSumLabel();
         disableCheckoutButtonIfPriceIsZero();
@@ -123,7 +134,10 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         cartPrice = model.getCartPrice();
         updateSumLabel();
         disableCheckoutButtonIfPriceIsZero();
-        if (isSavingCartAtShutdown) {}
-          //  updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
     }
+
+    private void switchView(Node node) {
+        node.toFront();
+    }
+
 }

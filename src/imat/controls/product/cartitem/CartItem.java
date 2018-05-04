@@ -5,10 +5,10 @@ import imat.controls.spinner.AmountSpinner;
 import imat.interfaces.IRemoveEvent;
 import imat.interfaces.IShoppingListener;
 import imat.utils.AnimationHandler;
+import imat.utils.DelayedRunnable;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -24,8 +24,6 @@ import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CartItem extends FXMLController implements IShoppingListener {
 
@@ -145,32 +143,24 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
         shouldBeRemoved = true;
 
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
+        DelayedRunnable delayedRunnable = new DelayedRunnable(() -> {
+            if (shouldBeRemoved) {
+                regretButton.setDisable(true);
 
-                Platform.runLater(() -> {
-                    if (shouldBeRemoved) {
-
-                        regretButton.setDisable(true);
-
-                        Timeline removalAnimation = AnimationHandler.getAnimation(
-                                v -> {
-                                    removeEvent.execute();
-                                    model.updateShoppingCart(product, 0.0);
-                                },
-                                AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
-                                AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
-                                AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
-                                AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
-                        );
-                        removalAnimation.play();
-                    }
-                });
-                timer.cancel();
+                Timeline removalAnimation = AnimationHandler.getAnimation(
+                        v -> {
+                            removeEvent.execute();
+                            model.updateShoppingCart(product, 0.0);
+                        },
+                        AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
+                        AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
+                        AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
+                        AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
+                );
+                removalAnimation.play();
             }
-        }, millisBeforeRemoval);
+        });
+        delayedRunnable.runLater(millisBeforeRemoval);
 
     }
 
