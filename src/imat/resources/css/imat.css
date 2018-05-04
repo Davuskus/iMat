@@ -1,3 +1,12 @@
+.text-small {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 13px;
+}
+.text-small-bold {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 13px;
+     -fx-font-weight: bold;
+}
 .text-normal {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;

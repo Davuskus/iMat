@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="scene-transparent" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.payment.PaymentController">
+<AnchorPane onMousePressed="#moveBack" styleClass="scene-transparent" stylesheets="@../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.payment.PaymentController">
    <children>
       <VBox alignment="CENTER" fillWidth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -157,13 +157,21 @@
                                        <children>
                                           <Label layoutX="35.0" layoutY="23.0" text="Kunduppgifter" underline="true" />
                                           <Label layoutX="35.0" layoutY="187.0" text="Kreditkort" underline="true" />
-                                          <Button layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#SaveUserInfo" prefHeight="26.0" prefWidth="134.0" text="Betala och beställ" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
-                                          <TextArea fx:id="clientSummeryArea" layoutX="35.0" layoutY="53.0" prefHeight="122.0" prefWidth="167.0" text="Hjördis Svensson&#10;kallebäck&#10;41101" />
-                                          <TextArea fx:id="creditCardSummeryArea" editable="false" layoutX="35.0" layoutY="213.0" prefHeight="110.0" prefWidth="167.0" text="8888 8888 8888 8888&#10;04 / 18&#10;023&#10;" />
-                                          <CheckBox fx:id="saveUserInfoCheckBox" layoutX="234.0" layoutY="331.0" mnemonicParsing="false" selected="true" text="Spara mina uppgifter" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="48.0" />
-                                          <Button layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
-                                          <Button fx:id="changeClientInfoButton" layoutX="202.0" layoutY="71.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Ändra kunduppgifter" />
-                                          <Button fx:id="changeCreditCardInfoButton" layoutX="202.0" layoutY="231.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Ändra kreditkortsuppgifter" />
+                                          <Button layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#SaveUserInfo" prefHeight="26.0" prefWidth="134.0" styleClass="text-small-bold" text="Betala och beställ" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+                                          <TextArea fx:id="clientSummeryArea" layoutX="35.0" layoutY="53.0" prefHeight="122.0" prefWidth="167.0" text="Hjördis Svensson&#10;kallebäck&#10;41101">
+                                             <styleClass>
+                                                <String fx:value="text-small" />
+                                                <String fx:value="background-fxDefault" />
+                                             </styleClass></TextArea>
+                                          <TextArea fx:id="creditCardSummeryArea" editable="false" layoutX="35.0" layoutY="213.0" prefHeight="110.0" prefWidth="167.0" text="8888 8888 8888 8888&#10;04 / 18&#10;023&#10;">
+                                             <styleClass>
+                                                <String fx:value="text-small" />
+                                                <String fx:value="background-fxDefault" />
+                                             </styleClass></TextArea>
+                                          <CheckBox fx:id="saveUserInfoCheckBox" layoutX="234.0" layoutY="331.0" mnemonicParsing="false" selected="true" styleClass="text-small" text="Spara mina uppgifter" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="48.0" />
+                                          <Button layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onAction="#credidcardViewToFront" styleClass="text-small-bold" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
+                                          <Button fx:id="changeClientInfoButton" layoutX="202.0" layoutY="71.0" mnemonicParsing="false" onAction="#clientViewToFront" styleClass="text-small-bold" text="Ändra kunduppgifter" />
+                                          <Button fx:id="changeCreditCardInfoButton" layoutX="202.0" layoutY="231.0" mnemonicParsing="false" onAction="#credidcardViewToFront" styleClass="text-small-bold" text="Ändra kreditkortsuppgifter" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane fx:id="creditCardInfoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
@@ -173,16 +181,16 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="36.0" layoutY="136.0" styleClass="text-normal" text="Kortnummer:" />
+                                          <Label layoutX="36.0" layoutY="136.0" styleClass="text-small-bold" text="Kortnummer:" />
                                           <TextField fx:id="creditCardNumberField" layoutX="126.0" layoutY="132.0" AnchorPane.leftAnchor="126.0" AnchorPane.topAnchor="132.0" />
-                                          <Label layoutX="37.0" layoutY="181.0" styleClass="text-normal" text="Giltighetstid:" />
+                                          <Label layoutX="37.0" layoutY="181.0" styleClass="text-small-bold" text="Giltighetstid:" />
                                           <TextField fx:id="validMonthField" layoutX="126.0" layoutY="177.0" prefHeight="26.0" prefWidth="38.0" />
                                           <TextField fx:id="validYearField" layoutX="187.0" layoutY="176.0" prefHeight="26.0" prefWidth="38.0" />
                                           <Label layoutX="171.0" layoutY="179.0" styleClass="title-normal" text="/" />
                                           <TextField fx:id="cvcField" layoutX="126.0" layoutY="220.0" prefHeight="26.0" prefWidth="50.0" />
-                                          <Label layoutX="86.0" layoutY="224.0" styleClass="text-normal" text="cvc:" />
-                                          <Button fx:id="creditCardDoneButton" layoutX="258.0" layoutY="227.0" mnemonicParsing="false" onAction="#summaryViewToFront" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
-                                          <Button fx:id="creditCardBackButton" layoutX="48.0" layoutY="227.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
+                                          <Label layoutX="86.0" layoutY="224.0" styleClass="text-small-bold" text="cvc:" />
+                                          <Button fx:id="creditCardDoneButton" layoutX="258.0" layoutY="227.0" mnemonicParsing="false" onAction="#summaryViewToFront" styleClass="text-small-bold" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+                                          <Button fx:id="creditCardBackButton" layoutX="48.0" layoutY="227.0" mnemonicParsing="false" onAction="#clientViewToFront" styleClass="text-small-bold" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane fx:id="customerInfoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
@@ -192,17 +200,17 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#credidcardViewToFront" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
-                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="90.0" spacing="25.0">
+                                          <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#credidcardViewToFront" styleClass="text-small-bold" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="120.0" spacing="25.0">
                                              <children>
-                                                <Label text="Förnamn:" />
-                                                <Label text="Efternamn:" />
-                                                <Label text="Adress:" />
-                                                <Label text="Postnummer:" />
-                                                <Label text="Telefonnummer:" />
+                                                <Label styleClass="text-small-bold" text="Förnamn:" />
+                                                <Label styleClass="text-small-bold" text="Efternamn:" />
+                                                <Label styleClass="text-small-bold" text="Adress:" />
+                                                <Label styleClass="text-small-bold" text="Postnummer:" />
+                                                <Label styleClass="text-small-bold" text="Telefonnummer:" />
                                              </children>
                                           </VBox>
-                                          <VBox fillWidth="false" layoutX="137.0" layoutY="70.0" prefHeight="200.0" prefWidth="156.0" spacing="18.0">
+                                          <VBox fillWidth="false" layoutX="160.0" layoutY="70.0" prefHeight="200.0" prefWidth="156.0" spacing="17.0">
                                              <children>
                                                 <TextField fx:id="firstNameField" />
                                                 <TextField fx:id="lastNameField" />
@@ -215,7 +223,7 @@
                                     </AnchorPane>
                                  </children>
                               </StackPane>
-                              <Button fx:id="closeButton" layoutX="366.0" layoutY="2.0" mnemonicParsing="false" text="Stäng" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                              <Button fx:id="closeButton" layoutX="366.0" layoutY="2.0" mnemonicParsing="false" onAction="#moveBack" styleClass="text-small-bold" text="Stäng" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                            </children>
                         </AnchorPane>
                     </items>

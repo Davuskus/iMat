@@ -1,5 +1,6 @@
 package imat.views.payment;
 
+import imat.FXMLController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -18,7 +19,7 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaymentController implements Initializable {
+public class PaymentController extends FXMLController implements Initializable {
 
     @FXML
     Button clientInfoDoneButton;
@@ -237,8 +238,9 @@ public class PaymentController implements Initializable {
 
 
     @FXML
-    private void moveToBack() {
-
+    private void moveBack() {
+        //SaveUserInfo();
+        model.navigate("pay");
     }
 
 }
