@@ -1,17 +1,13 @@
 package imat.controls.cartsidebar;
 
 import imat.FXMLController;
-import imat.Model;
 import imat.controls.product.cartitem.CartItem;
 import imat.enums.NavigationTarget;
-import imat.interfaces.IFXMLController;
-import imat.interfaces.RemoveRequestListener;
 import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -41,18 +37,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     private double cartPrice;
 
-    private final List<CartItem> cartItems;
-
     private boolean isSavingCartAtShutdown;
-
-    private boolean hasLoadedCartItems;
-
-    private Model model;
-
-    public CartSidebar() {
-        super();
-        cartItems = new ArrayList<>();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -112,17 +97,12 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private void trashButtonOnAction(Event event) {
-        model.clearCart();
+
     }
 
     @FXML
     private void regretButtonOnAction(Event event) {
 
-    }
-
-    @Override
-    public void setModel(Model m) {
-        this.model = m;
     }
 
     @Override

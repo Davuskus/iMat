@@ -4,11 +4,9 @@ import imat.FXMLController;
 import imat.controls.spinner.AmountSpinner;
 import imat.interfaces.IRemoveEvent;
 import imat.interfaces.IShoppingListener;
+import imat.utils.AnimationHandler;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.Event;
@@ -22,7 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -158,22 +155,17 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
                         regretButton.setDisable(true);
 
-                        // itemHBox.setVisible(false);
-
-                        Timeline timeline = new Timeline();
-                        timeline.getKeyFrames().addAll(
-                                new KeyFrame(Duration.millis(250),
-                                        new KeyValue(regretButton.opacityProperty(), 0, Interpolator.EASE_BOTH),
-                                        new KeyValue(itemHBox.opacityProperty(), 0, Interpolator.EASE_BOTH)),
-                                new KeyFrame(Duration.millis(500),
-                                        new KeyValue(rootPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
-                                        new KeyValue(rootPane.opacityProperty(), 0, Interpolator.EASE_BOTH)));
-                        timeline.setOnFinished(event -> {
+                        Timeline removalAnimation = AnimationHandler.getAnimation(
+                                v -> {
                                     removeEvent.execute();
                                     model.updateShoppingCart(product, 0.0);
-                                }
+                                },
+                                AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
+                                AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
+                                AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
+                                AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
                         );
-                        timeline.play();
+                        removalAnimation.play();
                     }
                 });
                 timer.cancel();
