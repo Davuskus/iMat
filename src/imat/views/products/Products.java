@@ -1,7 +1,6 @@
 package imat.views.products;
 
 import imat.FXMLController;
-import imat.controllers.SearchController;
 import imat.controls.product.menuitem.ProductMenuItem;
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.ISearchListener;
