@@ -5,6 +5,10 @@ import imat.controls.spinner.AmountSpinner;
 import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -17,13 +21,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 public class CartItem extends FXMLController implements IShoppingListener {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private StackPane stackPane;
@@ -113,7 +123,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
     public void initialize(URL location, ResourceBundle resources) {
         AmountSpinner spinnerController = new AmountSpinner(product);
         spinnerController.setModel(model);
-        Node spinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
+        Node spinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml", this, spinnerController);
         itemHBox.getChildren().add(spinnerNode);
 
         nameLabel.setText(this.product.getName());
@@ -166,9 +176,19 @@ public class CartItem extends FXMLController implements IShoppingListener {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+
                 Platform.runLater(() -> {
                     if (shouldBeRemoved) {
-                       model.updateShoppingCart(product,0.0);
+
+                        Timeline timeline = new Timeline();
+                        timeline.getKeyFrames().addAll(
+                                new KeyFrame(Duration.millis(500),
+                                        new KeyValue(rootPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
+                                        new KeyValue(rootPane.opacityProperty(), 0, Interpolator.EASE_BOTH)));
+                        timeline.setOnFinished(event ->
+                                model.updateShoppingCart(product, 0.0)
+                        );
+                        timeline.play();
                     }
                 });
                 timer.cancel();
@@ -193,7 +213,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
-        if(product != this.product) return;
+        if (product != this.product) return;
         updatePriceLabel(product.getPrice() * newAmount);
     }
 }
