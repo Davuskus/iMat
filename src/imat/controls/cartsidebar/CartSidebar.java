@@ -4,8 +4,11 @@ import imat.FXMLController;
 import imat.controls.product.cartitem.CartItem;
 import imat.enums.NavigationTarget;
 import imat.interfaces.IShoppingListener;
+import imat.utils.AnimationHandler;
+import imat.utils.DelayedRunnable;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
+import javafx.animation.Timeline;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -41,27 +44,25 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     @FXML
     private ScrollPane scrollPane;
 
+    @FXML
+    private Button regretButton;
+
     private final Map<Product, Node> productsInSidebar = new HashMap<>();
 
-    private final Map<Product, Node> productsInTrash = new HashMap<>();
+    private final Map<Product, Double> productsInTrash = new HashMap<>();
 
     private double cartPrice;
 
+    private boolean shouldTrash;
+    private final long millisBeforeTrash = 3000;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        trashButton.setDisable(true);
         model.addShoppingListener(this);
         updateSumLabel();
         loadCart();
         disableCheckoutButtonIfPriceIsZero();
-    }
-
-    public void setCartPrice(double cartPrice) {
-        this.cartPrice = cartPrice;
-        updateSumLabel();
-    }
-
-    private void changeCartPrice(double change) {
-        setCartPrice(cartPrice + change);
     }
 
     private void updateSumLabel() {
@@ -97,32 +98,67 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         model.navigate(NavigationTarget.PAY);
     }
 
+    private void clearCart() {
+        Map<Product, Node> copyOfProductsInSidebar = new HashMap<>(productsInSidebar.size());
+        copyOfProductsInSidebar.putAll(productsInSidebar);
+        copyOfProductsInSidebar.keySet().forEach(this::removeCartNode);
+    }
+
     @FXML
     private void trashButtonOnAction(Event event) {
-        productsInTrash.putAll(productsInSidebar);
-        for (int i = 0; i < productsInSidebar.keySet().size(); i++) {
-            removeCartNode(productsInSidebar.keySet().iterator().next());
-        }
+        startTrashProcess();
+    }
+
+    private void startTrashProcess() {
+
+        shouldTrash = true;
+
+        regretButton.setDisable(false);
         switchView(regretPane);
-        // TODO Add regret button animation
+
+        productsInSidebar.keySet().forEach(product -> productsInTrash.put(product, model.getProductAmount(product)));
+        productsInTrash.keySet().forEach(product -> model.updateShoppingCart(product, 0));
+
+        new DelayedRunnable(() -> {
+
+            if (shouldTrash) {
+
+                Timeline fadeAnimation = AnimationHandler.getAnimation(
+                        v -> {
+                            shouldTrash = false;
+                            switchView(scrollPane);
+                            regretButton.setDisable(false);
+                        },
+                        AnimationHandler.getOpacityChangeKeyFrame(regretPane, 500, 0)
+                );
+                fadeAnimation.play();
+
+            }
+
+        }).runLater(millisBeforeTrash);
+
     }
 
     @FXML
     private void regretButtonOnAction(Event event) {
-        for (Product product : productsInTrash.keySet()) {
-            addCartNode(product);
-        }
+        productsInTrash.keySet().forEach(product -> model.updateShoppingCart(product, productsInTrash.get(product)));
         productsInTrash.clear();
         switchView(scrollPane);
     }
 
     @Override
     public void onProductAdded(Product product, Double amount) {
+        trashButton.setDisable(false);
         addCartNode(product);
     }
 
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
+
+        if (model.getProductsInCart().size() == 0) {
+            trashButton.setDisable(true);
+        }
+
         cartPrice = model.getCartPrice();
         updateSumLabel();
         disableCheckoutButtonIfPriceIsZero();

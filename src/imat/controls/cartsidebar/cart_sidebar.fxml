@@ -59,7 +59,7 @@
             </HBox>
             <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <AnchorPane fx:id="regretPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-black">
+                  <AnchorPane fx:id="regretPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-black-transparent-little">
                      <children>
                         <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <styleClass>
