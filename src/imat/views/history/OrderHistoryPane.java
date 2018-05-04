@@ -46,9 +46,6 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     private Label dateLabel;
 
     @FXML
-    private Button updateOrderListButton;
-
-    @FXML
     private Label totalNumArticlesLabel;
 
     @FXML
@@ -123,7 +120,6 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
 
         backButton.setFocusTraversable(true);
         copyToCartButton.setFocusTraversable(true);
-        updateOrderListButton.setFocusTraversable(false);
         dateLabel.setText(orderHistoryItem.getDate(orderHistoryItem.getDateFormat()));
         totalNumArticlesLabel.setText(orderHistoryItem.getNumShoppingItems() + " st");
         totalPriceLabel.setText(String.valueOf(MathUtils.round(orderHistoryItem.getOrderPrice(), 2)) + " kr");
@@ -136,7 +132,6 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
         articleHistoryItems.clear();
         backButton.setFocusTraversable(false);
         copyToCartButton.setFocusTraversable(false);
-        updateOrderListButton.setFocusTraversable(true);
         switchView(ordersPane);
     }
 
@@ -174,7 +169,6 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     public void setModel(Model model) {
         this.model = model;
     }
-
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {

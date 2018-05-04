@@ -121,15 +121,6 @@
                             <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane prefHeight="40.0" prefWidth="200.0">
-                                 <children>
-                                    <Button fx:id="updateOrderListButton" mnemonicParsing="false" onAction="#updateOrderListButtonOnAction" styleClass="button-text-normal" text="Uppdatera listan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
                                       <ScrollPane fx:id="ordersScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                           <content>
                                               <VBox fx:id="ordersVBox" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
