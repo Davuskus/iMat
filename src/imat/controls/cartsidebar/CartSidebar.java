@@ -6,6 +6,7 @@ import imat.interfaces.IFXMLController;
 import imat.interfaces.RemoveRequestListener;
 import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
+import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -73,7 +74,7 @@ public class CartSidebar implements Initializable, IShoppingListener, IFXMLContr
     }
 
     private void updateSumLabel() {
-        sumLabel.setText(cartPrice + " kr");
+        sumLabel.setText(MathUtils.round(cartPrice, 2) + " kr");
     }
 
     private void loadCart() {
