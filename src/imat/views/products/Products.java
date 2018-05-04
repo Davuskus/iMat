@@ -16,6 +16,7 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Products extends FXMLController implements ICategoryListener, ISearchListener {
@@ -44,11 +45,11 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     }
 
     @Override
-    public void onSearch(String searchTerm) {
+    public void onSearch(String searchTerm, List<Product> products) {
         categoryLabel.setText("Sökresultat för: \"" + searchTerm + "\"");
         productsFlowPane.getChildren().removeIf(x->true);
 
-        for(Product product : SearchController.search(searchTerm)) {
+        for(Product product : products) {
             ProductMenuItem controller = new ProductMenuItem(product);
             controller.setModel(model);
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage("../../controls/product/menuitem/product_menu_item.fxml",this, controller);

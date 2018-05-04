@@ -100,7 +100,7 @@ public class Model {
             }
         }
 
-        searchListeners.forEach(x->x.onSearch(products));
+        searchListeners.forEach(x->x.onSearch(searchTerm, products));
 
     }
 
