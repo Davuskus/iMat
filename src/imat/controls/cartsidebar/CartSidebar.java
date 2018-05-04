@@ -20,7 +20,7 @@ import java.util.*;
 
 // TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
 
-public class CartSidebar implements Initializable, IShoppingListener, RemoveRequestListener<CartItem>, IFXMLController {
+public class CartSidebar implements Initializable, IShoppingListener, IFXMLController {
 
     @FXML
     private VBox cartItemVBox;
@@ -82,7 +82,9 @@ public class CartSidebar implements Initializable, IShoppingListener, RemoveRequ
 
     private void addCartNode(Product product) {
         if(productsInSidebar.containsKey(product)) return;
-        CartItem cartItemController = new CartItem(product);
+        CartItem cartItemController = new CartItem(product, () -> {
+            removeCartNode(product);
+        });
         cartItemController.setModel(model);
         Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("../product/cartitem/cart_item.fxml",this,cartItemController);
         productsInSidebar.put(product, cartItemNode);
@@ -92,17 +94,6 @@ public class CartSidebar implements Initializable, IShoppingListener, RemoveRequ
     private void removeCartNode(Product product) {
         cartItemVBox.getChildren().remove(productsInSidebar.get(product));
         productsInSidebar.remove(product);
-    }
-
-
-    @Override
-    public void onRemoveRequest(CartItem cartItem) {
-        cartItemVBox.getChildren().remove(cartItem);
-        cartItems.remove(cartItem);
-        //changeCartPrice(-cartItem.getShoppingItem().getTotal());
-        disableCheckoutButtonIfPriceIsZero();
-        if (isSavingCartAtShutdown){}
-           // updateShoppingCart(); // Should be used if the cart SHOULD be saved at shutdown
     }
 
     private void disableCheckoutButtonIfPriceIsZero() {
@@ -133,7 +124,7 @@ public class CartSidebar implements Initializable, IShoppingListener, RemoveRequ
 
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
-        removeCartNode(product);
+        // removeCartNode(product);
         cartPrice = model.getCartPrice();
         updateSumLabel();
         disableCheckoutButtonIfPriceIsZero();
