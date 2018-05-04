@@ -114,6 +114,11 @@ public class CartSidebar implements Initializable, IShoppingListener, IFXMLContr
         model.clearCart();
     }
 
+    @FXML
+    private void regretButtonOnAction(Event event) {
+
+    }
+
     @Override
     public void setModel(Model m) {
         this.model = m;
