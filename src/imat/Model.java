@@ -92,6 +92,8 @@ public class Model {
     }
 
     public void search(String searchTerm) {
+        if(searchTerm.length() == 0) return;
+
         List<Product> products = new ArrayList<>();
 
         for (Product product : IMatDataHandler.getInstance().getProducts()) {

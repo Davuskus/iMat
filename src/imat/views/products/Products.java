@@ -47,7 +47,14 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     @Override
     public void onSearch(String searchTerm, List<Product> products) {
-        categoryLabel.setText("Sökresultat för: \"" + searchTerm + "\"");
+        String categoryText;
+        if (products.size() == 0) {
+            categoryText = "Din sökning på \"" + searchTerm + "\" gav inga träffar";
+        } else {
+            categoryText = "Sökresultat för: \"" + searchTerm + "\"";
+        }
+
+        categoryLabel.setText(categoryText);
         productsFlowPane.getChildren().removeIf(x->true);
 
         for(Product product : products) {
