@@ -150,7 +150,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @Override
     public void onProductAdded(Product product, Double amount) {
-
+        if (shouldBeRemoved) {
+            regretButtonOnAction(null);
+        }
     }
 
     @Override
