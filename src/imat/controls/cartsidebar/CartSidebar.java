@@ -21,8 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-// TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
-
 public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
@@ -106,6 +104,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
             removeCartNode(productsInSidebar.keySet().iterator().next());
         }
         switchView(regretPane);
+        // TODO Add regret button animation
     }
 
     @FXML

@@ -5,8 +5,9 @@ import imat.interfaces.ICategoryListener;
 import imat.interfaces.INavigationListener;
 import imat.interfaces.ISearchListener;
 import imat.interfaces.IShoppingListener;
-import se.chalmers.cse.dat216.project.*;
-
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.util.*;
 
@@ -29,7 +30,7 @@ public class Model {
     }
 
     public void navigate(NavigationTarget navigationTarget) {
-        navigationListeners.forEach(x->x.navigateTo(navigationTarget));
+        navigationListeners.forEach(x -> x.navigateTo(navigationTarget));
     }
 
     public void addShoppingListener(IShoppingListener IShoppingListener) {
@@ -39,8 +40,8 @@ public class Model {
     public void updateShoppingCart(Product product, double newAmount) {
         boolean existed = cart.containsKey(product);
         double oldAmount = existed ? cart.get(product) : 0.0;
-        if(newAmount <= 0) {
-            if(!cart.containsKey(product)) return;
+        if (newAmount <= 0) {
+            if (!cart.containsKey(product)) return;
             for (int i = 0; i < IShoppingListeners.size(); i++) {
                 IShoppingListeners.get(i).onProductUpdate(product, newAmount);
             }
@@ -48,16 +49,16 @@ public class Model {
             for (int i = 0; i < IShoppingListeners.size(); i++) {
                 IShoppingListeners.get(i).onProductRemoved(product, oldAmount);
             }
-            return;
-        }
-        cart.put(product, newAmount);
-        if(!existed) {
-            for (int i = 0; i < IShoppingListeners.size(); i++) {
-                IShoppingListeners.get(i).onProductAdded(product, newAmount);
+        } else {
+            cart.put(product, newAmount);
+            if (!existed) {
+                for (int i = 0; i < IShoppingListeners.size(); i++) {
+                    IShoppingListeners.get(i).onProductAdded(product, newAmount);
+                }
             }
-        }
-        for (int i = 0; i < IShoppingListeners.size(); i++) {
-            IShoppingListeners.get(i).onProductUpdate(product, newAmount);
+            for (int i = 0; i < IShoppingListeners.size(); i++) {
+                IShoppingListeners.get(i).onProductUpdate(product, newAmount);
+            }
         }
     }
 
@@ -66,12 +67,16 @@ public class Model {
     }
 
     public void addToShoppingCart(Product product, double amount) {
-        updateShoppingCart(product, cart.getOrDefault(product,0.0) + amount);
+        updateShoppingCart(product, cart.getOrDefault(product, 0.0) + amount);
     }
 
-    public void addCategoryListener(ICategoryListener categoryListener) { categoryListeners.add(categoryListener); }
+    public void addCategoryListener(ICategoryListener categoryListener) {
+        categoryListeners.add(categoryListener);
+    }
 
-    public void addSearchListener(ISearchListener searchListener) { searchListeners.add(searchListener); }
+    public void addSearchListener(ISearchListener searchListener) {
+        searchListeners.add(searchListener);
+    }
 
     public double getCartPrice() {
         return cart.entrySet().stream().mapToDouble(e -> e.getKey().getPrice() * e.getValue()).sum();
@@ -82,18 +87,18 @@ public class Model {
     }
 
     public void clearCart() {
-        while(0 < cart.size()) {
+        while (0 < cart.size()) {
             updateShoppingCart(cart.keySet().iterator().next(), 0);
         }
     }
 
     public void selectCategory(ProductCategory category) {
         selectedCategory = category;
-        categoryListeners.forEach(x->x.onCategorySelected(category));
+        categoryListeners.forEach(x -> x.onCategorySelected(category));
     }
 
     public void search(String searchTerm) {
-        if(searchTerm.length() == 0) return;
+        if (searchTerm.length() == 0) return;
 
         List<Product> products = new ArrayList<>();
 
@@ -103,7 +108,7 @@ public class Model {
             }
         }
 
-        searchListeners.forEach(x->x.onSearch(searchTerm, products));
+        searchListeners.forEach(x -> x.onSearch(searchTerm, products));
 
     }
 

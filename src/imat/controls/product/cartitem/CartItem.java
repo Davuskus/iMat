@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -53,18 +52,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private Label priceLabel;
-
-    @FXML
-    private AnchorPane amountSpinnerPane;
-
-    @FXML
-    private TextField amountTextField;
-
-    @FXML
-    private Button addButton;
-
-    @FXML
-    private Button subtractButton;
 
     @FXML
     private VBox infoVBox;
@@ -109,11 +96,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
     }
 
     @FXML
-    private void onEnterPressed(Event event) {
-        /*submitNewAmount(Double.valueOf(amountTextField.getText()));*/
-    }
-
-    @FXML
     private void regretButtonOnAction(Event event) {
         shouldBeRemoved = false;
         model.updateShoppingCart(product, amountBeforeRemoveRequest);
@@ -123,14 +105,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
     @FXML
     private void removeButtonOnAction(Event event) {
         setAmountBeforeRemoveRequest(model.getProductAmount(product));
-        startRemovalProcess();
-    }
-
-
-    private void removeIfAmountIsZero() {
-        if (Double.valueOf(amountTextField.getText()) == 0 || amountTextField.getText().equals("")) {
-            startRemovalProcess();
-        }
+        model.updateShoppingCart(product, 0);
     }
 
     private void switchView(Node view) {
@@ -143,8 +118,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
         shouldBeRemoved = true;
 
-        DelayedRunnable delayedRunnable = new DelayedRunnable(() -> {
+        new DelayedRunnable(() -> {
             if (shouldBeRemoved) {
+                shouldBeRemoved = false;
                 regretButton.setDisable(true);
 
                 Timeline removalAnimation = AnimationHandler.getAnimation(
@@ -159,8 +135,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
                 );
                 removalAnimation.play();
             }
-        });
-        delayedRunnable.runLater(millisBeforeRemoval);
+        }).runLater(millisBeforeRemoval);
 
     }
 
