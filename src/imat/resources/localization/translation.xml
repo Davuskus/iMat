@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>This is temporary</comment>
+    <entry key="VEGETABLEFRUIT">Grönsaker</entry>
+    <entry key="BREAD">Bröd</entry>
+    <entry key="FISH">Fisk</entry>
+    <entry key="FRUIT">Frukt</entry>
+    <entry key="BERRY">Bär</entry>
+    <entry key="MELONS">Meloner</entry>
+    <entry key="FLOURSUGAR_SALT">Salt/Socker</entry>
+    <entry key="DAIRIES">Mejeri</entry>
+    <entry key="HOTDRINKS">Varma drycker</entry>
+    <entry key="POTATORICE">Potatis/Ris</entry>
+    <entry key="EXOTICFRUIT">Exotisk frukt</entry>
+    <entry key="HERB">Örter/Kryddor</entry>
+    <entry key="CABBAGE">Sallad</entry>
+    <entry key="COOLDRINKS">Kalla drycker</entry>
+    <entry key="BREAD">Bröd</entry>
+    <entry key="POD">Baljväxter</entry>
+    <entry key="MEAT">Kött</entry>
+    <entry key="PASTA">Pasta</entry>
+    <entry key="ROOTVEGETABLE">Rotfrukter</entry>
+    <entry key="SWEET">Godis</entry>
+    <entry key="NUTSAND_SEADS">Nötter/Frön</entry>
+    <entry key="CITRUSFRUIT">Citrusfrukter</entry>
+</properties>
