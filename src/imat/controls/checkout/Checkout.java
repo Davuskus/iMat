@@ -1,6 +1,7 @@
 package imat.controls.checkout;
 
 import imat.FXMLController;
+import imat.enums.NavigationTarget;
 import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
@@ -75,7 +76,7 @@ public class Checkout extends FXMLController implements IShoppingListener {
     }
 
     @FXML private void onPayButtonAction() {
-        model.navigate("payment");
+        model.navigate(NavigationTarget.PAYMENT);
     }
 
     @Override

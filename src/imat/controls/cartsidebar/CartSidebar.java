@@ -2,6 +2,7 @@ package imat.controls.cartsidebar;
 
 import imat.Model;
 import imat.controls.product.cartitem.CartItem;
+import imat.enums.NavigationTarget;
 import imat.interfaces.IFXMLController;
 import imat.interfaces.RemoveRequestListener;
 import imat.interfaces.IShoppingListener;
@@ -105,7 +106,7 @@ public class CartSidebar implements Initializable, IShoppingListener, IFXMLContr
     private void toCheckoutButtonOnAction(Event event) {
         if (!isSavingCartAtShutdown)
            // updateShoppingCart(); // Should be used if the cart should NOT be saved at shutdown
-        model.navigate("pay");
+        model.navigate(NavigationTarget.PAY);
     }
 
     @FXML

@@ -1,6 +1,7 @@
 package imat.views.payment;
 
 import imat.FXMLController;
+import imat.enums.NavigationTarget;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -240,7 +241,7 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private void moveBack() {
         //SaveUserInfo();
-        model.navigate("pay");
+        model.navigate(NavigationTarget.PAY);
     }
 
 }

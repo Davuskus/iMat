@@ -1,5 +1,7 @@
 package imat.interfaces;
 
+import imat.enums.NavigationTarget;
+
 public interface INavigationListener {
-    void navigateTo(String destination);
+    void navigateTo(NavigationTarget navigationTarget);
 }

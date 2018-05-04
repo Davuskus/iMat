@@ -20,11 +20,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="280.0" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.product.cartitem.CartItem">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controls.product.cartitem.CartItem">
     <children>
       <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-             <AnchorPane fx:id="regretPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-black-transparent-little">
+             <AnchorPane fx:id="regretPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-black">
                  <children>
                      <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                          <styleClass>

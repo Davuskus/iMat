@@ -32,7 +32,7 @@
                 </AnchorPane>
                 <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <AnchorPane fx:id="productsPane" prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane fx:id="articlesPane" prefHeight="200.0" prefWidth="200.0">
                             <children>
                                 <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background-gray-light" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>

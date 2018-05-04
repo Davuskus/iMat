@@ -2,6 +2,7 @@ package imat.controls.header;
 
 import imat.FXMLController;
 import imat.controls.search.SearchField;
+import imat.enums.NavigationTarget;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -18,15 +19,15 @@ public class Header extends FXMLController {
     SearchField searchFieldController;
 
     @FXML private void onHelpButtonAction() {
-        model.navigate("help");
+        model.navigate(NavigationTarget.HELP);
     }
 
     @FXML private void onHistoryButtonAction() {
-        model.navigate("history");
+        model.navigate(NavigationTarget.HISTORY);
     }
 
     @FXML private void onHomeButtonAction() {
-        model.navigate("home");
+        model.navigate(NavigationTarget.HOME);
     }
 
     @Override

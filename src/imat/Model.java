@@ -1,5 +1,6 @@
 package imat;
 
+import imat.enums.NavigationTarget;
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.INavigationListener;
 import imat.interfaces.ISearchListener;
@@ -27,8 +28,8 @@ public class Model {
         searchListeners = new ArrayList<>(1);
     }
 
-    public void navigate(String destination) {
-        navigationListeners.forEach(x->x.navigateTo(destination));
+    public void navigate(NavigationTarget navigationTarget) {
+        navigationListeners.forEach(x->x.navigateTo(navigationTarget));
     }
 
     public void addShoppingListener(IShoppingListener IShoppingListener) {

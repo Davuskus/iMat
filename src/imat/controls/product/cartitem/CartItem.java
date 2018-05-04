@@ -159,6 +159,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
                         regretButton.setDisable(true);
 
+                        itemHBox.setVisible(false);
+
                         Timeline timeline = new Timeline();
                         timeline.getKeyFrames().addAll(
                                 new KeyFrame(Duration.millis(500),

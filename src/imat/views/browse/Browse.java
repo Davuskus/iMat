@@ -3,6 +3,7 @@ package imat.views.browse;
 
 import imat.FXMLController;
 import imat.Model;
+import imat.enums.NavigationTarget;
 import imat.interfaces.IFXMLController;
 import imat.interfaces.INavigationListener;
 import javafx.fxml.FXML;
@@ -31,9 +32,9 @@ public class Browse extends FXMLController implements INavigationListener {
     }
 
     @Override
-    public void navigateTo(String destination) {
-        switch (destination.toLowerCase()) {
-            case("history"):
+    public void navigateTo(NavigationTarget navigationTarget) {
+        switch (navigationTarget) {
+            case HISTORY:
                 historyPane.toFront(); break;
             default:
                 productPane.toFront(); break;

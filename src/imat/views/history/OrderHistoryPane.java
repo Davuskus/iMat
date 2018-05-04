@@ -3,11 +3,14 @@ package imat.views.history;
 import imat.Model;
 import imat.controls.history.article.ArticleHistoryItem;
 import imat.controls.history.order.OrderHistoryItem;
+import imat.enums.NavigationTarget;
 import imat.interfaces.IFXMLController;
+import imat.interfaces.INavigationListener;
 import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -22,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderHistoryPane extends AnchorPane implements Initializable, IFXMLController {
+public class OrderHistoryPane extends AnchorPane implements Initializable, IFXMLController, INavigationListener {
 
     @FXML
     private Button copyToCartButton;
@@ -51,6 +54,12 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     @FXML
     private Label totalPriceLabel;
 
+    @FXML
+    private AnchorPane articlesPane;
+
+    @FXML
+    private AnchorPane ordersPane;
+
     private final List<OrderHistoryItem> orderHistoryItems;
 
     private final List<ArticleHistoryItem> articleHistoryItems;
@@ -67,7 +76,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateOrderList();
+        model.addNavigationListener(this);
     }
 
     /**
@@ -119,16 +128,16 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
         totalNumArticlesLabel.setText(orderHistoryItem.getNumShoppingItems() + " st");
         totalPriceLabel.setText(String.valueOf(MathUtils.round(orderHistoryItem.getOrderPrice(), 2)) + " kr");
 
-        switchViews();
+        switchView(articlesPane);
     }
 
-    private void hideProductsPane() {
+    private void hideArticlesPane() {
         articlesVBox.getChildren().clear();
         articleHistoryItems.clear();
         backButton.setFocusTraversable(false);
         copyToCartButton.setFocusTraversable(false);
         updateOrderListButton.setFocusTraversable(true);
-        switchViews();
+        switchView(ordersPane);
     }
 
     private void populateArticleList(OrderHistoryItem orderHistoryItem) {
@@ -140,8 +149,8 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
         }
     }
 
-    private void switchViews() {
-        stackPane.getChildren().get(0).toFront();
+    private void switchView(Node node) {
+        node.toFront();
     }
 
     @FXML
@@ -151,7 +160,7 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
 
     @FXML
     private void backButtonOnAction(Event event) {
-        hideProductsPane();
+        hideArticlesPane();
     }
 
     @FXML
@@ -164,6 +173,17 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     @Override
     public void setModel(Model model) {
         this.model = model;
+    }
+
+
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        if (navigationTarget == NavigationTarget.HISTORY) {
+            updateOrderList();
+        } else {
+            hideArticlesPane();
+            ordersVBox.getChildren().clear();
+        }
     }
 
 }

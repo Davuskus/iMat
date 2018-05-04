@@ -2,6 +2,7 @@ package imat.controllers;
 
 import imat.FXMLController;
 import imat.controls.product.cartitem.CartItem;
+import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.views.helpview.HelpView;
 import imat.views.modal.Modal;
@@ -100,13 +101,13 @@ public class MainController extends FXMLController implements INavigationListene
     }
 
     @Override
-    public void navigateTo(String destination) {
-        switch (destination.toLowerCase()) {
-            case "help":
+    public void navigateTo(NavigationTarget navigationTarget) {
+        switch (navigationTarget) {
+            case HELP:
                 helpView.toFront(); break;
-            case "pay":
+            case PAY:
                 payView.toFront(); break;
-            case "payment":
+            case PAYMENT:
                 paymentView.toFront(); break;
             default:
                 browseView.toFront(); break;
