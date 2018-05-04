@@ -6,6 +6,7 @@ public enum NavigationTarget {
     PAY,
     PAYMENT,
     HELP,
-    HOME;
+    HOME,
+    CATEGORY;
 
 }

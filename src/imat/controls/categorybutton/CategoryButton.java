@@ -1,6 +1,7 @@
 package imat.controls.categorybutton;
 
 import imat.FXMLController;
+import imat.enums.NavigationTarget;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import se.chalmers.cse.dat216.project.ProductCategory;
@@ -20,6 +21,7 @@ public class CategoryButton extends FXMLController {
 
     @FXML private void onButtonClick(){
         model.selectCategory(CATEGORY);
+        model.navigate(NavigationTarget.CATEGORY);
     }
 
     @Override
