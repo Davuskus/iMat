@@ -1,8 +1,10 @@
 package imat.views.products;
 
 import imat.FXMLController;
+import imat.controllers.SearchController;
 import imat.controls.product.menuitem.ProductMenuItem;
 import imat.interfaces.ICategoryListener;
+import imat.interfaces.ISearchListener;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.fxml.FXML;
@@ -16,7 +18,7 @@ import se.chalmers.cse.dat216.project.ProductCategory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Products extends FXMLController implements ICategoryListener {
+public class Products extends FXMLController implements ICategoryListener, ISearchListener {
 
     @FXML private Label categoryLabel;
     @FXML private FlowPane productsFlowPane;
@@ -34,6 +36,19 @@ public class Products extends FXMLController implements ICategoryListener {
         productsFlowPane.getChildren().removeIf(x->true);
         categoryLabel.setText(category.name());
         for(Product product: IMatDataHandler.getInstance().getProducts(category)) {
+            ProductMenuItem controller = new ProductMenuItem(product);
+            controller.setModel(model);
+            Node item = FXMLLoader.loadFXMLNodeFromRootPackage("../../controls/product/menuitem/product_menu_item.fxml",this, controller);
+            productsFlowPane.getChildren().add(item);
+        }
+    }
+
+    @Override
+    public void onSearch(String searchTerm) {
+        categoryLabel.setText("Sökresultat för: \"" + searchTerm + "\"");
+        productsFlowPane.getChildren().removeIf(x->true);
+
+        for(Product product : SearchController.search(searchTerm)) {
             ProductMenuItem controller = new ProductMenuItem(product);
             controller.setModel(model);
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage("../../controls/product/menuitem/product_menu_item.fxml",this, controller);

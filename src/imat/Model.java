@@ -2,6 +2,7 @@ package imat;
 
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.INavigationListener;
+import imat.interfaces.ISearchListener;
 import imat.interfaces.IShoppingListener;
 import se.chalmers.cse.dat216.project.*;
 
@@ -17,11 +18,13 @@ public class Model {
     private final List<IShoppingListener> IShoppingListeners;
     private final List<ICategoryListener> categoryListeners;
     private final List<INavigationListener> navigationListeners;
+    private final List<ISearchListener> searchListeners;
 
     public Model() {
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
         navigationListeners = new ArrayList<>(1);
+        searchListeners = new ArrayList<>(1);
     }
 
     public void navigate(String destination) {
@@ -67,6 +70,8 @@ public class Model {
 
     public void addCategoryListener(ICategoryListener categoryListener) { categoryListeners.add(categoryListener); }
 
+    public void addSearchListener(ISearchListener searchListener) { searchListeners.add(searchListener); }
+
     public double getCartPrice() {
         return cart.entrySet().stream().mapToDouble(e -> e.getKey().getPrice() * e.getValue()).sum();
     }
@@ -84,6 +89,19 @@ public class Model {
     public void selectCategory(ProductCategory category) {
         selectedCategory = category;
         categoryListeners.forEach(x->x.onCategorySelected(category));
+    }
+
+    public void search(String searchTerm) {
+        List<Product> products = new ArrayList<>();
+
+        for (Product product : IMatDataHandler.getInstance().getProducts()) {
+            if (product.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                products.add(product);
+            }
+        }
+
+        searchListeners.forEach(x->x.onSearch(products));
+
     }
 
     public void verifyExistence() {

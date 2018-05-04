@@ -6,13 +6,11 @@ import imat.interfaces.INavigationListener;
 import imat.views.helpview.HelpView;
 import imat.views.modal.Modal;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
-
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -44,7 +42,6 @@ public class MainController extends FXMLController implements INavigationListene
 
     @FXML
     private AnchorPane paymentView;
-
 
     @FXML HelpView helpViewController;
 
