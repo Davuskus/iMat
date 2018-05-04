@@ -40,7 +40,6 @@ public class ProductMenuItem extends FXMLController {
         this.product = product;
     }
 
-
     /**
      * Sets the product and updates the menu item's information accordingly.
      *
@@ -50,7 +49,7 @@ public class ProductMenuItem extends FXMLController {
         this.product = product;
         imageView.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         nameLabel.setText(product.getName());
-        priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnitSuffix());
+        priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnit());
         if (!product.isEcological()) {
             ecoLabel.setVisible(false);
         }
@@ -73,22 +72,6 @@ public class ProductMenuItem extends FXMLController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setProduct(product);
-    }
-
-//    public void addChangeListener(ChangeListener<Integer> listener) {
-//        spinner.addChangeListener(listener);
-//    }
-
-    @FXML private void onEnterPressed() {
-
-    }
-
-    @FXML private void addButtonOnAction() {
-
-    }
-
-    @FXML private void subtractButtonOnAction() {
-
     }
 
 }

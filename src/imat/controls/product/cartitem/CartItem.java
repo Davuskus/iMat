@@ -83,13 +83,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     private final Product product;
 
-    private final boolean isAcceptingDoubles;
-
-    private final long millisBeforeRemoval = 2000;
+    private final long millisBeforeRemoval = 3000;
 
     private boolean shouldBeRemoved;
-
-    private Pattern textPattern;
 
     private final IRemoveEvent removeEvent;
 
@@ -98,31 +94,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
     public CartItem(Product product, IRemoveEvent removeEvent) {
         this.removeEvent = removeEvent;
         this.product = product;
-
-        switch (product.getUnitSuffix()) {
-            case "l":
-            case "kg":
-                textPattern = Pattern.compile("\\d*|\\d+\\.\\d*");
-                isAcceptingDoubles = true;
-                break;
-            default:
-                textPattern = Pattern.compile("\\d*");
-                isAcceptingDoubles = false;
-                break;
-        }
-    }
-
-    private void updateInfo() {
-        /*updateTextFieldValue();
-        updatePriceLabel();*/
-    }
-
-    private void updateTextFieldValue(double value) {
-        if (isAcceptingDoubles) {
-            amountTextField.setText(String.valueOf(value));
-        } else {
-            amountTextField.setText(String.valueOf((int) value));
-        }
     }
 
     @Override
@@ -141,8 +112,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
         unitLabel.setText("(" + product.getUnit() + ")");
 
         model.addShoppingListener(this);
-
-        updateInfo();
     }
 
     @FXML
@@ -159,6 +128,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private void removeButtonOnAction(Event event) {
+        setAmountBeforeRemoveRequest(model.getProductAmount(product));
         startRemovalProcess();
     }
 
@@ -186,6 +156,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
                 Platform.runLater(() -> {
                     if (shouldBeRemoved) {
+
+                        regretButton.setDisable(true);
 
                         Timeline timeline = new Timeline();
                         timeline.getKeyFrames().addAll(
@@ -218,13 +190,19 @@ public class CartItem extends FXMLController implements IShoppingListener {
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
         if (product != this.product) return;
-        amountBeforeRemoveRequest = oldAmount;
+        setAmountBeforeRemoveRequest(oldAmount);
         startRemovalProcess();
+    }
+
+    private void setAmountBeforeRemoveRequest(double amount) {
+        if (amount != 0)
+            amountBeforeRemoveRequest = amount;
     }
 
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
         if (product != this.product) return;
+        setAmountBeforeRemoveRequest(model.getProductAmount(product));
         updatePriceLabel(product.getPrice() * newAmount);
     }
 }
