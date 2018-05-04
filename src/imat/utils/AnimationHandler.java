@@ -1,6 +1,6 @@
 package imat.utils;
 
-import com.sun.istack.internal.Nullable;
+
 import imat.interfaces.IAction;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -21,7 +21,7 @@ public final class AnimationHandler {
         return timeline;
     }
 
-    public static Timeline getAnimation(@Nullable IAction<Void> onFinishedAction, KeyFrame... keyFrames) {
+    public static Timeline getAnimation(IAction<Void> onFinishedAction, KeyFrame... keyFrames) {
         return setOnFinishedEvent(getAnimation(keyFrames), onFinishedAction);
     }
 
@@ -29,7 +29,7 @@ public final class AnimationHandler {
             Node target,
             double durationInMillis,
             double endOpacity,
-            @Nullable IAction<Void> onFinishedAction) {
+            IAction<Void> onFinishedAction) {
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(getOpacityChangeKeyFrame(target, durationInMillis, endOpacity));
         return setOnFinishedEvent(timeline, onFinishedAction);
@@ -38,8 +38,7 @@ public final class AnimationHandler {
     public static Timeline getHeightChangeAnimation(
             Region target,
             double durationInMillis,
-            double endHeight,
-            @Nullable IAction<Void> onFinishedAction) {
+            double endHeight, IAction<Void> onFinishedAction) {
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(getHeightChangeKeyFrame(target, durationInMillis, endHeight));
         return setOnFinishedEvent(timeline, onFinishedAction);
@@ -49,7 +48,7 @@ public final class AnimationHandler {
             Region target,
             double durationInMillis,
             double endWidth,
-            @Nullable IAction<Void> onFinishedAction) {
+            IAction<Void> onFinishedAction) {
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(getWidthChangeKeyFrame(target, durationInMillis, endWidth));
         return setOnFinishedEvent(timeline, onFinishedAction);
@@ -84,7 +83,7 @@ public final class AnimationHandler {
                 new KeyValue(propertyTarget, endValue, Interpolator.EASE_BOTH));
     }
 
-    private static Timeline setOnFinishedEvent(Timeline timeline, @Nullable IAction<Void> onFinishedAction) {
+    private static Timeline setOnFinishedEvent(Timeline timeline, IAction<Void> onFinishedAction) {
         if (onFinishedAction != null) {
             timeline.setOnFinished(event -> onFinishedAction.execute(null));
         }
