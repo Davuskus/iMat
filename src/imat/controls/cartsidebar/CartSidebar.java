@@ -1,5 +1,6 @@
 package imat.controls.cartsidebar;
 
+import imat.FXMLController;
 import imat.Model;
 import imat.controls.product.cartitem.CartItem;
 import imat.enums.NavigationTarget;
@@ -22,7 +23,7 @@ import java.util.*;
 
 // TODO Show a regret-button when the trash-button has been pressed. The same principle as for CartItem.
 
-public class CartSidebar implements Initializable, IShoppingListener, IFXMLController {
+public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private VBox cartItemVBox;

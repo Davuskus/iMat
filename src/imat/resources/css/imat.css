@@ -203,7 +203,7 @@
 }
 
 .background-black-transparent-little {
-    -fx-background-color: rgba(0, 0, 0, 0.95);
+    -fx-background-color: rgba(0, 0, 0, 0.85);
 }
 
 .checkout-list-item {

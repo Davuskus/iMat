@@ -29,7 +29,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.regex.Pattern;
 
 public class CartItem extends FXMLController implements IShoppingListener {
 
@@ -159,10 +158,13 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
                         regretButton.setDisable(true);
 
-                        itemHBox.setVisible(false);
+                        // itemHBox.setVisible(false);
 
                         Timeline timeline = new Timeline();
                         timeline.getKeyFrames().addAll(
+                                new KeyFrame(Duration.millis(250),
+                                        new KeyValue(regretButton.opacityProperty(), 0, Interpolator.EASE_BOTH),
+                                        new KeyValue(itemHBox.opacityProperty(), 0, Interpolator.EASE_BOTH)),
                                 new KeyFrame(Duration.millis(500),
                                         new KeyValue(rootPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
                                         new KeyValue(rootPane.opacityProperty(), 0, Interpolator.EASE_BOTH)));
