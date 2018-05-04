@@ -2,6 +2,7 @@ package imat.controls.product.cartitem;
 
 import imat.FXMLController;
 import imat.controls.spinner.AmountSpinner;
+import imat.interfaces.IRemoveEvent;
 import imat.interfaces.IShoppingListener;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
@@ -90,7 +91,12 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     private Pattern textPattern;
 
-    public CartItem(Product product) {
+    private final IRemoveEvent removeEvent;
+
+    private double amountBeforeRemoveRequest;
+
+    public CartItem(Product product, IRemoveEvent removeEvent) {
+        this.removeEvent = removeEvent;
         this.product = product;
 
         switch (product.getUnitSuffix()) {
@@ -147,7 +153,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
     @FXML
     private void regretButtonOnAction(Event event) {
         shouldBeRemoved = false;
-        switchView();
+        model.updateShoppingCart(product, amountBeforeRemoveRequest);
+        switchView(itemHBox);
     }
 
     @FXML
@@ -162,13 +169,13 @@ public class CartItem extends FXMLController implements IShoppingListener {
         }
     }
 
-    private void switchView() {
-        stackPane.getChildren().get(0).toFront();
+    private void switchView(Node view) {
+        view.toFront();
     }
 
     private void startRemovalProcess() {
 
-        switchView();
+        switchView(regretPane);
 
         shouldBeRemoved = true;
 
@@ -185,8 +192,10 @@ public class CartItem extends FXMLController implements IShoppingListener {
                                 new KeyFrame(Duration.millis(500),
                                         new KeyValue(rootPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH),
                                         new KeyValue(rootPane.opacityProperty(), 0, Interpolator.EASE_BOTH)));
-                        timeline.setOnFinished(event ->
-                                model.updateShoppingCart(product, 0.0)
+                        timeline.setOnFinished(event -> {
+                                    removeEvent.execute();
+                                    model.updateShoppingCart(product, 0.0);
+                                }
                         );
                         timeline.play();
                     }
@@ -208,7 +217,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
-
+        if (product != this.product) return;
+        amountBeforeRemoveRequest = oldAmount;
+        startRemovalProcess();
     }
 
     @Override
