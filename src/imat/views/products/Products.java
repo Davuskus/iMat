@@ -28,6 +28,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addCategoryListener(this);
+        model.addSearchListener(this);
     }
 
     @Override
