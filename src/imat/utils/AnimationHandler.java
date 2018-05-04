@@ -67,6 +67,15 @@ public final class AnimationHandler {
         return getAnimationKeyFrame(target.prefWidthProperty(), durationInMillis, endWidth);
     }
 
+    public static KeyFrame getXTranslationKeyFrame(Region target, double durationInMillis, double endX) {
+        return getAnimationKeyFrame(target.translateXProperty(), durationInMillis, endX);
+    }
+
+    public static KeyFrame getYTranslationKeyFrame(Region target, double durationInMillis, double endY) {
+        return getAnimationKeyFrame(target.translateXProperty(), durationInMillis, endY);
+    }
+
+
     public static KeyFrame getAnimationKeyFrame(
             DoubleProperty propertyTarget,
             double durationInMillis,

@@ -57,6 +57,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private VBox infoVBox;
 
     @FXML
+    private VBox otherVBox;
+
+    @FXML
     private Label ecoLabel;
 
     @FXML
@@ -82,7 +85,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
         AmountSpinner spinnerController = new AmountSpinner(product);
         spinnerController.setModel(model);
         Node spinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml", this, spinnerController);
-        itemHBox.getChildren().add(spinnerNode);
+        otherVBox.getChildren().add(spinnerNode);
 
         nameLabel.setText(this.product.getName());
 
@@ -123,6 +126,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
                 shouldBeRemoved = false;
                 regretButton.setDisable(true);
 
+                double sceneWidth = rootPane.getScene().getWidth();
                 Timeline removalAnimation = AnimationHandler.getAnimation(
                         v -> {
                             removeEvent.execute();
@@ -131,6 +135,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
                         AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
                         AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
                         AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
+                        AnimationHandler.getXTranslationKeyFrame(rootPane, 750, sceneWidth),
                         AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
                 );
                 removalAnimation.play();
