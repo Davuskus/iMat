@@ -136,6 +136,7 @@ public class CartSidebar implements Initializable, IShoppingListener, RemoveRequ
         removeCartNode(product);
         cartPrice = model.getCartPrice();
         updateSumLabel();
+        disableCheckoutButtonIfPriceIsZero();
     }
 
     @Override
