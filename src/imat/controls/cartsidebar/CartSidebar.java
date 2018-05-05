@@ -117,6 +117,8 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         switchView(regretPane);
 
         productsInSidebar.keySet().forEach(product -> productsInTrash.put(product, model.getProductAmount(product)));
+        cartItemVBox.getChildren().clear();
+        productsInSidebar.clear();
         productsInTrash.keySet().forEach(product -> model.updateShoppingCart(product, 0));
 
         new DelayedRunnable(() -> {
