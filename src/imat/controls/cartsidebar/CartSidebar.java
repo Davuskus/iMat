@@ -52,7 +52,10 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     private double cartPrice;
 
     private boolean shouldTrash;
+
     private final long millisBeforeTrash = 3000;
+
+    private DelayedRunnable delayedRunnable;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -112,32 +115,34 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         regretPane.setOpacity(1);
         switchView(regretPane);
 
-        new DelayedRunnable(() -> {
+        delayedRunnable = new DelayedRunnable(new Runnable() {
+            @Override
+            public void run() {
+                if (shouldTrash && delayedRunnable.getRunnable() == this) {
 
-            if (shouldTrash) {
+                    Timeline fadeAnimation = AnimationHandler.getAnimation(
+                            v -> {
 
-                Timeline fadeAnimation = AnimationHandler.getAnimation(
-                        v -> {
+                                cartItemVBox.getChildren().clear();
+                                productsInSidebar.keySet().forEach(product -> model.updateShoppingCart(product, 0));
+                                productsInSidebar.clear();
+                                shouldTrash = false;
+                                switchView(scrollPane);
+                                regretButton.setDisable(false);
 
-                            cartItemVBox.getChildren().clear();
-                            productsInSidebar.keySet().forEach(product -> model.updateShoppingCart(product, 0));
-                            productsInSidebar.clear();
-                            shouldTrash = false;
-                            switchView(scrollPane);
-                            regretButton.setDisable(false);
+                                Timeline fadeAnimation2 = AnimationHandler.getAnimation(
+                                        AnimationHandler.getOpacityChangeKeyFrame(regretPane, 250, 0)
+                                );
+                                fadeAnimation2.play();
+                            },
+                            AnimationHandler.getOpacityChangeKeyFrame(regretPane, 250, 0.5)
+                    );
+                    fadeAnimation.play();
 
-                            Timeline fadeAnimation2 = AnimationHandler.getAnimation(
-                                    AnimationHandler.getOpacityChangeKeyFrame(regretPane, 500, 0)
-                            );
-                            fadeAnimation2.play();
-                        },
-                        AnimationHandler.getOpacityChangeKeyFrame(regretPane, 250, 0.5)
-                );
-                fadeAnimation.play();
-
+                }
             }
-
-        }).runLater(millisBeforeTrash);
+        });
+        delayedRunnable.runLater(millisBeforeTrash);
 
     }
 
