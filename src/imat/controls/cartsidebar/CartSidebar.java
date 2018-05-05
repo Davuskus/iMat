@@ -49,8 +49,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     private final Map<Product, Node> productsInSidebar = new HashMap<>();
 
-    private final Map<Product, Double> productsInTrash = new HashMap<>();
-
     private double cartPrice;
 
     private boolean shouldTrash;
@@ -98,12 +96,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         model.navigate(NavigationTarget.PAY);
     }
 
-    private void clearCart() {
-        Map<Product, Node> copyOfProductsInSidebar = new HashMap<>(productsInSidebar.size());
-        copyOfProductsInSidebar.putAll(productsInSidebar);
-        copyOfProductsInSidebar.keySet().forEach(this::removeCartNode);
-    }
-
     @FXML
     private void trashButtonOnAction(Event event) {
         startTrashProcess();
@@ -113,14 +105,12 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
         shouldTrash = true;
 
+        updateCartInfo(0);
+
+        trashButton.setDisable(true);
         regretButton.setDisable(false);
         regretPane.setOpacity(1);
         switchView(regretPane);
-
-        productsInSidebar.keySet().forEach(product -> productsInTrash.put(product, model.getProductAmount(product)));
-        cartItemVBox.getChildren().clear();
-        productsInSidebar.clear();
-        productsInTrash.keySet().forEach(product -> model.updateShoppingCart(product, 0));
 
         new DelayedRunnable(() -> {
 
@@ -128,11 +118,20 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
                 Timeline fadeAnimation = AnimationHandler.getAnimation(
                         v -> {
+
+                            cartItemVBox.getChildren().clear();
+                            productsInSidebar.keySet().forEach(product -> model.updateShoppingCart(product, 0));
+                            productsInSidebar.clear();
                             shouldTrash = false;
                             switchView(scrollPane);
                             regretButton.setDisable(false);
+
+                            Timeline fadeAnimation2 = AnimationHandler.getAnimation(
+                                    AnimationHandler.getOpacityChangeKeyFrame(regretPane, 500, 0)
+                            );
+                            fadeAnimation2.play();
                         },
-                        AnimationHandler.getOpacityChangeKeyFrame(regretPane, 500, 0)
+                        AnimationHandler.getOpacityChangeKeyFrame(regretPane, 250, 0.5)
                 );
                 fadeAnimation.play();
 
@@ -144,14 +143,23 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private void regretButtonOnAction(Event event) {
-        productsInTrash.keySet().forEach(product -> model.updateShoppingCart(product, productsInTrash.get(product)));
-        productsInTrash.clear();
+        shouldTrash = false;
+        trashButton.setDisable(false);
+        updateCartInfo(model.getCartPrice());
         switchView(scrollPane);
+    }
+
+    private void updateCartInfo(double cartPrice) {
+        this.cartPrice = cartPrice;
+        updateSumLabel();
+        disableCheckoutButtonIfPriceIsZero();
     }
 
     @Override
     public void onProductAdded(Product product, Double amount) {
-        trashButton.setDisable(false);
+        if (!shouldTrash) {
+            trashButton.setDisable(false);
+        }
         addCartNode(product);
     }
 
@@ -162,16 +170,12 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
             trashButton.setDisable(true);
         }
 
-        cartPrice = model.getCartPrice();
-        updateSumLabel();
-        disableCheckoutButtonIfPriceIsZero();
+        updateCartInfo(model.getCartPrice());
     }
 
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
-        cartPrice = model.getCartPrice();
-        updateSumLabel();
-        disableCheckoutButtonIfPriceIsZero();
+        updateCartInfo(model.getCartPrice());
     }
 
     private void switchView(Node node) {
