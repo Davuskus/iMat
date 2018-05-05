@@ -75,6 +75,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     private double amountBeforeRemoveRequest;
 
+    private DelayedRunnable delayedRunnable;
+
     public CartItem(Product product, IRemoveEvent removeEvent) {
         this.removeEvent = removeEvent;
         this.product = product;
@@ -121,24 +123,28 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
         shouldBeRemoved = true;
 
-        new DelayedRunnable(() -> {
-            if (shouldBeRemoved) {
-                shouldBeRemoved = false;
-                regretButton.setDisable(true);
-                Timeline removalAnimation = AnimationHandler.getAnimation(
-                        v -> {
-                            removeEvent.execute();
-                            model.updateShoppingCart(product, 0.0);
-                        },
-                        AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
-                        AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
-                        AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
-                        AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth()),
-                        AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
-                );
-                removalAnimation.play();
+        delayedRunnable = new DelayedRunnable(new Runnable() {
+            @Override
+            public void run() {
+                if (shouldBeRemoved && delayedRunnable.getRunnable() == this) {
+                    shouldBeRemoved = false;
+                    regretButton.setDisable(true);
+                    Timeline removalAnimation = AnimationHandler.getAnimation(
+                            v -> {
+                                removeEvent.execute();
+                                model.updateShoppingCart(product, 0.0);
+                            },
+                            AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
+                            AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
+                            AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
+                            AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth()),
+                            AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
+                    );
+                    removalAnimation.play();
+                }
             }
-        }).runLater(millisBeforeRemoval);
+        });
+        delayedRunnable.runLater(millisBeforeRemoval);
 
     }
 
