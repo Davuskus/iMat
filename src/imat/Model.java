@@ -22,6 +22,8 @@ public class Model {
     private final List<INavigationListener> navigationListeners;
     private final List<ISearchListener> searchListeners;
 
+    private boolean isThrowingCartInTrash;
+
     public Model() {
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
@@ -49,7 +51,7 @@ public class Model {
             for (int i = 0; i < IShoppingListeners.size(); i++) {
                 IShoppingListeners.get(i).onProductRemoved(product, oldAmount);
             }
-        } else {
+        } else if (!isThrowingCartInTrash) {
             cart.put(product, newAmount);
             if (!existed) {
                 for (int i = 0; i < IShoppingListeners.size(); i++) {
@@ -60,6 +62,10 @@ public class Model {
                 IShoppingListeners.get(i).onProductUpdate(product, newAmount);
             }
         }
+    }
+
+    public void removeProductFromShoppingCart(Product product) {
+        updateShoppingCart(product, 0);
     }
 
     public double getProductAmount(Product product) {
@@ -84,6 +90,15 @@ public class Model {
 
     public Set<Product> getProductsInCart() {
         return cart.keySet();
+    }
+
+    public void saveShoppingCart() {
+        cart.keySet().forEach(
+                product -> IMatDataHandler.getInstance().getShoppingCart().addProduct(product, cart.get(product)));
+    }
+
+    public void clearBackendShoppingCart() {
+        IMatDataHandler.getInstance().getShoppingCart().clear();
     }
 
     public void clearCart() {
@@ -126,5 +141,13 @@ public class Model {
 
     public void addNavigationListener(INavigationListener navigationListener) {
         navigationListeners.add(navigationListener);
+    }
+
+    public void setThrowingCartInTrash(boolean throwingCartInTrash) {
+        isThrowingCartInTrash = throwingCartInTrash;
+    }
+
+    public boolean isThrowingCartInTrash() {
+        return isThrowingCartInTrash;
     }
 }

@@ -104,6 +104,8 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         startTrashProcess();
     }
 
+    private final Map<Product, Double> copiedCart = new HashMap<>();
+
     private void startTrashProcess() {
 
         shouldTrash = true;
@@ -115,27 +117,25 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         regretPane.setOpacity(1);
         switchView(regretPane);
 
+        model.getProductsInCart().forEach(product -> copiedCart.put(product, model.getProductAmount(product)));
+        model.clearCart();
+
+        model.setThrowingCartInTrash(true);
+
         delayedRunnable = new DelayedRunnable(new Runnable() {
             @Override
             public void run() {
                 if (shouldTrash && delayedRunnable.getRunnable() == this) {
 
+                    regretButton.setDisable(true);
+                    shouldTrash = false;
+
                     Timeline fadeAnimation = AnimationHandler.getAnimation(
                             v -> {
-
-                                cartItemVBox.getChildren().clear();
-                                productsInSidebar.keySet().forEach(product -> model.updateShoppingCart(product, 0));
-                                productsInSidebar.clear();
-                                shouldTrash = false;
+                                model.setThrowingCartInTrash(false);
                                 switchView(scrollPane);
-                                regretButton.setDisable(false);
-
-                                Timeline fadeAnimation2 = AnimationHandler.getAnimation(
-                                        AnimationHandler.getOpacityChangeKeyFrame(regretPane, 250, 0)
-                                );
-                                fadeAnimation2.play();
                             },
-                            AnimationHandler.getOpacityChangeKeyFrame(regretPane, 250, 0.5)
+                            AnimationHandler.getOpacityChangeKeyFrame(regretPane, 500, 0)
                     );
                     fadeAnimation.play();
 
@@ -148,7 +148,10 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private void regretButtonOnAction(Event event) {
+        model.setThrowingCartInTrash(false);
+        copiedCart.forEach((product, oldAmount) -> model.updateShoppingCart(product, oldAmount));
         shouldTrash = false;
+        regretButton.setDisable(true);
         trashButton.setDisable(false);
         updateCartInfo(model.getCartPrice());
         switchView(scrollPane);
@@ -164,8 +167,8 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     public void onProductAdded(Product product, Double amount) {
         if (!shouldTrash) {
             trashButton.setDisable(false);
+            addCartNode(product);
         }
-        addCartNode(product);
     }
 
     @Override
@@ -180,7 +183,9 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
-        updateCartInfo(model.getCartPrice());
+        if (!shouldTrash) {
+            updateCartInfo(model.getCartPrice());
+        }
     }
 
     private void switchView(Node node) {

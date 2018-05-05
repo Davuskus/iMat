@@ -107,7 +107,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      * @param amount The amount.
      */
     public void setAmount(double amount) {
-        if(oldValue == amount) return;
+        if(oldValue == amount || model.isThrowingCartInTrash()) return;
         oldValue = amount;
         if (isAcceptingDoubles) {
             valueTextField.setTextFormatter(doubleFormatter);
@@ -131,7 +131,9 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         }
         double oldValue2 = getAmount();
         setAmount(Double.valueOf(valueTextField.getText()));
-        oldValue = oldValue2;
+        if (!model.isThrowingCartInTrash()) {
+            oldValue = oldValue2;
+        }
     }
 
 
