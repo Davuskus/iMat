@@ -114,6 +114,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         shouldTrash = true;
 
         regretButton.setDisable(false);
+        regretPane.setOpacity(1);
         switchView(regretPane);
 
         productsInSidebar.keySet().forEach(product -> productsInTrash.put(product, model.getProductAmount(product)));
@@ -138,8 +139,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
             }
 
         }).runLater(millisBeforeTrash);
-
-        // TODO Figure out why the regretPane doesn't show after the first time of being shown.
 
     }
 
