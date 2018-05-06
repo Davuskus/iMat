@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="500.0" stylesheets="@../../../../resources/css/imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="115.0" prefWidth="115.0" styleClass="border-thin">
+               <children>
+                  <ImageView fx:id="productImageView" fitHeight="113.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" styleClass="border-thin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../../../../resources/images/products/product_60.jpg" />
+                     </image></ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <VBox fx:id="articleInfoVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="productNameLabel" styleClass="title-normal" text="Produktnamn" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Separator prefWidth="200.0" />
+                  <Label fx:id="ecoLabel" styleClass="text-normal" text="Ekologisk" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="countLabel" styleClass="text-normal" text="# st" wrapText="true" />
+                  <HBox fx:id="priceHBox" prefHeight="25.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="priceTitleLabel" styleClass="text-normal" text="Totalt pris: " wrapText="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="priceLabel" styleClass="text-normal" text="- kr" wrapText="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="200.0" prefWidth="125.0">
+               <children>
+                  <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" styleClass="button-text-normal" text="Kopiera artikel till kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+   <styleClass>
+      <String fx:value="background-gray-light" />
+      <String fx:value="border-thin-round" />
+   </styleClass>
+</fx:root>

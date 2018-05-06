@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="185.0" prefWidth="600.0" styleClass="scene-default" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.views.productdetails.ProductDetailsController">
+    <children>
+        <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <image>
+                <Image url="@../../../../../resources/images/products/product_4.jpg" />
+            </image>
+        </ImageView>
+        <Label fx:id="productNameLabel" layoutX="233.0" layoutY="14.0" text="Produktnamn" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font size="29.0" />
+            </font>
+        </Label>
+        <Separator layoutX="231.0" layoutY="53.0" prefHeight="4.0" prefWidth="354.0" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="15.0" />
+        <Label fx:id="organicLabel" layoutX="235.0" layoutY="64.0" text="Ekologisk" textFill="#20721a" AnchorPane.leftAnchor="235.0">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="235.0" layoutY="96.0" text="Jämförspris:">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="comparisonPriceLabel" layoutX="358.0" layoutY="96.0" text="Label">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="344.0" layoutY="142.0" text="Totalt:" />
+        <Label fx:id="totalPriceAmountLabel" layoutX="390.0" layoutY="142.0" text="totalpris" />
+    </children>
+</AnchorPane>

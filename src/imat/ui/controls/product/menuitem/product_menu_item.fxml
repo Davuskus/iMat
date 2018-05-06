@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="170.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.menuitem.ProductMenuItem">
+    <children>
+      <VBox fx:id="elementsVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane minHeight="111.0" minWidth="148.0" prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
+               <children>
+                    <ImageView fx:id="imageView" fitHeight="111.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../../../../resources/images/products/product_14.jpg" />
+                     </image></ImageView>
+               </children>
+            </AnchorPane>
+              <Label fx:id="nameLabel" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
+              <Label fx:id="ecoLabel" styleClass="text-normal-dark-gray" text="Ekologisk" />
+              <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Product price" />
+
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+    </children>
+   <styleClass>
+      <String fx:value="border-thin-round" />
+      <String fx:value="scene-default" />
+   </styleClass>
+</AnchorPane>

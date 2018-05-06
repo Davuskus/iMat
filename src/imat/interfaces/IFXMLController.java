@@ -1,6 +1,6 @@
 package imat.interfaces;
 
-import imat.Model;
+import imat.model.Model;
 
 public interface IFXMLController {
     void setModel(Model m);

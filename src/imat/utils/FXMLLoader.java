@@ -1,9 +1,8 @@
 package imat.utils;
 
-import imat.Model;
+import imat.model.Model;
 import imat.interfaces.IFXMLController;
 import javafx.scene.Node;
-import javafx.util.Callback;
 
 import java.io.IOException;
 
