@@ -69,6 +69,11 @@ public class ProductMenuItem extends FXMLController {
         return product;
     }
 
+    @FXML
+    public void showProductDetails() {
+        model.showProductDetails(product);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setProduct(product);

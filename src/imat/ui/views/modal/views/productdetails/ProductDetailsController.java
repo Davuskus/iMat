@@ -35,17 +35,17 @@ public class ProductDetailsController extends FXMLController {
 
     public void setProductInfo(Product product) {
         productNameLabel.setText(product.getName());
-        double amount = Double.parseDouble(product.getUnit());
-        double comparisonPrice = product.getPrice() / amount;
+        //double amount = Double.parseDouble(product.getUnit());
+        //double comparisonPrice = product.getPrice() / amount;
 
-        comparisonPriceLabel.setText(comparisonPrice + "kr" + "/" + product.getUnitSuffix());
+        //comparisonPriceLabel.setText(comparisonPrice + "kr" + "/" + product.getUnitSuffix());
 
         organicLabel.setText(product.isEcological() ? "Ekologisk" : "Inte ekologisk");
 
         AmountSpinner spinnerController = new AmountSpinner(product);
         spinnerController.setModel(model);
-        Node amountSpinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
-        rootPane.getChildren().add(amountSpinnerNode);
+        //Node amountSpinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
+        //rootPane.getChildren().add(amountSpinnerNode);
         rootPane.setLeftAnchor(rootPane, 240.0);
         rootPane.setTopAnchor(rootPane, 140.0);
 

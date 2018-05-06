@@ -1,10 +1,7 @@
 package imat.model;
 
 import imat.enums.NavigationTarget;
-import imat.interfaces.ICategoryListener;
-import imat.interfaces.INavigationListener;
-import imat.interfaces.ISearchListener;
-import imat.interfaces.IShoppingListener;
+import imat.interfaces.*;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
@@ -21,6 +18,7 @@ public class Model {
     private final List<ICategoryListener> categoryListeners;
     private final List<INavigationListener> navigationListeners;
     private final List<ISearchListener> searchListeners;
+    private final List<IProducDetailstListener> productListeners;
 
     private boolean isThrowingCartInTrash;
 
@@ -29,6 +27,7 @@ public class Model {
         categoryListeners = new ArrayList<>(1);
         navigationListeners = new ArrayList<>(1);
         searchListeners = new ArrayList<>(1);
+        productListeners = new ArrayList<>(1);
     }
 
     public void navigate(NavigationTarget navigationTarget) {
@@ -37,6 +36,10 @@ public class Model {
 
     public void addShoppingListener(IShoppingListener IShoppingListener) {
         IShoppingListeners.add(IShoppingListener);
+    }
+
+    public void addProductDetailsListener(IProducDetailstListener productDetailsListener) {
+        productListeners.add(productDetailsListener);
     }
 
     public void updateShoppingCart(Product product, double newAmount) {
@@ -141,5 +144,9 @@ public class Model {
 
     public boolean isThrowingCartInTrash() {
         return isThrowingCartInTrash;
+    }
+
+    public void showProductDetails(Product product) {
+        productListeners.forEach(x -> x.onProductSelection(product));
     }
 }

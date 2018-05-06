@@ -14,13 +14,13 @@
          <children>
             <AnchorPane minHeight="111.0" minWidth="148.0" prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
                <children>
-                    <ImageView fx:id="imageView" fitHeight="111.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <ImageView fx:id="imageView" fitHeight="111.0" fitWidth="148.0" onMouseClicked="#showProductDetails" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@../../../../resources/images/products/product_14.jpg" />
                      </image></ImageView>
                </children>
             </AnchorPane>
-              <Label fx:id="nameLabel" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
+              <Label fx:id="nameLabel" onMouseClicked="#showProductDetails" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
               <Label fx:id="ecoLabel" styleClass="text-normal-dark-gray" text="Ekologisk" />
               <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Product price" />
 

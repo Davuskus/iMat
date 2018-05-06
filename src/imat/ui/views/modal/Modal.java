@@ -1,18 +1,21 @@
 package imat.ui.views.modal;
 
+import imat.interfaces.IProducDetailstListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
+import imat.ui.views.modal.views.productdetails.ProductDetailsController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Modal extends FXMLController implements INavigationListener {
+public class Modal extends FXMLController implements INavigationListener, IProducDetailstListener {
 
     @FXML
     private AnchorPane rootPane;
@@ -28,6 +31,9 @@ public class Modal extends FXMLController implements INavigationListener {
 
     @FXML
     private AnchorPane productDetailsPane;
+
+    @FXML
+    private ProductDetailsController productDetailsPaneController;
 
     @FXML
     private AnchorPane paymentPane;
@@ -78,6 +84,13 @@ public class Modal extends FXMLController implements INavigationListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
+        model.addProductDetailsListener(this);
     }
 
+    @Override
+    public void onProductSelection(Product product) {
+        productDetailsPaneController.setProductInfo(product);
+        navigateTo(NavigationTarget.PRODUCT_DETAILS);
+
+    }
 }
