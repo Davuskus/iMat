@@ -117,6 +117,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         regretPane.setOpacity(1);
         switchView(regretPane);
 
+        copiedCart.clear();
         model.getProductsInCart().forEach(product -> copiedCart.put(product, model.getProductAmount(product)));
         model.clearCart();
 
