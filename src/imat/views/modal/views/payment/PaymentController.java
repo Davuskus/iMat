@@ -1,4 +1,4 @@
-package imat.views.payment;
+package imat.views.modal.views.payment;
 
 import imat.FXMLController;
 import imat.enums.NavigationTarget;
@@ -213,7 +213,7 @@ public class PaymentController extends FXMLController implements Initializable {
     }
 
     @FXML
-    private void credidcardViewToFront() {
+    private void creditCardViewToFront() {
         creditCardInfoPane.toFront();
         secondSidebarVBox.toFront();
     }
@@ -241,7 +241,7 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private void moveBack() {
         //SaveUserInfo();
-        model.navigate(NavigationTarget.PAY);
+        model.navigate(NavigationTarget.CHECKOUT);
     }
 
 }

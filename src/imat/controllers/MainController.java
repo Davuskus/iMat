@@ -1,17 +1,15 @@
 package imat.controllers;
 
 import imat.FXMLController;
-import imat.controls.product.cartitem.CartItem;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
-import imat.views.modal.views.helpview.HelpView;
-import imat.views.modal.Modal;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
+
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -30,37 +28,15 @@ public class MainController extends FXMLController implements INavigationListene
     private AnchorPane modalView;
 
     @FXML
-    private Modal modalViewController;
-
-    @FXML
-    private AnchorPane payView;
-
-    @FXML
-    private AnchorPane helpView;
+    private AnchorPane checkoutPane;
 
     @FXML
     private AnchorPane browseView;
 
-    @FXML
-    private AnchorPane paymentView;
-
-    @FXML HelpView helpViewController;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        placeRandomOrder(getRandomInteger(1, 15));
-
+        // placeRandomOrder(getRandomInteger(1, 15));
         model.addNavigationListener(this);
-
-        // This is temporary, to test out the html loading
-        helpViewController.setMainController(this);
-        helpView.toBack();
-    }
-
-    //Temporary for debugging the different scenes
-    @FXML
-    private void changeView() {
-       // viewsStackPane.getChildren().get(0).toFront();
     }
 
     // Temporary
@@ -87,30 +63,21 @@ public class MainController extends FXMLController implements INavigationListene
         return IMatDataHandler.getInstance().getProduct(randomId);
     }
 
-    public void removeCartItem(CartItem cartItem) {
-        // TODO Remove the cart item from the cart list.
-        // TODO Show a "regret"-button after removal
-    }
-
-    public void showHelpView() {
-        helpView.toFront();
-    }
-
-    public void closeHelpView() {
-        helpView.toBack();
-    }
-
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         switch (navigationTarget) {
             case HELP:
-                helpView.toFront(); break;
-            case PAY:
-                payView.toFront(); break;
+            case COPY_ORDER:
+            case PRODUCT_DETAILS:
             case PAYMENT:
-                paymentView.toFront(); break;
+                modalView.toFront();
+                break;
+            case CHECKOUT:
+                checkoutPane.toFront();
+                break;
             default:
-                browseView.toFront(); break;
+                browseView.toFront();
+                break;
         }
     }
 }

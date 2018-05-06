@@ -96,7 +96,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private void toCheckoutButtonOnAction(Event event) {
-        model.navigate(NavigationTarget.PAY);
+        model.navigate(NavigationTarget.CHECKOUT);
     }
 
     @FXML

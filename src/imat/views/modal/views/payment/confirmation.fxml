@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="246.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.payment.Confirmation">
+<AnchorPane prefHeight="246.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.modal.views.payment.Confirmation">
    <children>
       <Label fx:id="purchaseConfirmationHeader" layoutX="175.0" layoutY="41.0" stylesheets="@../../resources/css/imat.css" text="Tack för ditt köp!" />
       <Label fx:id="purchaseConfirmationDescription" layoutX="121.0" layoutY="72.0" stylesheets="@../../resources/css/imat.css" text="Dina varor kommer snart att levereras" />
