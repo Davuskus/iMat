@@ -2,7 +2,7 @@ package imat.controls.history.order;
 
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
-import imat.views.history.OrderHistoryPane;
+import imat.views.browse.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -1,4 +1,4 @@
-package imat.views.history;
+package imat.views.browse.history;
 
 import imat.Model;
 import imat.controls.history.article.ArticleHistoryItem;
