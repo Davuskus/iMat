@@ -1,16 +1,17 @@
 package imat.views.modal.views.copyorder;
 
-import imat.utils.FXMLLoader;
-import imat.views.modal.Modal;
+import imat.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-public class CopyOrderModalView extends AnchorPane {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CopyOrderController extends FXMLController {
 
     @FXML
     private HBox headerHBox;
@@ -29,11 +30,6 @@ public class CopyOrderModalView extends AnchorPane {
 
     @FXML
     private Button cancelButton;
-
-    public CopyOrderModalView(Modal modal) {
-        super();
-        FXMLLoader.loadFXMLFromRootPackage("copy_order_modal_view.fxml", this, this);
-    }
 
     @FXML
     private void addToButtonOnAction(ActionEvent event) {
@@ -64,4 +60,8 @@ public class CopyOrderModalView extends AnchorPane {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

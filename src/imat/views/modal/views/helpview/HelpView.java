@@ -1,4 +1,4 @@
-package imat.views.helpview;
+package imat.views.modal.views.helpview;
 
 import imat.controllers.MainController;
 import javafx.event.Event;
@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
-import imat.utils.FXMLLoader;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +18,7 @@ import java.util.ResourceBundle;
 // TODO: Change X-icon?
 
 public class HelpView implements Initializable {
+
     @FXML
     ImageView helpViewCloseButton;
 
@@ -34,14 +34,15 @@ public class HelpView implements Initializable {
     @FXML
     ScrollPane helpScrollPane;
 
-    @FXML MainController mainController;
+    @FXML
+    MainController mainController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
         //loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
         loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
-        helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../resources/helptext/helpStyle.css").toString());
+        helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../../../resources/helptext/helpStyle.css").toString());
     }
 
     public void setMainController(MainController mainController) {

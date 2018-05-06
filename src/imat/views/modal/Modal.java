@@ -10,4 +10,9 @@ public class Modal {
         event.consume();
     }
 
+    @FXML
+    public void closeButtonOnAction(Event event) {
+
+    }
+
 }

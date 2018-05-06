@@ -4,7 +4,7 @@ import imat.FXMLController;
 import imat.controls.product.cartitem.CartItem;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
-import imat.views.helpview.HelpView;
+import imat.views.modal.views.helpview.HelpView;
 import imat.views.modal.Modal;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
