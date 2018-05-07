@@ -70,11 +70,7 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
                 helpPane.toFront();
                 break;
             case PRODUCT_DETAILS:
-                //helpPane.toFront();
-                //copyOrderPane.toFront();
-                //rootPane.toFront();
                 productDetailsPane.toFront();
-
                 break;
             case COPY_ORDER:
                 copyOrderPane.toFront();
