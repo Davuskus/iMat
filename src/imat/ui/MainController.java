@@ -1,5 +1,6 @@
 package imat.ui;
 
+import imat.interfaces.IProducDetailstListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
@@ -69,6 +70,8 @@ public class MainController extends FXMLController implements INavigationListene
             case HELP:
             case COPY_ORDER:
             case PRODUCT_DETAILS:
+                modalView.toFront();
+                break;
             case PAYMENT:
                 modalView.toFront();
                 break;

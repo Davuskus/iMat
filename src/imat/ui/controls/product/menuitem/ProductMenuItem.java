@@ -1,5 +1,6 @@
 package imat.ui.controls.product.menuitem;
 
+import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.FXMLLoader;
@@ -71,6 +72,7 @@ public class ProductMenuItem extends FXMLController {
 
     @FXML
     public void showProductDetails() {
+        model.navigate(NavigationTarget.PRODUCT_DETAILS);
         model.showProductDetails(product);
     }
 

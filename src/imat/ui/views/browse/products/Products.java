@@ -5,6 +5,7 @@ import imat.ui.controls.product.menuitem.ProductMenuItem;
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.ISearchListener;
 import imat.utils.FXMLLoader;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -65,5 +66,10 @@ public class Products extends FXMLController implements ICategoryListener, ISear
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage("../../controls/product/menuitem/product_menu_item.fxml", this, controller);
             productsFlowPane.getChildren().add(item);
         }
+    }
+
+    @FXML
+    public void consumeEvent(Event event) {
+        //event.consume();
     }
 }

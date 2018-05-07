@@ -5,6 +5,7 @@ import imat.model.FXMLController;
 import imat.model.Model;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,6 +27,11 @@ public class Browse extends FXMLController implements INavigationListener {
     @Override
     public void setModel(Model m) {
         this.model = m;
+    }
+
+    @FXML
+    public void consumeEvent(Event event) {
+        event.consume();
     }
 
     @Override
