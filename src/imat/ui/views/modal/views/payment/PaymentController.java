@@ -173,6 +173,8 @@ public class PaymentController extends FXMLController implements Initializable {
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
         }
+
+        model.navigate(NavigationTarget.CONFIRMATION);
     }
 
 

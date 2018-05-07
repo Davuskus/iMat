@@ -38,6 +38,9 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
     private AnchorPane paymentPane;
 
     @FXML
+    private AnchorPane confirmationPane;
+
+    @FXML
     public void consumeEvent(Event event) {
         event.consume();
     }
@@ -74,6 +77,9 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
                 break;
             case PAYMENT:
                 paymentPane.toFront();
+                break;
+            case CONFIRMATION:
+                confirmationPane.toFront();
                 break;
         }
     }
