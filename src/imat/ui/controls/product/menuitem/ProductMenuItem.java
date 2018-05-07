@@ -22,7 +22,7 @@ public class ProductMenuItem extends FXMLController {
     private ImageView imageView;
 
     @FXML
-    private AnchorPane spinner;
+    private AmountSpinner amountSpinnerController;
 
     @FXML
     private Label nameLabel;
@@ -54,11 +54,7 @@ public class ProductMenuItem extends FXMLController {
         if (!product.isEcological()) {
             ecoLabel.setVisible(false);
         }
-
-        AmountSpinner spinnerController = new AmountSpinner(product);
-        spinnerController.setModel(model);
-        Node amountSpinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
-        elementsVBox.getChildren().add(amountSpinnerNode);
+        amountSpinnerController.setProduct(product);
     }
 
     /**
@@ -78,6 +74,7 @@ public class ProductMenuItem extends FXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        amountSpinnerController.setModel(model);
         setProduct(product);
     }
 

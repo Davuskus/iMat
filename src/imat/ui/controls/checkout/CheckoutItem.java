@@ -29,6 +29,8 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
 
     private Product product;
 
+    @FXML
+    private AmountSpinner amountSpinnerController;
 
     public CheckoutItem(Product product) {
         this.product = product;
@@ -43,10 +45,8 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         VBoxSpinner.getChildren().clear();
-        AmountSpinner spinner = new AmountSpinner(product);
-        spinner.setModel(model);
-        Node btn = FXMLLoader.loadFXMLNodeFromRootPackage("../spinner/amount_spinner.fxml",this, spinner);
-        VBoxSpinner.getChildren().add(btn);
+        amountSpinnerController.setProduct(product);
+        amountSpinnerController.setModel(model);
         model.addShoppingListener(this);
 
         productName.setText(product.getName());

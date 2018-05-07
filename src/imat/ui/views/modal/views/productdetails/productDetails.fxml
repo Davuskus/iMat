@@ -37,5 +37,6 @@
         </Label>
         <Label layoutX="344.0" layoutY="142.0" text="Totalt:" />
         <Label fx:id="totalPriceAmountLabel" layoutX="390.0" layoutY="142.0" text="totalpris" />
+        <fx:include fx:id="amountSpinner" source="../../../../controls/spinner/amount_spinner.fxml" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="140.0" />
     </children>
 </AnchorPane>
