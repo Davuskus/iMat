@@ -68,8 +68,8 @@ public class ProductMenuItem extends FXMLController {
 
     @FXML
     public void showProductDetails() {
-        model.navigate(NavigationTarget.PRODUCT_DETAILS);
         model.showProductDetails(product);
+        model.navigate(NavigationTarget.PRODUCT_DETAILS);
     }
 
     @Override

@@ -27,6 +27,7 @@ public class Browse extends FXMLController implements INavigationListener, IProd
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
+        model.addProductDetailsListener(this);
         productPane.toFront();
     }
 

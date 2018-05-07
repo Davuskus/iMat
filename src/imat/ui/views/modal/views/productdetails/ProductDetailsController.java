@@ -1,8 +1,10 @@
 package imat.ui.views.modal.views.productdetails;
 
+import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.IMatUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,9 +33,6 @@ public class ProductDetailsController extends FXMLController {
     private Label comparisonPriceLabel;
 
     @FXML
-    private Label totalPriceAmountLabel;
-
-    @FXML
     private AmountSpinner amountSpinnerController;
     private Product product;
 
@@ -42,7 +41,7 @@ public class ProductDetailsController extends FXMLController {
         productNameLabel.setText(product.getName());
         productImage.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         double amount = model.getProductAmount(product);
-        totalPriceAmountLabel.setText((product.getPrice() * amount) + " kr");
+        comparisonPriceLabel.setText(product.getPrice() + " " + product.getUnit());
         //double amount = Double.parseDouble(product.getUnit());
         //double comparisonPrice = product.getPrice() / amount;
 
@@ -63,4 +62,7 @@ public class ProductDetailsController extends FXMLController {
         amountSpinnerController.setModel(model);
     }
 
+    public void onBackButtonAction(ActionEvent actionEvent) {
+        model.navigate(NavigationTarget.CATEGORY);
+    }
 }
