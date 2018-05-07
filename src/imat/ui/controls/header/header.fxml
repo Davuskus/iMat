@@ -36,10 +36,7 @@
                         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" />
                     </children>
                 </VBox>
-                <AnchorPane GridPane.columnIndex="1">
-                    <fx:include fx:id="searchField" source="../search/search_field.fxml" AnchorPane.bottomAnchor="5" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="5" />
-                </AnchorPane>
-
+                <AnchorPane fx:id="searchFieldPane" GridPane.columnIndex="1"/>
             </children>
         </GridPane>
     </children>

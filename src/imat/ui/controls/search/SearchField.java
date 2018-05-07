@@ -1,5 +1,6 @@
 package imat.ui.controls.search;
 
+import imat.model.FXMLController;
 import imat.model.Model;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -7,9 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputEvent;
 
-public class SearchField {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    Model model;
+public class SearchField extends FXMLController {
 
     @FXML
     private Button searchButton;
@@ -20,16 +22,15 @@ public class SearchField {
     private void makeSearch() {
         if (model == null) {
             System.out.println("No imat.model attached to search field!");
-            return;
+        } else {
+            System.out.println("Search was successful!");
+            model.search(searchBox.getText());
         }
-
-        model.search(searchBox.getText());
     }
 
     @FXML
     private void onEnter(Event event) {
         makeSearch();
-        System.out.println("Enter was pressed!");
     }
 
     @FXML
@@ -43,8 +44,8 @@ public class SearchField {
         // TODO Show suggestions depending on the input
     }
 
-    public void setModel(Model model) {
-        this.model = model;
-    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+    }
 }

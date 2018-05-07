@@ -1,9 +1,9 @@
 package imat.ui.views.browse.products;
 
-import imat.model.FXMLController;
-import imat.ui.controls.product.menuitem.ProductMenuItem;
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.ISearchListener;
+import imat.model.FXMLController;
+import imat.ui.controls.product.menuitem.ProductMenuItem;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -62,7 +62,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         for (Product product : products) {
             ProductMenuItem controller = new ProductMenuItem(product);
             controller.setModel(model);
-            Node item = FXMLLoader.loadFXMLNodeFromRootPackage("../../controls/product/menuitem/product_menu_item.fxml", this, controller);
+            String fxmlPath = "../../../../ui/controls/product/menuitem/product_menu_item.fxml";
+            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
             productsFlowPane.getChildren().add(item);
         }
     }
