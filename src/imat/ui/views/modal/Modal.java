@@ -7,6 +7,7 @@ import imat.interfaces.INavigationListener;
 import imat.ui.views.modal.views.productdetails.ProductDetailsController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -39,6 +40,9 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
     private AnchorPane paymentPane;
 
     @FXML
+    private Label modalTitleLabel;
+
+    @FXML
     public void consumeEvent(Event event) {
         event.consume();
     }
@@ -67,15 +71,19 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
     public void navigateTo(NavigationTarget navigationTarget) {
         switch (navigationTarget) {
             case HELP:
+                modalTitleLabel.setText("Hjälp");
                 helpPane.toFront();
                 break;
             case PRODUCT_DETAILS:
+                modalTitleLabel.setText("Produktdetaljer");
                 productDetailsPane.toFront();
                 break;
             case COPY_ORDER:
+                modalTitleLabel.setText("Kopiera order");
                 copyOrderPane.toFront();
                 break;
             case PAYMENT:
+                modalTitleLabel.setText("Betalning");
                 paymentPane.toFront();
                 break;
         }
