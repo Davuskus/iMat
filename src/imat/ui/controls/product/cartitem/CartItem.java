@@ -65,6 +65,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
     @FXML
     private Label unitLabel;
 
+    @FXML
+    private AmountSpinner amountSpinnerController;
+
     private final Product product;
 
     private final long millisBeforeRemoval = 3000;
@@ -84,11 +87,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        AmountSpinner spinnerController = new AmountSpinner(product);
-        spinnerController.setModel(model);
-        Node spinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml", this, spinnerController);
-        otherVBox.getChildren().add(spinnerNode);
-
+        amountSpinnerController.setModel(model);
+        amountSpinnerController.setProduct(product);
         nameLabel.setText(this.product.getName());
 
         if (!product.isEcological()) {

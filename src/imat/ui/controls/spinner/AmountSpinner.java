@@ -37,22 +37,9 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     private Product product;
 
-    public AmountSpinner(Product product) {
+    public AmountSpinner() {
         super();
-        this.product = product;
-
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
-
-        switch (product.getUnitSuffix()) {
-            case "l":
-            case "kg":
-                isAcceptingDoubles = true;
-                break;
-            default:
-                isAcceptingDoubles = false;
-                break;
-        }
-
         doubleFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return doublePattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
@@ -69,6 +56,19 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         valueTextField.setTextFormatter(intFormatter);
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        switch (product.getUnitSuffix()) {
+            case "l":
+            case "kg":
+                isAcceptingDoubles = true;
+                break;
+            default:
+                isAcceptingDoubles = false;
+                break;
+        }
     }
 
     public void setAcceptDoubles(boolean acceptDoubles) {

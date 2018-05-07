@@ -2,9 +2,7 @@ package imat.ui.views.modal.views.productdetails;
 
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
-import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -33,6 +31,9 @@ public class ProductDetailsController extends FXMLController {
     @FXML
     private Label totalPriceAmountLabel;
 
+    @FXML
+    private AmountSpinner amountSpinnerController;
+
     public void setProductInfo(Product product) {
         productNameLabel.setText(product.getName());
         //double amount = Double.parseDouble(product.getUnit());
@@ -42,18 +43,13 @@ public class ProductDetailsController extends FXMLController {
 
         organicLabel.setText(product.isEcological() ? "Ekologisk" : "Inte ekologisk");
 
-        AmountSpinner spinnerController = new AmountSpinner(product);
-        spinnerController.setModel(model);
-        //Node amountSpinnerNode = FXMLLoader.loadFXMLNodeFromRootPackage("../../spinner/amount_spinner.fxml",this, spinnerController);
-        //rootPane.getChildren().add(amountSpinnerNode);
-        rootPane.setLeftAnchor(rootPane, 240.0);
-        rootPane.setTopAnchor(rootPane, 140.0);
+        amountSpinnerController.setProduct(product);
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        amountSpinnerController.setModel(model);
     }
 
 }

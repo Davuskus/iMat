@@ -17,6 +17,9 @@ public class Header extends FXMLController {
     @FXML
     private AnchorPane searchFieldPane;
 
+    @FXML
+    private SearchField searchFieldController;
+
     @FXML private void onHelpButtonAction() {
         model.navigate(NavigationTarget.HELP);
     }
@@ -31,13 +34,6 @@ public class Header extends FXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SearchField searchField = new SearchField();
-        searchField.setModel(model);
-        Node searchFieldNode = FXMLLoader.loadFXMLNodeFromRootPackage("../search/search_field.fxml",this, searchField);
-        searchFieldPane.getChildren().add(searchFieldNode);
-        searchFieldPane.setTopAnchor(searchFieldNode, 5.0);
-        searchFieldPane.setBottomAnchor(searchFieldNode, 5.0);
-        searchFieldPane.setLeftAnchor(searchFieldNode, 5.0);
-        searchFieldPane.setRightAnchor(searchFieldNode, 5.0);
+        searchFieldController.setModel(model);
     }
 }
