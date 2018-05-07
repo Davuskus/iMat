@@ -5,6 +5,7 @@ import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.IMatUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
@@ -39,6 +40,9 @@ public class ProductDetailsController extends FXMLController {
     public void setProductInfo(Product product) {
         this.product = product;
         productNameLabel.setText(product.getName());
+        productImage.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
+        double amount = model.getProductAmount(product);
+        totalPriceAmountLabel.setText((product.getPrice() * amount) + " kr");
         //double amount = Double.parseDouble(product.getUnit());
         //double comparisonPrice = product.getPrice() / amount;
 
