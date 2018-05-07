@@ -28,6 +28,12 @@ public class Model {
         navigationListeners = new ArrayList<>(1);
         searchListeners = new ArrayList<>(1);
         productListeners = new ArrayList<>(1);
+        loadBackendCart();
+    }
+
+    private void loadBackendCart() {
+        IMatDataHandler.getInstance().getShoppingCart().getItems().forEach(
+                shoppingItem -> cart.put(shoppingItem.getProduct(), shoppingItem.getAmount()));
     }
 
     public void navigate(NavigationTarget navigationTarget) {
@@ -96,6 +102,7 @@ public class Model {
     }
 
     public void saveShoppingCart() {
+        IMatDataHandler.getInstance().getShoppingCart().clear();
         cart.keySet().forEach(
                 product -> IMatDataHandler.getInstance().getShoppingCart().addProduct(product, cart.get(product)));
     }
