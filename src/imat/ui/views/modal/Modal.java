@@ -69,9 +69,6 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
                 //productDetailsPane.toFront();
                 helpPane.toFront();
                 break;
-            case PRODUCT_DETAILS:
-                productDetailsPane.toFront();
-                break;
             case COPY_ORDER:
                 copyOrderPane.toFront();
                 break;
@@ -89,7 +86,7 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
 
     @Override
     public void onProductSelection(Product product) {
-        productDetailsPaneController.setProductInfo(product);
-        navigateTo(NavigationTarget.PRODUCT_DETAILS);
+        //productDetailsPaneController.setProductInfo(product);
+        //navigateTo(NavigationTarget.PRODUCT_DETAILS);
     }
 }
