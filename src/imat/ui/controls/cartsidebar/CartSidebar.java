@@ -59,7 +59,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        trashButton.setDisable(true);
         model.addShoppingListener(this);
         updateSumLabel();
         loadCart();
@@ -72,6 +71,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     private void loadCart() {
         model.getProductsInCart().forEach(this::addCartNode);
+        trashButton.setDisable(cartItemVBox.getChildren().size() <= 0);
     }
 
     private void addCartNode(Product product) {

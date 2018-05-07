@@ -2,6 +2,7 @@ package imat.ui.views.modal.views.productdetails;
 
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
+import imat.utils.IMatUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,8 +32,10 @@ public class ProductDetailsController extends FXMLController {
 
     @FXML
     private AmountSpinner amountSpinnerController;
+    private Product product;
 
     public void setProductInfo(Product product) {
+        this.product = product;
         productNameLabel.setText(product.getName());
         productImage.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         double amount = model.getProductAmount(product);
@@ -48,6 +51,10 @@ public class ProductDetailsController extends FXMLController {
 
     }
 
+    public Product getProduct() {
+        return IMatUtils.cloneProduct(product);
+    }
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         amountSpinnerController.setModel(model);

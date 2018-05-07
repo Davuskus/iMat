@@ -14,14 +14,16 @@ public class Main extends Application {
 
     // Backend JavaDoc: http://www.cse.chalmers.se/research/group/idc/ituniv/courses/18/dkgg/p/backend/javadoc/
 
+    private static Model model;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/imat.fxml"));
 
-        Model m = new Model();
+        model = new Model();
 
-        imat.utils.FXMLLoader.trySetModel(m);
+        imat.utils.FXMLLoader.trySetModel(model);
         loader.setControllerFactory(imat.utils.FXMLLoader::controllerFactoryMethod);
 
         Parent root = loader.load();
@@ -41,6 +43,7 @@ public class Main extends Application {
         launch(args);
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            model.saveShoppingCart();
             IMatDataHandler.getInstance().shutDown();
         }));
     }
