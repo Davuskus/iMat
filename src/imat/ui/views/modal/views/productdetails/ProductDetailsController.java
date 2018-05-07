@@ -1,8 +1,10 @@
 package imat.ui.views.modal.views.productdetails;
 
+import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.IMatUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -60,4 +62,7 @@ public class ProductDetailsController extends FXMLController {
         amountSpinnerController.setModel(model);
     }
 
+    public void onBackButtonAction(ActionEvent actionEvent) {
+        model.navigate(NavigationTarget.CATEGORY);
+    }
 }
