@@ -87,7 +87,7 @@ public class Modal extends FXMLController implements INavigationListener, IProdu
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
-        model.addProductDetailsListener(this);
+        //model.addProductDetailsListener(this);
     }
 
     @Override

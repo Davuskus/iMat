@@ -30,16 +30,13 @@ public class ProductDetailsController extends FXMLController {
     private Label comparisonPriceLabel;
 
     @FXML
-    private Label totalPriceAmountLabel;
-
-    @FXML
     private AmountSpinner amountSpinnerController;
 
     public void setProductInfo(Product product) {
         productNameLabel.setText(product.getName());
         productImage.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         double amount = model.getProductAmount(product);
-        totalPriceAmountLabel.setText((product.getPrice() * amount) + " kr");
+        comparisonPriceLabel.setText(product.getPrice() + " " + product.getUnit());
         //double amount = Double.parseDouble(product.getUnit());
         //double comparisonPrice = product.getPrice() / amount;
 
