@@ -70,6 +70,7 @@ public class MainController extends FXMLController implements INavigationListene
             case HELP:
             case COPY_ORDER:
             case PRODUCT_DETAILS:
+            case CONFIRMATION:
                 modalView.toFront();
                 break;
             case PAYMENT:
