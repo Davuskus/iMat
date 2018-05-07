@@ -2,15 +2,11 @@ package imat.model;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.*;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.*;
 
 import java.util.*;
 
 public class Model {
-
-    ProductCategory selectedCategory;
 
     private Map<Product, Double> cart = new HashMap<>();
 
@@ -19,8 +15,11 @@ public class Model {
     private final List<INavigationListener> navigationListeners;
     private final List<ISearchListener> searchListeners;
     private final List<IProducDetailstListener> productListeners;
+    private final List<IOrderListener> orderListeners;
 
     private boolean isThrowingCartInTrash;
+
+    private final Deque<NavigationTarget> navigationHistory;
 
     public Model() {
         IShoppingListeners = new ArrayList<>(1);
@@ -28,6 +27,8 @@ public class Model {
         navigationListeners = new ArrayList<>(1);
         searchListeners = new ArrayList<>(1);
         productListeners = new ArrayList<>(1);
+        orderListeners = new ArrayList<>(1);
+        navigationHistory = new ArrayDeque<>();
         loadBackendCart();
     }
 
@@ -36,7 +37,17 @@ public class Model {
                 shoppingItem -> cart.put(shoppingItem.getProduct(), shoppingItem.getAmount()));
     }
 
+    public void navigateBack() {
+        if (navigationHistory.size() >= 1) {
+            navigationHistory.pop();
+            navigate(navigationHistory.pop());
+        } else {
+            System.out.println("Model, navigateBack: There is no more navigation history.");
+        }
+    }
+
     public void navigate(NavigationTarget navigationTarget) {
+        navigationHistory.push(navigationTarget);
         navigationListeners.forEach(x -> x.navigateTo(navigationTarget));
     }
 
@@ -77,12 +88,20 @@ public class Model {
         updateShoppingCart(product, 0);
     }
 
-    public double getProductAmount(Product product) {
-        return cart.getOrDefault(product, 0.0);
+    public void addOrderToCart(Order order) {
+        order.getItems().forEach(this::addShoppingItemToCart);
+    }
+
+    public void addShoppingItemToCart(ShoppingItem shoppingItem) {
+        addToShoppingCart(shoppingItem.getProduct(), shoppingItem.getAmount());
     }
 
     public void addToShoppingCart(Product product, double amount) {
         updateShoppingCart(product, cart.getOrDefault(product, 0.0) + amount);
+    }
+
+    public double getProductAmount(Product product) {
+        return cart.getOrDefault(product, 0.0);
     }
 
     public void addCategoryListener(ICategoryListener categoryListener) {
@@ -118,8 +137,11 @@ public class Model {
     }
 
     public void selectCategory(ProductCategory category) {
-        selectedCategory = category;
         categoryListeners.forEach(x -> x.onCategorySelected(category));
+    }
+
+    public void selectOrder(Order order) {
+        orderListeners.forEach(listener -> listener.onOrderSelected(order));
     }
 
     public void search(String searchTerm) {
@@ -143,6 +165,10 @@ public class Model {
 
     public void addNavigationListener(INavigationListener navigationListener) {
         navigationListeners.add(navigationListener);
+    }
+
+    public void addOrderListener(IOrderListener orderListener) {
+        orderListeners.add(orderListener);
     }
 
     public void setThrowingCartInTrash(boolean throwingCartInTrash) {

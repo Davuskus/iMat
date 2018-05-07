@@ -85,16 +85,6 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
         addOrdersToFlowPane();
     }
 
-    private void copyOrderToCart(Order order) {
-        for (ShoppingItem shoppingItem : order.getItems()) {
-            copyArticleToCart(shoppingItem);
-        }
-    }
-
-    private void copyArticleToCart(ShoppingItem shoppingItem) {
-        model.addToShoppingCart(shoppingItem.getProduct(), shoppingItem.getAmount());
-    }
-
     private void addOrdersToFlowPane() {
 
         // Reverse a copy of the iMat order list
@@ -161,8 +151,9 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     @FXML
     private void copyOrderToCartButtonOnAction(Event event) {
         if (model.getProductsInCart().size() == 0) {
-            copyOrderToCart(currentOrder);
+            model.addOrderToCart(currentOrder);
         } else {
+            model.selectOrder(currentOrder);
             model.navigate(NavigationTarget.COPY_ORDER);
         }
     }

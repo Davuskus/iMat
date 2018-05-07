@@ -1,6 +1,5 @@
-package imat.ui.views.modal.views.productdetails;
+package imat.ui.views.browse.productdetails;
 
-import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.IMatUtils;
@@ -56,13 +55,13 @@ public class ProductDetailsController extends FXMLController {
     public Product getProduct() {
         return IMatUtils.cloneProduct(product);
     }
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         amountSpinnerController.setModel(model);
     }
 
     public void onBackButtonAction(ActionEvent actionEvent) {
-        model.navigate(NavigationTarget.CATEGORY);
+        model.navigateBack();
     }
 }

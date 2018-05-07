@@ -1,12 +1,10 @@
 package imat.ui;
 
-import imat.interfaces.IProducDetailstListener;
-import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
+import imat.model.FXMLController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -16,14 +14,6 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController extends FXMLController implements INavigationListener {
-
-    // TODO: Add helpview to modal stackpane
-
-    @FXML
-    private AnchorPane rootPane;
-
-    @FXML
-    private StackPane viewsStackPane;
 
     @FXML
     private AnchorPane modalView;
@@ -67,19 +57,17 @@ public class MainController extends FXMLController implements INavigationListene
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         switch (navigationTarget) {
-            case HELP:
-            case COPY_ORDER:
             case PRODUCT_DETAILS:
                 browseView.toFront();
                 break;
-            case CONFIRMATION:
-                modalView.toFront();
-                break;
-            case PAYMENT:
-                modalView.toFront();
-                break;
             case CHECKOUT:
                 checkoutPane.toFront();
+                break;
+            case HELP:
+            case COPY_ORDER:
+            case CONFIRMATION:
+            case PAYMENT:
+                modalView.toFront();
                 break;
             default:
                 browseView.toFront();

@@ -6,7 +6,7 @@ import imat.model.FXMLController;
 import imat.model.Model;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
-import imat.ui.views.modal.views.productdetails.ProductDetailsController;
+import imat.ui.views.browse.productdetails.ProductDetailsController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
