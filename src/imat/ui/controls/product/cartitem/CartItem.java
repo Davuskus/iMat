@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -89,12 +90,13 @@ public class CartItem extends FXMLController implements IShoppingListener {
     public void initialize(URL location, ResourceBundle resources) {
         amountSpinnerController.setModel(model);
         amountSpinnerController.setProduct(product);
+        amountSpinnerController.setAmount(model.getProductAmount(product));
         nameLabel.setText(this.product.getName());
 
         if (!product.isEcological()) {
             infoVBox.getChildren().remove(ecoLabel);
         }
-
+        updatePriceLabel(model.getProductAmount(product) * product.getPrice());
         unitLabel.setText("(" + product.getUnit() + ")");
 
         model.addShoppingListener(this);
