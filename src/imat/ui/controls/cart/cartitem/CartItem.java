@@ -144,7 +144,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
                     Timeline removalAnimation = AnimationHandler.getAnimation(
                             v -> {
                                 removeEvent.execute();
-                                model.updateShoppingCart(product, 0.0);
+                             //   model.updateShoppingCart(product, 0.0);
                             },
                             AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
                             AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),

@@ -288,7 +288,7 @@ public class PaymentController extends FXMLController implements Initializable {
         firstSidebarVBox.toFront();
     }
 
-    
+
 
     @FXML
     private void moveBack() {
