@@ -1,7 +1,6 @@
 package imat.ui.controls.search;
 
 import imat.model.FXMLController;
-import imat.model.Model;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,7 +22,6 @@ public class SearchField extends FXMLController {
         if (model == null) {
             System.out.println("No imat.model attached to search field!");
         } else {
-            System.out.println("Search was successful!");
             model.search(searchBox.getText());
         }
     }

@@ -2,11 +2,13 @@
     -fx-font-family: "Tahoma";
     -fx-font-size: 13px;
 }
+
 .text-small-bold {
     -fx-font-family: "Tahoma";
     -fx-font-size: 13px;
-     -fx-font-weight: bold;
+    -fx-font-weight: bold;
 }
+
 .text-normal {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
@@ -217,4 +219,9 @@
     -fx-border-color: #999999;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+}
+
+.rounded {
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-radius: 20 20 20 20;
 }

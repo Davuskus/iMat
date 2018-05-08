@@ -80,7 +80,8 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
             removeCartNode(product);
         });
         cartItemController.setModel(model);
-        Node cartItemNode = FXMLLoader.loadFXMLNode("../cartitem/cart_item.fxml", cartItemController);
+        Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage(
+                "../cartitem/cart_item.fxml", this, cartItemController);
         productsInSidebar.put(product, cartItemNode);
         cartItemVBox.getChildren().add(cartItemNode);
     }
