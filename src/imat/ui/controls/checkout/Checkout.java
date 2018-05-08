@@ -25,10 +25,10 @@ public class Checkout extends FXMLController implements IShoppingListener {
     private Label shippingCostLabel;
 
     @FXML
-    private Label totalCostLabel;
+    private Label totalCostLable;
 
     @FXML
-    private VBox VBoxFlow;
+    private VBox VBoxflow;
 
     private Map<Product, Node> productsInCheckout = new HashMap<>();
 
@@ -46,7 +46,7 @@ public class Checkout extends FXMLController implements IShoppingListener {
         PriceLabel.setText(price);
         shippingCostLabel.setText("35 kr");
         double tot = totalPrice + 35;
-        totalCostLabel.setText(tot + " kr");
+        totalCostLable.setText(tot + " kr");
 
     }
 
@@ -56,11 +56,11 @@ public class Checkout extends FXMLController implements IShoppingListener {
         checkoutItemController.setModel(model);
         Node checkoutItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("item/checkoutItem.fxml", this, checkoutItemController);
         productsInCheckout.put(product, checkoutItemNode);
-        VBoxFlow.getChildren().add(checkoutItemNode);
+        VBoxflow.getChildren().add(checkoutItemNode);
     }
 
     private void removeItemNode(Product product) {
-        VBoxFlow.getChildren().remove(productsInCheckout.get(product));
+        VBoxflow.getChildren().remove(productsInCheckout.get(product));
         productsInCheckout.remove(product);
     }
 
