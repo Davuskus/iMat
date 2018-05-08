@@ -64,7 +64,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         for (Product product : products) {
             ProductMenuItem controller = new ProductMenuItem(product);
             controller.setModel(model);
-            String fxmlPath = "../../../controls/product/product_menu_item.fxml";
+            String fxmlPath = "../../../controls/product/menu/product_menu_item.fxml";
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
             productsFlowPane.getChildren().add(item);
         }
