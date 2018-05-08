@@ -57,9 +57,6 @@ public class MainController extends FXMLController implements INavigationListene
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         switch (navigationTarget) {
-            case PRODUCT_DETAILS:
-                browseView.toFront();
-                break;
             case CHECKOUT:
                 checkoutPane.toFront();
                 break;
@@ -69,6 +66,8 @@ public class MainController extends FXMLController implements INavigationListene
             case PAYMENT:
                 modalView.toFront();
                 break;
+            case HOME:
+            case PRODUCT_DETAILS:
             case HISTORY:
                 browseView.toFront();
             default:
