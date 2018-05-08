@@ -7,10 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.CreditCard;
@@ -18,6 +15,7 @@ import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class PaymentController extends FXMLController implements Initializable {
@@ -90,6 +88,12 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     CheckBox saveUserInfoCheckBox;
 
+    @FXML
+    private Label clientErrorLable;
+
+    @FXML
+    private Label creditCardErrorLable;
+
     private final IMatDataHandler iMatDataHandler;
 
     private final Customer customer;
@@ -144,6 +148,49 @@ public class PaymentController extends FXMLController implements Initializable {
             }
         });
 
+        postcodeField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    postcodeField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+
+
+        firstNameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ClientInfoDone ();
+        });
+        lastNameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ClientInfoDone ();
+        });
+        addressField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ClientInfoDone ();
+        });
+        postcodeField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ClientInfoDone ();
+        });
+        phoneNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ClientInfoDone ();
+        });
+
+
+
+
+        creditCardNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone ();
+        });
+        validMonthField.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone ();
+        });
+        validYearField.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone ();
+        });
+        cvcField.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone ();
+        });
     }
 
     private void fillUserData() {
@@ -159,8 +206,8 @@ public class PaymentController extends FXMLController implements Initializable {
         cvcField.appendText(Integer.toString(creditCard.getVerificationCode()));
     }
 
-    @FXML
-    private void SaveUserInfo() {
+
+    private void saveUserInfo() {
         if (saveUserInfoCheckBox.isSelected()) {
             customer.setFirstName(firstNameField.getText());
             customer.setLastName(lastNameField.getText());
@@ -174,9 +221,17 @@ public class PaymentController extends FXMLController implements Initializable {
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
         }
 
-        model.navigate(NavigationTarget.CONFIRMATION);
+
     }
 
+    @FXML
+    private void payAndOrder(){
+        saveUserInfo();
+
+        clientViewToFront();
+
+        model.navigate(NavigationTarget.CONFIRMATION);
+    }
 
     private void updateTextArea() {
         updateCreditCardTextArea();
@@ -233,17 +288,118 @@ public class PaymentController extends FXMLController implements Initializable {
         firstSidebarVBox.toFront();
     }
 
-
-    @FXML
-    public void consumeEvent(Event event) {
-        event.consume();
-    }
-
+    
 
     @FXML
     private void moveBack() {
         //SaveUserInfo();
         model.navigate(NavigationTarget.CHECKOUT);
+    }
+
+
+    private boolean isTextFieldFieldIn(TextField t){
+        return !(t.getText().trim().length()==0);
+    }
+
+
+    private boolean isFieldIn(TextField t,boolean displayError){
+
+        if(!isTextFieldFieldIn(t)){
+            if(displayError) {
+                t.getStyleClass().add("error");
+            }
+            return false;
+        }
+
+        if(t.getStyleClass().contains("error")){
+            t.getStyleClass().removeAll("error");
+        }
+        return true;
+    }
+
+
+
+    private boolean clientInfoFildIn( boolean displayError){
+       boolean fildIn=true;
+        fildIn=isFieldIn( firstNameField,displayError) && fildIn;
+
+        fildIn=isFieldIn( lastNameField,displayError)&& fildIn;
+
+        fildIn=isFieldIn( addressField,displayError)&& fildIn;
+
+        fildIn=isFieldIn( postcodeField,displayError)&& fildIn;
+
+        fildIn=isFieldIn( phoneNumberField,displayError)&& fildIn;
+
+        return fildIn;
+    }
+
+    @FXML
+    private void clientToCreditCardInfo(){
+        if(clientInfoFildIn(true)){
+            clientErrorLable.setVisible(false);
+            creditCardViewToFront();
+            return;
+        }
+        clientInfoDoneButton.setDisable(true);
+        clientErrorLable.setVisible(true);
+    }
+
+    private void ClientInfoDone(){
+        if(clientInfoFildIn(false)) {
+            clientErrorLable.setVisible(false);
+            clientInfoDoneButton.setDisable(false);
+        }
+    }
+
+
+
+
+
+    private boolean CreditCardInfoFildIn( boolean displayError){
+        boolean fildIn=true;
+        fildIn=isFieldIn( creditCardNumberField,displayError) && fildIn;
+
+        fildIn=isFieldIn( validMonthField,displayError)&& fildIn;
+
+        fildIn=isFieldIn( validYearField,displayError)&& fildIn;
+
+        fildIn=isFieldIn( cvcField,displayError)&& fildIn;
+
+
+        return fildIn;
+    }
+
+    @FXML
+    private void CreditCardToSummary(){
+        if(CreditCardInfoFildIn(true)){
+            creditCardErrorLable.setVisible(false);
+            summaryViewToFront();
+            return;
+        }
+        creditCardDoneButton.setDisable(true);
+        creditCardErrorLable.setVisible(true);
+    }
+
+    private void CreditCardInfoDone(){
+        if(CreditCardInfoFildIn(false)) {
+            creditCardErrorLable.setVisible(false);
+            creditCardDoneButton.setDisable(false);
+        }
+    }
+
+
+    @FXML
+    private void clientToSummary(){
+        if(clientInfoFildIn(false) && CreditCardInfoFildIn(false)){
+            summaryViewToFront();
+        }
+
+        if(clientInfoFildIn(false) && !CreditCardInfoFildIn(false)){
+            creditCardViewToFront();
+        }
+
+        clientToCreditCardInfo();
     }
 
 }
