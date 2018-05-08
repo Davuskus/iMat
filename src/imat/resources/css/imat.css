@@ -18,6 +18,12 @@
     -fx-font-weight: bold;
 }
 
+.text-large {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 18px;
+
+}
+
 .text-normal-dark-gray {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
