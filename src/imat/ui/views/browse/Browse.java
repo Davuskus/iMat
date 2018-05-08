@@ -60,6 +60,9 @@ public class Browse extends FXMLController implements INavigationListener, IProd
             case PRODUCT_DETAILS:
                 productDetailsPane.toFront();
                 break;
+            case CATEGORY:
+                productPane.toFront();
+                break;
             case HOME:
             default:
                 homePane.toFront();

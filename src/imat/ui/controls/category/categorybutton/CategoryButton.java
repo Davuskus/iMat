@@ -13,19 +13,19 @@ public class CategoryButton extends FXMLController {
 
     @FXML private Button button;
 
-    private final ProductCategory CATEGORY;
+    private final ProductCategory category;
 
     public CategoryButton(ProductCategory category){
-        this.CATEGORY = category;
+        this.category = category;
     }
 
     @FXML private void onButtonClick(){
-        model.selectCategory(CATEGORY);
+        model.selectCategory(category);
         model.navigate(NavigationTarget.CATEGORY);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        button.setText(CATEGORY.name());
+        button.setText(category.name());
     }
 }
