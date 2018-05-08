@@ -3,7 +3,7 @@ package imat.ui.views.browse.products;
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.ISearchListener;
 import imat.model.FXMLController;
-import imat.ui.controls.product.ProductMenuItem;
+import imat.ui.controls.product.menu.ProductMenuItem;
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;

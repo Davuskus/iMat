@@ -1,4 +1,4 @@
-package imat.ui.controls.product;
+package imat.ui.controls.product.menu;
 
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
