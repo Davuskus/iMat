@@ -40,9 +40,10 @@
                 <AnchorPane fx:id="middlePane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
                         <StackPane fx:id="sceneStackPane" onMouseClicked="#consumeEvent" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <fx:include fx:id="historyPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="history/order_history.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                            <fx:include fx:id="productPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="products/products.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                            <fx:include fx:id="productDetailsPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="productdetails/productDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <fx:include fx:id="historyPane" source="history/order_history.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <fx:include fx:id="productPane" source="products/products.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <fx:include fx:id="productDetailsPane" source="productdetails/productDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <fx:include fx:id="homePane" source="home/home.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </StackPane>
                     </children>
                 </AnchorPane>
