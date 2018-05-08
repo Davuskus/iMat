@@ -1,15 +1,14 @@
 package imat.ui.views.browse.history;
 
 import imat.enums.NavigationTarget;
-import imat.interfaces.IFXMLController;
 import imat.interfaces.INavigationListener;
+import imat.model.FXMLController;
 import imat.model.Model;
 import imat.ui.controls.history.article.ArticleHistoryItem;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderHistoryPane extends AnchorPane implements Initializable, IFXMLController, INavigationListener {
+public class OrderHistoryPane extends FXMLController implements INavigationListener {
 
     @FXML
     private Button copyToCartButton;
@@ -61,9 +60,15 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
 
     private final List<ArticleHistoryItem> articleHistoryItems;
 
-    private Order currentOrder;
+    private int numOrders;
+
+    private OrderHistoryItem currentOrderHistoryItem;
 
     private Model model;
+
+    private boolean showingArticlesPane;
+
+    private boolean userWasInThisView;
 
     public OrderHistoryPane() {
         super();
@@ -80,9 +85,12 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
      * Updates the list containing previous orders.
      */
     public void updateOrderList() {
-        ordersVBox.getChildren().clear();
-        orderHistoryItems.clear();
-        addOrdersToFlowPane();
+        if (numOrdersChanged()) {
+            numOrders = IMatDataHandler.getInstance().getOrders().size();
+            ordersVBox.getChildren().clear();
+            orderHistoryItems.clear();
+            addOrdersToFlowPane();
+        }
     }
 
     private void addOrdersToFlowPane() {
@@ -101,12 +109,14 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
             orderHistoryItem.setOrderHistoryPane(this);
             orderHistoryItems.add(orderHistoryItem);
         }
+
     }
 
     public void showArticlesPane(OrderHistoryItem orderHistoryItem) {
+        showingArticlesPane = true;
         populateArticleList(orderHistoryItem);
 
-        currentOrder = orderHistoryItem.getOrder();
+        currentOrderHistoryItem = orderHistoryItem;
 
         backButton.setFocusTraversable(true);
         copyToCartButton.setFocusTraversable(true);
@@ -118,10 +128,12 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     }
 
     private void hideArticlesPane() {
+        showingArticlesPane = false;
         articlesVBox.getChildren().clear();
         articleHistoryItems.clear();
         backButton.setFocusTraversable(false);
         copyToCartButton.setFocusTraversable(false);
+        updateOrderList();
         switchView(ordersPane);
     }
 
@@ -138,9 +150,8 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
         node.toFront();
     }
 
-    @FXML
-    private void updateOrderListButtonOnAction(Event event) {
-        updateOrderList();
+    private boolean numOrdersChanged() {
+        return numOrders != IMatDataHandler.getInstance().getOrders().size();
     }
 
     @FXML
@@ -151,9 +162,9 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     @FXML
     private void copyOrderToCartButtonOnAction(Event event) {
         if (model.getProductsInCart().size() == 0) {
-            model.addOrderToCart(currentOrder);
+            model.addOrderToCart(currentOrderHistoryItem.getOrder());
         } else {
-            model.selectOrder(currentOrder);
+            model.selectOrder(currentOrderHistoryItem.getOrder());
             model.navigate(NavigationTarget.COPY_ORDER);
         }
     }
@@ -166,9 +177,16 @@ public class OrderHistoryPane extends AnchorPane implements Initializable, IFXML
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.HISTORY) {
-            updateOrderList();
-        } else {
-            hideArticlesPane();
+            userWasInThisView = true;
+            if (showingArticlesPane) {
+                showArticlesPane(currentOrderHistoryItem);
+            } else {
+                hideArticlesPane();
+            }
+        } else if (userWasInThisView) {
+            userWasInThisView = false;
+            numOrders = 0;
+            articlesVBox.getChildren().clear();
             ordersVBox.getChildren().clear();
         }
     }

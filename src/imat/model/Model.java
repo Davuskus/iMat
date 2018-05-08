@@ -29,6 +29,7 @@ public class Model {
         productListeners = new ArrayList<>(1);
         orderListeners = new ArrayList<>(1);
         navigationHistory = new ArrayDeque<>();
+        navigationHistory.push(NavigationTarget.HOME);
         loadBackendCart();
     }
 
