@@ -393,10 +393,12 @@ public class PaymentController extends FXMLController implements Initializable {
     private void clientToSummary(){
         if(clientInfoFildIn(false) && CreditCardInfoFildIn(false)){
             summaryViewToFront();
+            return;
         }
 
         if(clientInfoFildIn(false) && !CreditCardInfoFildIn(false)){
             creditCardViewToFront();
+            return;
         }
 
         clientToCreditCardInfo();

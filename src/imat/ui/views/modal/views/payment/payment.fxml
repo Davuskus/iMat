@@ -151,7 +151,7 @@
                      <children>
                         <AnchorPane fx:id="creditCardInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                            <children>
-                              <VBox layoutX="126.0" layoutY="132.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
+                              <VBox fillWidth="false" layoutX="126.0" layoutY="132.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
                                  <children>
                                     <TextField fx:id="creditCardNumberField" />
                                     <HBox spacing="4.0">
