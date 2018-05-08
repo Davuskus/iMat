@@ -1,12 +1,11 @@
 package imat.ui.controls.product.cartitem;
 
-import imat.model.FXMLController;
-import imat.ui.controls.spinner.AmountSpinner;
 import imat.interfaces.IRemoveEvent;
 import imat.interfaces.IShoppingListener;
+import imat.model.FXMLController;
+import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.AnimationHandler;
 import imat.utils.DelayedRunnable;
-import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
 import javafx.animation.Timeline;
 import javafx.event.Event;
@@ -19,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -107,6 +105,17 @@ public class CartItem extends FXMLController implements IShoppingListener {
         shouldBeRemoved = false;
         model.updateShoppingCart(product, amountBeforeRemoveRequest);
         switchView(itemHBox);
+//        Platform.runLater(() -> {
+//            Timeline fadeAnimation = AnimationHandler.getAnimation(
+//                    v -> {
+//                        switchView(itemHBox);
+//                        regretButton.setDisable(false);
+//                        regretPane.setOpacity(1);
+//                    },
+//                    AnimationHandler.getOpacityChangeKeyFrame(regretPane, 50, 0)
+//            );
+//            fadeAnimation.play();
+//        });
     }
 
     @FXML

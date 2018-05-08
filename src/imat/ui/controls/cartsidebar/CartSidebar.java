@@ -1,14 +1,15 @@
 package imat.ui.controls.cartsidebar;
 
-import imat.model.FXMLController;
-import imat.ui.controls.product.cartitem.CartItem;
 import imat.enums.NavigationTarget;
 import imat.interfaces.IShoppingListener;
+import imat.model.FXMLController;
+import imat.ui.controls.product.cartitem.CartItem;
 import imat.utils.AnimationHandler;
 import imat.utils.DelayedRunnable;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -156,6 +157,17 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         trashButton.setDisable(false);
         updateCartInfo(model.getCartPrice());
         switchView(scrollPane);
+//        Platform.runLater(() -> {
+//            Timeline fadeAnimation = AnimationHandler.getAnimation(
+//                    v -> {
+//                        switchView(scrollPane);
+//                        regretPane.setOpacity(1);
+//                        regretButton.setDisable(false);
+//                    },
+//                    AnimationHandler.getOpacityChangeKeyFrame(regretPane, 50, 0)
+//            );
+//            fadeAnimation.play();
+//        });
     }
 
     private void updateCartInfo(double cartPrice) {
