@@ -33,7 +33,7 @@
              </AnchorPane>
             <HBox fx:id="itemHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="scene-default">
                <children>
-                  <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" prefHeight="20.0" prefWidth="20.0" styleClass="see-through-bg">
+                  <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" onMouseEntered="#removeButtonMouseEntered" onMouseExited="#removeButtonMouseExited" onMousePressed="#removeButtonMousePressed" prefHeight="20.0" prefWidth="20.0" styleClass="see-through-bg">
                      <graphic>
                           <ImageView fx:id="removeButtonImageView" fitHeight="20.0" fitWidth="30.0" focusTraversable="true" onKeyPressed="#removeButtonOnAction" onMouseClicked="#removeButtonOnAction" pickOnBounds="true" preserveRatio="true">
                               <cursor>
@@ -72,7 +72,7 @@
                   <VBox fx:id="otherVBox" alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
-                         <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml"/>
+                         <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" />
                      </children>
                      <padding>
                         <Insets right="10.0" top="10.0" />

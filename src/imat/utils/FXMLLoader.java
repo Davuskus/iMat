@@ -75,6 +75,17 @@ public final class FXMLLoader {
         }
     }
 
+    public static Node loadFXMLNode(String fxmlFilePath, Object controller) {
+        try {
+            return javafx.fxml.FXMLLoader.load(new URL(fxmlFilePath),
+                    null,
+                    null,
+                    new ControllerFactoryGate(type -> controller, FXMLLoader::controllerFactoryMethod));
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
     public static Node loadFXMLNodeFromRootPackage(String fxmlFilePath, Object root, Object controller) {
         try {
             return javafx.fxml.FXMLLoader.load(

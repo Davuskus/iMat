@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -188,4 +189,20 @@ public class CartItem extends FXMLController implements IShoppingListener {
         setAmountBeforeRemoveRequest(model.getProductAmount(product));
         updatePriceLabel(product.getPrice() * newAmount);
     }
+
+    @FXML
+    public void removeButtonMouseEntered() {
+        removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close_hover.png"));
+    }
+
+    @FXML
+    public void removeButtonMousePressed() {
+        removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close_pressed.png"));
+    }
+
+    @FXML
+    public void removeButtonMouseExited() {
+        removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close.png"));
+    }
+
 }
