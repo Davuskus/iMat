@@ -46,7 +46,7 @@ public class ProductDetailsController extends FXMLController {
 
         //comparisonPriceLabel.setText(comparisonPrice + "kr" + "/" + product.getUnitSuffix());
 
-        organicLabel.setText(product.isEcological() ? "Ekologisk" : "Inte ekologisk");
+        organicLabel.setText(product.isEcological() ? "Ekologisk" : "");
 
         amountSpinnerController.setProduct(product);
 
