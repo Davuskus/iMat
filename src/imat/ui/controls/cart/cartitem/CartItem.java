@@ -1,4 +1,4 @@
-package imat.ui.controls.product.cartitem;
+package imat.ui.controls.cart.cartitem;
 
 import imat.interfaces.IRemoveEvent;
 import imat.interfaces.IShoppingListener;

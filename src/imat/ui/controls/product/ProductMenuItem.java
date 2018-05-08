@@ -1,15 +1,12 @@
-package imat.ui.controls.product.menuitem;
+package imat.ui.controls.product;
 
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
-import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 

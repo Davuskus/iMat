@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0"
-            stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.checkout.CheckoutItem">
+            stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.checkout.item.CheckoutItem">
     <children>
         <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -51,7 +51,7 @@
                                 </VBox>
                                 <VBox fx:id="VBoxSpinner" alignment="CENTER">
                                     <children>
-                                        <fx:include fx:id="amountSpinner" source="../../controls/spinner/amount_spinner.fxml"/>
+                                        <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml"/>
                                     </children>
                                 </VBox>
                             </children>

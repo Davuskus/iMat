@@ -1,4 +1,4 @@
-package imat.ui.controls.categorybutton;
+package imat.ui.controls.category.categorybutton;
 
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;

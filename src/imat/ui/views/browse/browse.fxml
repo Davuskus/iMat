@@ -22,7 +22,7 @@
             <children>
                 <AnchorPane prefHeight="200.0" prefWidth="150.0" styleClass="debug-background-lightgreen" GridPane.rowIndex="1">
                     <children>
-                         <fx:include source="../../controls/categorysidebar/category_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                         <fx:include source="../../controls/category/categorysidebar/category_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="80.0" prefWidth="69.0" styleClass="debug-background-lightblue" GridPane.columnSpan="3">
@@ -32,7 +32,7 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-lightyellow" GridPane.columnIndex="2" GridPane.rowIndex="1">
                     <children>
-                        <fx:include fx:id="cartSidebar" source="../../controls/cartsidebar/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <fx:include fx:id="cartSidebar" source="../../controls/cart/cartsidebar/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <!--<CartSidebar fx:id="cartSidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"-->
                                      <!--AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>-->
                     </children>

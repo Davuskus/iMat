@@ -1,7 +1,7 @@
-package imat.ui.controls.categorysidebar;
+package imat.ui.controls.category.categorysidebar;
 
 import imat.model.FXMLController;
-import imat.ui.controls.categorybutton.CategoryButton;
+import imat.ui.controls.category.categorybutton.CategoryButton;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.fxml.FXML;

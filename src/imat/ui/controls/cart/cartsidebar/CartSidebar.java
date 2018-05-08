@@ -1,15 +1,14 @@
-package imat.ui.controls.cartsidebar;
+package imat.ui.controls.cart.cartsidebar;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
-import imat.ui.controls.product.cartitem.CartItem;
+import imat.ui.controls.cart.cartitem.CartItem;
 import imat.utils.AnimationHandler;
 import imat.utils.DelayedRunnable;
 import imat.utils.FXMLLoader;
 import imat.utils.MathUtils;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -81,7 +80,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
             removeCartNode(product);
         });
         cartItemController.setModel(model);
-        Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("../product/cartitem/cart_item.fxml", this, cartItemController);
+        Node cartItemNode = FXMLLoader.loadFXMLNodeFromRootPackage("../cartitem/cart_item.fxml", this, cartItemController);
         productsInSidebar.put(product, cartItemNode);
         cartItemVBox.getChildren().add(cartItemNode);
     }

@@ -1,4 +1,4 @@
-package imat.ui.controls.checkout;
+package imat.ui.controls.checkout.item;
 
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
