@@ -3,6 +3,7 @@ package imat.ui.controls.product.feature;
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
@@ -39,10 +40,11 @@ public class Feature extends FXMLController {
 
     private void startFeatureScrolling() {
         featureScrolling = true;
-        Timer timer = new Timer();
+    /*    Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+
                 Platform.runLater(() -> {
                     if (++currentProductIndex >= numProducts) {
                         currentProductIndex = 0;
@@ -53,7 +55,7 @@ public class Feature extends FXMLController {
                     timer.cancel();
                 }
             }
-        }, 0, scrollIntervalMillis);
+        }, 0, scrollIntervalMillis);*/
     }
 
     @FXML

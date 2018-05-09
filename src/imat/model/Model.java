@@ -5,6 +5,7 @@ import imat.interfaces.*;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Model {
 
@@ -195,7 +196,6 @@ public class Model {
     }
 
     public List<Product> getCommonlyPurchasedProducts(int numProducts) {
-
         List<Order> orders = IMatDataHandler.getInstance().getOrders();
         Map<Product, Double> articles = new HashMap<>();
         List<Product> mostCommon = new ArrayList<>();
@@ -211,7 +211,15 @@ public class Model {
             });
         });
 
-        if (articles.keySet().size() < numProducts) {
+        return articles
+                .entrySet()
+                .stream()
+                .sorted((a, b) -> a.getValue() < b.getValue() ? 1 : -1)
+                .limit(4)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        /*if (articles.keySet().size() < numProducts) {
             throw new IllegalArgumentException(
                     "The given number of products is greater than the available number of products");
         }
@@ -230,7 +238,7 @@ public class Model {
             mostCommon.add(maxAmountProduct);
         }
 
-        return mostCommon;
+        return mostCommon;*/
     }
 
 }
