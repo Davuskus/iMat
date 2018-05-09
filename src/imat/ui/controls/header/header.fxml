@@ -46,6 +46,7 @@
                      <styleClass>
                         <String fx:value="border-thin-round" />
                         <String fx:value="ReseneWhite-background" />
+                        <String fx:value="text-large" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -57,6 +58,7 @@
                      <styleClass>
                         <String fx:value="border-thin-round" />
                         <String fx:value="ReseneWhite-background" />
+                        <String fx:value="text-large" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
