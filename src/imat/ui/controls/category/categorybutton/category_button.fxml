@@ -11,7 +11,7 @@
       <URL value="@../../../../resources/css/imat.css" />
    </stylesheets>
    <styleClass>
-      <String fx:value="scene-default" />
+      <String fx:value="white-button" />
       <String fx:value="border-thin-round" />
    </styleClass>
 </Button>
