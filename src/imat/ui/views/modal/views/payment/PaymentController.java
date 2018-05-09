@@ -227,9 +227,7 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private void payAndOrder(){
         saveUserInfo();
-
         clientViewToFront();
-
         model.navigate(NavigationTarget.CONFIRMATION);
     }
 
@@ -278,6 +276,8 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private void summaryViewToFront() {
         updateTextArea();
+        model.placeOrder();
+        model.clearCart();
         conclusionPane.toFront();
         thirdSidebarVBox.toFront();
     }

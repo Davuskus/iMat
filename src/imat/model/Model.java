@@ -160,6 +160,7 @@ public class Model {
 
     }
 
+
     public void verifyExistence() {
         System.out.println("Model exists!");
     }
@@ -182,5 +183,14 @@ public class Model {
 
     public void showProductDetails(Product product) {
         productListeners.forEach(x -> x.onProductSelection(product));
+    }
+
+    public void placeOrder() {
+        Set<Product> products = cart.keySet();
+        for (Product product : products) {
+            IMatDataHandler.getInstance().getShoppingCart().addProduct(product,cart.get(product));
+        }
+
+        IMatDataHandler.getInstance().placeOrder(true);
     }
 }
