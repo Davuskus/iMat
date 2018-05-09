@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="scene-default" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.checkout.Checkout">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="scene-default" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.checkout.Checkout">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="47.0" layoutY="385.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="115.0" prefWidth="120.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>

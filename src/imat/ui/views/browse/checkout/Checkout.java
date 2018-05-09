@@ -1,6 +1,7 @@
 package imat.ui.views.browse.checkout;
 
 import imat.enums.NavigationTarget;
+import imat.interfaces.INavigationListener;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
 import imat.ui.controls.product.checkout.CheckoutItem;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -18,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class Checkout extends FXMLController implements IShoppingListener {
+public class Checkout extends FXMLController implements IShoppingListener,INavigationListener {
 
     @FXML
     private Label PriceLabel;
@@ -35,6 +37,9 @@ public class Checkout extends FXMLController implements IShoppingListener {
     @FXML
     private Button toPaymentButton;
 
+    @FXML
+    private AnchorPane root;
+
     private Map<Product, Node> productsInCheckout = new HashMap<>();
 
     @Override
@@ -42,6 +47,8 @@ public class Checkout extends FXMLController implements IShoppingListener {
         model.addShoppingListener(this);
         model.getProductsInCart().forEach(this::addItemNode);
         updateLabels(model.getCartPrice());
+        root.setDisable(true);
+        model.addNavigationListener(this);
     }
 
 
@@ -107,4 +114,14 @@ public class Checkout extends FXMLController implements IShoppingListener {
     }
 
 
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        if(navigationTarget==NavigationTarget.CHECKOUT){
+            root.setDisable(false);
+        }
+        else {
+            root.setDisable(true);
+        }
+
+    }
 }
