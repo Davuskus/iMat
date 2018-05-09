@@ -184,6 +184,15 @@ public class Model {
         productListeners.forEach(x -> x.onProductSelection(product));
     }
 
+    public void placeOrder() {
+        Set<Product> products = cart.keySet();
+        for (Product product : products) {
+            IMatDataHandler.getInstance().getShoppingCart().addProduct(product,cart.get(product));
+        }
+
+        IMatDataHandler.getInstance().placeOrder(true);
+    }
+
     public List<Product> getCommonlyPurchasedProducts(int numProducts) {
 
         List<Order> orders = IMatDataHandler.getInstance().getOrders();
