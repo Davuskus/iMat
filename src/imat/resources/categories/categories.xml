@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Categories>
     <Category id="Kött">
-        <Product id="71">Grytbitar nöt</Product>
-        <Product id="72">Högrev</Product>
-        <Product id="76">Köttfärs nöt</Product>
-        <Product id="149">Ekologisk blandfärs</Product>
-        <Product id="150">Ekologisk nötfärs</Product>
+        <Subcategory id="Nöt">
+            <Product id="71">Grytbitar nöt</Product>
+            <Product id="72">Högrev</Product>
+            <Product id="76">Köttfärs nöt</Product>
+        </Subcategory>
+        <Subcategory id="Blandkött">
+            <Product id="149">Ekologisk blandfärs</Product>
+            <Product id="150">Ekologisk nötfärs</Product>
+        </Subcategory>
     </Category>
     <Category id="Fisk och skaldjur">
-        <Product id="48">Fiskpinnar</Product>
-        <Product id="49">Kräftor</Product>
-        <Product id="50">Lax</Product>
-        <Product id="51">Räkor</Product>
-        <Product id="52">Sej</Product>
-        <Product id="53">Sill</Product>
-        <Product id="54">Tonfisk</Product>
+        <Subcategory id="Fisk">
+            <Product id="48">Fiskpinnar</Product>
+            <Product id="50">Lax</Product>
+            <Product id="52">Sej</Product>
+            <Product id="53">Sill</Product>
+            <Product id="54">Tonfisk</Product>
+        </Subcategory>
+        <Subcategory id="Skaldjur">
+            <Product id="49">Kräftor</Product>
+            <Product id="51">Räkor</Product>
+        </Subcategory>
     </Category>
     <Category id="Bakning">
-        <Product id="92">Gramsmjöl</Product>
-        <Product id="95">Socker</Product>
-        <Product id="91">Farinsocker</Product>
-        <Product id="93">Rågmjöl</Product>
-        <Product id="96">Vetemjöl</Product>
-        <Product id="151">Ekologiskt socker</Product>
+        <Subcategory id="Mjöl">
+            <Product id="92">Gramsmjöl</Product>
+            <Product id="93">Rågmjöl</Product>
+            <Product id="96">Vetemjöl</Product>
+        </Subcategory>
+        <Subcategory id="Socker">
+            <Product id="95">Socker</Product>
+            <Product id="91">Farinsocker</Product>
+            <Product id="151">Ekologiskt socker</Product>
+        </Subcategory>
     </Category>
     <Category id="Fågel">
         <Product id="73">Kycklingbröstfilé</Product>
@@ -34,160 +46,212 @@
         <Product id="154">Ekologiska ägg</Product>
     </Category>
     <Category id="Frukt och bär">
-        <Product id="87">Galiamelon</Product>
-        <Product id="86">Charentaismelon</Product>
-        <Product id="88">Honungsmelon</Product>
-        <Product id="89">Nätmelon</Product>
-        <Product id="90">Vattenmelon</Product>
-        <Product id="129">Aprikos</Product>
-        <Product id="130">Körsbär</Product>
-        <Product id="131">Nektarin</Product>
-        <Product id="132">Persika</Product>
-        <Product id="133">Plommon</Product>
-        <Product id="15">Björnbär</Product>
-        <Product id="16">Blåbär</Product>
-        <Product id="17">Hallon</Product>
-        <Product id="18">Krusbär</Product>
-        <Product id="19">Röda vinbär</Product>
-        <Product id="20">Smultron</Product>
-        <Product id="21">Svarta vinbär</Product>
-        <Product id="22">Apelsin</Product>
-        <Product id="23">Citron</Product>
-        <Product id="24">Clementin</Product>
-        <Product id="25">Grapefruit</Product>
-        <Product id="26">Lime</Product>
-        <Product id="41">Ananas</Product>
-        <Product id="42">Fikon</Product>
-        <Product id="43">Granatäpple</Product>
-        <Product id="44">Kiwi</Product>
-        <Product id="45">Mango</Product>
-        <Product id="46">Papaya</Product>
-        <Product id="47">Rambutan</Product>
+        <Subcategory id="Frukt">
+            <Product id="129">Aprikos</Product>
+            <Product id="131">Nektarin</Product>
+            <Product id="132">Persika</Product>
+            <Product id="133">Plommon</Product>
+            <Product id="22">Apelsin</Product>
+            <Product id="23">Citron</Product>
+            <Product id="24">Clementin</Product>
+            <Product id="25">Grapefruit</Product>
+            <Product id="26">Lime</Product>
+            <Product id="41">Ananas</Product>
+            <Product id="42">Fikon</Product>
+            <Product id="43">Granatäpple</Product>
+            <Product id="44">Kiwi</Product>
+            <Product id="45">Mango</Product>
+            <Product id="46">Papaya</Product>
+            <Product id="47">Rambutan</Product>
+        </Subcategory>
+        <Subcategory id="Melon">
+            <Product id="87">Galiamelon</Product>
+            <Product id="86">Charentaismelon</Product>
+            <Product id="88">Honungsmelon</Product>
+            <Product id="89">Nätmelon</Product>
+            <Product id="90">Vattenmelon</Product>
+        </Subcategory>
+        <Subcategory id="Bär">
+            <Product id="130">Körsbär</Product>
+            <Product id="15">Björnbär</Product>
+            <Product id="16">Blåbär</Product>
+            <Product id="17">Hallon</Product>
+            <Product id="18">Krusbär</Product>
+            <Product id="19">Röda vinbär</Product>
+            <Product id="20">Smultron</Product>
+            <Product id="21">Svarta vinbär</Product>
+        </Subcategory>
     </Category>
     <Category id="Nötter och frön">
-        <Product id="97">Cashewnöt</Product>
-        <Product id="98">Hasselnöt</Product>
-        <Product id="99">Jordnöt</Product>
-        <Product id="100">Kokosnöt</Product>
-        <Product id="101">Mandel</Product>
-        <Product id="102">Pistagenöt</Product>
-        <Product id="103">Valnöt</Product>
-        <Product id="104">Pumpakärnor</Product>
-        <Product id="105">Solrosfrön</Product>
+        <Subcategory id="Nötter">
+            <Product id="97">Cashewnöt</Product>
+            <Product id="98">Hasselnöt</Product>
+            <Product id="99">Jordnöt</Product>
+            <Product id="100">Kokosnöt</Product>
+            <Product id="101">Mandel</Product>
+            <Product id="102">Pistagenöt</Product>
+            <Product id="103">Valnöt</Product>
+        </Subcategory>
+        <Subcategory id="Frön">
+            <Product id="104">Pumpakärnor</Product>
+            <Product id="105">Solrosfrön</Product>
+        </Subcategory>
     </Category>
     <Category id="Grönsaker">
-        <Product id="62">Squash</Product>
-        <Product id="63">Blomkål</Product>
-        <Product id="64">Broccoli</Product>
-        <Product id="65">Brysselkål</Product>
-        <Product id="66">Kinakål</Product>
-        <Product id="67">Romanesco</Product>
-        <Product id="68">Rödkål</Product>
-        <Product id="69">Ekologisk vitkål</Product>
-        <Product id="70">Savoykål</Product>
-        <Product id="121">Kålrot</Product>
-        <Product id="122">Majrova</Product>
-        <Product id="123">Morot</Product>
-        <Product id="124">Palsternacka</Product>
-        <Product id="125">Pepparrot</Product>
-        <Product id="126">Rädisa</Product>
-        <Product id="127">Rödbeta</Product>
-        <Product id="128">Rotselleri</Product>
-        <Product id="55">Aubergine</Product>
-        <Product id="56">Avocado</Product>
-        <Product id="57">Gurka</Product>
-        <Product id="58">Oliver</Product>
-        <Product id="59">Okra</Product>
-        <Product id="60">Paprika</Product>
-        <Product id="61">Pumpa</Product>
-        <Product id="152">Ekologisk blomkål</Product>
-        <Product id="153">Ekologisk brysselkål</Product>
+        <Subcategory id="Kål och grönsaker">
+            <Product id="62">Squash</Product>
+            <Product id="63">Blomkål</Product>
+            <Product id="64">Broccoli</Product>
+            <Product id="65">Brysselkål</Product>
+            <Product id="66">Kinakål</Product>
+            <Product id="67">Romanesco</Product>
+            <Product id="68">Rödkål</Product>
+            <Product id="69">Ekologisk vitkål</Product>
+            <Product id="70">Savoykål</Product>
+            <Product id="55">Aubergine</Product>
+            <Product id="56">Avocado</Product>
+            <Product id="57">Gurka</Product>
+            <Product id="58">Oliver</Product>
+            <Product id="59">Okra</Product>
+            <Product id="60">Paprika</Product>
+            <Product id="61">Pumpa</Product>
+            <Product id="152">Ekologisk blomkål</Product>
+            <Product id="153">Ekologisk brysselkål</Product>
+        </Subcategory>
+        <Subcategory id="Rotfrukter">
+            <Product id="121">Kålrot</Product>
+            <Product id="122">Majrova</Product>
+            <Product id="123">Morot</Product>
+            <Product id="124">Palsternacka</Product>
+            <Product id="125">Pepparrot</Product>
+            <Product id="126">Rädisa</Product>
+            <Product id="127">Rödbeta</Product>
+            <Product id="128">Rotselleri</Product>
+        </Subcategory>
     </Category>
     <Category id="Bönor och ärtor">
-        <Product id="1">Gröna ärter</Product>
-        <Product id="2">Kikärtor</Product>
-        <Product id="3">Linser bruna</Product>
-        <Product id="4">Linser gröna</Product>
-        <Product id="5">Linser röda</Product>
-        <Product id="6">Röda bönor</Product>
-        <Product id="7">Vita bönor</Product>
+        <Subcategory id="Artor">
+            <Product id="1">Gröna ärter</Product>
+            <Product id="2">Kikärtor</Product>
+        </Subcategory>
+        <Subcategory id="Bönor">
+            <Product id="3">Linser bruna</Product>
+            <Product id="4">Linser gröna</Product>
+            <Product id="5">Linser röda</Product>
+            <Product id="6">Röda bönor</Product>
+            <Product id="7">Vita bönor</Product>
+        </Subcategory>
     </Category>
     <Category id="Mejeri">
-        <Product id="77">Brie</Product>
-        <Product id="78">Filmjölk</Product>
-        <Product id="79">Färskost</Product>
-        <Product id="80">Mjölk</Product>
-        <Product id="81">Mozzarella</Product>
-        <Product id="82">Västerbotten</Product>
-        <Product id="83">Yoghurt laktosfri</Product>
-        <Product id="84">Yoghurt turkisk</Product>
+        <Subcategory id="Mjölk, yoghurt, fil">
+            <Product id="78">Filmjölk</Product>
+            <Product id="79">Färskost</Product>
+            <Product id="80">Mjölk</Product>
+            <Product id="83">Yoghurt laktosfri</Product>
+            <Product id="84">Yoghurt turkisk</Product>
+        </Subcategory>
+        <Subcategory id="Ost">
+            <Product id="81">Mozzarella</Product>
+            <Product id="82">Västerbotten</Product>
+            <Product id="77">Brie</Product>
+        </Subcategory>
     </Category>
     <Category id="Läsk och drycker">
-        <Product id="32">Apelsinjuice</Product>
-        <Product id="33">Cola burk</Product>
-        <Product id="34">Cola flaska</Product>
-        <Product id="35">Fanta burk</Product>
-        <Product id="36">Fanta flaska</Product>
-        <Product id="37">Fruktsoppa</Product>
-        <Product id="38">7Up burk</Product>
-        <Product id="39">7Up flaska</Product>
-        <Product id="40">Vatten</Product>
+        <Subcategory id="Juice och saft">
+            <Product id="32">Apelsinjuice</Product>
+            <Product id="37">Fruktsoppa</Product>
+        </Subcategory>
+        <Subcategory id="Läsk">
+            <Product id="33">Cola burk</Product>
+            <Product id="34">Cola flaska</Product>
+            <Product id="35">Fanta burk</Product>
+            <Product id="36">Fanta flaska</Product>
+            <Product id="38">7Up burk</Product>
+            <Product id="39">7Up flaska</Product>
+        </Subcategory>
+        <Subcategory id="Vatten">
+            <Product id="40">Vatten</Product>
+        </Subcategory>
     </Category>
     <Category id="Kaffe och te">
-        <Product id="27">Cacao</Product>
-        <Product id="28">Earl grey</Product>
-        <Product id="29">Grönt te</Product>
-        <Product id="30">Kaffe</Product>
-        <Product id="31">Rooibos</Product>
+        <Subcategory id="Kaffe">
+            <Product id="30">Kaffe</Product>
+        </Subcategory>
+        <Subcategory id="Te">
+            <Product id="28">Earl grey</Product>
+            <Product id="29">Grönt te</Product>
+            <Product id="31">Rooibos</Product>
+        </Subcategory>
+        <Subcategory id="Kakao">
+            <Product id="27">Cacao</Product>
+        </Subcategory>
     </Category>
     <Category id="Kryddor">
-        <Product id="141">Basilika</Product>
-        <Product id="142">Citronmeliss</Product>
-        <Product id="143">Dill</Product>
-        <Product id="144">Koriander</Product>
-        <Product id="145">Oregano</Product>
-        <Product id="146">Persilja</Product>
-        <Product id="147">Rosmarin</Product>
-        <Product id="148">Timjan</Product>
-        <Product id="94">Salt</Product>
+        <Subcategory id="Örter">
+            <Product id="141">Basilika</Product>
+            <Product id="142">Citronmeliss</Product>
+            <Product id="143">Dill</Product>
+            <Product id="144">Koriander</Product>
+            <Product id="145">Oregano</Product>
+            <Product id="146">Persilja</Product>
+            <Product id="147">Rosmarin</Product>
+            <Product id="148">Timjan</Product>
+        </Subcategory>
+        <Subcategory id="Salt">
+            <Product id="94">Salt</Product>
+        </Subcategory>
     </Category>
-    <Category id="Potatis">
-        <Product id="116">Potatis</Product>
-        <Product id="117">Potatis röd</Product>
-        <Product id="118">Potatis söt</Product>
-        <Product id="119">Potatispuré</Product>
-    </Category>
-    <Category id="Ris">
-        <Product id="113">Basmati-ris</Product>
-        <Product id="114">Fullkornsris</Product>
-        <Product id="115">Jasmin-ris</Product>
-        <Product id="120">Råris</Product>
-    </Category>
-    <Category id="Pasta">
-        <Product id="106">Farfalle</Product>
-        <Product id="107">Fettuccine</Product>
-        <Product id="108">Fusilli</Product>
-        <Product id="109">Lasagne</Product>
-        <Product id="110">Penne</Product>
-        <Product id="111">Rigatoni</Product>
-        <Product id="112">Spaghetti</Product>
+    <Category id="Potatis, pasta och ris">
+        <Subcategory id="Potatis">
+            <Product id="116">Potatis</Product>
+            <Product id="117">Potatis röd</Product>
+            <Product id="118">Potatis söt</Product>
+            <Product id="119">Potatispuré</Product>
+        </Subcategory>
+        <Subcategory id="Ris">
+            <Product id="113">Basmati-ris</Product>
+            <Product id="114">Fullkornsris</Product>
+            <Product id="115">Jasmin-ris</Product>
+            <Product id="120">Råris</Product>
+        </Subcategory>
+        <Subcategory id="Pasta">
+            <Product id="106">Farfalle</Product>
+            <Product id="107">Fettuccine</Product>
+            <Product id="108">Fusilli</Product>
+            <Product id="109">Lasagne</Product>
+            <Product id="110">Penne</Product>
+            <Product id="111">Rigatoni</Product>
+            <Product id="112">Spaghetti</Product>
+        </Subcategory>
     </Category>
     <Category id="Bröd">
-        <Product id="8">Bröd grovt</Product>
-        <Product id="9">Bröd vitt</Product>
-        <Product id="10">Fralla</Product>
-        <Product id="11">Knäckebröd</Product>
-        <Product id="12">Toast</Product>
-        <Product id="13">Tunnbröd</Product>
-        <Product id="14">Vörtlimpa</Product>
+        <Subcategory id="Limpor och frallor">
+            <Product id="8">Bröd grovt</Product>
+            <Product id="9">Bröd vitt</Product>
+            <Product id="10">Fralla</Product>
+            <Product id="12">Toast</Product>
+            <Product id="13">Tunnbröd</Product>
+            <Product id="14">Vörtlimpa</Product>
+        </Subcategory>
+        <Subcategory id="Knäckebröd">
+            <Product id="11">Knäckebröd</Product>
+        </Subcategory>
     </Category>
     <Category id="Godis, kakor och snacks">
-        <Product id="134">Chips</Product>
-        <Product id="135">Choklad</Product>
-        <Product id="136">Glass</Product>
-        <Product id="137">Kanelbullar</Product>
-        <Product id="138">Kex</Product>
-        <Product id="139">Kokosbollar</Product>
-        <Product id="140">Praliner</Product>
+        <Subcategory id="Choklad och godis">
+            <Product id="140">Praliner</Product>
+            <Product id="135">Choklad</Product>
+        </Subcategory>
+        <Subcategory id="Glass">
+            <Product id="136">Glass</Product>
+        </Subcategory>
+        <Subcategory id="Snacks">
+            <Product id="134">Chips</Product>
+        </Subcategory>
+        <Subcategory id="Kakor och konditori">
+            <Product id="137">Kanelbullar</Product>
+            <Product id="138">Kex</Product>
+            <Product id="139">Kokosbollar</Product>
+        </Subcategory>
     </Category>
 </Categories>
