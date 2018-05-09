@@ -152,13 +152,12 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
                     Timeline removalAnimation = AnimationHandler.getAnimation(
                             v -> {
                                 removeEvent.execute();
-                              // model.updateShoppingCart(product, 0.0);
                             },
                             AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
                             AnimationHandler.getOpacityChangeKeyFrame(infoAnchorPane, 250, 0),
                             AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
-                            AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth()),
-                            AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
+                            AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0),
+                            AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth())
                     );
                     removalAnimation.play();
                 }
