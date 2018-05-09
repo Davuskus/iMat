@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import imat.model.Model;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -35,6 +36,7 @@ public class Main extends Application {
         int stageHeight = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().height * ratio);
 
         primaryStage.setScene(new Scene(root, stageWidth, stageHeight));
+        primaryStage.getIcons().add(new Image("imat/resources/images/logo/imat_logo.png"));
         primaryStage.show();
     }
 
