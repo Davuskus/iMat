@@ -2,7 +2,8 @@ package imat.enums;
 
 public enum NavigationTarget {
 
-    HISTORY,
+    ORDER_HISTORY,
+    ORDER_HISTORY_ARTICLE,
     CHECKOUT,
     HELP,
     PRODUCT_DETAILS,

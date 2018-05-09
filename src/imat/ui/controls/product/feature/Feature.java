@@ -40,22 +40,22 @@ public class Feature extends FXMLController {
 
     private void startFeatureScrolling() {
         featureScrolling = true;
-    /*    Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
 
-                Platform.runLater(() -> {
-                    if (++currentProductIndex >= numProducts) {
-                        currentProductIndex = 0;
-                    }
-                    productStackPane.getChildren().get(currentProductIndex).toFront();
-                });
-                if (!featureScrolling) {
-                    timer.cancel();
-                }
-            }
-        }, 0, scrollIntervalMillis);*/
+//        Timer timer = new Timer();
+//        timer.scheduleAtFixedRate(new TimerTask() {
+//            @Override
+//            public void run() {
+//                Platform.runLater(() -> {
+//                    if (++currentProductIndex >= numProducts) {
+//                        currentProductIndex = 0;
+//                    }
+//                    productStackPane.getChildren().get(currentProductIndex).toFront();
+//                });
+//                if (!featureScrolling) {
+//                    timer.cancel();
+//                }
+//            }
+//        }, 0, scrollIntervalMillis);
     }
 
     @FXML

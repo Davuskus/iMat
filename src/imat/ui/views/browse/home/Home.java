@@ -32,23 +32,33 @@ public class Home extends FXMLController implements INavigationListener {
     @FXML
     private Label productsTitle;
 
-    private final int numProducts = 4;
+    private final int maxNumProducts = 4;
+
+    private int numOrders;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
-
-        if (IMatDataHandler.getInstance().getOrders().size() > 0) {
-            productsTitle.setText("Vanligt köpta varor");
-            model.getCommonlyPurchasedProducts(numProducts).forEach(this::addProductMenuItem);
-        } else {
-            productsTitle.setText("Rekommenderade varor");
-            while (productsHBox.getChildren().size() < numProducts) {
-                addProductMenuItem(getRandomProduct());
-            }
-        }
         productsHBox.setScaleX(0.85);
         productsHBox.setScaleY(0.85);
+        updateProductsHBox();
+    }
+
+    private void updateProductsHBox() {
+        int numBackendOrders = IMatDataHandler.getInstance().getOrders().size();
+        if (numOrders != numBackendOrders) {
+            numOrders = numBackendOrders;
+            productsHBox.getChildren().clear();
+            if (IMatDataHandler.getInstance().getOrders().size() > 0) {
+                productsTitle.setText("Vanligt köpta varor");
+                model.getCommonlyPurchasedProducts(maxNumProducts).forEach(this::addProductMenuItem);
+            } else {
+                productsTitle.setText("Rekommenderade varor");
+                while (productsHBox.getChildren().size() < maxNumProducts) {
+                    addProductMenuItem(getRandomProduct());
+                }
+            }
+        }
     }
 
     private void addProductMenuItem(Product product) {
@@ -71,7 +81,10 @@ public class Home extends FXMLController implements INavigationListener {
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
-        featureController.setFeatureScrolling(navigationTarget == NavigationTarget.HOME);
+        if (navigationTarget == NavigationTarget.HOME) {
+            updateProductsHBox();
+            featureController.setFeatureScrolling(navigationTarget == NavigationTarget.HOME);
+        }
     }
 
 }
