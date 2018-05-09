@@ -211,6 +211,11 @@ public class Model {
             });
         });
 
+        if (articles.keySet().size() < numProducts) {
+            throw new IllegalArgumentException(
+                    "The given number of products is greater than the available number of products");
+        }
+
         while (mostCommon.size() < numProducts) {
             Product maxAmountProduct = null;
             double maxAmount = 0;
