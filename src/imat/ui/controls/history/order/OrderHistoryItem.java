@@ -2,7 +2,7 @@ package imat.ui.controls.history.order;
 
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
-import imat.ui.views.browse.centerviews.history.OrderHistoryPane;
+import imat.ui.views.browse.centerviews.history.orders.OrderHistoryPane;
 import imat.utils.DateUtils;
 import imat.utils.IMatUtils;
 import javafx.event.Event;

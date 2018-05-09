@@ -1,4 +1,4 @@
-package imat.ui.views.browse.centerviews.history;
+package imat.ui.views.browse.centerviews.history.articles;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.IOrderListener;
@@ -47,7 +47,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
             ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem();
             articleHistoryItem.setModel(model);
             Node articleNode = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "../../../../controls/history/article/article_history_item.fxml",
+                    "../../../../../controls/history/article/article_history_item.fxml",
                     this,
                     articleHistoryItem);
             articlesVBox.getChildren().add(articleNode);

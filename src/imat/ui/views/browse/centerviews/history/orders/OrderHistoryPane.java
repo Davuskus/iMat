@@ -1,4 +1,4 @@
-package imat.ui.views.browse.centerviews.history;
+package imat.ui.views.browse.centerviews.history.orders;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
@@ -74,7 +74,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
             orderHistoryItem.setModel(model);
             orderHistoryItems.add(orderHistoryItem);
             Node historyItem = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "../../../../controls/history/order/order_history_item.fxml",
+                    "../../../../../controls/history/order/order_history_item.fxml",
                     this, orderHistoryItem);
             orderHistoryItem.setOrder(order);
             orderHistoryItem.setOrderHistoryPane(this);
