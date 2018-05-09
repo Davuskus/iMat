@@ -69,7 +69,7 @@ public class MainController extends FXMLController implements INavigationListene
                 break;
             case HOME:
             case PRODUCT_DETAILS:
-            case HISTORY:
+            case ORDER_HISTORY:
                 browseView.toFront();
             default:
                 browseView.toFront();

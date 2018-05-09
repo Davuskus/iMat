@@ -187,14 +187,14 @@ public class Model {
     public void placeOrder() {
         Set<Product> products = cart.keySet();
         for (Product product : products) {
-            IMatDataHandler.getInstance().getShoppingCart().addProduct(product,cart.get(product));
+            IMatDataHandler.getInstance().getShoppingCart().addProduct(product, cart.get(product));
         }
 
         IMatDataHandler.getInstance().placeOrder(true);
         clearCart();
     }
 
-    public List<Product> getCommonlyPurchasedProducts(int numProducts) {
+    public List<Product> getCommonlyPurchasedProducts(int maxNumProducts) {
 
         List<Order> orders = IMatDataHandler.getInstance().getOrders();
         Map<Product, Double> articles = new HashMap<>();
@@ -211,12 +211,7 @@ public class Model {
             });
         });
 
-        if (articles.keySet().size() < numProducts) {
-            throw new IllegalArgumentException(
-                    "The given number of products is greater than the available number of products");
-        }
-
-        while (mostCommon.size() < numProducts) {
+        while (mostCommon.size() < maxNumProducts && mostCommon.size() < articles.keySet().size()) {
             Product maxAmountProduct = null;
             double maxAmount = 0;
             for (Product product : articles.keySet()) {

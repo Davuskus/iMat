@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root focusTraversable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="500.0" styleClass="clickable-list-item" stylesheets="@../../../../resources/css/imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="500.0" styleClass="clickable-list-item" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.order.OrderHistoryItem">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,4 +26,4 @@
    <cursor>
       <Cursor fx:constant="HAND" />
    </cursor>
-</fx:root>
+</AnchorPane>

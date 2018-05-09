@@ -27,6 +27,7 @@
                             <fx:include fx:id="productDetailsPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="productdetails/productDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                             <fx:include fx:id="productPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="products/products.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                             <fx:include fx:id="historyPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="history/order_history.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <fx:include fx:id="historyArticlesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" source="history/history_articles.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </StackPane>
                     </children>
                 </AnchorPane>

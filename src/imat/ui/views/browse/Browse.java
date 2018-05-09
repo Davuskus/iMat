@@ -21,6 +21,9 @@ public class Browse extends FXMLController implements INavigationListener, IProd
     private AnchorPane historyPane;
 
     @FXML
+    private AnchorPane historyArticlesPane;
+
+    @FXML
     private AnchorPane productPane;
 
     @FXML
@@ -54,8 +57,11 @@ public class Browse extends FXMLController implements INavigationListener, IProd
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         switch (navigationTarget) {
-            case HISTORY:
+            case ORDER_HISTORY:
                 historyPane.toFront();
+                break;
+            case ORDER_HISTORY_ARTICLE:
+                historyArticlesPane.toFront();
                 break;
             case PRODUCT_DETAILS:
                 productDetailsPane.toFront();

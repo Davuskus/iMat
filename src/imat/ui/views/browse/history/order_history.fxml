@@ -2,14 +2,9 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -30,108 +25,19 @@
                   <String fx:value="border-thin" />
                </styleClass>
                 </AnchorPane>
-                <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                    <children>
-                        <AnchorPane fx:id="articlesPane" prefHeight="200.0" prefWidth="200.0">
-                            <children>
-                                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background-gray-light" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <children>
-                              <HBox prefHeight="30.0" prefWidth="200.0" styleClass="background-gray-light">
-                                 <children>
-                                                <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" styleClass="button-text-normal" text="Tillbaka" wrapText="true">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0" />
-                                    <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                                        <Separator prefWidth="200.0" />
-                              <HBox prefHeight="30.0" prefWidth="200.0">
-                                 <children>
-                                    <Label styleClass="title-normal-dark-gray" text="Antal artiklar: " wrapText="true">
-                                       <HBox.margin>
-                                          <Insets left="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="totalNumArticlesLabel" styleClass="title-normal-dark-gray" text="# st" wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Separator orientation="VERTICAL" prefHeight="200.0">
-                                       <HBox.margin>
-                                          <Insets left="5.0" right="5.0" />
-                                       </HBox.margin>
-                                    </Separator>
-                                    <Label styleClass="title-normal-dark-gray" text="Totalt pris: " wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="totalPriceLabel" styleClass="title-normal-dark-gray" text="- kr" wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                                        <AnchorPane fx:id="cartProductsPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-gray-light" VBox.vgrow="ALWAYS">
-                                            <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                    <children>
-                                                        <AnchorPane prefHeight="40.0" prefWidth="200.0">
-                                                            <children>
-                                                                <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" styleClass="button-text-normal" text="Kopiera order till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor></Button>
-                                                            </children>
-                                                        </AnchorPane>
-                                                        <ScrollPane fx:id="articlesScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                             <content>
-                                                <VBox fx:id="articlesVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                                   <padding>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </padding></VBox>
-                                             </content>
-                                                        </ScrollPane>
-                                                    </children>
-                                                </VBox>
-                                            </children>
-                                        </AnchorPane>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0">
-                            <children>
-                                <ScrollPane fx:id="ordersScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <content>
-                                        <VBox fx:id="ordersVBox" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </VBox>
-                                    </content>
-                                </ScrollPane>
-                            </children>
-                        </AnchorPane>
-                    </children>
-                </StackPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                      <children>
+                          <ScrollPane fx:id="ordersScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <content>
+                                  <VBox fx:id="ordersVBox" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                              </content>
+                          </ScrollPane>
+                      </children>
+                  </AnchorPane>
             </children>
         </VBox>
     </children>

@@ -1,8 +1,13 @@
 package imat.ui.controls.history.order;
 
+import imat.enums.NavigationTarget;
+import imat.interfaces.IFXMLController;
+import imat.model.FXMLController;
+import imat.model.Model;
+import imat.ui.views.browse.history.OrderHistoryPane;
+import imat.utils.DateUtils;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
-import imat.ui.views.browse.history.OrderHistoryPane;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,12 +17,10 @@ import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class OrderHistoryItem extends AnchorPane implements Initializable {
+public class OrderHistoryItem extends FXMLController {
 
     @FXML
     private Label dateLabel;
@@ -31,7 +34,6 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
     public OrderHistoryItem() {
         super();
         dateFormat = "yyyy/MM/dd - HH:mm";
-        FXMLLoader.loadFXMLFromRootPackage("order_history_item.fxml", this, this);
     }
 
     /**
@@ -41,30 +43,6 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
      */
     public List<ShoppingItem> getShoppingItems() {
         return IMatUtils.cloneShoppingItemList(order.getItems());
-    }
-
-    /**
-     * Returns the order date. Some format examples: "yyyy/MM/dd" and "yyyy/MM/dd - HH:mm"
-     *
-     * @param format The date format.
-     * @return The date in the given format.
-     */
-    public String getDate(String format) {
-        DateFormat dateFormat = new SimpleDateFormat(format);
-        return dateFormat.format(order.getDate());
-    }
-
-    /**
-     * Returns the total order price.
-     *
-     * @return The total order price.
-     */
-    public double getOrderPrice() {
-        double price = 0;
-        for (ShoppingItem shoppingItem : order.getItems()) {
-            price += shoppingItem.getTotal();
-        }
-        return price;
     }
 
     /**
@@ -91,9 +69,9 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
 
     @FXML
     private void onAction(Event Event) {
-        orderHistoryPane.showArticlesPane(this);
+        model.selectOrder(order);
+        model.navigate(NavigationTarget.ORDER_HISTORY_ARTICLE);
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -105,7 +83,7 @@ public class OrderHistoryItem extends AnchorPane implements Initializable {
 
     public void setOrder(Order order) {
         this.order = order;
-        dateLabel.setText(getDate(dateFormat));
+        dateLabel.setText(DateUtils.getFormattedDate(order.getDate(), dateFormat));
     }
 
 }
