@@ -15,7 +15,7 @@
                   <fx:include source="../../controls/header/header.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                   <fx:include fx:id="checkoutPane" source="../../controls/checkout/checkout.fxml" />
+                   <fx:include fx:id="checkoutPane" source="checkout/checkout.fxml" />
                     <GridPane fx:id="browseGridPane">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="25.0" prefWidth="300.0" />
@@ -29,22 +29,22 @@
                             <AnchorPane fx:id="middlePane" maxWidth="1.7976931348623157E308" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                                 <children>
                                     <StackPane fx:id="sceneStackPane" maxWidth="1.7976931348623157E308" minWidth="0.0" onMouseClicked="#consumeEvent" prefHeight="670.0" prefWidth="742.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                        <fx:include fx:id="productDetailsPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="productdetails/productDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        <fx:include fx:id="productPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="products/products.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        <fx:include fx:id="historyPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="history/order_history.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        <fx:include fx:id="historyArticlesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" source="history/history_articles.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        <fx:include fx:id="homePane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="home/home.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <fx:include fx:id="productDetailsPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="centerviews/productdetails/productDetails.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <fx:include fx:id="productPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="centerviews/products/products.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <fx:include fx:id="historyPane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="centerviews/history/order_history.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <fx:include fx:id="historyArticlesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" source="centerviews/history/history_articles.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <fx:include fx:id="homePane" maxWidth="1.7976931348623157E308" minWidth="0.0" source="centerviews/home/home.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     </StackPane>
                                 </children>
                             </AnchorPane>
                             <AnchorPane prefHeight="200.0" prefWidth="150.0" styleClass="debug-background-lightgreen">
                                 <children>
-                                     <fx:include source="../../controls/category/categorysidebar/category_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                     <fx:include source="sidebars/category/category_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                 </children>
                             </AnchorPane>
                             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="debug-background-lightyellow" GridPane.columnIndex="2">
                                 <children>
-                                    <fx:include fx:id="cartSidebar" source="../../controls/cart/cartsidebar/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <fx:include fx:id="cartSidebar" source="sidebars/cart/cart_sidebar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                 </children>
                             </AnchorPane>
                         </children>
