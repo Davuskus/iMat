@@ -1,5 +1,6 @@
 package imat.ui.views.modal.views.payment;
 
+import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import javafx.beans.value.ChangeListener;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable {
+public class PaymentController extends FXMLController implements Initializable ,INavigationListener{
 
     @FXML
     Button clientInfoDoneButton;
@@ -94,6 +95,9 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private Label creditCardErrorLable;
 
+    @FXML
+    private AnchorPane confirmationPane;
+
     private final IMatDataHandler iMatDataHandler;
 
     private final Customer customer;
@@ -108,6 +112,8 @@ public class PaymentController extends FXMLController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        model.addNavigationListener(this);
+
         fillUserData();
         updateTextArea();
 
@@ -230,7 +236,7 @@ public class PaymentController extends FXMLController implements Initializable {
 
         clientViewToFront();
 
-        model.navigate(NavigationTarget.CONFIRMATION);
+        confirmationPane.toFront();
     }
 
     private void updateTextArea() {
@@ -404,4 +410,10 @@ public class PaymentController extends FXMLController implements Initializable {
         clientToCreditCardInfo();
     }
 
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        if(navigationTarget==NavigationTarget.PAYMENT){
+            confirmationPane.toBack();
+        }
+    }
 }
