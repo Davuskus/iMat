@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -38,20 +39,22 @@
                 </Button>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHelpButtonAction" styleClass="ReseneBlossom-background" text="Hjälp" HBox.hgrow="ALWAYS">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHelpButtonAction" text="Hjälp" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHistoryButtonAction" styleClass="ReseneNeptune-background" text="Historik" HBox.hgrow="ALWAYS">
+                     <styleClass>
+                        <String fx:value="border-thin-round" />
+                        <String fx:value="ReseneWhite-background" />
+                     </styleClass></Button>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     <styleClass>
+                        <String fx:value="border-thin-round" />
+                        <String fx:value="ReseneWhite-background" />
+                     </styleClass></Button>
                </children>
             </HBox>
                 <AnchorPane fx:id="searchFieldPane" GridPane.columnIndex="1">
@@ -64,4 +67,8 @@
       <URL value="@../../../resources/css/imat.css" />
       <URL value="@../../../resources/css/serene-colors.css" />
    </stylesheets>
+   <styleClass>
+      <String fx:value="ReseneWhite-background" />
+      <String fx:value="border-thin" />
+   </styleClass>
 </javafx.scene.layout.AnchorPane>
