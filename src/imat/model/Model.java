@@ -191,6 +191,7 @@ public class Model {
         }
 
         IMatDataHandler.getInstance().placeOrder(true);
+        clearCart();
     }
 
     public List<Product> getCommonlyPurchasedProducts(int numProducts) {

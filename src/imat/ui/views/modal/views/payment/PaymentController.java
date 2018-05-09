@@ -228,7 +228,7 @@ public class PaymentController extends FXMLController implements Initializable{
     @FXML
     private void payAndOrder(){
         saveUserInfo();
-
+        model.placeOrder();
         clientViewToFront();
 
         model.navigate(NavigationTarget.CONFIRMATION);
