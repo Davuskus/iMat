@@ -46,7 +46,10 @@
                      <styleClass>
                         <String fx:value="border-thin-round" />
                         <String fx:value="ReseneWhite-background" />
-                     </styleClass></Button>
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
@@ -54,7 +57,10 @@
                      <styleClass>
                         <String fx:value="border-thin-round" />
                         <String fx:value="ReseneWhite-background" />
-                     </styleClass></Button>
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </HBox>
                 <AnchorPane fx:id="searchFieldPane" GridPane.columnIndex="1">
