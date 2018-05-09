@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable{
+public class PaymentController extends FXMLController implements Initializable,INavigationListener{
 
     @FXML
     Button clientInfoDoneButton;
@@ -93,7 +93,13 @@ public class PaymentController extends FXMLController implements Initializable{
     private Label clientErrorLable;
 
     @FXML
+    private AnchorPane confirmationPane;
+
+    @FXML
     private Label creditCardErrorLable;
+
+    @FXML
+    private  SplitPane splitPane;
 
     private final IMatDataHandler iMatDataHandler;
 
@@ -111,6 +117,8 @@ public class PaymentController extends FXMLController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         fillUserData();
         updateTextArea();
+
+        model.addNavigationListener(this);
 
         validMonthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -231,7 +239,8 @@ public class PaymentController extends FXMLController implements Initializable{
         model.placeOrder();
         clientViewToFront();
 
-        model.navigate(NavigationTarget.CONFIRMATION);
+        confirmationPane.toFront();
+
     }
 
     private void updateTextArea() {
@@ -272,12 +281,25 @@ public class PaymentController extends FXMLController implements Initializable{
 
     @FXML
     private void creditCardViewToFront() {
+
+        customerInfoPane.setFocusTraversable(false);
+        conclusionPane.setFocusTraversable(false);
+        creditCardInfoPane.setFocusTraversable(false);
+
+        creditCardNumberField.requestFocus();
+
         creditCardInfoPane.toFront();
         secondSidebarVBox.toFront();
     }
 
     @FXML
     private void summaryViewToFront() {
+        customerInfoPane.setFocusTraversable(false);
+        conclusionPane.setFocusTraversable(true);
+        creditCardInfoPane.setFocusTraversable(false);
+
+        changeClientInfoButton.requestFocus();
+
         updateTextArea();
         conclusionPane.toFront();
         thirdSidebarVBox.toFront();
@@ -285,6 +307,13 @@ public class PaymentController extends FXMLController implements Initializable{
 
     @FXML
     private void clientViewToFront() {
+
+        customerInfoPane.setFocusTraversable(true);
+        conclusionPane.setFocusTraversable(false);
+        creditCardInfoPane.setFocusTraversable(false);
+
+        firstNameField.requestFocus();
+
         customerInfoPane.toFront();
         firstSidebarVBox.toFront();
     }
@@ -294,6 +323,9 @@ public class PaymentController extends FXMLController implements Initializable{
     @FXML
     private void moveBack() {
         //SaveUserInfo();
+
+        confirmationPane.setFocusTraversable(false);
+        splitPane.setFocusTraversable(false);
         model.navigate(NavigationTarget.CHECKOUT);
     }
 
@@ -354,9 +386,6 @@ public class PaymentController extends FXMLController implements Initializable{
     }
 
 
-
-
-
     private boolean CreditCardInfoFildIn( boolean displayError){
         boolean fildIn=true;
         fildIn=isFieldIn( creditCardNumberField,displayError) && fildIn;
@@ -405,4 +434,15 @@ public class PaymentController extends FXMLController implements Initializable{
         clientToCreditCardInfo();
     }
 
+
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        if(navigationTarget==NavigationTarget.PAYMENT){
+            confirmationPane.toBack();
+            confirmationPane.setFocusTraversable(false);
+            splitPane.setFocusTraversable(true);
+        }
+
+
+    }
 }

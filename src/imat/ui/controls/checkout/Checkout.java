@@ -96,4 +96,11 @@ public class Checkout extends FXMLController implements IShoppingListener {
     public void onProductUpdate(Product product, Double newAmount) {
         updateLabels(model.getCartPrice());
     }
+
+    @FXML
+    private void backButton(){
+        model.navigateBack();
+    }
+
+
 }
