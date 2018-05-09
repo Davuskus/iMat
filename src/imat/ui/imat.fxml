@@ -8,7 +8,6 @@
     <children>
         <StackPane fx:id="viewsStackPane" layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <fx:include fx:id="checkoutPane" source="views/checkout/checkout.fxml" />
                 <fx:include fx:id="modalView" source="views/modal/modal.fxml" />
                 <fx:include fx:id="browseView" source="views/browse/browse.fxml" />
             </children>

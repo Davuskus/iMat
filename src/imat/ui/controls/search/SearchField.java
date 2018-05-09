@@ -1,5 +1,6 @@
 package imat.ui.controls.search;
 
+import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -23,6 +24,7 @@ public class SearchField extends FXMLController {
             System.out.println("No imat.model attached to search field!");
         } else {
             model.search(searchBox.getText());
+            model.navigate(NavigationTarget.CATEGORY);
         }
     }
 
