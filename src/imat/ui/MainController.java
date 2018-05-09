@@ -28,6 +28,7 @@ public class MainController extends FXMLController implements INavigationListene
     public void initialize(URL location, ResourceBundle resources) {
         // placeRandomOrder(getRandomInteger(1, 15));
         model.addNavigationListener(this);
+        model.navigate(NavigationTarget.HOME);
     }
 
     // Temporary
