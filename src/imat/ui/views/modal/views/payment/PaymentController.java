@@ -1,5 +1,6 @@
 package imat.ui.views.modal.views.payment;
 
+import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import javafx.beans.value.ChangeListener;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable ,INavigationListener{
+public class PaymentController extends FXMLController implements Initializable{
 
     @FXML
     Button clientInfoDoneButton;
