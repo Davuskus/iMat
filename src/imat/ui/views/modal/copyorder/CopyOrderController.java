@@ -1,4 +1,4 @@
-package imat.ui.views.modal.views.copyorder;
+package imat.ui.views.modal.copyorder;
 
 import imat.interfaces.IOrderListener;
 import imat.model.FXMLController;

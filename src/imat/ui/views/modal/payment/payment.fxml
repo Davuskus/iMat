@@ -17,11 +17,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#moveBack" prefHeight="450.0" prefWidth="700.0" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.views.payment.PaymentController">
+<AnchorPane onMousePressed="#moveBack" prefHeight="450.0" prefWidth="700.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.payment.PaymentController">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <fx:include fx:id="confirmationPane" source="confirmation.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
+            <fx:include fx:id="confirmationPane" source="confirmation/confirmation.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
             <SplitPane fx:id="splitPane" dividerPositions="0.25" focusTraversable="false" prefHeight="160.0" prefWidth="200.0">
               <items>
                 <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="150.0" SplitPane.resizableWithParent="false">

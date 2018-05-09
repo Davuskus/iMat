@@ -1,4 +1,4 @@
-package imat.ui.views.modal.views.helpview;
+package imat.ui.views.modal.helpview;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +24,7 @@ public class HelpView implements Initializable {
         //FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
         //loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
         loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
-        helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../../../../resources/helptext/helpStyle.css").toString());
+        helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../../../resources/helptext/helpStyle.css").toString());
     }
 
     private void loadHtmlTextFromFile(String htmlPath) {

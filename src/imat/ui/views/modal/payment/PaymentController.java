@@ -1,11 +1,10 @@
-package imat.ui.views.modal.views.payment;
+package imat.ui.views.modal.payment;
 
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,7 +15,6 @@ import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.net.URL;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class PaymentController extends FXMLController implements Initializable,INavigationListener{

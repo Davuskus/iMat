@@ -1,4 +1,4 @@
-package imat.ui.views.modal.views.payment;
+package imat.ui.views.modal.payment.confirmation;
 
 // Todo Add approximated delivery time to confirmation text?
 
