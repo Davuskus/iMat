@@ -153,48 +153,6 @@
                      <children>
                         <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="customerInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
-                                 <children>
-                                    <Label focusTraversable="false" layoutX="47.0" layoutY="37.0" styleClass="subtitle" text="Kunduppgifter" underline="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="135.0" spacing="25.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
-                                       <children>
-                                          <Label styleClass="text-large" text="Förnamn:" />
-                                          <Label styleClass="text-large" text="Efternamn:" />
-                                          <Label styleClass="text-large" text="Adress:" />
-                                          <Label styleClass="text-large" text="Postnummer:" />
-                                          <Label styleClass="text-large" text="Telefonnummer:" />
-                                       </children>
-                                    </VBox>
-                                    <VBox fillWidth="false" layoutX="160.0" layoutY="70.0" prefHeight="218.0" prefWidth="194.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
-                                       <children>
-                                          <TextField fx:id="firstNameField" promptText="Förnamn" styleClass="text-small-bold" />
-                                          <TextField fx:id="lastNameField" promptText="Efternamn" styleClass="text-small-bold" />
-                                          <TextField fx:id="addressField" prefHeight="26.0" prefWidth="194.0" promptText="Adress" styleClass="text-small-bold" />
-                                          <TextField fx:id="postcodeField" prefHeight="26.0" prefWidth="105.0" promptText="Postnummer" styleClass="text-small-bold" />
-                                          <TextField fx:id="phoneNumberField" promptText="Telefonummer" styleClass="text-small-bold" />
-                                       </children>
-                                    </VBox>
-                                    <Label fx:id="clientErrorLable" layoutX="231.0" layoutY="50.0" prefHeight="20.0" prefWidth="218.0" styleClass="subtitle" text="Var snäll och fyll i alla fält." textFill="RED" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="50.0">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#clientToCreditCardInfo" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
-                                       <styleClass>
-                                          <String fx:value="text-small-bold" />
-                                          <String fx:value="to-checkout-button-bg" />
-                                          <String fx:value="button-focus-color" />
-                                       </styleClass>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
                               <AnchorPane fx:id="conclusionPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                                  <children>
                                     <TextArea fx:id="clientSummeryArea" editable="false" focusTraversable="false" layoutX="35.0" layoutY="53.0" prefHeight="250.0" prefWidth="250.0" text="Hjördis Svensson&#10;kallebäck&#10;41101" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="60.0">
@@ -310,6 +268,48 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="customerInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
+                                 <children>
+                                    <Label focusTraversable="false" layoutX="47.0" layoutY="37.0" styleClass="subtitle" text="Kunduppgifter" underline="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="135.0" spacing="25.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
+                                       <children>
+                                          <Label styleClass="text-large" text="Förnamn:" />
+                                          <Label styleClass="text-large" text="Efternamn:" />
+                                          <Label styleClass="text-large" text="Adress:" />
+                                          <Label styleClass="text-large" text="Postnummer:" />
+                                          <Label styleClass="text-large" text="Telefonnummer:" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fillWidth="false" layoutX="160.0" layoutY="70.0" prefHeight="218.0" prefWidth="194.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
+                                       <children>
+                                          <TextField fx:id="firstNameField" promptText="Förnamn" styleClass="text-small-bold" />
+                                          <TextField fx:id="lastNameField" promptText="Efternamn" styleClass="text-small-bold" />
+                                          <TextField fx:id="addressField" prefHeight="26.0" prefWidth="194.0" promptText="Adress" styleClass="text-small-bold" />
+                                          <TextField fx:id="postcodeField" prefHeight="26.0" prefWidth="105.0" promptText="Postnummer" styleClass="text-small-bold" />
+                                          <TextField fx:id="phoneNumberField" promptText="Telefonummer" styleClass="text-small-bold" />
+                                       </children>
+                                    </VBox>
+                                    <Label fx:id="clientErrorLable" layoutX="231.0" layoutY="50.0" prefHeight="20.0" prefWidth="218.0" styleClass="subtitle" text="Var snäll och fyll i alla fält." textFill="RED" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="50.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#clientToCreditCardInfo" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
+                                       <styleClass>
+                                          <String fx:value="text-small-bold" />
+                                          <String fx:value="to-checkout-button-bg" />
+                                          <String fx:value="button-focus-color" />
+                                       </styleClass>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </children>

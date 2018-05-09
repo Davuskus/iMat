@@ -49,10 +49,13 @@ public class Checkout extends FXMLController implements IShoppingListener {
         totalPrice= MathUtils.round(totalPrice, 2);
         String price = totalPrice + " kr";
         PriceLabel.setText(price);
-        shippingCostLabel.setText("35 kr");
-        double tot = totalPrice + 35;
+        int shippingCost=35;
+        if(totalPrice==0){
+            shippingCost=0;
+        }
+        shippingCostLabel.setText(shippingCost+" kr");
+        double tot = totalPrice + shippingCost;
         totalCostLable.setText(tot + " kr");
-
     }
 
     private void addItemNode(Product product) {
