@@ -241,3 +241,22 @@
     -fx-background-radius: 3, 2, 4, 0;
     -fx-prompt-text-fill: transparent;
 }
+
+.white-button {
+    -fx-background-color: #EEEEEE;
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.white-button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-cursor: hand;
+}
+
+.white-button:pressed {
+    -fx-background-color: #DDDDDD;
+    -fx-border-width: 2px;
+    -fx-border-color: #00adff;
+}
