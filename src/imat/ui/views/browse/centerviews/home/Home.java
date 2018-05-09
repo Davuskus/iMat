@@ -45,18 +45,15 @@ public class Home extends FXMLController implements INavigationListener {
     }
 
     private void updateProductsHBox() {
-        int numBackendOrders = IMatDataHandler.getInstance().getOrders().size();
-        if (numOrders != numBackendOrders) {
-            numOrders = numBackendOrders;
-            productsHBox.getChildren().clear();
-            if (IMatDataHandler.getInstance().getOrders().size() > 0) {
-                productsTitle.setText("Vanligt köpta varor");
-                model.getCommonlyPurchasedProducts(maxNumProducts).forEach(this::addProductMenuItem);
-            } else {
-                productsTitle.setText("Rekommenderade varor");
-                while (productsHBox.getChildren().size() < maxNumProducts) {
-                    addProductMenuItem(getRandomProduct());
-                }
+        numOrders = IMatDataHandler.getInstance().getOrders().size();
+        productsHBox.getChildren().clear();
+        if (IMatDataHandler.getInstance().getOrders().size() > 0) {
+            productsTitle.setText("Vanligt köpta varor");
+            model.getCommonlyPurchasedProducts(maxNumProducts).forEach(this::addProductMenuItem);
+        } else {
+            productsTitle.setText("Rekommenderade varor");
+            while (productsHBox.getChildren().size() < maxNumProducts) {
+                addProductMenuItem(getRandomProduct());
             }
         }
     }
