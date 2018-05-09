@@ -184,6 +184,16 @@ public class Model {
         productListeners.forEach(x -> x.onProductSelection(product));
     }
 
+    public void placeOrder() {
+        Set<Product> products = cart.keySet();
+        for (Product product : products) {
+            IMatDataHandler.getInstance().getShoppingCart().addProduct(product,cart.get(product));
+        }
+
+        IMatDataHandler.getInstance().placeOrder(true);
+        clearCart();
+    }
+
     public List<Product> getCommonlyPurchasedProducts(int numProducts) {
 
         List<Order> orders = IMatDataHandler.getInstance().getOrders();
@@ -200,6 +210,11 @@ public class Model {
                 }
             });
         });
+
+        if (articles.keySet().size() < numProducts) {
+            throw new IllegalArgumentException(
+                    "The given number of products is greater than the available number of products");
+        }
 
         while (mostCommon.size() < numProducts) {
             Product maxAmountProduct = null;
