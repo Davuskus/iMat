@@ -60,6 +60,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     public void setProduct(Product product) {
         this.product = product;
+        setAmount(model.getProductAmount(product));
         switch (product.getUnitSuffix()) {
             case "l":
             case "kg":
