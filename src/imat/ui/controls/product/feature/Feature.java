@@ -2,8 +2,9 @@ package imat.ui.controls.product.feature;
 
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
+import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -21,41 +22,38 @@ public class Feature extends FXMLController {
 
     private boolean featureScrolling;
 
+    @FXML
+    private StackPane productStackPane;
+
     public Feature() {
         super();
         numProducts = 4;
-        scrollIntervalMillis = 10000;
+        scrollIntervalMillis = 30000;
         products = new ArrayList<>(numProducts);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getRandomProductsToFeature();
-    }
 
-    private void getRandomProductsToFeature() {
-        Random random = new Random();
-        List<Product> backendProducts = IMatDataHandler.getInstance().getProducts();
-        while (products.size() < numProducts) {
-            Product product = IMatDataHandler.getInstance().getProduct(random.nextInt(backendProducts.size()));
-            if (!products.contains(product)) {
-                products.add(product);
-            }
-        }
     }
 
     private void startFeatureScrolling() {
         featureScrolling = true;
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                // TODO Switch between the feature products.
+                Platform.runLater(() -> {
+                    if (++currentProductIndex >= numProducts) {
+                        currentProductIndex = 0;
+                    }
+                    productStackPane.getChildren().get(currentProductIndex).toFront();
+                });
                 if (!featureScrolling) {
                     timer.cancel();
                 }
             }
-        }, scrollIntervalMillis);
+        }, 0, scrollIntervalMillis);
     }
 
     @FXML

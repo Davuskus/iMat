@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable {
+public class PaymentController extends FXMLController implements Initializable ,INavigationListener{
 
     @FXML
     Button clientInfoDoneButton;
@@ -227,7 +227,9 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private void payAndOrder(){
         saveUserInfo();
+
         clientViewToFront();
+
         model.navigate(NavigationTarget.CONFIRMATION);
     }
 
@@ -276,8 +278,6 @@ public class PaymentController extends FXMLController implements Initializable {
     @FXML
     private void summaryViewToFront() {
         updateTextArea();
-        model.placeOrder();
-        model.clearCart();
         conclusionPane.toFront();
         thirdSidebarVBox.toFront();
     }
