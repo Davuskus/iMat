@@ -34,6 +34,10 @@ public class Category {
         return allProducts;
     }
 
+    public List<Product> getProductsFromSubcategory(String subcategory) {
+        return dataSet.get(subcategory);
+    }
+
     public List<String> getSubcategories() {
         List<String> subcategories = new ArrayList<>();
         subcategories.addAll(dataSet.keySet());
