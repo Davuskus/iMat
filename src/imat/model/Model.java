@@ -183,4 +183,39 @@ public class Model {
     public void showProductDetails(Product product) {
         productListeners.forEach(x -> x.onProductSelection(product));
     }
+
+    public List<Product> getCommonlyPurchasedProducts(int numProducts) {
+
+        List<Order> orders = IMatDataHandler.getInstance().getOrders();
+        Map<Product, Double> articles = new HashMap<>();
+        List<Product> mostCommon = new ArrayList<>();
+
+        orders.forEach(order -> {
+            order.getItems().forEach(shoppingItem -> {
+                Product product = shoppingItem.getProduct();
+                if (articles.containsKey(product)) {
+                    articles.put(product, articles.get(product) + shoppingItem.getAmount());
+                } else {
+                    articles.put(product, shoppingItem.getAmount());
+                }
+            });
+        });
+
+        while (mostCommon.size() < numProducts) {
+            Product maxAmountProduct = null;
+            double maxAmount = 0;
+            for (Product product : articles.keySet()) {
+                double amount = articles.get(product);
+                if (amount > maxAmount) {
+                    maxAmount = amount;
+                    maxAmountProduct = product;
+                }
+            }
+            articles.remove(maxAmountProduct);
+            mostCommon.add(maxAmountProduct);
+        }
+
+        return mostCommon;
+    }
+
 }

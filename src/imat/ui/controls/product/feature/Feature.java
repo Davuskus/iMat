@@ -5,7 +5,6 @@ import imat.model.FXMLController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -35,18 +34,7 @@ public class Feature extends FXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getRandomProductsToFeature();
-    }
 
-    private void getRandomProductsToFeature() {
-        Random random = new Random();
-        List<Product> backendProducts = IMatDataHandler.getInstance().getProducts();
-        while (products.size() < numProducts) {
-            Product product = IMatDataHandler.getInstance().getProduct(random.nextInt(backendProducts.size()));
-            if (!products.contains(product)) {
-                products.add(product);
-            }
-        }
     }
 
     private void startFeatureScrolling() {
