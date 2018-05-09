@@ -1,6 +1,8 @@
 package imat.utils;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -32,4 +34,6 @@ public final class FileUtils {
         }
         return contentBuilder.toString();
     }
+
+
 }
