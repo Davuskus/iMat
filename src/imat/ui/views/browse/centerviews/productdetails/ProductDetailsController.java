@@ -37,19 +37,10 @@ public class ProductDetailsController extends FXMLController {
 
     public void setProductInfo(Product product) {
         this.product = product;
-
         productNameLabel.setText(product.getName());
         productImage.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         organicLabel.setText(product.isEcological() ? "Ekologisk" : "");
-
         amountSpinnerController.setProduct(product);
-        String unit = product.getUnit();
-        if (unit.equals("kr/kg") || unit.equals("kr/l")) {
-            amountSpinnerController.setAcceptDoubles(true);
-        } else {
-            amountSpinnerController.setAcceptDoubles(false);
-        }
-
     }
 
     public Product getProduct() {
