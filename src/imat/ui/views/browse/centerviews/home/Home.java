@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
@@ -27,14 +28,12 @@ public class Home extends FXMLController implements INavigationListener {
     private Feature featureController;
 
     @FXML
-    private HBox productsHBox;
+    private FlowPane productsFlowPane;
 
     @FXML
     private Label productsTitle;
 
-    private final int maxNumProducts = 4;
-
-    private int numOrders;
+    private final int maxNumProducts = 10;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,14 +42,13 @@ public class Home extends FXMLController implements INavigationListener {
     }
 
     private void updateProductsHBox() {
-        numOrders = IMatDataHandler.getInstance().getOrders().size();
-        productsHBox.getChildren().clear();
+        productsFlowPane.getChildren().clear();
         if (IMatDataHandler.getInstance().getOrders().size() > 0) {
-            productsTitle.setText("Vanligt köpta varor");
+            productsTitle.setText("Mest köpta varorna:");
             model.getCommonlyPurchasedProducts(maxNumProducts).forEach(this::addProductMenuItem);
         } else {
-            productsTitle.setText("Rekommenderade varor");
-            while (productsHBox.getChildren().size() < maxNumProducts) {
+            productsTitle.setText("Rekommenderade varor:");
+            while (productsFlowPane.getChildren().size() < maxNumProducts) {
                 addProductMenuItem(getRandomProduct());
             }
         }
@@ -61,7 +59,7 @@ public class Home extends FXMLController implements INavigationListener {
         controller.setModel(model);
         Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
                 "../../../../controls/product/menu/product_menu_item.fxml", this, controller);
-        productsHBox.getChildren().add(item);
+        productsFlowPane.getChildren().add(item);
     }
 
     private int getRandomInteger(int min, int max) {

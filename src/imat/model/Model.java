@@ -211,7 +211,9 @@ public class Model {
             });
         });
 
-        while (mostCommon.size() < maxNumProducts && mostCommon.size() < articles.keySet().size()) {
+        int numArticles = articles.keySet().size();
+
+        while (mostCommon.size() < maxNumProducts && mostCommon.size() < numArticles) {
             Product maxAmountProduct = null;
             double maxAmount = 0;
             for (Product product : articles.keySet()) {
