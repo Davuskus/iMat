@@ -120,8 +120,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
         copiedCart.clear();
         model.getProductsInCart().forEach(product -> copiedCart.put(product, model.getProductAmount(product)));
-        model.clearCart();
-
+        model.clearCartFast();
         model.setThrowingCartInTrash(true);
 
         delayedRunnable = new DelayedRunnable(new Runnable() {
@@ -151,8 +150,8 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     @FXML
     private void regretButtonOnAction(Event event) {
         model.setThrowingCartInTrash(false);
-        copiedCart.forEach((product, oldAmount) -> model.updateShoppingCart(product, oldAmount));
         shouldTrash = false;
+        copiedCart.forEach((product, oldAmount) -> model.addToShoppingCart(product, oldAmount));
         regretButton.setDisable(true);
         trashButton.setDisable(false);
         updateCartInfo(model.getCartPrice());

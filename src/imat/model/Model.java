@@ -22,6 +22,10 @@ public class Model {
 
     private final Deque<NavigationTarget> navigationHistory;
 
+    private List<IRemoveEvent> cartItemRemoveEvents;
+
+    private List<IRemoveEvent> checkoutItemRemoveEvents;
+
     public Model() {
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
@@ -29,6 +33,8 @@ public class Model {
         searchListeners = new ArrayList<>(1);
         productListeners = new ArrayList<>(1);
         orderListeners = new ArrayList<>(1);
+        checkoutItemRemoveEvents = new ArrayList<>(1);
+        cartItemRemoveEvents = new ArrayList<>(1);
         navigationHistory = new ArrayDeque<>();
         navigationHistory.push(NavigationTarget.HOME);
         loadBackendCart();
@@ -138,6 +144,22 @@ public class Model {
         }
     }
 
+    public void clearCartFast() {
+        cartItemRemoveEvents.forEach(IRemoveEvent::execute);
+        checkoutItemRemoveEvents.forEach(IRemoveEvent::execute);
+        cartItemRemoveEvents.clear();
+        checkoutItemRemoveEvents.clear();
+        clearCart();
+    }
+
+    public void addCartItemRemoveEvent(IRemoveEvent removeEvent) {
+        cartItemRemoveEvents.add(removeEvent);
+    }
+
+    public void addCheckoutItemRemoveEvent(IRemoveEvent removeEvent) {
+        checkoutItemRemoveEvents.add(removeEvent);
+    }
+
     public void selectCategory(ProductCategory category) {
         categoryListeners.forEach(x -> x.onCategorySelected(category));
     }
@@ -192,7 +214,7 @@ public class Model {
         }
 
         IMatDataHandler.getInstance().placeOrder(true);
-        clearCart();
+        clearCartFast();
     }
 
     public List<Product> getCommonlyPurchasedProducts(int maxNumProducts) {
@@ -219,26 +241,6 @@ public class Model {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        /*if (articles.keySet().size() < numProducts) {
-            throw new IllegalArgumentException(
-                    "The given number of products is greater than the available number of products");
-        }
-
-        while (mostCommon.size() < maxNumProducts && mostCommon.size() < articles.keySet().size()) {
-            Product maxAmountProduct = null;
-            double maxAmount = 0;
-            for (Product product : articles.keySet()) {
-                double amount = articles.get(product);
-                if (amount > maxAmount) {
-                    maxAmount = amount;
-                    maxAmountProduct = product;
-                }
-            }
-            articles.remove(maxAmountProduct);
-            mostCommon.add(maxAmountProduct);
-        }
-
-        return mostCommon;*/
     }
 
 }

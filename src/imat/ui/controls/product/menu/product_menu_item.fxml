@@ -13,29 +13,36 @@
     <children>
         <VBox fx:id="elementsVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane minHeight="111.0" minWidth="148.0" prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
+                <AnchorPane onMouseClicked="#showProductDetails" prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
                     <children>
-                        <ImageView fx:id="imageView" fitHeight="111.0" fitWidth="148.0" onMouseClicked="#showProductDetails" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ImageView fx:id="imageView" fitHeight="108.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
                             <image>
                                 <Image url="@../../../../resources/images/products/product_14.jpg" />
                             </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                         </ImageView>
                     </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
                 </AnchorPane>
                 <Label fx:id="nameLabel" onMouseClicked="#showProductDetails" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
-                <Label fx:id="ecoLabel" styleClass="text-normal-dark-gray" text="Ekologisk" />
+                <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" />
                 <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Product price" />
-                <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" />
+                <AnchorPane>
+                    <children>
+                        <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" />
+                    </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+                </AnchorPane>
             </children>
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
-            <padding>
-                <Insets top="10.0" />
-            </padding>
         </VBox>
     </children>
     <styleClass>

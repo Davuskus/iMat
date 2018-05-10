@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="scene-default" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.home.Home">
+<AnchorPane prefHeight="550.0" prefWidth="500.0" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.home.Home">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" />
-         <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" VBox.vgrow="ALWAYS">
-            <children>
-               <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
-               <HBox fx:id="productsHBox" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS" />
-            </children>
-            <padding>
-               <Insets bottom="25.0" left="25.0" right="25.0" />
-            </padding>
-         </VBox>
-         <padding>
-            <Insets top="50.0" />
-         </padding>
-        </VBox>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label fx:id="welcomeLabel" styleClass="title-xlarge-dark-gray" text="Välkommen till" />
+                     <ImageView fitHeight="132.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../../../resources/images/logo/imat_logo.png" />
+                        </image>
+                     </ImageView>
+                  </children>
+               </HBox>
+               <Separator prefWidth="200.0" />
+               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" VBox.vgrow="ALWAYS">
+                  <children>
+                     <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
+                     <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="270.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                        <padding>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        </padding>
+                        <content>
+                           <FlowPane fx:id="productsFlowPane" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" />
+                        </content>
+                     </ScrollPane>
+                  </children>
+                  <VBox.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" />
+                  </VBox.margin>
+               </VBox>
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
+              </VBox>
+         </content>
+      </ScrollPane>
     </children>
+   <styleClass>
+      <String fx:value="scene-default" />
+      <String fx:value="border-thin" />
+   </styleClass>
 </AnchorPane>

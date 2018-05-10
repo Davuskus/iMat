@@ -34,7 +34,7 @@
                         <Insets top="5.0" />
                      </VBox.margin></Label>
                   <Separator prefWidth="200.0" />
-                  <Label fx:id="ecoLabel" styleClass="text-normal" text="Ekologisk" wrapText="true">
+                  <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -58,7 +58,7 @@
             </VBox>
             <AnchorPane prefHeight="200.0" prefWidth="125.0">
                <children>
-                  <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" styleClass="button-text-normal" text="Kopiera artikel till kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" styleClass="white-button" text="Kopiera artikel till kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -69,7 +69,7 @@
       </HBox>
    </children>
    <styleClass>
-      <String fx:value="background-gray-light" />
+      <String fx:value="scene-default" />
       <String fx:value="border-thin-round" />
    </styleClass>
 </AnchorPane>

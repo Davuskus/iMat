@@ -99,6 +99,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
         unitLabel.setText("(" + product.getUnit() + ")");
 
         model.addShoppingListener(this);
+        model.addCartItemRemoveEvent(removeEvent);
     }
 
     @FXML
@@ -131,10 +132,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
                     shouldBeRemoved = false;
                     regretButton.setDisable(true);
                     Timeline removalAnimation = AnimationHandler.getAnimation(
-                            v -> {
-                                removeEvent.execute();
-                             //   model.updateShoppingCart(product, 0.0);
-                            },
+                            v -> removeEvent.execute(),
                             AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
                             AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
                             AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),

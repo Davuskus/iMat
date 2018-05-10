@@ -74,18 +74,17 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-      //  VBoxSpinner.getChildren().clear();
+        //  VBoxSpinner.getChildren().clear();
         amountSpinnerController.setModel(model);
         amountSpinnerController.setProduct(product);
         amountSpinnerController.setAmount(model.getProductAmount(product));
         model.addShoppingListener(this);
+        model.addCheckoutItemRemoveEvent(removeEvent);
 
         productName.setText(product.getName());
-        price.setText(String.valueOf(MathUtils.round(product.getPrice(), 2)) +" "+ product.getUnit());
+        price.setText(String.valueOf(MathUtils.round(product.getPrice(), 2)) + " " + product.getUnit());
         updateTotal(model.getProductAmount(product));
     }
-
-
 
 
     private void switchView(Node view) {
@@ -105,7 +104,6 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     }
 
 
-
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
         if (product != this.product) return;
@@ -123,13 +121,11 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     }
 
 
-
     @FXML
     private void removeButtonOnAction(Event event) {
         setAmountBeforeRemoveRequest(model.getProductAmount(product));
         model.updateShoppingCart(product, 0);
     }
-
 
 
     private void setAmountBeforeRemoveRequest(double amount) {
@@ -167,5 +163,5 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
 
     }
 
-   // */
+    // */
 }

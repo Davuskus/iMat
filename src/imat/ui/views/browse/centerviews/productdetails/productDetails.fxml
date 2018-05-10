@@ -36,10 +36,7 @@
             </font>
         </Label>
         <fx:include fx:id="amountSpinner" source="../../../../controls/spinner/amount_spinner.fxml" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="195.0" />
-      <Button layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#onBackButtonAction" prefHeight="27.0" prefWidth="197.0" text="Tillbaka">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
+      <Button layoutX="15.0" layoutY="12.0" mnemonicParsing="false" onAction="#onBackButtonAction" prefHeight="27.0" prefWidth="197.0" styleClass="button-text-normal" text="Tillbaka" />
       <Separator layoutX="14.0" layoutY="53.0" prefHeight="4.0" prefWidth="570.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
     </children>
 </AnchorPane>
