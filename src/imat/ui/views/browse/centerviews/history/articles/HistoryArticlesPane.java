@@ -13,10 +13,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class HistoryArticlesPane extends FXMLController implements IOrderListener {
 
@@ -43,7 +44,8 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     }
 
     private void populateArticleList(Order order) {
-        for (ShoppingItem shoppingItem : order.getItems()) {
+
+        for (ShoppingItem shoppingItem : getUniqueShoppingItems(order)) {
             ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem();
             articleHistoryItem.setModel(model);
             Node articleNode = FXMLLoader.loadFXMLNodeFromRootPackage(
@@ -53,6 +55,22 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
             articlesVBox.getChildren().add(articleNode);
             articleHistoryItem.setShoppingItem(shoppingItem);
         }
+    }
+
+    private List<ShoppingItem> getUniqueShoppingItems(Order order) {
+        Map<Product, Double> shoppingItemMap = new HashMap<>();
+        order.getItems().forEach(shoppingItem -> {
+            Product product = shoppingItem.getProduct();
+            double amount = shoppingItem.getAmount();
+            if (shoppingItemMap.keySet().contains(product)) {
+                shoppingItemMap.put(product, shoppingItemMap.get(product) + amount);
+            } else {
+                shoppingItemMap.put(product, amount);
+            }
+        });
+        List<ShoppingItem> shoppingItems = new ArrayList<>(shoppingItemMap.keySet().size());
+        shoppingItemMap.forEach(((product, amount) -> shoppingItems.add(new ShoppingItem(product, amount))));
+        return shoppingItems;
     }
 
     private double getOrderPrice() {
