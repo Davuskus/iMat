@@ -1,0 +1,2 @@
+name={"Mejeri"}
+data={"Mjölk, yoghurt och fil":"78,79,80,83,84";"Ost":"81,82,77"}

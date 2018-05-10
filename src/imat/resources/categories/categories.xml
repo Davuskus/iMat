@@ -10,6 +10,15 @@
             <Product id="149">Ekologisk blandfärs</Product>
             <Product id="150">Ekologisk nötfärs</Product>
         </Subcategory>
+        <Subcategory id="Kyckling">
+            <Product id="73">Kycklingbröstfilé</Product>
+            <Product id="74">Kycklingklubbor</Product>
+            <Product id="75">Ekologisk kyckling hel</Product>
+        </Subcategory>
+        <Subcategory id="Ägg">
+            <Product id="85">Ägg</Product>
+            <Product id="154">Ekologiska ägg</Product>
+        </Subcategory>
     </Category>
     <Category id="Fisk och skaldjur">
         <Subcategory id="Fisk">
@@ -36,15 +45,6 @@
             <Product id="151">Ekologiskt socker</Product>
         </Subcategory>
     </Category>
-    <Category id="Fågel">
-        <Product id="73">Kycklingbröstfilé</Product>
-        <Product id="74">Kycklingklubbor</Product>
-        <Product id="75">Ekologisk kyckling hel</Product>
-    </Category>
-    <Category id="Ägg">
-        <Product id="85">Ägg</Product>
-        <Product id="154">Ekologiska ägg</Product>
-    </Category>
     <Category id="Frukt och bär">
         <Subcategory id="Frukt">
             <Product id="129">Aprikos</Product>
@@ -64,7 +64,7 @@
             <Product id="46">Papaya</Product>
             <Product id="47">Rambutan</Product>
         </Subcategory>
-        <Subcategory id="Melon">
+        <Subcategory id="Meloner">
             <Product id="87">Galiamelon</Product>
             <Product id="86">Charentaismelon</Product>
             <Product id="88">Honungsmelon</Product>
@@ -130,7 +130,7 @@
         </Subcategory>
     </Category>
     <Category id="Bönor och ärtor">
-        <Subcategory id="Artor">
+        <Subcategory id="Ärtor">
             <Product id="1">Gröna ärter</Product>
             <Product id="2">Kikärtor</Product>
         </Subcategory>

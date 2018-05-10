@@ -1,0 +1,2 @@
+name={"Godis, kakor och snacks"}
+data={"Choklad och godis":"140,135";"Glass":"136";"Snacks":"134";"Kakor och konditori":"137,138,139"}

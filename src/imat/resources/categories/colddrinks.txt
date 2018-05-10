@@ -1,0 +1,2 @@
+name={"Läsk och drycker"}
+data={"Juice och saft":"32,37";"Läsk":"33,34,35,36,38,39";"Vatten":"40"}

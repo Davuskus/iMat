@@ -1,0 +1,2 @@
+name={"Fisk och skaldjur"}
+data={"Fisk":"48,50,52,53,54";"Skaldjur":"49,51"}

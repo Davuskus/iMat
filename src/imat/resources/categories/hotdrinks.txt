@@ -1,0 +1,2 @@
+name={"Kaffe och te"}
+data={"Kaffe":"30";"Te":"28,29,31";"Kakao":"27"}

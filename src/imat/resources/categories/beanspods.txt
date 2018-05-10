@@ -1,0 +1,2 @@
+name={"Bönor och ärtor"}
+data={"Ärtor":"1,2";"Bönor":"3,4,5,6,7"}
