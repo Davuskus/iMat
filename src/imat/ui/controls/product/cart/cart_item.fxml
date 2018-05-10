@@ -62,7 +62,7 @@
                   <VBox fx:id="infoVBox" prefHeight="200.0" prefWidth="130.0" spacing="10.0">
                      <children>
                           <Label fx:id="nameLabel" styleClass="title-normal-dark-gray" text="Product name" wrapText="true" />
-                        <Label fx:id="ecoLabel" styleClass="text-normal-dark-gray" text="Ekologisk" wrapText="true" />
+                        <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true" />
                           <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Pris: - kr" wrapText="true" />
                      </children>
                      <padding>
