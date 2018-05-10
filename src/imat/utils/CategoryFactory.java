@@ -47,7 +47,7 @@ public class CategoryFactory {
 
                 if (event.isStartElement()) {
                     StartElement startElement = event.asStartElement();
-                    // If we have an item element, we create a new item
+                    // If we have an checkout element, we create a new checkout
                     if (startElement.getName().getLocalPart().equals(CATEGORY)) {
                         item = new Category(CATEGORY);
                         // We read the attributes from this tag and add the date
@@ -68,23 +68,23 @@ public class CategoryFactory {
                         if (event.asStartElement().getName().getLocalPart()
                                 .equals(MODE)) {
                             event = eventReader.nextEvent();
-                            item.setMode(event.asCharacters().getData());
+                            checkout.setMode(event.asCharacters().getData());
                             continue;
                         }
                     }
                     if (event.asStartElement().getName().getLocalPart()
                             .equals(UNIT)) {
                         event = eventReader.nextEvent();
-                        item.setUnit(event.asCharacters().getData());
+                        checkout.setUnit(event.asCharacters().getData());
                         continue;
                     }
                 }
 
-                // If we reach the end of an item element, we add it to the list
+                // If we reach the end of an checkout element, we add it to the list
                 if (event.isEndElement()) {
                     EndElement endElement = event.asEndElement();
                     if (endElement.getName().getLocalPart().equals(ITEM)) {
-                        items.add(item);
+                        items.add(checkout);
                     }
                 }
                 */

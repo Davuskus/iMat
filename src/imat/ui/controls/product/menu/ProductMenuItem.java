@@ -39,7 +39,7 @@ public class ProductMenuItem extends FXMLController {
     }
 
     /**
-     * Sets the product and updates the menu item's information accordingly.
+     * Sets the product and updates the menu checkout's information accordingly.
      *
      * @param product The product to use.
      */
@@ -55,7 +55,7 @@ public class ProductMenuItem extends FXMLController {
     }
 
     /**
-     * Returns the menu item's displayed product.
+     * Returns the menu checkout's displayed product.
      *
      * @return The currently used product.
      */

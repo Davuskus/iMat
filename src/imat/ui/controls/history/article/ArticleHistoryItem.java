@@ -1,5 +1,6 @@
 package imat.ui.controls.history.article;
 
+import imat.model.FXMLController;
 import imat.model.Model;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
@@ -19,7 +20,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ArticleHistoryItem extends AnchorPane implements Initializable {
+public class ArticleHistoryItem extends FXMLController implements Initializable {
 
     @FXML
     private ImageView productImageView;
@@ -40,14 +41,6 @@ public class ArticleHistoryItem extends AnchorPane implements Initializable {
     private VBox articleInfoVBox;
 
     private ShoppingItem shoppingItem;
-
-    private Model model;
-
-    public ArticleHistoryItem(Model model) {
-        super();
-        this.model = model;
-        FXMLLoader.loadFXMLFromRootPackage("article_history_item.fxml", this, this);
-    }
 
     @FXML
     private void copyToCartButtonOnAction(Event event) {

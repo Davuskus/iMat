@@ -1,0 +1,2 @@
+name={"Bakning"}
+data={"Mjöl":"92,93,96";"Socker":"95,91,151"}

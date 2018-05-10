@@ -1,7 +1,7 @@
 package imat.ui.controls.spinner;
 
-import imat.model.FXMLController;
 import imat.interfaces.IShoppingListener;
+import imat.model.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,12 +30,11 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     private double oldValue;
 
-    private boolean isAcceptingDoubles;
-
     private final TextFormatter doubleFormatter;
     private final TextFormatter intFormatter;
 
     private Product product;
+    private boolean isAcceptingDoubles;
 
     public AmountSpinner() {
         super();
@@ -60,20 +59,18 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     public void setProduct(Product product) {
         this.product = product;
-        setAmount(model.getProductAmount(product));
         switch (product.getUnitSuffix()) {
             case "l":
             case "kg":
                 isAcceptingDoubles = true;
+                valueTextField.setTextFormatter(doubleFormatter);
                 break;
             default:
                 isAcceptingDoubles = false;
+                valueTextField.setTextFormatter(intFormatter);
                 break;
         }
-    }
-
-    public void setAcceptDoubles(boolean acceptDoubles) {
-        isAcceptingDoubles = acceptDoubles;
+        setAmount(model.getProductAmount(product));
     }
 
     @FXML
@@ -108,7 +105,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      * @param amount The amount.
      */
     public void setAmount(double amount) {
-        if(oldValue == amount || model.isThrowingCartInTrash()) return;
+        if (oldValue == amount || model.isThrowingCartInTrash()) return;
         oldValue = amount;
         if (isAcceptingDoubles) {
             valueTextField.setTextFormatter(doubleFormatter);
@@ -151,7 +148,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
-        if(product != this.product) return;
+        if (product != this.product) return;
         setAmount(newAmount);
     }
 }

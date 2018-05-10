@@ -1,12 +1,12 @@
 package imat;
 
+import imat.model.Model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import imat.model.Model;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
@@ -31,7 +31,12 @@ public class Main extends Application {
 
         primaryStage.setTitle("iMat");
 
-        double ratio = 3.0 / 4;
+        double ratio = 4.0 / 5;
+        switch (Toolkit.getDefaultToolkit().getScreenResolution()) {
+            case 120: ratio *= 1 / 1.25; break;
+            case 144: ratio *= 1 / 1.5; break;
+            case 192: ratio *= 0.5; break;
+        }
         int stageWidth = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().width * ratio);
         int stageHeight = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().height * ratio);
 

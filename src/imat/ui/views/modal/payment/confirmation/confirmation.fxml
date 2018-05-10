@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="246.0" prefWidth="441.0" styleClass="background-fxDefault" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.payment.confirmation.Confirmation">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="purchaseConfirmationHeader" text="Tack för ditt köp!" />
+            <Label fx:id="purchaseConfirmationDescription" text="Dina varor kommer snart att levereras" />
+            <Button fx:id="confirmationReturnToStoreButton" mnemonicParsing="false" onAction="#onReturnToStoreButtonAction" styleClass="button-text-normal-bold" text="Tillbaka till startsidan">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="confirmationExitAppButton" mnemonicParsing="false" onAction="#onQuitButtonAction" styleClass="button-text-normal-bold" text="Avsluta programmet">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

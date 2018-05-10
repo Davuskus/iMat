@@ -1,18 +1,13 @@
 package imat.ui.controls.history.order;
 
 import imat.enums.NavigationTarget;
-import imat.interfaces.IFXMLController;
 import imat.model.FXMLController;
-import imat.model.Model;
-import imat.ui.views.browse.history.OrderHistoryPane;
+import imat.ui.views.browse.centerviews.history.orders.OrderHistoryPane;
 import imat.utils.DateUtils;
-import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 

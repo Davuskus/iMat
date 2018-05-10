@@ -1,0 +1,2 @@
+name={"Kött och ägg"}
+data={"Nötkött":"71,72,76";"Blandkött":"149,150";"Kyckling":"73,74,75";"Ägg":"85,154"}
