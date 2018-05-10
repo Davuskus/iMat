@@ -21,6 +21,10 @@ public class Model {
 
     private final Deque<NavigationTarget> navigationHistory;
 
+    private List<IRemoveEvent> cartItemRemoveEvents;
+
+    private List<IRemoveEvent> checkoutItemRemoveEvents;
+
     public Model() {
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
@@ -28,6 +32,8 @@ public class Model {
         searchListeners = new ArrayList<>(1);
         productListeners = new ArrayList<>(1);
         orderListeners = new ArrayList<>(1);
+        checkoutItemRemoveEvents = new ArrayList<>(1);
+        cartItemRemoveEvents = new ArrayList<>(1);
         navigationHistory = new ArrayDeque<>();
         navigationHistory.push(NavigationTarget.HOME);
         loadBackendCart();
@@ -137,6 +143,22 @@ public class Model {
         }
     }
 
+    public void clearCartFast() {
+        cartItemRemoveEvents.forEach(IRemoveEvent::execute);
+        checkoutItemRemoveEvents.forEach(IRemoveEvent::execute);
+        cartItemRemoveEvents.clear();
+        checkoutItemRemoveEvents.clear();
+        cart.clear();
+    }
+
+    public void addCartItemRemoveEvent(IRemoveEvent removeEvent) {
+        cartItemRemoveEvents.add(removeEvent);
+    }
+
+    public void addCheckoutItemRemoveEvent(IRemoveEvent removeEvent) {
+        checkoutItemRemoveEvents.add(removeEvent);
+    }
+
     public void selectCategory(ProductCategory category) {
         categoryListeners.forEach(x -> x.onCategorySelected(category));
     }
@@ -191,7 +213,7 @@ public class Model {
         }
 
         IMatDataHandler.getInstance().placeOrder(true);
-        clearCart();
+        clearCartFast();
     }
 
     public List<Product> getCommonlyPurchasedProducts(int maxNumProducts) {
