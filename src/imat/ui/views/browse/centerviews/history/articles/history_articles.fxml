@@ -10,90 +10,79 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="450.0" prefWidth="400.0" styleClass="border-thin" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.history.articles.HistoryArticlesPane">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="historyTitlePane" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="historyTitleLabel" alignment="CENTER" styleClass="title-large-dark-gray" text="Köphistorik" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true" />
+                  <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true" />
                </children>
                <styleClass>
-                  <String fx:value="scene-default" />
                   <String fx:value="border-thin" />
+                  <String fx:value="scene-default" />
                </styleClass>
-            </AnchorPane>
+            </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background-gray-light" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="30.0" prefWidth="200.0" styleClass="background-gray-light">
+                  <AnchorPane prefHeight="40.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" styleClass="button-text-normal" text="Tillbaka" wrapText="true">
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="27.0" prefWidth="197.0" styleClass="button-text-normal" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
                         </Button>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true">
-                           <HBox.margin>
-                              <Insets top="8.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true">
-                           <HBox.margin>
-                              <Insets top="8.0" />
-                           </HBox.margin>
-                        </Label>
                      </children>
-                  </HBox>
-                  <Separator prefWidth="200.0" />
-                  <HBox prefHeight="30.0" prefWidth="200.0">
+                  </AnchorPane>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Separator>
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                      <children>
                         <Label styleClass="title-normal-dark-gray" text="Antal artiklar: " wrapText="true">
                            <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
+                              <Insets left="5.0" />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="totalNumArticlesLabel" styleClass="title-normal-dark-gray" text="# st" wrapText="true">
                            <HBox.margin>
-                              <Insets top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <Separator orientation="VERTICAL" prefHeight="200.0">
                            <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
+                              <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                         </Separator>
                         <Label styleClass="title-normal-dark-gray" text="Totalt pris: " wrapText="true">
                            <HBox.margin>
-                              <Insets top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="totalPriceLabel" styleClass="title-normal-dark-gray" text="- kr" wrapText="true">
                            <HBox.margin>
-                              <Insets top="5.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
                   <AnchorPane fx:id="orderPane" prefHeight="200.0" prefWidth="200.0" styleClass="background-gray-light" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane prefHeight="40.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" styleClass="button-text-normal" text="Kopiera order till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" prefHeight="40.0" text="Kopiera order till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
+                                       <styleClass>
+                                          <String fx:value="button-text-normal" />
+                                          <String fx:value="to-checkout-button-bg" />
+                                       </styleClass>
                                     </Button>
                                  </children>
                               </AnchorPane>
@@ -111,6 +100,9 @@
                      </children>
                   </AnchorPane>
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </VBox>
          </children>
       </VBox>
