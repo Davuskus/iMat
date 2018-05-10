@@ -3,15 +3,12 @@ package imat.ui.views.browse.centerviews.home;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
-import imat.ui.controls.product.feature.Feature;
 import imat.ui.controls.product.menu.ProductMenuItem;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -21,11 +18,11 @@ import java.util.ResourceBundle;
 
 public class Home extends FXMLController implements INavigationListener {
 
-    @FXML
-    private AnchorPane feature;
-
-    @FXML
-    private Feature featureController;
+//    @FXML
+//    private AnchorPane feature;
+//
+//    @FXML
+//    private Feature featureController;
 
     @FXML
     private FlowPane productsFlowPane;
@@ -76,7 +73,7 @@ public class Home extends FXMLController implements INavigationListener {
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.HOME) {
             updateProductsHBox();
-            featureController.setFeatureScrolling(navigationTarget == NavigationTarget.HOME);
+            // featureController.setFeatureScrolling(navigationTarget == NavigationTarget.HOME);
         }
     }
 
