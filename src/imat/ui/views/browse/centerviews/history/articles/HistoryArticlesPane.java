@@ -6,6 +6,7 @@ import imat.model.FXMLController;
 import imat.ui.controls.history.article.ArticleHistoryItem;
 import imat.utils.DateUtils;
 import imat.utils.FXMLLoader;
+import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -55,9 +56,11 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
             articlesVBox.getChildren().add(articleNode);
             articleHistoryItem.setShoppingItem(shoppingItem);
         }
+
     }
 
     private List<ShoppingItem> getUniqueShoppingItems(Order order) {
+
         Map<Product, Double> shoppingItemMap = new HashMap<>();
         order.getItems().forEach(shoppingItem -> {
             Product product = shoppingItem.getProduct();
@@ -70,6 +73,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         });
         List<ShoppingItem> shoppingItems = new ArrayList<>(shoppingItemMap.keySet().size());
         shoppingItemMap.forEach(((product, amount) -> shoppingItems.add(new ShoppingItem(product, amount))));
+
         return shoppingItems;
     }
 
@@ -78,7 +82,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         for (ShoppingItem shoppingItem : order.getItems()) {
             price += shoppingItem.getTotal();
         }
-        return price;
+        return MathUtils.round(price, 2);
     }
 
     private void updateOrderInfo() {

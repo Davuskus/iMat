@@ -14,7 +14,7 @@
     -fx-font-size: 14px;
 }
 
-.text-normal {
+.text-normal-bold {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -48,6 +48,13 @@
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
     -fx-text-fill: #20721a;
+}
+
+.text-normal-eco-green-bold {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-text-fill: #20721a;
+    -fx-font-weight: bold;
 }
 
 .title-normal {
@@ -253,6 +260,8 @@
     -fx-border-color: #999999;
     -fx-border-radius: 3px;
     -fx-background-radius: 3px;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
 }
 
 .white-button:hover {
