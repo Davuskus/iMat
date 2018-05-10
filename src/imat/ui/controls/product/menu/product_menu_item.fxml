@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="170.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.menu.ProductMenuItem">
+<AnchorPane prefHeight="260.0" prefWidth="170.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.menu.ProductMenuItem">
     <children>
         <VBox fx:id="elementsVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane minHeight="111.0" minWidth="148.0" onMouseClicked="#showProductDetails" prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
+                <AnchorPane onMouseClicked="#showProductDetails" prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
                     <children>
                         <ImageView fx:id="imageView" fitHeight="108.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
                             <image>
@@ -24,6 +24,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
                 </AnchorPane>
                 <Label fx:id="nameLabel" onMouseClicked="#showProductDetails" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
                 <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" />
@@ -33,9 +36,6 @@
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
-            <padding>
-                <Insets top="10.0" />
-            </padding>
         </VBox>
     </children>
     <styleClass>

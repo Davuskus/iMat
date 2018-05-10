@@ -39,8 +39,6 @@ public class Home extends FXMLController implements INavigationListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
-        productsHBox.setScaleX(0.85);
-        productsHBox.setScaleY(0.85);
         updateProductsHBox();
     }
 
