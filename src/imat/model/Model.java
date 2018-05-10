@@ -148,7 +148,7 @@ public class Model {
         checkoutItemRemoveEvents.forEach(IRemoveEvent::execute);
         cartItemRemoveEvents.clear();
         checkoutItemRemoveEvents.clear();
-        cart.clear();
+        clearCart();
     }
 
     public void addCartItemRemoveEvent(IRemoveEvent removeEvent) {

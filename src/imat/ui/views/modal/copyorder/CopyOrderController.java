@@ -36,7 +36,7 @@ public class CopyOrderController extends FXMLController implements IOrderListene
 
     @FXML
     private void replaceButtonOnAction(ActionEvent event) {
-        model.clearCart();
+        model.clearCartFast();
         model.addOrderToCart(order);
         model.navigateBack();
     }
