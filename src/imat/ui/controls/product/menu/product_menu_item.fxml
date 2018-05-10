@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="260.0" prefWidth="170.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.menu.ProductMenuItem">
+<AnchorPane stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.menu.ProductMenuItem">
     <children>
         <VBox fx:id="elementsVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -31,7 +31,14 @@
                 <Label fx:id="nameLabel" onMouseClicked="#showProductDetails" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
                 <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" />
                 <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Product price" />
-                <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" />
+                <AnchorPane>
+                    <children>
+                        <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" />
+                    </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+                </AnchorPane>
             </children>
             <opaqueInsets>
                 <Insets />
