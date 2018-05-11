@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
@@ -44,6 +46,12 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private AnchorPane regretPane;
+
+    @FXML
+    private Button removeButton;
+
+    @FXML
+    private ImageView removeButtonImageView;
 
     private Product product;
 
@@ -120,13 +128,11 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
 
     }
 
-
     @FXML
     private void removeButtonOnAction(Event event) {
         setAmountBeforeRemoveRequest(model.getProductAmount(product));
         model.updateShoppingCart(product, 0);
     }
-
 
     private void setAmountBeforeRemoveRequest(double amount) {
         if (amount != 0)
@@ -161,5 +167,19 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
 
     }
 
-    // */
+    @FXML
+    public void removeButtonMouseEntered() {
+        removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close_hover.png"));
+    }
+
+    @FXML
+    public void removeButtonMousePressed() {
+        removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close_pressed.png"));
+    }
+
+    @FXML
+    public void removeButtonMouseExited() {
+        removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close.png"));
+    }
+
 }
