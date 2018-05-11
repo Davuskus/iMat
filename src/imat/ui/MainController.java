@@ -33,7 +33,6 @@ public class MainController extends FXMLController implements INavigationListene
                 modalView.toFront();
                 break;
             case HOME:
-            case PRODUCT_DETAILS:
             case ORDER_HISTORY:
             case CHECKOUT:
                 browseView.toFront();

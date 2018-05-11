@@ -63,12 +63,6 @@ public class ProductMenuItem extends FXMLController {
         return product;
     }
 
-    @FXML
-    public void showProductDetails() {
-        model.showProductDetails(product);
-        model.navigate(NavigationTarget.PRODUCT_DETAILS);
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         amountSpinnerController.setModel(model);

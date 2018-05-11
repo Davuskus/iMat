@@ -6,7 +6,6 @@ public enum NavigationTarget {
     ORDER_HISTORY_ARTICLE,
     CHECKOUT,
     HELP,
-    PRODUCT_DETAILS,
     COPY_ORDER,
     PAYMENT,
     HOME,

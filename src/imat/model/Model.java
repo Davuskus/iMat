@@ -4,7 +4,10 @@ import imat.enums.NavigationTarget;
 import imat.interfaces.*;
 import imat.model.category.Category;
 import imat.utils.CategoryFactory;
-import se.chalmers.cse.dat216.project.*;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,7 +21,6 @@ public class Model {
     private final List<ICategoryListener> categoryListeners;
     private final List<INavigationListener> navigationListeners;
     private final List<ISearchListener> searchListeners;
-    private final List<IProducDetailstListener> productListeners;
     private final List<IOrderListener> orderListeners;
 
     private boolean isThrowingCartInTrash;
@@ -35,7 +37,6 @@ public class Model {
         categoryListeners = new ArrayList<>(1);
         navigationListeners = new ArrayList<>(1);
         searchListeners = new ArrayList<>(1);
-        productListeners = new ArrayList<>(1);
         orderListeners = new ArrayList<>(1);
         checkoutItemRemoveEvents = new ArrayList<>(1);
         cartItemRemoveEvents = new ArrayList<>(1);
@@ -69,10 +70,6 @@ public class Model {
 
     public void addShoppingListener(IShoppingListener IShoppingListener) {
         IShoppingListeners.add(IShoppingListener);
-    }
-
-    public void addProductDetailsListener(IProducDetailstListener productDetailsListener) {
-        productListeners.add(productDetailsListener);
     }
 
     public void updateShoppingCart(Product product, double newAmount) {
@@ -213,10 +210,6 @@ public class Model {
 
     public boolean isThrowingCartInTrash() {
         return isThrowingCartInTrash;
-    }
-
-    public void showProductDetails(Product product) {
-        productListeners.forEach(x -> x.onProductSelection(product));
     }
 
     public void placeOrder() {

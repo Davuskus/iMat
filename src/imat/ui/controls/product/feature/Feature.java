@@ -58,12 +58,6 @@ public class Feature extends FXMLController {
 //        }, 0, scrollIntervalMillis);
     }
 
-    @FXML
-    public void showProductDetails() {
-        model.showProductDetails(products.get(currentProductIndex));
-        model.navigate(NavigationTarget.PRODUCT_DETAILS);
-    }
-
     public void setFeatureScrolling(boolean featureScrolling) {
         if (featureScrolling) {
             startFeatureScrolling();
