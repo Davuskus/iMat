@@ -27,6 +27,7 @@
                      </ImageView>
                   </children>
                </HBox>
+                  <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml"/>
                <Separator prefWidth="200.0" />
                <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" VBox.vgrow="ALWAYS">
                   <children>
