@@ -135,9 +135,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
                             v -> removeEvent.execute(),
                             AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
                             AnimationHandler.getOpacityChangeKeyFrame(itemHBox, 250, 0),
+                            AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0),
                             AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
-                            AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth()),
-                            AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0)
+                            AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth())
                     );
                     removalAnimation.play();
                 }
