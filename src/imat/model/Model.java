@@ -49,6 +49,10 @@ public class Model {
                 shoppingItem -> cart.put(shoppingItem.getProduct(), shoppingItem.getAmount()));
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     public void navigateBack() {
         if (navigationHistory.size() >= 1) {
             navigationHistory.pop();
@@ -164,7 +168,11 @@ public class Model {
         checkoutItemRemoveEvents.add(removeEvent);
     }
 
-    public void selectCategory(ProductCategory category) {
+    /*public void selectCategory(ProductCategory category) {
+        categoryListeners.forEach(x -> x.onCategorySelected(category));
+    }*/
+
+    public void selectCategory(Category category) {
         categoryListeners.forEach(x -> x.onCategorySelected(category));
     }
 

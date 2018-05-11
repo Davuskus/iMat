@@ -3,6 +3,7 @@ package imat.ui.views.browse.centerviews.products;
 import imat.interfaces.ICategoryListener;
 import imat.interfaces.ISearchListener;
 import imat.model.FXMLController;
+import imat.model.category.Category;
 import imat.ui.controls.product.menu.ProductMenuItem;
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
@@ -26,7 +27,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     @FXML
     private FlowPane productsFlowPane;
 
-    private ProductCategory currentCategory;
+    //private ProductCategory currentCategory;
+    private Category currentCategory;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,13 +36,28 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         model.addSearchListener(this);
     }
 
-    @Override
+    /*@Override
     public void onCategorySelected(ProductCategory category) {
         if (category == currentCategory) return;
         currentCategory = category;
         productsFlowPane.getChildren().removeIf(x -> true);
         categoryLabel.setText(category.name());
         for (Product product : IMatDataHandler.getInstance().getProducts(category)) {
+            ProductMenuItem controller = new ProductMenuItem(product);
+            controller.setModel(model);
+            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
+                    "../../../../controls/product/menu/product_menu_item.fxml", this, controller);
+            productsFlowPane.getChildren().add(item);
+        }
+    }*/
+
+    @Override
+    public void onCategorySelected(Category category) {
+        if (category == currentCategory) return;
+        currentCategory = category;
+        productsFlowPane.getChildren().removeIf(x -> true);
+        categoryLabel.setText(category.getName());
+        for (Product product : category.getAllProducts()) {
             ProductMenuItem controller = new ProductMenuItem(product);
             controller.setModel(model);
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
@@ -74,4 +91,6 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     public void consumeEvent(Event event) {
         //event.consume();
     }
+
+
 }
