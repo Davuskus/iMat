@@ -82,7 +82,7 @@
                                        </cursor>
                                        <styleClass>
                                           <String fx:value="button-text-normal" />
-                                          <String fx:value="to-checkout-button-bg" />
+                                          <String fx:value="action-button" />
                                        </styleClass>
                                     </Button>
                                  </children>

@@ -205,6 +205,24 @@
     -fx-border-color: #00adff;
 }
 
+.action-button {
+    -fx-background-color: #3eeba5;
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.action-button:hover {
+    -fx-background-color: #41fab1;
+}
+
+.action-button:pressed {
+    -fx-background-color: #3cd793;
+    -fx-border-width: 2px;
+    -fx-border-color: #00adff;
+}
+
 .to-checkout-button-bg {
     -fx-background-color: #7af04c;
     -fx-border-width: 1px;
