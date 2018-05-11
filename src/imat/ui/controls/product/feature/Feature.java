@@ -51,20 +51,21 @@ public class Feature extends FXMLController implements IShutdownListener {
     private ScheduledFuture<?> scheduledFuture;
 
     private void startFeatureScrolling() {
-        featureScrolling = true;
-
-        scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
-        scheduledFuture = scheduledThreadExecutor.scheduleAtFixedRate(() -> {
-            if (!featureScrolling) {
-                scheduledFuture.cancel(true);
-            }
-            Platform.runLater(() -> {
-                if (++currentProductIndex >= numProducts) {
-                    currentProductIndex = 0;
+        if (!featureScrolling) {
+            featureScrolling = true;
+            scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
+            scheduledFuture = scheduledThreadExecutor.scheduleAtFixedRate(() -> {
+                if (!featureScrolling) {
+                    scheduledFuture.cancel(true);
                 }
-                productStackPane.getChildren().get(currentProductIndex).toFront();
-            });
-        }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
+                Platform.runLater(() -> {
+                    if (++currentProductIndex >= numProducts) {
+                        currentProductIndex = 0;
+                    }
+                    productStackPane.getChildren().get(currentProductIndex).toFront();
+                });
+            }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
+        }
     }
 
     private void setRandomProductsToFeature(int numProducts) {
