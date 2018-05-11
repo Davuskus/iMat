@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.checkout.CheckoutItem">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="700.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.checkout.CheckoutItem">
     <children>
         <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -64,6 +64,7 @@
                                   <columnConstraints>
                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="50.0" />
                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   </columnConstraints>
@@ -76,12 +77,12 @@
                                               <Label fx:id="productName" styleClass="text-normal" text="ProduktName" />
                                           </children>
                                       </VBox>
-                                      <VBox alignment="CENTER" GridPane.columnIndex="2">
+                                      <VBox alignment="CENTER" GridPane.columnIndex="3">
                                           <children>
                                               <Label fx:id="price" styleClass="text-normal" text="Price" />
                                           </children>
                                       </VBox>
-                                      <VBox alignment="CENTER" GridPane.columnIndex="3">
+                                      <VBox alignment="CENTER" GridPane.columnIndex="4">
                                           <children>
                                               <Label fx:id="total" styleClass="text-normal" text="total" />
                                           </children>
@@ -91,6 +92,11 @@
                                               <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" />
                                           </children>
                                       </VBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                 <children>
+                                    <Label fx:id="ecoLabel" styleClass="text-normal-eco-green-bold" text="Ekologisk" />
+                                 </children>
+                              </HBox>
                                   </children>
                               </GridPane>
                      </children>

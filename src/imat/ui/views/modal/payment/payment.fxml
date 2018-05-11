@@ -232,7 +232,7 @@
                                                 </TextField>
                                              </children>
                                           </VBox>
-                                          <VBox alignment="TOP_RIGHT" layoutX="36.0" layoutY="88.0" prefHeight="158.0" prefWidth="135.0" spacing="25.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
+                                          <VBox alignment="TOP_RIGHT" layoutX="36.0" layoutY="88.0" prefHeight="158.0" prefWidth="135.0" spacing="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
                                              <children>
                                                 <Label styleClass="text-large" text="Kortnummer:">
                                                    <tooltip>
@@ -286,7 +286,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="135.0" spacing="25.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
+                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="135.0" spacing="29.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
                                              <children>
                                                 <Label styleClass="text-large" text="Förnamn:" />
                                                 <Label styleClass="text-large" text="Efternamn:" />

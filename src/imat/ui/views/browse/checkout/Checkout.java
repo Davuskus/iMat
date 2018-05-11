@@ -40,6 +40,7 @@ public class Checkout extends FXMLController implements IShoppingListener,INavig
     @FXML
     private AnchorPane root;
 
+
     private Map<Product, Node> productsInCheckout = new HashMap<>();
 
     @Override

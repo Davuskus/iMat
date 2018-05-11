@@ -36,9 +36,6 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     private Label total;
 
     @FXML
-    private VBox VBoxSpinner;
-
-    @FXML
     private Button regretButton;
 
     @FXML
@@ -53,7 +50,11 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     @FXML
     private ImageView removeButtonImageView;
 
+    @FXML
+    private Label ecoLabel;
+
     private Product product;
+
 
     private final long millisBeforeRemoval = 3000;
 
@@ -92,6 +93,8 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
         productName.setText(product.getName());
         price.setText(String.valueOf(MathUtils.round(product.getPrice(), 2)) + " " + product.getUnit());
         updateTotal(model.getProductAmount(product));
+
+        ecoLabel.setVisible(product.isEcological());
     }
 
 
