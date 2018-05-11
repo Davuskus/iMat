@@ -66,6 +66,8 @@ public class Modal extends FXMLController implements INavigationListener {
         closeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close.png"));
     }
 
+    // TODO The background pane behind the modal always shows "Home". Fix this.
+
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         switch (navigationTarget) {
@@ -101,7 +103,6 @@ public class Modal extends FXMLController implements INavigationListener {
         stackPane.setMaxSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
         stackPane.setMinSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
         stackPane.setPrefSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
-
         setVisible(anchorPane);
     }
 
