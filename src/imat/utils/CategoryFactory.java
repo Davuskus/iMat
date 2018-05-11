@@ -1,101 +1,55 @@
 package imat.utils;
 
 import imat.model.category.Category;
-import se.chalmers.cse.dat216.project.*;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.EndElement;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class CategoryFactory {
-    static final String CATEGORY = "Category";
-    static final String SUBCATEGORY = "Subcategory";
 
-    public static List<Category> getCategoriesFromFile() {
+    public static List<Category> getCategoriesFromFolder(String filePath) {
+        List<Category> categoryList = new ArrayList<>();
+        File folder = new File(filePath);
+        File[] fileList = folder.listFiles();
+        for (File file : fileList) {
+            categoryList.add(getCategoryFromFile(file.getPath()));
+        }
 
-        return null;
+        return categoryList;
     }
 
-    public List<Category> readConfig(String configFile) {
-        List<Category> items = new ArrayList<>();
-        try {
-            // First, create a new XMLInputFactory
-            XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-            // Setup a new eventReader
-            InputStream in = new FileInputStream(configFile);
-            XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
-            // read the XML document
-            Category item = null;
+    public static Category getCategoryFromFile(String filePath) {
+        Category category;
+        String categoryName;
+        String[] categoryData;
 
-            while (eventReader.hasNext()) {
-                XMLEvent event = eventReader.nextEvent();
+        String rawData = FileUtils.readAllTextFromFile(filePath);
+        String[] lines = rawData.split("\n");
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
-                    // If we have an checkout element, we create a new checkout
-                    if (startElement.getName().getLocalPart().equals(CATEGORY)) {
-                        item = new Category(CATEGORY);
-                        // We read the attributes from this tag and add the date
-                        // attribute to our object
-                        Iterator<Attribute> attributes = startElement
-                                .getAttributes();
-                        while (attributes.hasNext()) {
-                            Attribute attribute = attributes.next();
-                            if (attribute.getName().toString().equals(SUBCATEGORY)) {
-                                // Does not work yet!
-                            }
+        categoryName = lines[0].substring(7,lines[0].length()-2);
+        categoryData = lines[1].substring(6,lines[1].length()-1).split(";");
 
-                        }
-                    }
+        category = new Category(categoryName);
 
-                    /*
-                    if (event.isStartElement()) {
-                        if (event.asStartElement().getName().getLocalPart()
-                                .equals(MODE)) {
-                            event = eventReader.nextEvent();
-                            checkout.setMode(event.asCharacters().getData());
-                            continue;
-                        }
-                    }
-                    if (event.asStartElement().getName().getLocalPart()
-                            .equals(UNIT)) {
-                        event = eventReader.nextEvent();
-                        checkout.setUnit(event.asCharacters().getData());
-                        continue;
-                    }
-                }
-
-                // If we reach the end of an checkout element, we add it to the list
-                if (event.isEndElement()) {
-                    EndElement endElement = event.asEndElement();
-                    if (endElement.getName().getLocalPart().equals(ITEM)) {
-                        items.add(checkout);
-                    }
-                }
-                */
-
-                }
+        for (String str : categoryData) {
+            List<Product> productList = new ArrayList<>();
+            String[] components = str.split(":");
+            String subcategoryName = components[0].replaceAll("\"","");
+            String[] productNumbers = components[1].replaceAll("\"","").split(",");
+            for (String product : productNumbers) {
+                productList.add(IMatDataHandler.getInstance().getProduct(Integer.parseInt(product)));
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
+            category.addSubcategory(subcategoryName,productList);
         }
-        return items;
-        }
+
+        return category;
+    }
 }

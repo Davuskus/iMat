@@ -2,10 +2,7 @@ package imat.model.category;
 
 import se.chalmers.cse.dat216.project.Product;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Category {
     private String name;
@@ -13,6 +10,7 @@ public class Category {
 
     public Category(String name) {
         this.name = name;
+        dataSet = new HashMap<>();
     }
 
     public void addSubcategory(String name, List<Product> subcategory) {

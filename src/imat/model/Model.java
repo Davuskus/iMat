@@ -2,6 +2,8 @@ package imat.model;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.*;
+import imat.model.category.Category;
+import imat.utils.CategoryFactory;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.*;
@@ -10,6 +12,7 @@ import java.util.stream.Collectors;
 public class Model {
 
     private Map<Product, Double> cart = new HashMap<>();
+    private List<Category> categories;
 
     private final List<IShoppingListener> IShoppingListeners;
     private final List<ICategoryListener> categoryListeners;
@@ -27,6 +30,7 @@ public class Model {
     private List<IRemoveEvent> checkoutItemRemoveEvents;
 
     public Model() {
+        categories = CategoryFactory.getCategoriesFromFolder("src/imat/resources/categories");
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
         navigationListeners = new ArrayList<>(1);
