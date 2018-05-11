@@ -1,6 +1,5 @@
 package imat.ui.controls.product.menu;
 
-import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
 import javafx.fxml.FXML;
@@ -30,7 +29,8 @@ public class ProductMenuItem extends FXMLController {
     @FXML
     private Label ecoLabel;
 
-    @FXML private VBox elementsVBox;
+    @FXML
+    private VBox elementsVBox;
 
     private Product product;
 
@@ -39,7 +39,7 @@ public class ProductMenuItem extends FXMLController {
     }
 
     /**
-     * Sets the product and updates the menu checkout's information accordingly.
+     * Sets the product.
      *
      * @param product The product to use.
      */
@@ -55,7 +55,7 @@ public class ProductMenuItem extends FXMLController {
     }
 
     /**
-     * Returns the menu checkout's displayed product.
+     * Returns the displayed product.
      *
      * @return The currently used product.
      */
