@@ -14,48 +14,49 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="500.0" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.home.Home">
     <children>
-      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <content>
-              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
-               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Label fx:id="welcomeLabel" styleClass="title-xlarge-dark-gray" text="Välkommen till" />
-                     <ImageView fitHeight="132.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../../../../resources/images/logo/imat_logo.png" />
-                        </image>
-                     </ImageView>
-                  </children>
-               </HBox>
-               <Separator prefWidth="200.0" />
-               <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" VBox.vgrow="ALWAYS">
-                  <children>
-                     <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
-                     <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="270.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <content>
+                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Label fx:id="welcomeLabel" styleClass="title-xlarge-dark-gray" text="Välkommen till " />
+                            <ImageView fitHeight="52.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../../../resources/images/logo/imat_logo.png" />
+                                </image>
+                            </ImageView>
+                        </children>
+                    </HBox>
+                    <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" />
+                    <Separator prefWidth="200.0" />
+                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" VBox.vgrow="ALWAYS">
+                        <children>
+                            <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
+                            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="270.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                <VBox.margin>
+                                    <Insets />
+                                </VBox.margin>
+                                <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                </padding>
+                                <content>
+                                    <FlowPane fx:id="productsFlowPane" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" />
+                                </content>
+                            </ScrollPane>
+                        </children>
                         <VBox.margin>
-                           <Insets />
+                            <Insets bottom="5.0" left="5.0" right="5.0" />
                         </VBox.margin>
-                        <padding>
-                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                        </padding>
-                        <content>
-                           <FlowPane fx:id="productsFlowPane" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" />
-                        </content>
-                     </ScrollPane>
-                  </children>
-                  <VBox.margin>
-                     <Insets bottom="5.0" left="5.0" right="5.0" />
-                  </VBox.margin>
-               </VBox>
-               <padding>
-                  <Insets top="25.0" />
-               </padding>
-              </VBox>
-         </content>
-      </ScrollPane>
+                    </VBox>
+                    <padding>
+                        <Insets top="25.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
-   <styleClass>
-      <String fx:value="scene-default" />
-      <String fx:value="border-thin" />
-   </styleClass>
+    <styleClass>
+        <String fx:value="scene-default" />
+        <String fx:value="border-thin" />
+    </styleClass>
 </AnchorPane>

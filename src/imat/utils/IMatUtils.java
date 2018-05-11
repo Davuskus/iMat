@@ -33,8 +33,19 @@ public final class IMatUtils {
         return shoppingItemsClone;
     }
 
-    public static Set<ProductCategory> getCategories(){
-        return IMatDataHandler.getInstance().getProducts().stream().map(product->product.getCategory()).collect(Collectors.toSet());
+    public static Set<ProductCategory> getCategories() {
+        return IMatDataHandler
+                .getInstance()
+                .getProducts()
+                .stream()
+                .map(product -> product.getCategory())
+                .collect(Collectors.toSet());
+    }
+
+    public static Product getRandomProduct() {
+        Random random = new Random();
+        int index = random.nextInt(IMatDataHandler.getInstance().getProducts().size() - 1);
+        return IMatDataHandler.getInstance().getProduct(index);
     }
 
 }

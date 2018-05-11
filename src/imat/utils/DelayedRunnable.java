@@ -2,8 +2,9 @@ package imat.utils;
 
 import javafx.application.Platform;
 
-import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public final class DelayedRunnable {
 
@@ -14,14 +15,14 @@ public final class DelayedRunnable {
     }
 
     public void runLater(long delayMilliseconds) {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        ScheduledThreadPoolExecutor scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
+        scheduledThreadExecutor.schedule(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(runnable);
-                timer.cancel();
+                scheduledThreadExecutor.shutdown();
             }
-        }, delayMilliseconds);
+        }, delayMilliseconds, TimeUnit.MILLISECONDS);
     }
 
     public Runnable getRunnable() {

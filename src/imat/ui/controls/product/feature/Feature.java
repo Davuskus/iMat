@@ -1,15 +1,21 @@
 package imat.ui.controls.product.feature;
 
-import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
+import imat.ui.controls.product.feature.item.FeatureItem;
+import imat.utils.FXMLLoader;
+import imat.utils.IMatUtils;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class Feature extends FXMLController {
 
@@ -29,33 +35,42 @@ public class Feature extends FXMLController {
     public Feature() {
         super();
         numProducts = 4;
-        scrollIntervalMillis = 30000;
+        scrollIntervalMillis = 2000;
         products = new ArrayList<>(numProducts);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        setRandomProductsToFeature(numProducts);
     }
 
     private void startFeatureScrolling() {
         featureScrolling = true;
 
-//        Timer timer = new Timer();
-//        timer.scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                Platform.runLater(() -> {
-//                    if (++currentProductIndex >= numProducts) {
-//                        currentProductIndex = 0;
-//                    }
-//                    productStackPane.getChildren().get(currentProductIndex).toFront();
-//                });
-//                if (!featureScrolling) {
-//                    timer.cancel();
+//        ScheduledThreadPoolExecutor scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
+//        scheduledThreadExecutor.scheduleAtFixedRate(() -> {
+//            Platform.runLater(() -> {
+//                if (++currentProductIndex >= numProducts) {
+//                    currentProductIndex = 0;
 //                }
+//                productStackPane.getChildren().get(currentProductIndex).toFront();
+//            });
+//            if (!featureScrolling) {
+//                scheduledThreadExecutor.shutdown();
 //            }
-//        }, 0, scrollIntervalMillis);
+//        }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
+    }
+
+    private void setRandomProductsToFeature(int numProducts) {
+        while (productStackPane.getChildren().size() < numProducts) {
+            FeatureItem featureItem = new FeatureItem(IMatUtils.getRandomProduct());
+            featureItem.setModel(model);
+            Node featureItemNode = FXMLLoader.loadFXMLNodeFromRootPackage(
+                    "item/feature_item.fxml",
+                    this,
+                    featureItem);
+            productStackPane.getChildren().add(featureItemNode);
+        }
     }
 
     public void setFeatureScrolling(boolean featureScrolling) {
