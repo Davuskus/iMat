@@ -99,11 +99,16 @@ public class PaymentController extends FXMLController implements Initializable,I
     @FXML
     private  SplitPane splitPane;
 
+    @FXML
+    private AnchorPane rootPane;
+
     private final IMatDataHandler iMatDataHandler;
 
     private final Customer customer;
 
     private final CreditCard creditCard;
+
+    private boolean resize;
 
     public PaymentController() {
         iMatDataHandler = IMatDataHandler.getInstance();
@@ -115,6 +120,8 @@ public class PaymentController extends FXMLController implements Initializable,I
     public void initialize(URL location, ResourceBundle resources) {
         fillUserData();
         updateTextArea();
+        setSize(splitPane);
+        resize=true;
 
         confirmationPane.setDisable(true);
         splitPane.setDisable(true);
@@ -238,14 +245,34 @@ public class PaymentController extends FXMLController implements Initializable,I
     private void payAndOrder(){
         saveUserInfo();
 
+        resize=false;
+        setSize(confirmationPane);
+        resize=true;
+
         splitPane.setDisable(true);
         confirmationPane.setDisable(false);
 
         model.placeOrder();
         clientViewToFront();
 
+
+
         confirmationPane.toFront();
 
+    }
+
+    private void setSize(AnchorPane anchorPane){
+        rootPane.setMaxSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
+        rootPane.setMinSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+        rootPane.setPrefSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+        resizeParent();
+    }
+
+    private void setSize(SplitPane anchorPane){
+        rootPane.setMaxSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
+        rootPane.setMinSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+        rootPane.setPrefSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+       // resizeParent();
     }
 
     private void updateTextArea() {
@@ -443,15 +470,24 @@ public class PaymentController extends FXMLController implements Initializable,I
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if(navigationTarget==NavigationTarget.PAYMENT){
-            confirmationPane.toBack();
-            confirmationPane.setDisable(true);
-            splitPane.setDisable(false);
+            if(resize) {
+                confirmationPane.toBack();
+                confirmationPane.setDisable(true);
+                splitPane.setDisable(false);
+
+                setSize(splitPane);
+            }
         }
         else {
             confirmationPane.setDisable(true);
             splitPane.setDisable(true);
         }
 
+    }
+
+    private void resizeParent(){
+        model.navigate(NavigationTarget.CHECKOUT);
+        model.navigateBack();
 
 
     }

@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +37,9 @@ public class Modal extends FXMLController implements INavigationListener {
 
     @FXML
     private Label modalTitleLabel;
+
+    @FXML
+    private StackPane stackPane;
 
     @FXML
     public void consumeEvent(Event event) {
@@ -66,14 +71,17 @@ public class Modal extends FXMLController implements INavigationListener {
         switch (navigationTarget) {
             case HELP:
                 modalTitleLabel.setText("Hjälp");
+                setSize(helpPane);
                 helpPane.toFront();
                 break;
             case COPY_ORDER:
                 modalTitleLabel.setText("Kopiera order");
+                setSize(copyOrderPane);
                 copyOrderPane.toFront();
                 break;
             case PAYMENT:
                 modalTitleLabel.setText("Betalning");
+                setSize(paymentPane);
                 paymentPane.toFront();
                 break;
             case CONFIRMATION:
@@ -86,6 +94,25 @@ public class Modal extends FXMLController implements INavigationListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
+
     }
 
+    private void setSize(AnchorPane anchorPane){
+        stackPane.setMaxSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
+        stackPane.setMinSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+        stackPane.setPrefSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+
+        setVisible(anchorPane);
+    }
+
+    private void setVisible(AnchorPane anchorPane){
+        setAllInvisible();
+        anchorPane.setVisible(true);
+    }
+    private void setAllInvisible(){
+      helpPane.setVisible(false);
+      copyOrderPane.setVisible(false);
+      paymentPane.setVisible(false);
+      confirmationPane.setVisible(false);
+    }
 }
