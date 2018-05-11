@@ -146,9 +146,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
                     shouldBeRemoved = false;
                     regretButton.setDisable(true);
                     Timeline removalAnimation = AnimationHandler.getAnimation(
-                            v -> {
-                                removeEvent.execute();
-                            },
+                            v -> removeEvent.execute(),
                             AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
                             AnimationHandler.getOpacityChangeKeyFrame(infoAnchorPane, 250, 0),
                             AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),

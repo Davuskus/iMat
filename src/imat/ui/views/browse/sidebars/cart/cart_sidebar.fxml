@@ -100,6 +100,9 @@
                               <String fx:value="button-text-normal-bold" />
                               <String fx:value="to-checkout-button-bg" />
                            </styleClass>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                   </AnchorPane>
