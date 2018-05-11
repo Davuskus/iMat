@@ -39,7 +39,7 @@
                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </padding>
                         <content>
-                           <FlowPane fx:id="productsFlowPane" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0" />
+                           <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" vgap="8.0" />
                         </content>
                      </ScrollPane>
                   </children>
