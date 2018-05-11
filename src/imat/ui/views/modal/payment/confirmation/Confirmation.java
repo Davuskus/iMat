@@ -4,6 +4,7 @@ package imat.ui.views.modal.payment.confirmation;
 
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,9 +13,8 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static javafx.application.Platform.exit;
-
 public class Confirmation extends FXMLController {
+
     @FXML
     Label purchaseConfirmationHeader;
 
@@ -24,7 +24,8 @@ public class Confirmation extends FXMLController {
     @FXML
     Button confirmationReturnToStoreButton;
 
-    @FXML Button confirmationExitAppButton;
+    @FXML
+    Button confirmationExitAppButton;
 
     @FXML
     public void onReturnToStoreButtonAction(ActionEvent actionEvent) {
@@ -33,11 +34,12 @@ public class Confirmation extends FXMLController {
 
     @FXML
     public void onQuitButtonAction(ActionEvent actionEvent) {
-        exit();
+        Platform.exit();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
 }

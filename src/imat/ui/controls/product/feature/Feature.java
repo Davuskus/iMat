@@ -1,9 +1,11 @@
 package imat.ui.controls.product.feature;
 
+import imat.interfaces.IShutdownListener;
 import imat.model.FXMLController;
 import imat.ui.controls.product.feature.item.FeatureItem;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
@@ -13,8 +15,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class Feature extends FXMLController {
+public class Feature extends FXMLController implements IShutdownListener {
 
     private final List<Product> products;
 
@@ -32,30 +37,34 @@ public class Feature extends FXMLController {
     public Feature() {
         super();
         numProducts = 4;
-        scrollIntervalMillis = 2000;
+        scrollIntervalMillis = 30000;
         products = new ArrayList<>(numProducts);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        model.addShutdownListener(this);
         setRandomProductsToFeature(numProducts);
     }
+
+    private ScheduledThreadPoolExecutor scheduledThreadExecutor;
+    private ScheduledFuture<?> scheduledFuture;
 
     private void startFeatureScrolling() {
         featureScrolling = true;
 
-//        ScheduledThreadPoolExecutor scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
-//        scheduledThreadExecutor.scheduleAtFixedRate(() -> {
-//            Platform.runLater(() -> {
-//                if (++currentProductIndex >= numProducts) {
-//                    currentProductIndex = 0;
-//                }
-//                productStackPane.getChildren().get(currentProductIndex).toFront();
-//            });
-//            if (!featureScrolling) {
-//                scheduledThreadExecutor.shutdown();
-//            }
-//        }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
+        scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
+        scheduledFuture = scheduledThreadExecutor.scheduleAtFixedRate(() -> {
+            if (!featureScrolling) {
+                scheduledFuture.cancel(true);
+            }
+            Platform.runLater(() -> {
+                if (++currentProductIndex >= numProducts) {
+                    currentProductIndex = 0;
+                }
+                productStackPane.getChildren().get(currentProductIndex).toFront();
+            });
+        }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
     }
 
     private void setRandomProductsToFeature(int numProducts) {
@@ -76,6 +85,12 @@ public class Feature extends FXMLController {
         } else {
             this.featureScrolling = false;
         }
+    }
+
+    @Override
+    public void onShutdown() {
+        featureScrolling = false;
+        scheduledThreadExecutor.shutdownNow();
     }
 
 }

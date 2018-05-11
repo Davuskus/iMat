@@ -4,6 +4,7 @@ import imat.enums.NavigationTarget;
 import imat.interfaces.*;
 import imat.model.category.Category;
 import imat.utils.CategoryFactory;
+import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.Product;
@@ -22,16 +23,18 @@ public class Model {
     private final List<INavigationListener> navigationListeners;
     private final List<ISearchListener> searchListeners;
     private final List<IOrderListener> orderListeners;
+    private List<IRemoveEvent> cartItemRemoveEvents;
+    private List<IRemoveEvent> checkoutItemRemoveEvents;
+    private final List<IShutdownListener> shutdownListeners;
 
     private boolean isThrowingCartInTrash;
 
     private final Deque<NavigationTarget> navigationHistory;
 
-    private List<IRemoveEvent> cartItemRemoveEvents;
+    private final Stage primaryStage;
 
-    private List<IRemoveEvent> checkoutItemRemoveEvents;
-
-    public Model() {
+    public Model(Stage primaryStage) {
+        this.primaryStage = primaryStage;
         categories = CategoryFactory.getCategoriesFromFolder("src/imat/resources/categories");
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
@@ -40,6 +43,7 @@ public class Model {
         orderListeners = new ArrayList<>(1);
         checkoutItemRemoveEvents = new ArrayList<>(1);
         cartItemRemoveEvents = new ArrayList<>(1);
+        shutdownListeners = new ArrayList<>(1);
         navigationHistory = new ArrayDeque<>();
         navigationHistory.push(NavigationTarget.HOME);
         loadBackendCart();
@@ -70,6 +74,10 @@ public class Model {
 
     public void addShoppingListener(IShoppingListener IShoppingListener) {
         IShoppingListeners.add(IShoppingListener);
+    }
+
+    public void addShutdownListener(IShutdownListener shutdownListener) {
+        shutdownListeners.add(shutdownListener);
     }
 
     public void updateShoppingCart(Product product, double newAmount) {
@@ -246,6 +254,10 @@ public class Model {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
+    }
+
+    public void notifyShutdownListeners() {
+        shutdownListeners.forEach(IShutdownListener::onShutdown);
     }
 
 }
