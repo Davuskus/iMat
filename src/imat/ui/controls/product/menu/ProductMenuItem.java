@@ -49,7 +49,7 @@ public class ProductMenuItem extends FXMLController {
         nameLabel.setText(product.getName());
         priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnit());
         if (!product.isEcological()) {
-            ecoLabel.setVisible(false);
+            elementsVBox.getChildren().remove(ecoLabel);
         }
         amountSpinnerController.setProduct(product);
     }

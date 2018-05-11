@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -32,6 +33,9 @@ public class FeatureItem extends FXMLController {
     @FXML
     private AmountSpinner spinnerController;
 
+    @FXML
+    private VBox infoVBox;
+
     private Product product;
 
     public FeatureItem(Product product) {
@@ -49,7 +53,7 @@ public class FeatureItem extends FXMLController {
         imageView.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnit());
         if (!product.isEcological()) {
-            ecoLabel.setVisible(false);
+            infoVBox.getChildren().remove(infoVBox);
         }
         spinnerController.setProduct(product);
     }
