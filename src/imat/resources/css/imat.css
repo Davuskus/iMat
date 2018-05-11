@@ -286,3 +286,24 @@
 .background-eco-green {
     -fx-background-color: #20721a;
 }
+
+.regret-button-bg {
+    -fx-background-color: rgba(0, 0, 0, 0.65);
+    -fx-background-radius: 2px;
+}
+
+.regret-button-bg:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.45);
+    /*-fx-background-color: rgba(150, 150, 150, 0.85);*/
+    -fx-background-radius: 2px;
+}
+
+.regret-button-bg:pressed {
+    -fx-background-color: rgba(0, 0, 0, 0.85);
+    /*-fx-background-color: rgba(0, 0, 0, 0.85);*/
+    -fx-background-radius: 2px;
+}
+
+.background-rounded {
+    -fx-background-radius: 2px;
+}

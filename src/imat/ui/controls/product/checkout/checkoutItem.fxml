@@ -21,24 +21,20 @@
     <children>
         <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane fx:id="regretPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                    <styleClass>
-                        <String fx:value="background-black" />
-                        <String fx:value="text-normal-white" />
-                    </styleClass>
+                <AnchorPane fx:id="regretPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regret-button-bg">
                <children>
                   <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <styleClass>
-                        <String fx:value="background-black-transparent-little" />
-                        <String fx:value="button-text-normal-bold-white" />
-                     </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="scene-transparent" />
+                        <String fx:value="button-text-normal-bold-white" />
+                     </styleClass>
                   </Button>
                </children>
                 </AnchorPane>
-                <AnchorPane fx:id="infoAnchorPane" prefHeight="200.0" prefWidth="200.0" styleClass="scene-default">
+                <AnchorPane fx:id="infoAnchorPane" prefHeight="200.0" prefWidth="200.0">
                     <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -100,6 +96,10 @@
                      </children>
                   </HBox>
                     </children>
+               <styleClass>
+                  <String fx:value="scene-default" />
+                  <String fx:value="background-rounded" />
+               </styleClass>
                 </AnchorPane>
             </children>
         </StackPane>

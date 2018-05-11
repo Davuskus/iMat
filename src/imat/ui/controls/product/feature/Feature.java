@@ -70,13 +70,16 @@ public class Feature extends FXMLController implements IShutdownListener {
 
     private void setRandomProductsToFeature(int numProducts) {
         while (productStackPane.getChildren().size() < numProducts) {
-            FeatureItem featureItem = new FeatureItem(IMatUtils.getRandomProduct());
-            featureItem.setModel(model);
-            Node featureItemNode = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "item/feature_item.fxml",
-                    this,
-                    featureItem);
-            productStackPane.getChildren().add(featureItemNode);
+            Product product = IMatUtils.getRandomProduct();
+            if (product != null) {
+                FeatureItem featureItem = new FeatureItem(product);
+                featureItem.setModel(model);
+                Node featureItemNode = FXMLLoader.loadFXMLNodeFromRootPackage(
+                        "item/feature_item.fxml",
+                        this,
+                        featureItem);
+                productStackPane.getChildren().add(featureItemNode);
+            }
         }
     }
 
