@@ -58,7 +58,7 @@ public class Main extends Application {
         int stageHeight = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().height * ratio);
 
         primaryStage.setScene(new Scene(root, stageWidth, stageHeight));
-        primaryStage.getIcons().add(new Image("imat/resources/images/logo/imat_logo.png"));
+        primaryStage.getIcons().add(new Image("imat/resources/images/logo/imat_logo_icon.png"));
         primaryStage.show();
     }
 
