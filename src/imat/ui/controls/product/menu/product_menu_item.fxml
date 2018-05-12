@@ -25,7 +25,14 @@
                     </VBox.margin>
                 </AnchorPane>
                 <Label fx:id="nameLabel" prefHeight="20.0" styleClass="title-large-dark-gray" text="Product name" wrapText="true" />
-                <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" />
+                <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
                 <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Product price" />
                 <AnchorPane VBox.vgrow="ALWAYS">
                     <children>

@@ -38,6 +38,13 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Label>
                   <Label fx:id="countLabel" styleClass="text-normal" text="# st" wrapText="true" />
                   <HBox fx:id="priceHBox" prefHeight="25.0" prefWidth="200.0">

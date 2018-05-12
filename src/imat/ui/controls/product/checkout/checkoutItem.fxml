@@ -94,7 +94,14 @@
                                       </VBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                                  <children>
-                                    <Label fx:id="ecoLabel" styleClass="text-normal-eco-green-bold" text="Ekologisk" />
+                                    <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk">
+                                       <graphic>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Label>
                                  </children>
                               </HBox>
                                   </children>

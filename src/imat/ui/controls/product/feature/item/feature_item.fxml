@@ -21,7 +21,14 @@
                 <VBox fx:id="infoVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="250.0" prefWidth="100.0" spacing="25.0" HBox.hgrow="ALWAYS">
                     <children>
                         <Label fx:id="nameLabel" prefHeight="20.0" styleClass="title-xlarge-dark-gray" text="Product name" wrapText="true" />
-                        <Label fx:id="ecoLabel" styleClass="text-large-eco-green" text="Ekologisk" />
+                        <Label fx:id="ecoLabel" styleClass="text-large-eco-green" text="Ekologisk">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../resources/images/icons/eco/eco_icon_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Label>
                         <Label fx:id="priceLabel" styleClass="text-large" text="Product price" />
                         <AnchorPane VBox.vgrow="ALWAYS">
                             <children>
