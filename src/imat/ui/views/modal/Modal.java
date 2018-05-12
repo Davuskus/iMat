@@ -87,6 +87,7 @@ public class Modal extends FXMLController implements INavigationListener {
                 paymentPane.toFront();
                 break;
             case CONFIRMATION:
+                // TODO: The confirmation view does not consume the event. Compare it to the other views.
                 modalTitleLabel.setText("Beställningen klar");
                 setSize(confirmationPane);
                 setVisible(confirmationPane);
