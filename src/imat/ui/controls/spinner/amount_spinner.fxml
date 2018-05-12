@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -21,6 +22,9 @@
                         <String fx:value="white-button" />
                         <String fx:value="button-text-normal-bold" />
                      </styleClass>
+                     <tooltip>
+                        <Tooltip styleClass="text-normal-white-bold" text="Ta bort ur kundvagnen" />
+                     </tooltip>
                     </Button>
                </children>
             </AnchorPane>
@@ -44,6 +48,9 @@
                         <String fx:value="white-button" />
                         <String fx:value="button-text-normal-bold" />
                      </styleClass>
+                     <tooltip>
+                        <Tooltip styleClass="text-normal-white-bold" text="Lägg till i kundvagnen" />
+                     </tooltip>
                     </Button>
                </children>
             </AnchorPane>

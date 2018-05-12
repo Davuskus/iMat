@@ -53,7 +53,7 @@ public class FeatureItem extends FXMLController {
         imageView.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
         priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnit());
         if (!product.isEcological()) {
-            infoVBox.getChildren().remove(infoVBox);
+            infoVBox.getChildren().remove(ecoLabel);
         }
         spinnerController.setProduct(product);
     }

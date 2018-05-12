@@ -42,7 +42,7 @@
                         <Insets />
                      </HBox.margin>
                      <tooltip>
-                        <Tooltip styleClass="text-normal-white" text="Rensa kundvagnen" wrapText="true" />
+                        <Tooltip styleClass="text-normal-white-bold" text="Rensa kundvagnen" wrapText="true" />
                      </tooltip>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -86,7 +86,7 @@
                <children>
                   <HBox fx:id="sumHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="border-thin">
                      <children>
-                        <Label fx:id="sumTitleLabel" styleClass="text-normal" text="Summa: " />
+                        <Label fx:id="sumTitleLabel" styleClass="text-normal-bold" text="Summa: " />
                         <Label fx:id="sumLabel" styleClass="text-normal" text="- kr" />
                      </children>
                      <padding>

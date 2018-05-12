@@ -50,6 +50,13 @@
     -fx-text-fill: white;
 }
 
+.text-normal-white-bold {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
 .text-normal-eco-green {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14px;
