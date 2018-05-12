@@ -3,8 +3,6 @@ package imat.ui.views.browse.centerviews.history.orders;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
-import imat.model.Model;
-import imat.ui.controls.history.article.ArticleHistoryItem;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
@@ -25,22 +23,11 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
 
     private final List<OrderHistoryItem> orderHistoryItems;
 
-    private final List<ArticleHistoryItem> articleHistoryItems;
-
     private int numOrders;
-
-    private OrderHistoryItem currentOrderHistoryItem;
-
-    private Model model;
-
-    private boolean showingArticlesPane;
-
-    private boolean userWasInThisView;
 
     public OrderHistoryPane() {
         super();
         orderHistoryItems = new ArrayList<>();
-        articleHistoryItems = new ArrayList<>();
     }
 
     @Override
@@ -48,10 +35,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
         model.addNavigationListener(this);
     }
 
-    /**
-     * Updates the list containing previous orders.
-     */
-    public void updateOrderList() {
+    private void updateOrderList() {
         if (numOrdersChanged()) {
             numOrders = IMatDataHandler.getInstance().getOrders().size();
             ordersVBox.getChildren().clear();
@@ -88,19 +72,9 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     }
 
     @Override
-    public void setModel(Model model) {
-        this.model = model;
-    }
-
-    @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.ORDER_HISTORY) {
-            userWasInThisView = true;
             updateOrderList();
-        } else if (userWasInThisView) {
-            userWasInThisView = false;
-            numOrders = 0;
-            ordersVBox.getChildren().clear();
         }
     }
 
