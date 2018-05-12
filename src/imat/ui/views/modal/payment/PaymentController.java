@@ -1,8 +1,8 @@
 package imat.ui.views.modal.payment;
 
+import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
-import imat.enums.NavigationTarget;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable,INavigationListener{
+public class PaymentController extends FXMLController implements Initializable, INavigationListener {
 
     @FXML
     Button clientInfoDoneButton;
@@ -97,7 +97,7 @@ public class PaymentController extends FXMLController implements Initializable,I
     private Label creditCardErrorLable;
 
     @FXML
-    private  SplitPane splitPane;
+    private SplitPane splitPane;
 
     @FXML
     private AnchorPane rootPane;
@@ -121,7 +121,7 @@ public class PaymentController extends FXMLController implements Initializable,I
         fillUserData();
         updateTextArea();
         setSize(splitPane);
-        resize=true;
+        resize = true;
 
         confirmationPane.setDisable(true);
         splitPane.setDisable(true);
@@ -175,38 +175,33 @@ public class PaymentController extends FXMLController implements Initializable,I
             }
         });
 
-
-
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ClientInfoDone ();
+            ClientInfoDone();
         });
         lastNameField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ClientInfoDone ();
+            ClientInfoDone();
         });
         addressField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ClientInfoDone ();
+            ClientInfoDone();
         });
         postcodeField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ClientInfoDone ();
+            ClientInfoDone();
         });
         phoneNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
-            ClientInfoDone ();
+            ClientInfoDone();
         });
-
-
-
 
         creditCardNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
-            CreditCardInfoDone ();
+            CreditCardInfoDone();
         });
         validMonthField.textProperty().addListener((observable, oldValue, newValue) -> {
-            CreditCardInfoDone ();
+            CreditCardInfoDone();
         });
         validYearField.textProperty().addListener((observable, oldValue, newValue) -> {
-            CreditCardInfoDone ();
+            CreditCardInfoDone();
         });
         cvcField.textProperty().addListener((observable, oldValue, newValue) -> {
-            CreditCardInfoDone ();
+            CreditCardInfoDone();
         });
     }
 
@@ -237,17 +232,15 @@ public class PaymentController extends FXMLController implements Initializable,I
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
         }
-
-
     }
 
     @FXML
-    private void payAndOrder(){
+    private void payAndOrder() {
         saveUserInfo();
 
-        resize=false;
+        resize = false;
         setSize(confirmationPane);
-        resize=true;
+        resize = true;
 
         splitPane.setDisable(true);
         confirmationPane.setDisable(false);
@@ -255,24 +248,21 @@ public class PaymentController extends FXMLController implements Initializable,I
         model.placeOrder();
         clientViewToFront();
 
-
-
         confirmationPane.toFront();
-
     }
 
-    private void setSize(AnchorPane anchorPane){
+    private void setSize(AnchorPane anchorPane) {
         rootPane.setMaxSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
-        rootPane.setMinSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
-        rootPane.setPrefSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
+        rootPane.setMinSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
+        rootPane.setPrefSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
         resizeParent();
     }
 
-    private void setSize(SplitPane anchorPane){
+    private void setSize(SplitPane anchorPane) {
         rootPane.setMaxSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
-        rootPane.setMinSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
-        rootPane.setPrefSize(anchorPane.getPrefWidth(),anchorPane.getPrefHeight());
-       // resizeParent();
+        rootPane.setMinSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
+        rootPane.setPrefSize(anchorPane.getPrefWidth(), anchorPane.getPrefHeight());
+        // resizeParent();
     }
 
     private void updateTextArea() {
@@ -351,57 +341,51 @@ public class PaymentController extends FXMLController implements Initializable,I
     }
 
 
-
     @FXML
     private void moveBack() {
         //SaveUserInfo();
-
-      //  confirmationPane.setDisable(true);
+        //  confirmationPane.setDisable(true);
         splitPane.setDisable(true);
         model.navigate(NavigationTarget.CHECKOUT);
     }
 
-
-    private boolean isTextFieldFieldIn(TextField t){
-        return !(t.getText().trim().length()==0);
+    private boolean isTextFieldFieldIn(TextField t) {
+        return !(t.getText().trim().length() == 0);
     }
 
+    private boolean isFieldIn(TextField t, boolean displayError) {
 
-    private boolean isFieldIn(TextField t,boolean displayError){
-
-        if(!isTextFieldFieldIn(t)){
-            if(displayError) {
+        if (!isTextFieldFieldIn(t)) {
+            if (displayError) {
                 t.getStyleClass().add("error");
             }
             return false;
         }
 
-        if(t.getStyleClass().contains("error")){
+        if (t.getStyleClass().contains("error")) {
             t.getStyleClass().removeAll("error");
         }
         return true;
     }
 
+    private boolean clientInfoFildIn(boolean displayError) {
+        boolean fildIn = true;
+        fildIn = isFieldIn(firstNameField, displayError) && fildIn;
 
+        fildIn = isFieldIn(lastNameField, displayError) && fildIn;
 
-    private boolean clientInfoFildIn( boolean displayError){
-       boolean fildIn=true;
-        fildIn=isFieldIn( firstNameField,displayError) && fildIn;
+        fildIn = isFieldIn(addressField, displayError) && fildIn;
 
-        fildIn=isFieldIn( lastNameField,displayError)&& fildIn;
+        fildIn = isFieldIn(postcodeField, displayError) && fildIn;
 
-        fildIn=isFieldIn( addressField,displayError)&& fildIn;
-
-        fildIn=isFieldIn( postcodeField,displayError)&& fildIn;
-
-        fildIn=isFieldIn( phoneNumberField,displayError)&& fildIn;
+        fildIn = isFieldIn(phoneNumberField, displayError) && fildIn;
 
         return fildIn;
     }
 
     @FXML
-    private void clientToCreditCardInfo(){
-        if(clientInfoFildIn(true)){
+    private void clientToCreditCardInfo() {
+        if (clientInfoFildIn(true)) {
             clientErrorLable.setVisible(false);
             creditCardViewToFront();
             return;
@@ -410,31 +394,30 @@ public class PaymentController extends FXMLController implements Initializable,I
         clientErrorLable.setVisible(true);
     }
 
-    private void ClientInfoDone(){
-        if(clientInfoFildIn(false)) {
+    private void ClientInfoDone() {
+        if (clientInfoFildIn(false)) {
             clientErrorLable.setVisible(false);
             clientInfoDoneButton.setDisable(false);
         }
     }
 
+    private boolean CreditCardInfoFildIn(boolean displayError) {
+        boolean fildIn = true;
+        fildIn = isFieldIn(creditCardNumberField, displayError) && fildIn;
 
-    private boolean CreditCardInfoFildIn( boolean displayError){
-        boolean fildIn=true;
-        fildIn=isFieldIn( creditCardNumberField,displayError) && fildIn;
+        fildIn = isFieldIn(validMonthField, displayError) && fildIn;
 
-        fildIn=isFieldIn( validMonthField,displayError)&& fildIn;
+        fildIn = isFieldIn(validYearField, displayError) && fildIn;
 
-        fildIn=isFieldIn( validYearField,displayError)&& fildIn;
-
-        fildIn=isFieldIn( cvcField,displayError)&& fildIn;
+        fildIn = isFieldIn(cvcField, displayError) && fildIn;
 
 
         return fildIn;
     }
 
     @FXML
-    private void CreditCardToSummary(){
-        if(CreditCardInfoFildIn(true)){
+    private void CreditCardToSummary() {
+        if (CreditCardInfoFildIn(true)) {
             creditCardErrorLable.setVisible(false);
             summaryViewToFront();
             return;
@@ -443,22 +426,21 @@ public class PaymentController extends FXMLController implements Initializable,I
         creditCardErrorLable.setVisible(true);
     }
 
-    private void CreditCardInfoDone(){
-        if(CreditCardInfoFildIn(false)) {
+    private void CreditCardInfoDone() {
+        if (CreditCardInfoFildIn(false)) {
             creditCardErrorLable.setVisible(false);
             creditCardDoneButton.setDisable(false);
         }
     }
 
-
     @FXML
-    private void clientToSummary(){
-        if(clientInfoFildIn(false) && CreditCardInfoFildIn(false)){
+    private void clientToSummary() {
+        if (clientInfoFildIn(false) && CreditCardInfoFildIn(false)) {
             summaryViewToFront();
             return;
         }
 
-        if(clientInfoFildIn(false) && !CreditCardInfoFildIn(false)){
+        if (clientInfoFildIn(false) && !CreditCardInfoFildIn(false)) {
             creditCardViewToFront();
             return;
         }
@@ -466,29 +448,26 @@ public class PaymentController extends FXMLController implements Initializable,I
         clientToCreditCardInfo();
     }
 
-
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
-        if(navigationTarget==NavigationTarget.PAYMENT){
-            if(resize) {
+        if (navigationTarget == NavigationTarget.PAYMENT) {
+            if (resize) {
                 confirmationPane.toBack();
                 confirmationPane.setDisable(true);
                 splitPane.setDisable(false);
 
                 setSize(splitPane);
             }
-        }
-        else {
+        } else {
             confirmationPane.setDisable(true);
             splitPane.setDisable(true);
         }
 
     }
 
-    private void resizeParent(){
+    private void resizeParent() {
         model.navigate(NavigationTarget.CHECKOUT);
         model.navigateBack();
-
-
     }
+
 }

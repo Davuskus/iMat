@@ -67,10 +67,10 @@ public class Browse extends FXMLController implements INavigationListener {
                 productPane.toFront();
                 break;
             case CHECKOUT:
+                browseGridPane.toFront();
                 checkoutPane.toFront();
                 break;
             case HOME:
-            default:
                 browseGridPane.toFront();
                 homePane.toFront();
                 break;
