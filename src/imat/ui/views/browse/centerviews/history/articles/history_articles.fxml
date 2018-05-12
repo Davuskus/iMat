@@ -15,7 +15,7 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                <children>
                   <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true" />
                   <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true" />
