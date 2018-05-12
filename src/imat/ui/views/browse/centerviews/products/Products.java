@@ -6,7 +6,6 @@ import imat.model.FXMLController;
 import imat.model.category.Category;
 import imat.ui.controls.product.menu.ProductMenuItem;
 import imat.utils.FXMLLoader;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -34,34 +33,13 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         model.addSearchListener(this);
     }
 
-    /*@Override
-    public void onCategorySelected(ProductCategory category) {
-        if (category == currentCategory) return;
-        currentCategory = category;
-        productsFlowPane.getChildren().removeIf(x -> true);
-        categoryLabel.setText(category.name());
-        for (Product product : IMatDataHandler.getInstance().getProducts(category)) {
-            ProductMenuItem controller = new ProductMenuItem(product);
-            controller.setModel(model);
-            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "../../../../controls/product/menu/product_menu_item.fxml", this, controller);
-            productsFlowPane.getChildren().add(item);
-        }
-    }*/
-
     @Override
     public void onCategorySelected(Category category) {
         if (category == currentCategory) return;
         currentCategory = category;
         productsFlowPane.getChildren().removeIf(x -> true);
         categoryLabel.setText(category.getName());
-        for (Product product : category.getAllProducts()) {
-            ProductMenuItem controller = new ProductMenuItem(product);
-            controller.setModel(model);
-            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "../../../../controls/product/menu/product_menu_item.fxml", this, controller);
-            productsFlowPane.getChildren().add(item);
-        }
+        populateWithProducts(category.getAllProducts());
     }
 
     @Override
@@ -75,7 +53,10 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
         categoryLabel.setText(categoryText);
         productsFlowPane.getChildren().removeIf(x -> true);
+        populateWithProducts(products);
+    }
 
+    private void populateWithProducts(List<Product> products) {
         for (Product product : products) {
             ProductMenuItem controller = new ProductMenuItem(product);
             controller.setModel(model);
@@ -84,11 +65,5 @@ public class Products extends FXMLController implements ICategoryListener, ISear
             productsFlowPane.getChildren().add(item);
         }
     }
-
-    @FXML
-    public void consumeEvent(Event event) {
-        //event.consume();
-    }
-
 
 }
