@@ -26,7 +26,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/imat.fxml"));
 
-        Model model = new Model(primaryStage);
+        Model model = new Model();
 
         shutdownListeners = new ArrayList<>(1);
         shutdownListeners.add(() -> {

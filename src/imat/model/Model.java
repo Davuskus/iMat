@@ -31,10 +31,7 @@ public class Model {
 
     private final Deque<NavigationTarget> navigationHistory;
 
-    private final Stage primaryStage;
-
-    public Model(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public Model() {
         categories = CategoryFactory.getCategoriesFromFolder("src/imat/resources/categories");
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
