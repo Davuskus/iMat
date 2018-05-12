@@ -67,7 +67,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private void populateWithProducts(List<Product> products, boolean onlyEcologicalProducts) {
         currentProducts = products;
         for (Product product : products) {
-            if (onlyEcologicalProducts && product.isEcological() || !onlyEcologicalProducts) {
+            if (!onlyEcologicalProducts || product.isEcological()) {
                 ProductMenuItem controller = new ProductMenuItem(product);
                 controller.setModel(model);
                 String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
