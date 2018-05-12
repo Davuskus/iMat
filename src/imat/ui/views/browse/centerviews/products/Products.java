@@ -15,7 +15,9 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Products extends FXMLController implements ICategoryListener, ISearchListener {
@@ -35,10 +37,21 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private List<Product> currentProducts;
 
+    Map<Product,Node> productMenuItems;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addCategoryListener(this);
         model.addSearchListener(this);
+
+        productMenuItems = new HashMap<>();
+        for (Product product : model.getAllProducts()) {
+            ProductMenuItem controller = new ProductMenuItem(product);
+            controller.setModel(model);
+            String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
+            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
+            productMenuItems.put(product,item);
+        }
     }
 
     @Override
@@ -68,11 +81,14 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         currentProducts = products;
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
+                productsFlowPane.getChildren().add(productMenuItems.get(product));
+                /*
                 ProductMenuItem controller = new ProductMenuItem(product);
                 controller.setModel(model);
                 String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
                 Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
                 productsFlowPane.getChildren().add(item);
+                */
             }
         }
     }
