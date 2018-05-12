@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,11 +17,19 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="categoryLabel" styleClass="title-large" text="Kategori" />
+            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" GridPane.columnSpan="2">
+               <children>
+                  <Label fx:id="categoryLabel" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-large-dark-gray" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="scene-default" />
+                  <String fx:value="border-thin" />
+               </styleClass>
+            </AnchorPane>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <content>
                   <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" onMouseClicked="#consumeEvent" prefHeight="200.0" prefWidth="200.0" vgap="10.0" />
