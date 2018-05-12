@@ -3,10 +3,16 @@ package imat.ui;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
+import imat.ui.controls.product.menu.ProductMenuItem;
+import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainController extends FXMLController implements INavigationListener {

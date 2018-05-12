@@ -253,6 +253,10 @@ public class Model {
 
     }
 
+    public List<Product> getAllProducts() {
+        return IMatDataHandler.getInstance().getProducts();
+    }
+
     public void notifyShutdownListeners() {
         shutdownListeners.forEach(IShutdownListener::onShutdown);
     }
