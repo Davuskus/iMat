@@ -22,7 +22,7 @@
                   <String fx:value="border-thin" />
                </styleClass>
             </AnchorPane>
-            <CheckBox fx:id="onlyEcoCheckBox" mnemonicParsing="false" styleClass="text-normal" text="Visa bara ekologiska produkter">
+            <CheckBox fx:id="onlyEcoCheckBox" mnemonicParsing="false" onAction="#checkBoxOnAction" styleClass="text-normal" text="Visa bara ekologiska produkter">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
