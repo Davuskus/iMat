@@ -9,7 +9,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 // TODO: Match background color of anchorpane and webview
-// TODO: Change X-icon?
 
 public class HelpView implements Initializable {
 
