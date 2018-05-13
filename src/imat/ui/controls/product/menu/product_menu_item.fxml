@@ -10,7 +10,7 @@
 
 <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="170.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.menu.ProductMenuItem">
     <children>
-        <VBox fx:id="elementsVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="elementsVBox" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="background-rounded" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane prefHeight="111.0" prefWidth="148.0" styleClass="border-thin">
                     <children>

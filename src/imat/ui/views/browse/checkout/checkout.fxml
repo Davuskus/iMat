@@ -72,20 +72,20 @@
                <children>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="text-normal" text="Summa:  " />
+                        <Label styleClass="button-text-normal-bold" text="Summa:  " />
                         <Label fx:id="PriceLabel" styleClass="text-normal" text="Pris" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="text-normal" text="Frakt:  " />
+                        <Label styleClass="text-normal-bold" text="Frakt:  " />
                         <Label fx:id="shippingCostLabel" styleClass="text-normal" text="frakt" />
                      </children>
                   </HBox>
                   <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" />
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="45.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="text-normal" text="Att betala:  " />
+                        <Label styleClass="text-normal-bold" text="Att betala:  " />
                         <Label fx:id="totalCostLable" styleClass="text-normal" text="total" />
                      </children>
                   </HBox>
@@ -94,7 +94,7 @@
                         <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" styleClass="button-text-normal" text="Tillbaka" />
                         <Button fx:id="toPaymentButton" mnemonicParsing="false" onAction="#onPayButtonAction" text="Gå till betalning">
                            <styleClass>
-                              <String fx:value="text-normal" />
+                              <String fx:value="text-normal-bold" />
                               <String fx:value="to-checkout-button-bg" />
                            </styleClass>
                         </Button>
