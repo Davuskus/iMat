@@ -37,7 +37,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private List<Product> currentProducts;
 
-    Map<Product,Node> productMenuItems;
+    private Map<Product,Node> productMenuItems;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
