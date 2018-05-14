@@ -15,6 +15,8 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -34,6 +36,12 @@ public class Home extends FXMLController implements INavigationListener {
 
     private final int maxNumProducts = 10;
 
+    private final List<Product> productsShown;
+
+    public Home() {
+        productsShown = new ArrayList<>(maxNumProducts);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
@@ -41,6 +49,7 @@ public class Home extends FXMLController implements INavigationListener {
     }
 
     private void updateProductsHBox() {
+        productsShown.clear();
         productsFlowPane.getChildren().clear();
         if (IMatDataHandler.getInstance().getOrders().size() > 0) {
             productsTitle.setText("Mest köpta varorna:");
@@ -54,11 +63,14 @@ public class Home extends FXMLController implements INavigationListener {
     }
 
     private void addProductMenuItem(Product product) {
-        ProductMenuItem controller = new ProductMenuItem(product);
-        controller.setModel(model);
-        Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
-                "../../../../controls/product/menu/product_menu_item.fxml", this, controller);
-        productsFlowPane.getChildren().add(item);
+        if (!productsShown.contains(product)) {
+            productsShown.add(product);
+            ProductMenuItem controller = new ProductMenuItem(product);
+            controller.setModel(model);
+            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(
+                    "../../../../controls/product/menu/product_menu_item.fxml", this, controller);
+            productsFlowPane.getChildren().add(item);
+        }
     }
 
     private int getRandomInteger(int min, int max) {
