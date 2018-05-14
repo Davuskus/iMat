@@ -1,9 +1,12 @@
-<html lang="en" >
-    <script>
-        function scrollTo(elementId) {
-            document.getElementById(elementId).scrollIntoView({ block: 'end',  behavior: 'smooth' });
+<html lang="en">
+    <script language="javascript">
+        function navigateToSection(elementId) {
+            document.getElementById(elementId).scrollIntoView();
         }
     </script>
+    <head>
+        <meta charset="UTF-8">
+    </head>
     <body>
     <div id="headerArea">
         <!--<h1 class="helpHeader" id="testHeader">Hjälp</h1>-->
@@ -12,38 +15,38 @@
     <div class="tableOfContents">
         <p>Innehåll:</p>
         <ul class="tableOfContentList">
-            <li><a href="#" onclick=scrollTo('howToScroll')>Hur navigerar jag upp och ner på sidan?</a></li>
-            <li><a href="#" onclick=scrollTo('howToSearch')>Hur söker jag i sortimentet?</a></li>
-            <li><a href="#" onclick=scrollTo('howToPurchase')>Hur köper jag en produkt?</a></li>
-            <li><a href="#" onclick=scrollTo('howToRemoveSingleProduct')>Hur tar jag bort en produkt ur kundvagnen?</a></li>
-            <li><a href="#" onclick=scrollTo('howToEmptyCart')>Hur tömmer jag hela kundvagnen?</a></li>
-            <li><a href="#" onclick=scrollTo('howToShowHistory')>Hur ser jag vad jag har köpt tidigare?</a></li>
-            <li><a href="#" onclick=scrollTo('howToRepeatPurchase')>Hur köper jag samma produkter som från en tidigare beställning?</a></li>
+            <li><a href="#" onclick="navigateToSection('howToScroll');">Hur navigerar jag upp och ner på sidan?</a></li>
+            <li><a href="#" onclick=navigateToSection('howToSearch')>Hur söker jag i sortimentet?</a></li>
+            <li><a href="#" onclick=navigateToSection('howToPurchase')>Hur köper jag en produkt?</a></li>
+            <li><a href="#" onclick="navigateToSection('howToRemoveSingleProduct');">Hur tar jag bort en produkt ur kundvagnen?</a></li>
+            <li><a href="#" onclick=navigateToSection('howToEmptyCart')>Hur tömmer jag hela kundvagnen?</a></li>
+            <li><a href="#" onclick=navigateToSection('howToShowHistory')>Hur ser jag vad jag har köpt tidigare?</a></li>
+            <li><a href="#" onclick=navigateToSection('howToRepeatPurchase')>Hur köper jag samma produkter som från en tidigare beställning?</a></li>
         </ul>
     </div>
     <div id="helpContent">
         <h3 id="howToScroll">Hur navigerar jag upp och ner på sidan?</h3>
         <p>Till höger om den här texten finns ett vertikalt fält, med pilar i vardera ände. Genom att klicka på dessa pilar, eller genom  att dra i "klossen" inuti fältet, kan du flytta innehållet på sidan uppåt eller nedåt. Dra den nedåt för att se text och material längre ner på sidan.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
         <h3 id="howToSearch">Hur söker jag i sortimentet?</h3>
         <p>Högst upp i programmet finns ett fält, tillsammans med en bild på ett förstoringsglas. Klicka i fältet och skriv vad du vill söka på (såsom "dill" eller "skorpor") och klicka på förstoringsglaset eller tryck på Enter på tangentbordet.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
         <h3 id="howToPurchase">Hur köper jag en produkt?</h3>
         <p>När du har sökt efter en produkt eller öppnat en kategori så har varje produkt ett textfält under sin bild, med en plus- och en en minusknapp. Trycker du på plusknappen så lägger du till ett exemplar av produkten till din varukorg, och genom att trycka på minus tar du bort ett exemplar.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
         <h3 id="howToRemoveSingleProduct">Hur tar jag bort en produkt ur kundvagnen?</h3>
         <p>I din kundvagn (till höger i programmet) finns en lista med de produkter som den innehåller just nu. Om du helt vill ta bort en produkt från kundvagnen kan du klicka på krysset till vänster om produktens namn, Oroa dig inte om du skulle klicka här av misstag - om du klickar på "ångra" efter att ha tagit bort en produkt så kommer den tillbaka igen.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
         <h3 id="howToEmptyCart">Hur tömmer jag hela kundvagnen?</h3>
         <p>Om du inte vill ha någon av de produkter som är i din kundvagn just nu så kan du tömma hela på en gång. Det gör du genom att klicka på bilden av en soptunna, till höger om texten "kundvagn" uppe till höger i programmet.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
         <h3 id="howToShowHistory">Hur ser jag vad jag har köpt tidigare?</h3>
         <p>Längst upp till höger i programmet finns en knapp med texten "Historik". Om du klickar på den knappen kommer du till en lista med alla dina tidigare köp. Du kan klicka på vart och ett av dessa köp för att se vilka produkter du köpte och, om du vill, köpa dem igen.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
         <h3 id="howToRepeatPurchase">Hur köper jag samma produkter som från en tidigare beställning?</h3>
-        <p>Om du klickar på en beställning ur din <a href="#" onclick=scrollTo('howToShowHistory')>historik</a> kan du klicka på "Kopiera artikel till kundvagnen" bredvid en specifik produkt du vill köpa igen. Om du vill köpa <i>alla</i> produkter ur kundvagnen igen kan du klicka på den gröna knappen "Kopiera ordefr till kundvagnen", så kopieras alla produkter till din kundvagn.</p>
+        <p>Om du klickar på en beställning ur din <a href="#" onclick=navigateToSection('howToShowHistory')>historik</a> kan du klicka på "Kopiera artikel till kundvagnen" bredvid en specifik produkt du vill köpa igen. Om du vill köpa <i>alla</i> produkter ur kundvagnen igen kan du klicka på den gröna knappen "Kopiera ordefr till kundvagnen", så kopieras alla produkter till din kundvagn.</p>
         <p>Om du redan har produkter i kundvagnen får du välja om du vill behålla dem i kundvagnen <i>("Lägg till i kundvagnen")</i> eller om du vill ta bort dem och bara köpa produkterna från din historik <i>("Ersätt nuvarande kundvagn")</i>.</p>
-        <a class="backToTopLink" href="#" onclick=scrollTo('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
+        <a class="backToTopLink" href="#" onclick=navigateToSection('topOfContent')>Klicka här för att gå tillbaka till innehållsförteckningen</a>
     </div>
     </body>
 </html>
