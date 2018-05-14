@@ -5,6 +5,7 @@ import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
+import imat.utils.ListUtils;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
@@ -45,15 +46,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     }
 
     private void addOrdersToFlowPane() {
-
-        // Reverse a copy of the iMat order list
-        List<Order> iMatOrderList = IMatDataHandler.getInstance().getOrders();
-        List<Order> orders = new ArrayList<>(IMatDataHandler.getInstance().getOrders().size());
-        for (int i = iMatOrderList.size() - 1; i >= 0; i--) {
-            orders.add(iMatOrderList.get(i));
-        }
-
-        for (Order order : orders) {
+        for (Order order : ListUtils.getReversedList(IMatDataHandler.getInstance().getOrders())) {
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
             orderHistoryItem.setModel(model);
             orderHistoryItems.add(orderHistoryItem);
