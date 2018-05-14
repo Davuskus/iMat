@@ -4,7 +4,6 @@ import imat.enums.NavigationTarget;
 import imat.interfaces.*;
 import imat.model.category.Category;
 import imat.utils.CategoryFactory;
-import imat.utils.ListUtils;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.Product;
@@ -47,9 +46,10 @@ public class Model {
     }
 
     private void loadBackendCart() {
-        List<ShoppingItem> shoppingItems =
-                ListUtils.getReversedList(IMatDataHandler.getInstance().getShoppingCart().getItems());
-        shoppingItems.forEach(shoppingItem -> cart.put(shoppingItem.getProduct(), shoppingItem.getAmount()));
+        IMatDataHandler.getInstance()
+                .getShoppingCart()
+                .getItems()
+                .forEach(shoppingItem -> cart.put(shoppingItem.getProduct(), shoppingItem.getAmount()));
         IMatDataHandler.getInstance().getShoppingCart().clear();
     }
 
