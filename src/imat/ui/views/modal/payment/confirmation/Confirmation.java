@@ -6,6 +6,7 @@ import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,6 +41,10 @@ public class Confirmation extends FXMLController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+    @FXML
+    public void consumeEvent(Event event) {
+        event.consume();
     }
 
 }
