@@ -2,6 +2,7 @@ package imat.ui.controls.spinner;
 
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
+import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -59,28 +60,26 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     public void setProduct(Product product) {
         this.product = product;
-        switch (product.getUnitSuffix()) {
-            case "l":
-            case "kg":
-                isAcceptingDoubles = true;
-                valueTextField.setTextFormatter(doubleFormatter);
-                break;
-            default:
-                isAcceptingDoubles = false;
-                valueTextField.setTextFormatter(intFormatter);
-                break;
+
+        if (IMatUtils.productAmountAllowsDecimals(product)) {
+            isAcceptingDoubles = true;
+            valueTextField.setTextFormatter(doubleFormatter);
+        } else {
+            isAcceptingDoubles = false;
+            valueTextField.setTextFormatter(intFormatter);
         }
+
         setAmount(model.getProductAmount(product));
     }
 
     @FXML
     private void addButtonOnAction(Event event) {
-        changeValue(isAcceptingDoubles?0.1:1);
+        changeValue(isAcceptingDoubles ? 0.1 : 1);
     }
 
     @FXML
     private void subtractButtonOnAction(Event event) {
-        changeValue(-(isAcceptingDoubles?0.1:1));
+        changeValue(-(isAcceptingDoubles ? 0.1 : 1));
     }
 
     private void changeValue(double value) {
