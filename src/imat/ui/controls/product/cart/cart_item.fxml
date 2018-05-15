@@ -70,7 +70,7 @@
                                         <Insets right="-140.0" />
                                     </VBox.margin>
                                 </Label>
-                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <HBox fx:id="labelsHBox" alignment="CENTER_LEFT" spacing="10.0">
                            <children>
                                       <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
                                           <graphic>
