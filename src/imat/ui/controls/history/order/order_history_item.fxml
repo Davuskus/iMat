@@ -14,7 +14,7 @@
          <children>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../resources/images/icons/order/order_icon.png" />
+                  <Image url="@../../../../resources/images/icons/order/icon_order.png" />
                </image>
             </ImageView>
             <Label fx:id="dateLabel" styleClass="title-normal-dark-gray" text="YYYY-MM-DD" wrapText="true">
