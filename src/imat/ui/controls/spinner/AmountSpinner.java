@@ -56,6 +56,13 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         valueTextField.setTextFormatter(intFormatter);
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
+
+        valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 0) {
+                submitTextFieldValue(Double.valueOf(newValue));
+            }
+        });
+
     }
 
     public void setProduct(Product product) {
@@ -82,6 +89,15 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         changeValue(-(isAcceptingDoubles ? 0.1 : 1));
     }
 
+    @FXML
+    private void onEnterPressed(Event event) {
+        String value = valueTextField.getText();
+        if ((value.length() == 0) || (value.length() == 1 && value.charAt(value.length() - 1) == '.')) {
+            valueTextField.setText("0");
+            setAmount(0);
+        }
+    }
+
     private void changeValue(double value) {
         double newValue = oldValue + value;
         if (newValue >= 0) {
@@ -106,33 +122,25 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     public void setAmount(double amount) {
         if (oldValue == amount || model.isThrowingCartInTrash()) return;
         oldValue = amount;
-        if (isAcceptingDoubles) {
-            valueTextField.setTextFormatter(doubleFormatter);
+        if (isAcceptingDoubles && ((int) amount) != amount) {
             valueTextField.setText(String.valueOf(amount));
         } else {
-            valueTextField.setTextFormatter(intFormatter);
             valueTextField.setText(String.valueOf((int) amount));
         }
+        updateShoppingCart(amount);
+    }
+
+    private void updateShoppingCart(double amount) {
         model.updateShoppingCart(product, amount);
     }
 
-
-    @FXML
-    private void onEnterPressed(Event event) {
-        if (valueTextField.getText().length() == 0) {
-            if (isAcceptingDoubles) {
-                valueTextField.setText("0.0");
-            } else {
-                valueTextField.setText("0");
-            }
-        }
-        double oldValue2 = getAmount();
-        setAmount(Double.valueOf(valueTextField.getText()));
+    private void submitTextFieldValue(double value) {
+        if (oldValue == value || model.isThrowingCartInTrash()) return;
+        updateShoppingCart(value);
         if (!model.isThrowingCartInTrash()) {
-            oldValue = oldValue2;
+            this.oldValue = value;
         }
     }
-
 
     @Override
     public void onProductAdded(Product product, Double amount) {
