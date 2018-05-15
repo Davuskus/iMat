@@ -65,24 +65,43 @@
                         </Separator>
                         <VBox fx:id="infoVBox" spacing="5.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label fx:id="nameLabel" styleClass="title-normal-dark-gray" text="Product name" wrapText="true">
+                                <Label fx:id="nameLabel" styleClass="title-normal-dark-gray" text="Product name">
                                     <VBox.margin>
-                                        <Insets right="-140.0" />
+                                        <Insets />
                                     </VBox.margin>
                                 </Label>
-                                <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
-                                    <graphic>
-                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Label>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0">
+                           <children>
+                              <AnchorPane HBox.hgrow="ALWAYS">
+                                 <children>
+                                            <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" AnchorPane.leftAnchor="0.0">
+                                                <graphic>
+                                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                        <image>
+                                                            <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
+                                            </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane>
+                                 <children>
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                                  <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
+                                       </children>
+                                       <padding>
+                                          <Insets right="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
                                       <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" />
-                                      <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
                                       <AnchorPane HBox.hgrow="ALWAYS">
                                           <children>
                                               <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
