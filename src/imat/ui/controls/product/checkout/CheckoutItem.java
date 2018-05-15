@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -39,7 +40,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     private Button regretButton;
 
     @FXML
-    private AnchorPane infoAnchorPane;
+    private HBox infoHBox;
 
     @FXML
     private AnchorPane regretPane;
@@ -127,7 +128,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     private void regretButtonOnAction(Event event) {
         shouldBeRemoved = false;
         model.updateShoppingCart(product, amountBeforeRemoveRequest);
-        switchView(infoAnchorPane);
+        switchView(infoHBox);
 
     }
 
@@ -157,7 +158,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
                     Timeline removalAnimation = AnimationHandler.getAnimation(
                             v -> removeEvent.execute(),
                             AnimationHandler.getOpacityChangeKeyFrame(regretButton, 250, 0),
-                            AnimationHandler.getOpacityChangeKeyFrame(infoAnchorPane, 250, 0),
+                            AnimationHandler.getOpacityChangeKeyFrame(infoHBox, 250, 0),
                             AnimationHandler.getHeightChangeKeyFrame(rootPane, 500, 0),
                             AnimationHandler.getOpacityChangeKeyFrame(rootPane, 500, 0),
                             AnimationHandler.getXTranslationKeyFrame(rootPane, 500, rootPane.getWidth())

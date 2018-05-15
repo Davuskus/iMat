@@ -89,9 +89,9 @@
                               </AnchorPane>
                               <ScrollPane fx:id="articlesScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="articlesVBox" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                    <VBox fx:id="articlesVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                                        <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
                                     </VBox>
                                  </content>

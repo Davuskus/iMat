@@ -260,13 +260,6 @@
     -fx-background-color: rgba(0, 0, 0, 0.85);
 }
 
-.checkout-list-item {
-    -fx-border-width: 1px;
-    -fx-border-color: #999999;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-}
-
 .rounded {
     -fx-border-radius: 20 20 20 20;
     -fx-background-radius: 20 20 20 20;
