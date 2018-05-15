@@ -110,6 +110,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     private void startTrashProcess() {
 
         shouldTrash = true;
+        model.notifyCartTrashListenersOfStart();
 
         updateCartInfo(0);
 
@@ -121,7 +122,6 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         copiedCart.clear();
         model.getProductsInCart().forEach(product -> copiedCart.put(product, model.getProductAmount(product)));
         model.clearCartFast();
-        model.notifyCartTrashListenersOfStart();
 
         delayedRunnable = new DelayedRunnable(new Runnable() {
             @Override
