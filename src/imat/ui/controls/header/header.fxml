@@ -65,7 +65,7 @@
                      </cursor></Button>
                </children>
             </HBox>
-                <AnchorPane fx:id="searchFieldPane" GridPane.columnIndex="1">
+                <AnchorPane fx:id="searchFieldPane" minWidth="0.0" GridPane.columnIndex="1">
                     <fx:include fx:id="searchField" source="../search/search_field.fxml" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                 </AnchorPane>
             </children>
