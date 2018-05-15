@@ -84,7 +84,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
         nameLabel.setText(this.product.getName());
 
         if (!product.isEcological()) {
-            infoVBox.getChildren().remove(ecoLabel);
+            // infoVBox.getChildren().remove(ecoLabel);
+            ecoLabel.setVisible(false);
         }
         updatePriceLabel(model.getProductAmount(product) * product.getPrice());
         unitLabel.setText("(" + product.getUnit() + ")");
