@@ -150,11 +150,11 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     @FXML
     private void regretButtonOnAction(Event event) {
         shouldTrash = false;
+        model.notifyCartTrashListenersOfStop();
         copiedCart.forEach((product, oldAmount) -> model.addToShoppingCart(product, oldAmount));
         regretButton.setDisable(true);
         trashButton.setDisable(false);
         updateCartInfo(model.getCartPrice());
-        model.notifyCartTrashListenersOfStop();
         switchView(scrollPane);
     }
 
