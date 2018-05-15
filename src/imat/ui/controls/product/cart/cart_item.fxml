@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="290.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.cart.CartItem">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="110.0" prefWidth="290.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.cart.CartItem">
     <children>
         <StackPane fx:id="stackPane" styleClass="background-rounded" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -63,33 +63,36 @@
                                 <Insets />
                             </HBox.margin>
                         </Separator>
-                        <VBox fx:id="infoVBox" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="infoVBox" spacing="5.0" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label fx:id="nameLabel" styleClass="title-normal-dark-gray" text="Product name" wrapText="true">
                                     <VBox.margin>
                                         <Insets right="-140.0" />
                                     </VBox.margin>
                                 </Label>
-                        <HBox fx:id="labelsHBox" alignment="CENTER_LEFT" spacing="10.0">
+                                <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
+                                    <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Label>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
-                                      <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
-                                          <graphic>
-                                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                                  <image>
-                                                      <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
-                                                  </image>
-                                              </ImageView>
-                                          </graphic>
-                                      </Label>
-                                      <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" wrapText="true" />
+                                      <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" />
                                       <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
+                                      <AnchorPane HBox.hgrow="ALWAYS">
+                                          <children>
+                                              <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          </children>
+                                      </AnchorPane>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="-20.0" />
+                           </VBox.margin>
                         </HBox>
-                                <AnchorPane VBox.vgrow="ALWAYS">
-                                    <children>
-                                        <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                    </children>
-                                </AnchorPane>
                             </children>
                      <HBox.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
