@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="105.0" prefWidth="300.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.cart.CartItem">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="300.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.cart.CartItem">
     <children>
-        <StackPane fx:id="stackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <StackPane fx:id="stackPane" styleClass="background-rounded" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane fx:id="regretPane" styleClass="regret-button-bg">
+                <AnchorPane fx:id="regretPane">
                     <children>
                         <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <styleClass>
@@ -30,8 +30,12 @@
                             </cursor>
                         </Button>
                     </children>
+               <styleClass>
+                  <String fx:value="regret-button-bg" />
+                  <String fx:value="background-rounded" />
+               </styleClass>
                 </AnchorPane>
-                <HBox fx:id="itemHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                <HBox fx:id="itemHBox" alignment="CENTER_LEFT" spacing="5.0">
                     <children>
                         <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" onMouseEntered="#removeButtonMouseEntered" onMouseExited="#removeButtonMouseExited" onMousePressed="#removeButtonMousePressed" prefHeight="20.0" prefWidth="20.0" styleClass="see-through-bg">
                             <graphic>
@@ -54,45 +58,42 @@
                                 <Tooltip styleClass="text-normal-white-bold" text="Ta bort ur kundvagnen" />
                             </tooltip>
                         </Button>
-                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                        <Separator orientation="VERTICAL">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin>
                         </Separator>
-                        <VBox fx:id="infoVBox" spacing="10.0">
+                        <VBox fx:id="infoVBox" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label fx:id="nameLabel" styleClass="title-normal-dark-gray" text="Product name" wrapText="true">
                                     <VBox.margin>
                                         <Insets right="-140.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
-                                    <graphic>
-                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Label>
-                                <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="Pris: - kr" wrapText="true" />
-                            </children>
-                            <padding>
-                                <Insets bottom="5.0" top="5.0" />
-                            </padding>
-                        </VBox>
-                        <VBox fx:id="otherVBox" alignment="TOP_RIGHT" spacing="30.0" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                                      <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
+                                          <graphic>
+                                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </Label>
+                                      <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" wrapText="true" />
+                                      <Label fx:id="unitLabel" styleClass="text-normal-dark-gray" text="Unit" />
+                           </children>
+                        </HBox>
                                 <AnchorPane VBox.vgrow="ALWAYS">
                                     <children>
                                         <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                     </children>
                                 </AnchorPane>
                             </children>
-                            <padding>
-                                <Insets bottom="5.0" right="5.0" top="5.0" />
-                            </padding>
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
                         </VBox>
                     </children>
                     <styleClass>
