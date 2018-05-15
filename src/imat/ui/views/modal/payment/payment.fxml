@@ -11,6 +11,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -215,6 +217,25 @@
                                     </AnchorPane>
                                     <AnchorPane fx:id="creditCardInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                                        <children>
+                                          <VBox layoutX="418.0" layoutY="90.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="73.0" spacing="3.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="90.0">
+                                             <children>
+                                                <ImageView fitHeight="44.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../resources/images/icons/creditCard/visa.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="44.0" fitWidth="73.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../resources/images/icons/creditCard/mastercard.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="44.0" fitWidth="73.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../resources/images/icons/creditCard/amex.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </VBox>
                                           <VBox fillWidth="false" layoutX="126.0" layoutY="132.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
                                              <children>
                                                 <TextField fx:id="creditCardNumberField" promptText="kortnummer" styleClass="text-small-bold" />
