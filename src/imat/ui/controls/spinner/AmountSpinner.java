@@ -1,5 +1,6 @@
 package imat.ui.controls.spinner;
 
+import imat.interfaces.ICartTrashListener;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
 import imat.utils.IMatUtils;
@@ -37,6 +38,8 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     private Product product;
     private boolean isAcceptingDoubles;
 
+    private boolean cartIsTrashing;
+
     public AmountSpinner() {
         super();
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
@@ -56,6 +59,17 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         valueTextField.setTextFormatter(intFormatter);
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
+        model.addCartTrashListener(new ICartTrashListener() {
+            @Override
+            public void onCartTrashStarted() {
+                setDisableOnControls(true && model.getProductsInCart().contains(product));
+            }
+
+            @Override
+            public void onCartTrashStopped() {
+                setDisableOnControls(false);
+            }
+        });
 
         valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 0) {
@@ -63,6 +77,13 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
             }
         });
 
+    }
+
+    private void setDisableOnControls(boolean disable) {
+        System.out.println("AmountSpinner, setDisableOnControls: " + disable);
+        subtractButton.setDisable(disable);
+        addButton.setDisable(disable);
+        valueTextField.setDisable(disable);
     }
 
     public void setProduct(Product product) {
@@ -120,7 +141,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      * @param amount The amount.
      */
     public void setAmount(double amount) {
-        if (oldValue == amount || model.isThrowingCartInTrash()) return;
+        if (oldValue == amount) return;
         oldValue = amount;
         if (isAcceptingDoubles && ((int) amount) != amount) {
             valueTextField.setText(String.valueOf(amount));
@@ -135,11 +156,9 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     }
 
     private void submitTextFieldValue(double value) {
-        if (oldValue == value || model.isThrowingCartInTrash()) return;
+        if (oldValue == value) return;
         updateShoppingCart(value);
-        if (!model.isThrowingCartInTrash()) {
-            this.oldValue = value;
-        }
+        this.oldValue = value;
     }
 
     @Override
