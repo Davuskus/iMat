@@ -22,7 +22,7 @@
                   <Insets />
                </HBox.margin>
                <graphic>
-                  <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Order: " wrapText="true" />
+                  <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Beställning: " wrapText="true" />
                </graphic>
             </Label>
          </children>
