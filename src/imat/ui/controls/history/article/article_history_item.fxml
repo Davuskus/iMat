@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="500.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.article.ArticleHistoryItem">
+<AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="400.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.article.ArticleHistoryItem">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="115.0" prefWidth="115.0" styleClass="border-thin">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="115.0" styleClass="border-thin">
                <children>
                   <ImageView fx:id="productImageView" fitHeight="113.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" styleClass="border-thin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
@@ -24,16 +24,16 @@
                      </image></ImageView>
                </children>
                <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets />
                </HBox.margin>
             </AnchorPane>
-            <VBox fx:id="articleInfoVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="articleInfoVBox" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="productNameLabel" styleClass="title-normal" text="Produktnamn" wrapText="true">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin></Label>
-                  <Separator prefWidth="200.0" />
+                  <Separator prefWidth="200.0" VBox.vgrow="ALWAYS" />
                   <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" wrapText="true">
                      <VBox.margin>
                         <Insets />
@@ -65,7 +65,7 @@
             </VBox>
             <AnchorPane prefHeight="200.0" prefWidth="125.0">
                <children>
-                  <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" styleClass="white-button" text="Kopiera artikel till kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="addToCartButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" prefHeight="120.0" prefWidth="120.0" styleClass="white-button" text="Kopiera artikel till kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -73,10 +73,14 @@
                </children>
             </AnchorPane>
          </children>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
       </HBox>
    </children>
    <styleClass>
       <String fx:value="scene-default" />
       <String fx:value="border-thin-round" />
+      <String fx:value="background-rounded" />
    </styleClass>
 </AnchorPane>
