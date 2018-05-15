@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" styleClass="white-button" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.order.OrderHistoryItem">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="315.0" styleClass="white-button" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.order.OrderHistoryItem">
    <children>
       <HBox alignment="CENTER_LEFT" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,12 +17,12 @@
                   <Image url="@../../../../resources/images/icons/order/icon_order.png" />
                </image>
             </ImageView>
-            <Label fx:id="dateLabel" styleClass="title-normal-dark-gray" text="YYYY-MM-DD" wrapText="true">
+            <Label fx:id="dateLabel" styleClass="title-normal-dark-gray" text="2018-05-15 - 15:43">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <graphic>
-                  <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Beställning: " wrapText="true" />
+                  <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Beställning: " />
                </graphic>
             </Label>
          </children>

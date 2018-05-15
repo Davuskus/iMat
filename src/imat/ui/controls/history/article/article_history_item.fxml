@@ -27,7 +27,7 @@
                   <Insets />
                </HBox.margin>
             </AnchorPane>
-            <VBox fx:id="articleInfoVBox" spacing="5.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="articleInfoVBox" minWidth="-Infinity" prefWidth="120.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="productNameLabel" styleClass="title-normal" text="Produktnamn" wrapText="true">
                      <VBox.margin>
