@@ -26,7 +26,7 @@
                   </ImageView>
                   <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true">
                      <graphic>
-                        <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true" />
+                        <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Beställning: " wrapText="true" />
                      </graphic></Label>
                </children>
                <styleClass>
