@@ -30,9 +30,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private AnchorPane rootPane;
 
     @FXML
-    private StackPane stackPane;
-
-    @FXML
     private AnchorPane regretPane;
 
     @FXML
@@ -40,9 +37,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private HBox itemHBox;
-
-    @FXML
-    private Button removeButton;
 
     @FXML
     private ImageView removeButtonImageView;
@@ -55,9 +49,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private VBox infoVBox;
-
-    @FXML
-    private VBox otherVBox;
 
     @FXML
     private Label ecoLabel;
