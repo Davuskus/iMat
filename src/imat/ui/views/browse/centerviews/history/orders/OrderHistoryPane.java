@@ -11,25 +11,18 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class OrderHistoryPane extends FXMLController implements INavigationListener {
 
     @FXML
     private VBox ordersVBox;
 
-    private final List<OrderHistoryItem> orderHistoryItems;
-
     private int numOrders;
-
-    public OrderHistoryPane() {
-        super();
-        orderHistoryItems = new ArrayList<>();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,16 +33,38 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
         if (numOrdersChanged()) {
             numOrders = IMatDataHandler.getInstance().getOrders().size();
             ordersVBox.getChildren().clear();
-            orderHistoryItems.clear();
             addOrdersToFlowPane();
         }
     }
 
+    private void removePotentialDuplicateProducts(Order order) {
+        List<ShoppingItem> shoppingItems = getUniqueShoppingItems(order);
+        order.getItems().clear();
+        order.setItems(shoppingItems);
+    }
+
+    private List<ShoppingItem> getUniqueShoppingItems(Order order) {
+        Map<Product, Double> shoppingItemMap = new HashMap<>();
+        order.getItems().forEach(shoppingItem -> {
+            Product product = shoppingItem.getProduct();
+            double amount = shoppingItem.getAmount();
+            if (shoppingItemMap.keySet().contains(product)) {
+                shoppingItemMap.put(product, shoppingItemMap.get(product) + amount);
+            } else {
+                shoppingItemMap.put(product, amount);
+            }
+        });
+        List<ShoppingItem> shoppingItems = new ArrayList<>(shoppingItemMap.keySet().size());
+        shoppingItemMap.forEach(((product, amount) -> shoppingItems.add(new ShoppingItem(product, amount))));
+
+        return shoppingItems;
+    }
+
     private void addOrdersToFlowPane() {
         for (Order order : ListUtils.getReversedList(IMatDataHandler.getInstance().getOrders())) {
+            removePotentialDuplicateProducts(order);
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
             orderHistoryItem.setModel(model);
-            orderHistoryItems.add(orderHistoryItem);
             Node historyItem = FXMLLoader.loadFXMLNodeFromRootPackage(
                     "../../../../../controls/history/order/order_history_item.fxml",
                     this, orderHistoryItem);

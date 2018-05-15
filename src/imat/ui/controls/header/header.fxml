@@ -15,7 +15,7 @@
 
 <javafx.scene.layout.AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="52.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.header.Header">
     <children>
-        <GridPane hgap="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <GridPane alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="25.0" prefWidth="150.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="400.0" />
@@ -37,11 +37,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <children>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHelpButtonAction" text="Hjälp" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                        <Insets bottom="10.0" left="5.0" top="10.0" />
                      </HBox.margin>
                      <styleClass>
                         <String fx:value="border-thin-round" />
@@ -50,7 +50,14 @@
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/images/icons/help/icon_help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
@@ -62,7 +69,14 @@
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/images/icons/order_history/icon_order_history.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </HBox>
                 <AnchorPane fx:id="searchFieldPane" GridPane.columnIndex="1">
