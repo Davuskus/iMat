@@ -75,12 +75,12 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     @FXML
     private void addButtonOnAction(Event event) {
-        changeValue(+1);
+        changeValue(isAcceptingDoubles?0.1:1);
     }
 
     @FXML
     private void subtractButtonOnAction(Event event) {
-        changeValue(-1);
+        changeValue(-(isAcceptingDoubles?0.1:1));
     }
 
     private void changeValue(double value) {
