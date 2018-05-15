@@ -72,17 +72,21 @@
                                 </Label>
                         <HBox alignment="CENTER_LEFT" prefHeight="30.0">
                            <children>
-                              <AnchorPane HBox.hgrow="ALWAYS">
+                              <AnchorPane HBox.hgrow="SOMETIMES">
                                  <children>
-                                            <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk" AnchorPane.leftAnchor="0.0">
-                                                <graphic>
-                                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                                        <image>
-                                                            <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
-                                                        </image>
-                                                    </ImageView>
-                                                </graphic>
-                                            </Label>
+                                    <VBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                                  <Label fx:id="ecoLabel" styleClass="text-normal-eco-green" text="Ekologisk">
+                                                      <graphic>
+                                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                              <image>
+                                                                  <Image url="@../../../../resources/images/icons/eco/eco_icon_1.png" />
+                                                              </image>
+                                                          </ImageView>
+                                                      </graphic>
+                                                  </Label>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                               <AnchorPane>
@@ -101,8 +105,16 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
-                                      <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" />
-                                      <AnchorPane HBox.hgrow="ALWAYS">
+                              <AnchorPane HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                                  <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                                      <AnchorPane>
                                           <children>
                                               <fx:include fx:id="amountSpinner" source="../../spinner/amount_spinner.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                           </children>

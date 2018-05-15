@@ -143,7 +143,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
     }
 
     private void updatePriceLabel(double total) {
-        // priceLabel.setText("Pris: " + String.valueOf(MathUtils.round(total, 2)) + " kr");
         priceLabel.setText(String.valueOf(MathUtils.round(total, 2)) + " kr");
     }
 
