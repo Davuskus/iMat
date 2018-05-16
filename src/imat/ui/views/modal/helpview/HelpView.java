@@ -3,6 +3,7 @@ package imat.ui.views.modal.helpview;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import netscape.javascript.JSObject;
@@ -25,9 +26,17 @@ public class HelpView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
         //loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
+
+        Font.loadFont(
+                HelpView.class.getResource("../../../../resources/fonts/raleway/Raleway-Thin.ttf").toExternalForm(),
+                10
+        );
+
+
         webEngine = helpTextView.getEngine();
         loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
         helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../../../resources/helptext/helpStyle.css").toString());
+
     }
 
     private void loadHtmlTextFromFile(String htmlPath) {

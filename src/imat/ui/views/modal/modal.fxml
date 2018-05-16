@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" onMousePressed="#closeButtonOnAction" prefHeight="400.0" prefWidth="600.0" styleClass="scene-transparent" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.Modal">
+<AnchorPane fx:id="rootPane" onMousePressed="#closeButtonOnAction" prefHeight="400.0" prefWidth="600.0" styleClass="scene-transparent" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.Modal">
     <children>
       <VBox alignment="CENTER" fillWidth="false" layoutX="25.0" layoutY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,7 +23,7 @@
                           <children>
                               <HBox fx:id="headerHBox" alignment="CENTER_LEFT" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" styleClass="background-gray-light">
                                   <children>
-                                      <Label fx:id="modalTitleLabel" styleClass="title-large-dark-gray" text="Title" />
+                                      <Label fx:id="modalTitleLabel" styleClass="title-xlarge-dark-gray" text="Title" />
                                       <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                           <HBox.margin>
                                               <Insets />
