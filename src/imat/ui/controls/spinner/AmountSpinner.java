@@ -72,7 +72,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         });
 
         valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 0) {
+            if (newValue.length() > 0 && !newValue.equals("0") && !newValue.equals("0.")) {
                 submitTextFieldValue(Double.valueOf(newValue));
             }
         });
@@ -113,7 +113,10 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     @FXML
     private void onEnterPressed(Event event) {
         String value = valueTextField.getText();
-        if ((value.length() == 0) || (value.length() == 1 && value.charAt(value.length() - 1) == '.')) {
+        if ((value.length() == 0) ||
+                (value.length() == 1 && value.charAt(value.length() - 1) == '.') ||
+                value.equals("0") ||
+                value.equals("0.")) {
             valueTextField.setText("0");
             setAmount(0);
         }
