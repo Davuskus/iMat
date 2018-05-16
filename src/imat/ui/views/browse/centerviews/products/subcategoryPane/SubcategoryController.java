@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ public class SubcategoryController extends FXMLController {
 
     @FXML
     private Label subcategoryLabel;
+
+    @FXML
+    private VBox paneVBox;
 
     @FXML
     private FlowPane productsFlowPane;
@@ -36,6 +40,7 @@ public class SubcategoryController extends FXMLController {
     }
 
     private void populateWithProducts(List<Node> productList) {
+        paneVBox.setVisible(!productList.isEmpty());
         for (Node product : productList) {
             productsFlowPane.getChildren().add(product);
             /*
