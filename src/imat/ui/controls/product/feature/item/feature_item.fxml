@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="600.0" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.feature.item.FeatureItem">
+<AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="250.0" prefWidth="600.0" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.feature.item.FeatureItem">
     <styleClass>
         <String fx:value="scene-default" />
         <String fx:value="border-thin-round" />
@@ -44,7 +44,7 @@
                </padding>
                 </VBox>
                 <Separator orientation="VERTICAL" prefHeight="250.0" />
-                <ImageView fx:id="imageView" fitHeight="220.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="imageView" fitHeight="174.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../../../resources/images/products/product_14.jpg" />
                     </image>
