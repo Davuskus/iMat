@@ -301,6 +301,11 @@
     -fx-border-color: #00adff;
 }
 
+.white-button:focused {
+    -fx-border-width: 2px;
+    -fx-border-color: #00adff;
+}
+
 .background-eco-green {
     -fx-background-color: #20721a;
 }

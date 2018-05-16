@@ -5,6 +5,7 @@ import imat.interfaces.ISearchListener;
 import imat.model.FXMLController;
 import imat.model.category.Category;
 import imat.ui.controls.product.menu.ProductMenuItem;
+import imat.ui.views.browse.centerviews.products.subcategoryPane.SubcategoryController;
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -15,10 +16,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Products extends FXMLController implements ICategoryListener, ISearchListener {
 
@@ -38,6 +36,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private List<Product> currentProducts;
 
     private Map<Product,Node> productMenuItems;
+
+    private List<Node> subcategories;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,7 +60,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         currentCategory = category;
         productsFlowPane.getChildren().removeIf(x -> true);
         categoryLabel.setText(category.getName());
-        populateWithProducts(category.getAllProducts(), onlyEcologicalProducts);
+        //populateWithProducts(category.getAllProducts(), onlyEcologicalProducts);
+        populateWithProducts(category, onlyEcologicalProducts);
     }
 
     @Override
@@ -90,6 +91,27 @@ public class Products extends FXMLController implements ICategoryListener, ISear
                 productsFlowPane.getChildren().add(item);
                 */
             }
+        }
+    }
+
+    private void populateWithProducts(Category category, boolean onlyEcologicalProducts) {
+        currentCategory = category;
+        List<String> subcategories = category.getSubcategories();
+
+        for (String subcategory : subcategories) {
+            List<Product> productList = category.getProductsFromSubcategory(subcategory);
+            List<Node> subcategoryProducts = new ArrayList<>();
+            for (Product product : productList) {
+                if (!onlyEcologicalProducts || product.isEcological()) {
+                    subcategoryProducts.add(productMenuItems.get(product));
+                }
+            }
+
+            SubcategoryController controller = new SubcategoryController(subcategory, subcategoryProducts);
+            controller.setModel(model);
+            String fxmlPath = "../../../../views/browse/centerviews/products/subcategoryPane/SubcategoryPane.fxml";
+            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
+            productsFlowPane.getChildren().add(item);
         }
     }
 
