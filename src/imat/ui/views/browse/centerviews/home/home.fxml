@@ -28,7 +28,11 @@
                </HBox>
                   <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="260.0" prefWidth="560.0">
                       <content>
-                          <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" />
+                          <VBox alignment="CENTER">
+                              <children>
+                                  <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" />
+                              </children>
+                          </VBox>
                       </content>
                   <VBox.margin>
                      <Insets left="25.0" right="25.0" />
