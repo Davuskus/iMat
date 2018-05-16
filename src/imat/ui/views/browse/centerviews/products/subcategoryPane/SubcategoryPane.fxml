@@ -4,27 +4,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefWidth="600.0" styleClass="background-fxDefault" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.subcategoryPane.SubcategoryController">
+<AnchorPane styleClass="background-fxDefault" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.subcategoryPane.SubcategoryController">
     <children>
-        <VBox prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
                     <children>
-                        <Label fx:id="subcategoryLabel" layoutY="6.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="43.0" prefWidth="600.0" styleClass="title-large-dark-gray" text="Kategorier" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0" />
+                        <Label fx:id="subcategoryLabel" alignment="CENTER" layoutY="6.0" styleClass="title-large-dark-gray" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
-                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <padding>
-                        <Insets left="10.0" />
-                    </padding>
-                </HBox>
-                  <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" prefHeight="56.0" prefWidth="600.0" vgap="10.0">
+                  <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" prefWidth="600.0" vgap="10.0" VBox.vgrow="ALWAYS">
                       <padding>
                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                       </padding>
