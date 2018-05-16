@@ -59,7 +59,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     public void onCategorySelected(Category category) {
         if (category == currentCategory) return;
         currentCategory = category;
-        productsVBox.getChildren().removeIf(x -> true);
+        productsVBox.getChildren().clear();
         categoryLabel.setText(category.getName());
         //populateWithProducts(category.getAllProducts(), onlyEcologicalProducts);
         populateWithProducts(category, onlyEcologicalProducts);
@@ -75,7 +75,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         }
 
         categoryLabel.setText(categoryText);
-        productsVBox.getChildren().removeIf(x -> true);
+        productsVBox.getChildren().clear();
         populateWithProducts(products, onlyEcologicalProducts);
     }
 
@@ -119,7 +119,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     @FXML
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
-        productsVBox.getChildren().removeIf(x -> true);
+        productsVBox.getChildren().clear();
         populateWithProducts(currentCategory, onlyEcologicalProducts);
     }
 
