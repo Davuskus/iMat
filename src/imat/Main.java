@@ -77,11 +77,10 @@ public class Main extends Application {
         URL url = loader.getResource("imat/resources/fonts");
         String path = URLDecoder.decode(url.getFile(), "UTF-8");
         for(File fontFolder : new File(path).listFiles()) {
-            if(!fontFolder.isDirectory()) continue;
+            if(fontFolder.isDirectory())
             for(File fontFile : fontFolder.listFiles()) {
-                if(!fontFile.getName().endsWith(".ttf")) continue;
-                Font loaded = Font.loadFont(new FileInputStream(fontFile), 10);
-                System.out.println(loaded.getFamily());
+                if(fontFile.getName().endsWith(".ttf"))
+                Font.loadFont(new FileInputStream(fontFile), 100);
             }
         }
     }
