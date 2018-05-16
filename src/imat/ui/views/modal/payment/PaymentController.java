@@ -14,6 +14,7 @@ import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
+import javax.xml.stream.events.EndElement;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -67,8 +68,8 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     TextField phoneNumberField;
 
-    @FXML
-    TextField creditCardNumberField;
+    //@FXML
+   // TextField creditCardNumberField;
 
     @FXML
     TextField validMonthField;
@@ -102,6 +103,15 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private AnchorPane rootPane;
 
+    @FXML
+    private TextField c1;
+    @FXML
+    private TextField c2;
+    @FXML
+    private TextField c3;
+    @FXML
+    private TextField c4;
+
     private final IMatDataHandler iMatDataHandler;
 
     private final Customer customer;
@@ -127,6 +137,55 @@ public class PaymentController extends FXMLController implements Initializable, 
         splitPane.setDisable(true);
 
         model.addNavigationListener(this);
+
+
+      /*  creditCardNumberField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    creditCardNumberField.setText(newValue.replaceAll("[^\\d.-]", ""));
+                }
+            }
+        });
+        */
+        c1.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    c1.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        c2.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    c2.setText(newValue.replaceAll("[^\\d.-]", ""));
+                }
+            }
+        });
+        c3.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    c3.setText(newValue.replaceAll("[^\\d.-]", ""));
+                }
+            }
+        });
+        c4.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    c4.setText(newValue.replaceAll("[^\\d.-]", ""));
+                }
+            }
+        });
+
 
         validMonthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -155,15 +214,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
-        creditCardNumberField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    creditCardNumberField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-            }
-        });
+
 
         postcodeField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -191,17 +242,113 @@ public class PaymentController extends FXMLController implements Initializable, 
             ClientInfoDone();
         });
 
-        creditCardNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
+          /*
+     creditCardNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
+
+
+
+            if(creditCardNumberField.getCharacters().length()>0&&creditCardNumberField.getCharacters().charAt(creditCardNumberField.getCharacters().length()-1)=='-'){
+
+             newValue=(""+creditCardNumberField.getCharacters().subSequence(0,creditCardNumberField.getCharacters().length()-1));
+            }
+
+
+    String str=creditCardNumberField.getText();
+   // str.replaceAll("-", "");
+    long num = str.trim().chars().count();
+
+                if(num%5==0&& num<18&&num>3 && creditCardNumberField.getCharacters().charAt(creditCardNumberField.getCharacters().length()-1)!='-'){
+                    newValue=(newValue.substring(0,(int)num-1)+"-"+creditCardNumberField.getCharacters().charAt(creditCardNumberField.getCharacters().length()-1));
+                }
+
+    // creditCardNumberField.clear();
+    //  creditCardNumberField.appendText(newValue);
+
+    if (num > 16) {
+        String t = str.substring(0, 16);
+
+        creditCardNumberField.clear();
+        creditCardNumberField.appendText(t);
+    }
+
+    StringBuilder b = new StringBuilder();
+    for (int i = 0; i < str.length(); i++) {
+        b.append(str.charAt(i));
+        if (i % 4 == 0 && i > 0 && i < 14) {
+            b.append("-");
+        }
+    }
+    str = b.toString();
+
+    System.out.println(str);
+            if(!str.equals(creditCardNumberField.getText())) {
+                creditCardNumberField.clear();
+                 creditCardNumberField.appendText(str);
+            }
+
         });
+    */
         validMonthField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
+            if(validMonthField.getText().trim().chars().count()>2){
+                String t=validMonthField.getText().trim().substring(0,2);
+                validMonthField.clear();
+                validMonthField.appendText(t);
+            }
         });
         validYearField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
+            if(validYearField.getText().trim().chars().count()>2){
+                String t=validYearField.getText().trim().substring(0,2);
+                validYearField.clear();
+                validYearField.appendText(t);
+            }
         });
         cvcField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
+            if(cvcField.getText().trim().chars().count()>3){
+                String t=cvcField.getText().trim().substring(0,3);
+                cvcField.clear();
+                cvcField.appendText(t);
+            }
+        });
+
+        c1.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone();
+             if(c1.getText().chars().count()==4){c2.requestFocus();}
+            if(c1.getText().trim().chars().count()>4){
+                String t=c1.getText().trim().substring(0,4);
+                c1.clear();
+                c1.appendText(t);
+            }
+        });
+        c2.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone();
+            if(c2.getText().chars().count()==4){c3.requestFocus();}
+            if(c2.getText().trim().chars().count()>4){
+                String t=c2.getText().trim().substring(0,4);
+                c2.clear();
+                c2.appendText(t);
+            }
+        });
+        c3.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone();
+            if(c3.getText().chars().count()==4){c4.requestFocus();}
+            if(c3.getText().trim().chars().count()>4){
+                String t=c3.getText().trim().substring(0,4);
+                c3.clear();
+                c3.appendText(t);
+            }
+        });
+        c4.textProperty().addListener((observable, oldValue, newValue) -> {
+            CreditCardInfoDone();
+
+            if(c4.getText().trim().chars().count()>4){
+                String t=c4.getText().trim().substring(0,4);
+                c4.clear();
+                c4.appendText(t);
+            }
         });
     }
 
@@ -212,12 +359,23 @@ public class PaymentController extends FXMLController implements Initializable, 
         postcodeField.appendText(customer.getPostCode());
         phoneNumberField.appendText(customer.getPhoneNumber());
 
-        creditCardNumberField.appendText(creditCard.getCardNumber());
+      //  creditCardNumberField.appendText(creditCard.getCardNumber());
+        fillcreditcard();
+
         validMonthField.appendText(Integer.toString(creditCard.getValidMonth()));
         validYearField.appendText(Integer.toString(creditCard.getValidYear()));
         cvcField.appendText(Integer.toString(creditCard.getVerificationCode()));
     }
 
+    private void fillcreditcard(){
+        String c=creditCard.getCardNumber();
+        for (int i = 0; i <c.length() ; i++) {
+            if(i<4){c1.appendText(""+c.charAt(i));}
+            else if(i>3&&i<8){c2.appendText(""+c.charAt(i));}
+            else if(i>7&&i<12){c3.appendText(""+c.charAt(i));}
+            else{c4.appendText(""+c.charAt(i));}
+        }
+    }
 
     private void saveUserInfo() {
         if (saveUserInfoCheckBox.isSelected()) {
@@ -227,7 +385,8 @@ public class PaymentController extends FXMLController implements Initializable, 
             customer.setPostCode(postcodeField.getText());
             customer.setPhoneNumber(phoneNumberField.getText());
 
-            creditCard.setCardNumber(creditCardNumberField.getText());
+          //  creditCard.setCardNumber(creditCardNumberField.getText());
+            creditCard.setCardNumber(c1.getText()+c2.getText()+c3.getText()+c4.getText());
             creditCard.setValidMonth(Integer.parseInt(validMonthField.getText()));
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
@@ -278,7 +437,9 @@ public class PaymentController extends FXMLController implements Initializable, 
     private String creditCardToString() {
 
         StringBuilder strB = new StringBuilder();
-        strB.append(creditCardNumberField.getText() + "\n");
+       // strB.append(creditCardNumberField.getText() + "\n");
+        strB.append(c1.getText()+"-"+c2.getText()+"-"+c3.getText()+"-"+c4.getText()+ "\n");
+
         strB.append(validMonthField.getText() + " / ");
         strB.append(validYearField.getText() + "\n");
         strB.append(cvcField.getText());
@@ -308,7 +469,8 @@ public class PaymentController extends FXMLController implements Initializable, 
         conclusionPane.setDisable(true);
         creditCardInfoPane.setDisable(false);
 
-        creditCardNumberField.requestFocus();
+      //  creditCardNumberField.requestFocus();
+        c1.requestFocus();
 
         creditCardInfoPane.toFront();
         secondSidebarVBox.toFront();
@@ -357,12 +519,12 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         if (!isTextFieldFieldIn(t)) {
             if (displayError) {
-                t.getStyleClass().add("error");
+                displayError(t);
             }
             return false;
         }
 
-        if (t.getStyleClass().contains("error")) {
+       if (t.getStyleClass().contains("error")) {
             t.getStyleClass().removeAll("error");
         }
         return true;
@@ -403,21 +565,68 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     private boolean CreditCardInfoFildIn(boolean displayError) {
         boolean fildIn = true;
-        fildIn = isFieldIn(creditCardNumberField, displayError) && fildIn;
+      //  fildIn = isFieldIn(creditCardNumberField, displayError) && fildIn;
+
+     /*   fildIn=isFieldIn(c1,displayError)&&fildIn;
+        fildIn=isFieldIn(c2,displayError)&&fildIn;
+        fildIn=isFieldIn(c3,displayError)&&fildIn;
+        fildIn=isFieldIn(c4,displayError)&&fildIn;
+*/
 
         fildIn = isFieldIn(validMonthField, displayError) && fildIn;
 
         fildIn = isFieldIn(validYearField, displayError) && fildIn;
 
-        fildIn = isFieldIn(cvcField, displayError) && fildIn;
+    //    fildIn = isFieldIn(cvcField, displayError) && fildIn;
+
 
 
         return fildIn;
     }
 
+    private boolean isComplete(boolean dispalyError){
+        boolean b=true;
+        b=isLength(c1,4,dispalyError)&&b;
+
+        b=isLength(c2,4,dispalyError)&&b;
+
+        b=isLength(c3,4,dispalyError)&&b;
+
+        b=isLength(c4,4,dispalyError)&&b;
+
+        b=isLength(cvcField,3,dispalyError)&&b;
+
+
+        return b;
+    }
+    private boolean isLength(TextField textField,int length,boolean displayError){
+        boolean b= textField.getLength()==length;
+        if(!b){
+            if (displayError) {
+              //  textField.getStyleClass().add("error");
+                displayError(textField);
+            }
+            return false;
+        }
+        if (textField.getStyleClass().contains("error")) {
+           textField.getStyleClass().removeAll("error");
+        }
+        return true;
+    }
+
+    private void displayError(TextField textField){
+        if(!textField.getStyleClass().contains("error")){
+            textField.getStyleClass().add("error");
+        }
+    }
+
     @FXML
     private void CreditCardToSummary() {
-        if (CreditCardInfoFildIn(true)) {
+
+        boolean creditcar=CreditCardInfoFildIn(true);
+        boolean complete= isComplete(true);
+
+        if (creditcar && complete) {
             creditCardErrorLable.setVisible(false);
             summaryViewToFront();
             return;
@@ -427,7 +636,11 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     private void CreditCardInfoDone() {
-        if (CreditCardInfoFildIn(false)) {
+
+        boolean creditcar=CreditCardInfoFildIn(false);
+        boolean complete= isComplete(false);
+
+        if (creditcar && complete) {
             creditCardErrorLable.setVisible(false);
             creditCardDoneButton.setDisable(false);
         }
@@ -435,13 +648,22 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     @FXML
     private void clientToSummary() {
-        if (clientInfoFildIn(false) && CreditCardInfoFildIn(false)) {
+
+        boolean client=clientInfoFildIn(false);
+        boolean creditcar=CreditCardInfoFildIn(false);
+        boolean complete= isComplete(false);
+
+        if (client && creditcar && complete) {
             summaryViewToFront();
             return;
         }
 
-        if (clientInfoFildIn(false) && !CreditCardInfoFildIn(false)) {
+        if (client && (!creditcar || !complete)) {
+
+
             creditCardViewToFront();
+            CreditCardToSummary();
+
             return;
         }
 
