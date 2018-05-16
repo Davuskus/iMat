@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        System.out.println(System.getProperty("user.home"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/imat.fxml"));
 
         Model model = new Model();
