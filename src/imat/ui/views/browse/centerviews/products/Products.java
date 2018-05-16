@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -64,12 +63,12 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         currentCategory = category;
         productsFlowPane.getChildren().clear();
         categoryLabel.setText(category.getName());
-        //populateWithProducts(category.getAllProducts(), onlyEcologicalProducts);
-        populateWithProducts(category, onlyEcologicalProducts);
+        populateWithCategorizedProducts(category, onlyEcologicalProducts);
     }
 
     @Override
     public void onSearch(String searchTerm, List<Product> products) {
+        currentCategory = null;
         String categoryText;
         if (products.size() == 0) {
             categoryText = "Din sökning på \"" + searchTerm + "\" gav inga träffar";
@@ -88,18 +87,11 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
                 productsFlowPane.getChildren().add(productMenuItems.get(product));
-                /*
-                ProductMenuItem controller = new ProductMenuItem(product);
-                controller.setModel(model);
-                String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
-                Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-                productsFlowPane.getChildren().add(item);
-                */
             }
         }
     }
 
-    private void populateWithProducts(Category category, boolean onlyEcologicalProducts) {
+    private void populateWithCategorizedProducts(Category category, boolean onlyEcologicalProducts) {
         currentCategory = category;
         noResultsLabel.setVisible(category.getAllProducts().stream().noneMatch(x->(x.isEcological() || !onlyEcologicalProducts)));
         List<String> subcategories = category.getSubcategories();
@@ -124,7 +116,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
         productsFlowPane.getChildren().clear();
-        populateWithProducts(currentCategory, onlyEcologicalProducts);
+        populateWithCategorizedProducts(currentCategory, onlyEcologicalProducts);
     }
 
 }
