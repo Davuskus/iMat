@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -24,7 +25,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private Label categoryLabel;
 
     @FXML
-    private FlowPane productsFlowPane;
+    private VBox productsVBox;
 
     @FXML
     private CheckBox onlyEcoCheckBox;
@@ -58,7 +59,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     public void onCategorySelected(Category category) {
         if (category == currentCategory) return;
         currentCategory = category;
-        productsFlowPane.getChildren().removeIf(x -> true);
+        productsVBox.getChildren().removeIf(x -> true);
         categoryLabel.setText(category.getName());
         //populateWithProducts(category.getAllProducts(), onlyEcologicalProducts);
         populateWithProducts(category, onlyEcologicalProducts);
@@ -74,7 +75,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         }
 
         categoryLabel.setText(categoryText);
-        productsFlowPane.getChildren().removeIf(x -> true);
+        productsVBox.getChildren().removeIf(x -> true);
         populateWithProducts(products, onlyEcologicalProducts);
     }
 
@@ -82,7 +83,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         currentProducts = products;
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
-                productsFlowPane.getChildren().add(productMenuItems.get(product));
+                productsVBox.getChildren().add(productMenuItems.get(product));
                 /*
                 ProductMenuItem controller = new ProductMenuItem(product);
                 controller.setModel(model);
@@ -111,14 +112,14 @@ public class Products extends FXMLController implements ICategoryListener, ISear
             controller.setModel(model);
             String fxmlPath = "../../../../views/browse/centerviews/products/subcategoryPane/SubcategoryPane.fxml";
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-            productsFlowPane.getChildren().add(item);
+            productsVBox.getChildren().add(item);
         }
     }
 
     @FXML
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
-        productsFlowPane.getChildren().removeIf(x -> true);
+        productsVBox.getChildren().removeIf(x -> true);
         populateWithProducts(currentCategory, onlyEcologicalProducts);
     }
 
