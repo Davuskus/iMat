@@ -41,16 +41,7 @@ public class SubcategoryController extends FXMLController {
 
     private void populateWithProducts(List<Node> productList) {
         paneVBox.setVisible(!productList.isEmpty());
-        for (Node product : productList) {
-            productsFlowPane.getChildren().add(product);
-            /*
-            ProductMenuItem controller = new ProductMenuItem(product);
-            controller.setModel(model);
-            String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
-            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-            productsFlowPane.getChildren().add(item);
-            */
-        }
+        productsFlowPane.getChildren().addAll(productList);
     }
 
 }

@@ -30,6 +30,9 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     @FXML
     private CheckBox onlyEcoCheckBox;
 
+    @FXML
+    private Label noResultsLabel;
+
     private Category currentCategory;
 
     private boolean onlyEcologicalProducts;
@@ -81,6 +84,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private void populateWithProducts(List<Product> products, boolean onlyEcologicalProducts) {
         currentProducts = products;
+        noResultsLabel.setVisible(currentProducts.isEmpty()
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
                 productsVBox.getChildren().add(productMenuItems.get(product));
