@@ -26,7 +26,14 @@
                      </ImageView>
                   </children>
                </HBox>
-                  <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" />
+                  <ScrollPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="260.0">
+                      <content>
+                          <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" />
+                      </content>
+                  <VBox.margin>
+                     <Insets left="25.0" right="25.0" />
+                  </VBox.margin>
+                  </ScrollPane>
                <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" VBox.vgrow="ALWAYS">
                   <children>
                      <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
