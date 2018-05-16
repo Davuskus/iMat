@@ -4,6 +4,7 @@ import imat.interfaces.ICartTrashListener;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
 import imat.utils.IMatUtils;
+import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -123,7 +124,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     }
 
     private void changeValue(double value) {
-        double newValue = oldValue + value;
+        double newValue = MathUtils.round(oldValue + value,10);
         if (newValue >= 0) {
             setAmount(newValue);
         }
@@ -145,7 +146,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      */
     public void setAmount(double amount) {
         if (oldValue == amount) return;
-        oldValue = amount;
+            oldValue = amount;
         if (isAcceptingDoubles && ((int) amount) != amount) {
             valueTextField.setText(String.valueOf(amount));
         } else {
