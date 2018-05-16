@@ -8,19 +8,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" prefHeight="400.0" prefWidth="600.0" styleClass="background-fxDefault" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.Products">
+<?import javafx.scene.layout.FlowPane?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" styleClass="background-fxDefault" stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.Products">
    <children>
-      <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
                <children>
-                  <Label fx:id="categoryLabel" alignment="CENTER" styleClass="title-large-dark-gray" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="categoryLabel" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-large-dark-gray" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
                <styleClass>
                   <String fx:value="scene-default" />
@@ -46,42 +46,27 @@
                   <Insets left="10.0" />
                </padding>
             </HBox>
-            <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <StackPane fx:id="scrollPaneStackPane" prefHeight="150.0" prefWidth="200.0">
+            <ScrollPane fitToWidth="true" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </VBox.margin>
+               <content>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane fx:id="categoryScrollPane" fitToWidth="true" prefWidth="200.0">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <content>
-                              <VBox fx:id="categoryVBox" spacing="10.0" styleClass="background-fxDefault" />
-                           </content>
-                        </ScrollPane>
-                        <ScrollPane fx:id="searchScrollPane" fitToWidth="true">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <content>
-                              <FlowPane fx:id="searchResultFlowPane" alignment="TOP_CENTER" hgap="10.0" styleClass="background-fxDefault" vgap="10.0">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </FlowPane>
-                           </content>
-                        </ScrollPane>
+                         <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                             <padding>
+                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </padding>
+                         </FlowPane>
+                        <Label fx:id="noResultsLabel" text="Inga resultat matchar de givna kriterierna...">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
                      </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" />
-                     </padding>
                   </StackPane>
-                  <Label fx:id="noResultsLabel" text="Inga resultat matchar de givna kriterierna...">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Label>
-               </children>
-            </StackPane>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
    </children>

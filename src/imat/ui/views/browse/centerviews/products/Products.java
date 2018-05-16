@@ -12,9 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -27,19 +25,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private Label categoryLabel;
 
     @FXML
-    private VBox categoryVBox;
-
-    @FXML
-    private StackPane scrollPaneStackPane;
-
-    @FXML
-    private ScrollPane categoryScrollPane;
-
-    @FXML
-    private ScrollPane searchScrollPane;
-
-    @FXML
-    private FlowPane searchResultFlowPane;
+    private FlowPane productsFlowPane;
 
     @FXML
     private CheckBox onlyEcoCheckBox;
@@ -53,7 +39,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private List<Product> currentProducts;
 
-    private Map<Product, Node> productMenuItems;
+    private Map<Product,Node> productMenuItems;
 
     private List<Node> subcategories;
 
@@ -68,18 +54,18 @@ public class Products extends FXMLController implements ICategoryListener, ISear
             controller.setModel(model);
             String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-            productMenuItems.put(product, item);
+            productMenuItems.put(product,item);
         }
     }
 
     @Override
     public void onCategorySelected(Category category) {
-        if (category == currentCategory && scrollPaneIsInFront(categoryScrollPane)) return;
+        if (category == currentCategory) return;
         currentCategory = category;
-        categoryVBox.getChildren().clear();
+        productsFlowPane.getChildren().clear();
         categoryLabel.setText(category.getName());
-        categoryScrollPane.toFront();
-        populateCategoryVBoxWithProducts(category, onlyEcologicalProducts);
+        //populateWithProducts(category.getAllProducts(), onlyEcologicalProducts);
+        populateWithProducts(category, onlyEcologicalProducts);
     }
 
     @Override
@@ -92,28 +78,30 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         }
 
         categoryLabel.setText(categoryText);
-        searchResultFlowPane.getChildren().clear();
-        searchScrollPane.toFront();
-        populateSearchResultFlowPane(products, onlyEcologicalProducts);
+        productsFlowPane.getChildren().clear();
+        populateWithProducts(products, onlyEcologicalProducts);
     }
 
-    private void populateSearchResultFlowPane(List<Product> products, boolean onlyEcologicalProducts) {
+    private void populateWithProducts(List<Product> products, boolean onlyEcologicalProducts) {
         currentProducts = products;
-        int numShownProducts = 0;
+        noResultsLabel.setVisible(currentProducts.isEmpty());
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
-                numShownProducts++;
-                searchResultFlowPane.getChildren().add(productMenuItems.get(product));
+                productsFlowPane.getChildren().add(productMenuItems.get(product));
+                /*
+                ProductMenuItem controller = new ProductMenuItem(product);
+                controller.setModel(model);
+                String fxmlPath = "../../../../controls/product/menu/product_menu_item.fxml";
+                Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
+                productsFlowPane.getChildren().add(item);
+                */
             }
         }
-        noResultsLabel.setVisible(numShownProducts == 0);
     }
 
-    private void populateCategoryVBoxWithProducts(Category category, boolean onlyEcologicalProducts) {
+    private void populateWithProducts(Category category, boolean onlyEcologicalProducts) {
         currentCategory = category;
-        boolean shouldShowNoResultLabel =
-                category.getAllProducts().stream().noneMatch(x -> (x.isEcological() || !onlyEcologicalProducts));
-        noResultsLabel.setVisible(shouldShowNoResultLabel);
+        noResultsLabel.setVisible(category.getAllProducts().stream().noneMatch(x->(x.isEcological() || !onlyEcologicalProducts)));
         List<String> subcategories = category.getSubcategories();
         for (String subcategory : subcategories) {
             List<Product> productList = category.getProductsFromSubcategory(subcategory);
@@ -128,24 +116,15 @@ public class Products extends FXMLController implements ICategoryListener, ISear
             controller.setModel(model);
             String fxmlPath = "../../../../views/browse/centerviews/products/subcategoryPane/SubcategoryPane.fxml";
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-            categoryVBox.getChildren().add(item);
+            productsFlowPane.getChildren().add(item);
         }
     }
 
     @FXML
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
-        if (scrollPaneIsInFront(categoryScrollPane)) {
-            categoryVBox.getChildren().clear();
-            populateCategoryVBoxWithProducts(currentCategory, onlyEcologicalProducts);
-        } else if (scrollPaneIsInFront(searchScrollPane)) {
-            searchResultFlowPane.getChildren().clear();
-            populateSearchResultFlowPane(currentProducts, onlyEcologicalProducts);
-        }
-    }
-
-    private boolean scrollPaneIsInFront(ScrollPane scrollPane) {
-        return scrollPaneStackPane.getChildren().get(1).equals(scrollPane);
+        productsFlowPane.getChildren().clear();
+        populateWithProducts(currentCategory, onlyEcologicalProducts);
     }
 
 }
