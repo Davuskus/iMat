@@ -25,6 +25,7 @@ public class Model {
     private List<IRemoveEvent> cartItemRemoveEvents;
     private List<IRemoveEvent> checkoutItemRemoveEvents;
     private final List<IShutdownListener> shutdownListeners;
+    private final List<ICartTrashListener> cartTrashListeners;
 
     private boolean isThrowingCartInTrash;
 
@@ -40,6 +41,18 @@ public class Model {
         checkoutItemRemoveEvents = new ArrayList<>(1);
         cartItemRemoveEvents = new ArrayList<>(1);
         shutdownListeners = new ArrayList<>(1);
+        cartTrashListeners = new ArrayList<>(1);
+        cartTrashListeners.add(new ICartTrashListener() {
+            @Override
+            public void onCartTrashStarted() {
+                isThrowingCartInTrash = true;
+            }
+
+            @Override
+            public void onCartTrashStopped() {
+                isThrowingCartInTrash = false;
+            }
+        });
         navigationHistory = new ArrayDeque<>();
         navigationHistory.push(NavigationTarget.HOME);
         loadBackendCart();
@@ -78,6 +91,18 @@ public class Model {
 
     public void addShutdownListener(IShutdownListener shutdownListener) {
         shutdownListeners.add(shutdownListener);
+    }
+
+    public void addCartTrashListener(ICartTrashListener cartTrashListener) {
+        cartTrashListeners.add(cartTrashListener);
+    }
+
+    public void notifyCartTrashListenersOfStart() {
+        cartTrashListeners.forEach(ICartTrashListener::onCartTrashStarted);
+    }
+
+    public void notifyCartTrashListenersOfStop() {
+        cartTrashListeners.forEach(ICartTrashListener::onCartTrashStopped);
     }
 
     public void updateShoppingCart(Product product, double newAmount) {
@@ -210,14 +235,6 @@ public class Model {
 
     public void addOrderListener(IOrderListener orderListener) {
         orderListeners.add(orderListener);
-    }
-
-    public void setThrowingCartInTrash(boolean throwingCartInTrash) {
-        isThrowingCartInTrash = throwingCartInTrash;
-    }
-
-    public boolean isThrowingCartInTrash() {
-        return isThrowingCartInTrash;
     }
 
     public void placeOrder() {

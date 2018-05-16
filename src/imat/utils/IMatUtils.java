@@ -48,4 +48,9 @@ public final class IMatUtils {
         return IMatDataHandler.getInstance().getProduct(index);
     }
 
+    public static boolean productAmountAllowsDecimals(Product product) {
+        return product.getUnitSuffix().equals("kg") ||
+                product.getUnitSuffix().equals("l");
+    }
+
 }

@@ -4,9 +4,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
@@ -21,6 +24,20 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/images/icons/commodity/icon_commodity.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" styleClass="title-large-dark-gray" text="Sortiment" />
+               </children>
+               <styleClass>
+                  <String fx:value="scene-default" />
+                  <String fx:value="border-thin" />
+               </styleClass>
+            </HBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <content>
                   <VBox fx:id="categoryButtonsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
@@ -29,15 +46,6 @@
                      </padding></VBox>
                </content>
             </ScrollPane>
-            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="CENTER" styleClass="title-large-dark-gray" text="Sortiment" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-               <styleClass>
-                  <String fx:value="scene-default" />
-                  <String fx:value="border-thin" />
-               </styleClass>
-            </AnchorPane>
          </children>
       </GridPane>
    </children>

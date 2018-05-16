@@ -1,7 +1,10 @@
 package imat.ui.controls.spinner;
 
+import imat.interfaces.ICartTrashListener;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
+import imat.utils.IMatUtils;
+import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,6 +39,8 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     private Product product;
     private boolean isAcceptingDoubles;
 
+    private boolean cartIsTrashing;
+
     public AmountSpinner() {
         super();
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
@@ -53,38 +58,78 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         valueTextField.setTextFormatter(intFormatter);
+        valueTextField.focusedProperty().addListener((observable, oldValue1, newValue) -> {
+            if (oldValue1 && !newValue) {
+                submitTextFieldValue(Double.valueOf(valueTextField.getText()));
+            }
+        });
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
+        model.addCartTrashListener(new ICartTrashListener() {
+            @Override
+            public void onCartTrashStarted() {
+                setDisableOnControls(true && model.getProductsInCart().contains(product));
+            }
+
+            @Override
+            public void onCartTrashStopped() {
+                setDisableOnControls(false);
+            }
+        });
+
+        valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 0 && !newValue.equals("0") && !newValue.equals("0.")) {
+                submitTextFieldValue(Double.valueOf(newValue));
+            }
+        });
+
+    }
+
+    private void setDisableOnControls(boolean disable) {
+        System.out.println("AmountSpinner, setDisableOnControls: " + disable);
+        subtractButton.setDisable(disable);
+        addButton.setDisable(disable);
+        valueTextField.setDisable(disable);
     }
 
     public void setProduct(Product product) {
         this.product = product;
-        switch (product.getUnitSuffix()) {
-            case "l":
-            case "kg":
-                isAcceptingDoubles = true;
-                valueTextField.setTextFormatter(doubleFormatter);
-                break;
-            default:
-                isAcceptingDoubles = false;
-                valueTextField.setTextFormatter(intFormatter);
-                break;
+
+        if (IMatUtils.productAmountAllowsDecimals(product)) {
+            isAcceptingDoubles = true;
+            valueTextField.setTextFormatter(doubleFormatter);
+        } else {
+            isAcceptingDoubles = false;
+            valueTextField.setTextFormatter(intFormatter);
         }
+
         setAmount(model.getProductAmount(product));
     }
 
     @FXML
     private void addButtonOnAction(Event event) {
-        changeValue(+1);
+        changeValue(isAcceptingDoubles ? 0.1 : 1);
     }
 
     @FXML
     private void subtractButtonOnAction(Event event) {
-        changeValue(-1);
+        changeValue(-(isAcceptingDoubles ? 0.1 : 1));
+    }
+
+    @FXML
+    private void onEnterPressed(Event event) {
+        String value = valueTextField.getText();
+        if ((value.length() == 0) ||
+                (value.length() == 1 && value.charAt(value.length() - 1) == '.') ||
+                value.equals("0") ||
+                value.equals("0.")) {
+            valueTextField.setText("0");
+            setAmount(0);
+        }
     }
 
     private void changeValue(double value) {
-        double newValue = oldValue + value;
+        double newValue = MathUtils.round(oldValue + value,10);
         if (newValue >= 0) {
             setAmount(newValue);
         }
@@ -105,35 +150,25 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      * @param amount The amount.
      */
     public void setAmount(double amount) {
-        if (oldValue == amount || model.isThrowingCartInTrash()) return;
-        oldValue = amount;
-        if (isAcceptingDoubles) {
-            valueTextField.setTextFormatter(doubleFormatter);
+        if (oldValue == amount) return;
+            oldValue = amount;
+        if (isAcceptingDoubles && ((int) amount) != amount) {
             valueTextField.setText(String.valueOf(amount));
         } else {
-            valueTextField.setTextFormatter(intFormatter);
             valueTextField.setText(String.valueOf((int) amount));
         }
+        updateShoppingCart(amount);
+    }
+
+    private void updateShoppingCart(double amount) {
         model.updateShoppingCart(product, amount);
     }
 
-
-    @FXML
-    private void onEnterPressed(Event event) {
-        if (valueTextField.getText().length() == 0) {
-            if (isAcceptingDoubles) {
-                valueTextField.setText("0.0");
-            } else {
-                valueTextField.setText("0");
-            }
-        }
-        double oldValue2 = getAmount();
-        setAmount(Double.valueOf(valueTextField.getText()));
-        if (!model.isThrowingCartInTrash()) {
-            oldValue = oldValue2;
-        }
+    private void submitTextFieldValue(double value) {
+        if (oldValue == value) return;
+        updateShoppingCart(value);
+        this.oldValue = value;
     }
-
 
     @Override
     public void onProductAdded(Product product, Double amount) {

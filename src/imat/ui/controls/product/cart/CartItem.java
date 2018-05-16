@@ -30,9 +30,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private AnchorPane rootPane;
 
     @FXML
-    private StackPane stackPane;
-
-    @FXML
     private AnchorPane regretPane;
 
     @FXML
@@ -40,9 +37,6 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private HBox itemHBox;
-
-    @FXML
-    private Button removeButton;
 
     @FXML
     private ImageView removeButtonImageView;
@@ -57,7 +51,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private VBox infoVBox;
 
     @FXML
-    private VBox otherVBox;
+    private HBox labelsHBox;
 
     @FXML
     private Label ecoLabel;
@@ -93,7 +87,8 @@ public class CartItem extends FXMLController implements IShoppingListener {
         nameLabel.setText(this.product.getName());
 
         if (!product.isEcological()) {
-            infoVBox.getChildren().remove(ecoLabel);
+            // infoVBox.getChildren().remove(ecoLabel);
+            ecoLabel.setVisible(false);
         }
         updatePriceLabel(model.getProductAmount(product) * product.getPrice());
         unitLabel.setText("(" + product.getUnit() + ")");
@@ -148,7 +143,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
     }
 
     private void updatePriceLabel(double total) {
-        priceLabel.setText("Pris: " + String.valueOf(MathUtils.round(total, 2)) + " kr");
+        priceLabel.setText(String.valueOf(MathUtils.round(total, 2)) + " kr");
     }
 
     @Override

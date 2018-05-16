@@ -10,8 +10,8 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="purchaseConfirmationHeader" text="Tack för ditt köp!" />
-            <Label fx:id="purchaseConfirmationDescription" text="Dina varor kommer snart att levereras" />
+            <Label fx:id="purchaseConfirmationHeader" styleClass="title-xlarge" text="Tack för ditt köp!" />
+            <Label fx:id="purchaseConfirmationDescription" styleClass="button-text-normal" text="Dina varor kommer snart att levereras" />
             <Button fx:id="confirmationReturnToStoreButton" mnemonicParsing="false" onAction="#onReturnToStoreButtonAction" styleClass="button-text-normal-bold" text="Tillbaka till startsidan">
                <cursor>
                   <Cursor fx:constant="HAND" />

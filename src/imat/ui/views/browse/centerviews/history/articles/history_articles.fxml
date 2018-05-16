@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -15,10 +17,17 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Order: " wrapText="true" />
-                  <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD" wrapText="true" />
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../resources/images/icons/order/icon_order.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD">
+                     <graphic>
+                        <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Beställning: " />
+                     </graphic></Label>
                </children>
                <styleClass>
                   <String fx:value="border-thin" />
@@ -42,12 +51,12 @@
                      </VBox.margin></Separator>
                   <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="title-normal-dark-gray" text="Antal artiklar: " wrapText="true">
+                        <Label styleClass="title-normal-dark-gray" text="Antal artiklar: ">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="totalNumArticlesLabel" styleClass="title-normal-dark-gray" text="# st" wrapText="true">
+                        <Label fx:id="totalNumArticlesLabel" styleClass="title-normal-dark-gray" text="# st">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -57,12 +66,12 @@
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                         </Separator>
-                        <Label styleClass="title-normal-dark-gray" text="Totalt pris: " wrapText="true">
+                        <Label styleClass="title-normal-dark-gray" text="Totalt pris: ">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="totalPriceLabel" styleClass="title-normal-dark-gray" text="- kr" wrapText="true">
+                        <Label fx:id="totalPriceLabel" styleClass="title-normal-dark-gray" text="- kr">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -89,9 +98,9 @@
                               </AnchorPane>
                               <ScrollPane fx:id="articlesScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <VBox fx:id="articlesVBox" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                    <VBox fx:id="articlesVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                                        <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
                                     </VBox>
                                  </content>

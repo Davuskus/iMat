@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -45,8 +46,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     }
 
     private void populateArticleList(Order order) {
-
-        for (ShoppingItem shoppingItem : getUniqueShoppingItems(order)) {
+        for (ShoppingItem shoppingItem : order.getItems()) {
             ArticleHistoryItem articleHistoryItem = new ArticleHistoryItem();
             articleHistoryItem.setModel(model);
             Node articleNode = FXMLLoader.loadFXMLNodeFromRootPackage(
@@ -56,25 +56,6 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
             articlesVBox.getChildren().add(articleNode);
             articleHistoryItem.setShoppingItem(shoppingItem);
         }
-
-    }
-
-    private List<ShoppingItem> getUniqueShoppingItems(Order order) {
-
-        Map<Product, Double> shoppingItemMap = new HashMap<>();
-        order.getItems().forEach(shoppingItem -> {
-            Product product = shoppingItem.getProduct();
-            double amount = shoppingItem.getAmount();
-            if (shoppingItemMap.keySet().contains(product)) {
-                shoppingItemMap.put(product, shoppingItemMap.get(product) + amount);
-            } else {
-                shoppingItemMap.put(product, amount);
-            }
-        });
-        List<ShoppingItem> shoppingItems = new ArrayList<>(shoppingItemMap.keySet().size());
-        shoppingItemMap.forEach(((product, amount) -> shoppingItems.add(new ShoppingItem(product, amount))));
-
-        return shoppingItems;
     }
 
     private double getOrderPrice() {
@@ -85,7 +66,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         return MathUtils.round(price, 2);
     }
 
-    private void updateOrderInfo() {
+    private void updateOrderInfo(Order order) {
         totalPriceLabel.setText(String.valueOf(getOrderPrice()));
         totalNumArticlesLabel.setText(String.valueOf(order.getItems().size()));
         dateLabel.setText(DateUtils.getFormattedDate(order.getDate(), "yyyy/MM/dd - HH:mm"));
@@ -101,8 +82,8 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     public void onOrderSelected(Order order) {
         this.order = order;
         articlesVBox.getChildren().clear();
-        populateArticleList(order);
-        updateOrderInfo();
+        populateArticleList(this.order);
+        updateOrderInfo(this.order);
     }
 
     @FXML
