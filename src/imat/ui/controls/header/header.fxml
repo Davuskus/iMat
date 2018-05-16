@@ -37,9 +37,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHelpButtonAction" text="Hjälp" HBox.hgrow="ALWAYS">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#onHelpButtonAction" text="Hjälp" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" top="10.0" />
                      </HBox.margin>
@@ -58,7 +58,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" HBox.hgrow="ALWAYS">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </HBox.margin>

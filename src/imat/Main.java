@@ -7,12 +7,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Main extends Application {
@@ -23,6 +31,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+       // loadFonts();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/imat.fxml"));
 
@@ -60,6 +70,25 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, stageWidth, stageHeight));
         primaryStage.getIcons().add(new Image("imat/resources/images/logo/imat_logo_icon.png"));
         primaryStage.show();
+    }
+
+    private void loadFonts() {
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        URL url = loader.getResource("imat/resources/fonts");
+        String path = null;
+        try {
+            path = URLDecoder.decode(url.getFile(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        for(File fontFolder : new File(path).listFiles()) {
+            if(!fontFolder.isDirectory()) continue;
+            for(File fontFile : fontFolder.listFiles()) {
+                if(!fontFile.getName().endsWith(".ttf")) continue;
+                Font loaded = Font.loadFont(fontFile.getAbsoluteFile().getPath(), 10);
+                System.out.println(loaded.getFamily());
+            }
+        }
     }
 
     @Override
