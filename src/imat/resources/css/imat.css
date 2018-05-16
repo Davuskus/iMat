@@ -71,52 +71,52 @@
 }
 
 .title-normal {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
 .title-normal-dark-gray {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #484848;
 }
 
 .title-large {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
 
 .title-large-dark-gray {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: #484848;
 }
 
 .title-xlarge {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
 
 .title-xlarge-dark-gray {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 24px;
     -fx-font-weight: bold;
     -fx-text-fill: #484848;
 }
 
 .subtitle {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
 .subtitle-dark-gray {
-    -fx-font-family: "roboto";
+    -fx-font-family: "raleway";
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #484848;
@@ -317,13 +317,11 @@
 
 .regret-button-bg:hover {
     -fx-background-color: rgba(0, 0, 0, 0.45);
-    /*-fx-background-color: rgba(150, 150, 150, 0.85);*/
     -fx-background-radius: 2px;
 }
 
 .regret-button-bg:pressed {
     -fx-background-color: rgba(0, 0, 0, 0.85);
-    /*-fx-background-color: rgba(0, 0, 0, 0.85);*/
     -fx-background-radius: 2px;
 }
 

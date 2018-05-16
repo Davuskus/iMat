@@ -1,5 +1,5 @@
 body {
-    font-family: "Raleway-Thin",SansSerif;
+    font-family: "Roboto Lt",SansSerif;
     -webkit-font-smoothing: antialiased;
     background-color: #f0f0f0;
     padding: 10px;
@@ -18,11 +18,13 @@ a:hover {
 }
 
 h3 {
+    font-family: "Raleway Black",SansSerif;
     font-size: 18pt;
     font-weight: bold;
 }
 
 h1 {
+    font-family: "Raleway Black",SansSerif;
     font-size: 22pt;
 }
 

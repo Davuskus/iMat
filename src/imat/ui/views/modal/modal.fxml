@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" onMousePressed="#closeButtonOnAction" prefHeight="400.0" prefWidth="600.0" styleClass="scene-transparent" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.Modal">
+<AnchorPane fx:id="rootPane" onMousePressed="#closeButtonOnAction" prefHeight="400.0" prefWidth="600.0" styleClass="scene-transparent" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.Modal">
     <children>
       <VBox alignment="CENTER" fillWidth="false" layoutX="25.0" layoutY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,7 +41,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                   </cursor>
                                                   <tooltip>
-                                                      <Tooltip styleClass="text-normal-white" text="Stäng detta fönster" wrapText="true" />
+                                                      <Tooltip styleClass="text-normal-white-bold" text="Stäng detta fönster" wrapText="true" />
                                                   </tooltip>
                                               </Button>
                                           </children>
