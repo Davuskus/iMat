@@ -35,8 +35,8 @@ public class SubcategoryController extends FXMLController {
         populateWithProducts(productList);
     }
 
-    private void populateWithProducts(List<Node> procuctList) {
-        for (Node product : procuctList) {
+    private void populateWithProducts(List<Node> productList) {
+        for (Node product : productList) {
             productsFlowPane.getChildren().add(product);
             /*
             ProductMenuItem controller = new ProductMenuItem(product);
