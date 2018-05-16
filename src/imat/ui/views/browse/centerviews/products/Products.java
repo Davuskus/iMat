@@ -84,7 +84,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private void populateWithProducts(List<Product> products, boolean onlyEcologicalProducts) {
         currentProducts = products;
-        noResultsLabel.setVisible(currentProducts.isEmpty()
+        noResultsLabel.setVisible(currentProducts.isEmpty());
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
                 productsVBox.getChildren().add(productMenuItems.get(product));
@@ -101,8 +101,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private void populateWithProducts(Category category, boolean onlyEcologicalProducts) {
         currentCategory = category;
+        noResultsLabel.setVisible(category.getAllProducts().stream().noneMatch(x->(x.isEcological() || !onlyEcologicalProducts)));
         List<String> subcategories = category.getSubcategories();
-
         for (String subcategory : subcategories) {
             List<Product> productList = category.getProductsFromSubcategory(subcategory);
             List<Node> subcategoryProducts = new ArrayList<>();
