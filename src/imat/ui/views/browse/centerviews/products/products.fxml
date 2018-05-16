@@ -55,11 +55,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <content>
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox fx:id="categoryVBox" spacing="10.0" styleClass="background-fxDefault" />
-                                 </children>
-                              </StackPane>
+                              <VBox fx:id="categoryVBox" spacing="10.0" styleClass="background-fxDefault" />
                            </content>
                         </ScrollPane>
                         <ScrollPane fx:id="searchScrollPane" fitToWidth="true">

@@ -74,12 +74,11 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     @Override
     public void onCategorySelected(Category category) {
-        if (category == currentCategory) return;
+        if (category == currentCategory && scrollPaneIsInFront(categoryScrollPane)) return;
         currentCategory = category;
         categoryVBox.getChildren().clear();
         categoryLabel.setText(category.getName());
         categoryScrollPane.toFront();
-        categoryVBox.toFront();
         populateCategoryVBoxWithProducts(category, onlyEcologicalProducts);
     }
 
@@ -100,13 +99,14 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     private void populateSearchResultFlowPane(List<Product> products, boolean onlyEcologicalProducts) {
         currentProducts = products;
-        boolean shouldShowNoResultLabel = currentProducts.isEmpty();
-        noResultsLabel.setVisible(shouldShowNoResultLabel);
+        int numShownProducts = 0;
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
+                numShownProducts++;
                 searchResultFlowPane.getChildren().add(productMenuItems.get(product));
             }
         }
+        noResultsLabel.setVisible(numShownProducts == 0);
     }
 
     private void populateCategoryVBoxWithProducts(Category category, boolean onlyEcologicalProducts) {
@@ -135,13 +135,17 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     @FXML
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
-        if (scrollPaneStackPane.getChildren().get(1).equals(categoryScrollPane)) {
+        if (scrollPaneIsInFront(categoryScrollPane)) {
             categoryVBox.getChildren().clear();
             populateCategoryVBoxWithProducts(currentCategory, onlyEcologicalProducts);
-        } else if (scrollPaneStackPane.getChildren().get(1).equals(searchScrollPane)) {
+        } else if (scrollPaneIsInFront(searchScrollPane)) {
             searchResultFlowPane.getChildren().clear();
             populateSearchResultFlowPane(currentProducts, onlyEcologicalProducts);
         }
+    }
+
+    private boolean scrollPaneIsInFront(ScrollPane scrollPane) {
+        return scrollPaneStackPane.getChildren().get(1).equals(scrollPane);
     }
 
 }
