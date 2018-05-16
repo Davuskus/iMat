@@ -22,13 +22,13 @@
                     <children>
                         <Label fx:id="nameLabel" prefHeight="20.0" styleClass="title-xlarge-dark-gray" text="Product name" wrapText="true" />
                         <Label fx:id="ecoLabel" styleClass="text-large-eco-green" text="Ekologisk">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../resources/images/icons/eco/eco_icon_1.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Label>
+                            <graphic>
+                                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../../../resources/images/icons/eco/eco_icon_1.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic></Label>
                         <Label fx:id="priceLabel" styleClass="text-large" text="Product price" />
                         <AnchorPane VBox.vgrow="ALWAYS">
                             <children>
@@ -39,9 +39,9 @@
                             </VBox.margin>
                         </AnchorPane>
                     </children>
-               <padding>
-                  <Insets bottom="15.0" top="15.0" />
-               </padding>
+                    <padding>
+                        <Insets bottom="15.0" top="15.0" />
+                    </padding>
                 </VBox>
                 <Separator orientation="VERTICAL" prefHeight="250.0" />
                 <ImageView fx:id="imageView" fitHeight="174.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true">
