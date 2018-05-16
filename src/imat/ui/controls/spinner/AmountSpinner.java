@@ -58,6 +58,11 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         valueTextField.setTextFormatter(intFormatter);
+        valueTextField.focusedProperty().addListener((observable, oldValue1, newValue) -> {
+            if (oldValue1 && !newValue) {
+                submitTextFieldValue(Double.valueOf(valueTextField.getText()));
+            }
+        });
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
         model.addCartTrashListener(new ICartTrashListener() {
