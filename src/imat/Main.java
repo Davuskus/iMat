@@ -13,14 +13,14 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Main extends Application {
@@ -32,7 +32,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-       // loadFonts();
+        loadFonts();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/imat.fxml"));
 
@@ -72,20 +72,15 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void loadFonts() {
+    private void loadFonts() throws UnsupportedEncodingException, FileNotFoundException {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         URL url = loader.getResource("imat/resources/fonts");
-        String path = null;
-        try {
-            path = URLDecoder.decode(url.getFile(), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        String path = URLDecoder.decode(url.getFile(), "UTF-8");
         for(File fontFolder : new File(path).listFiles()) {
             if(!fontFolder.isDirectory()) continue;
             for(File fontFile : fontFolder.listFiles()) {
                 if(!fontFile.getName().endsWith(".ttf")) continue;
-                Font loaded = Font.loadFont(fontFile.getAbsoluteFile().getPath(), 10);
+                Font loaded = Font.loadFont(new FileInputStream(fontFile), 10);
                 System.out.println(loaded.getFamily());
             }
         }

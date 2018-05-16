@@ -119,7 +119,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
         productsFlowPane.getChildren().removeIf(x -> true);
-        populateWithProducts(currentProducts, onlyEcologicalProducts);
+        populateWithProducts(currentCategory, onlyEcologicalProducts);
     }
 
 }
