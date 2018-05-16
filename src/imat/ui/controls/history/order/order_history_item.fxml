@@ -17,12 +17,12 @@
                   <Image url="@../../../../resources/images/icons/order/icon_order.png" />
                </image>
             </ImageView>
-            <Label fx:id="dateLabel" styleClass="title-normal-dark-gray" text="2018-05-15 - 15:43">
+            <Label fx:id="dateLabel" styleClass="text-large-dark-gray-bold" text="2018-05-15 - 15:43">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <graphic>
-                  <Label fx:id="orderTitleLabel" styleClass="title-normal-dark-gray" text="Beställning: " />
+                  <Label fx:id="orderTitleLabel" styleClass="text-large-dark-gray-bold" text="Beställning: " />
                </graphic>
             </Label>
          </children>
