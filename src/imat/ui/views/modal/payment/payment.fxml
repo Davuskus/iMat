@@ -179,7 +179,7 @@
                                           </TextArea>
                                           <Label layoutX="35.0" layoutY="23.0" styleClass="text-normal" text="Kunduppgifter" underline="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0" />
                                           <Label layoutX="35.0" layoutY="187.0" styleClass="text-normal" text="Kreditkort" underline="true" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="40.0" />
-                                          <Button fx:id="changeClientInfoButton" layoutX="258.0" layoutY="94.0" mnemonicParsing="false" onAction="#clientViewToFront" styleClass="text-small-bold" text="Ändra kunduppgifter" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="95.0">
+                                          <Button fx:id="changeClientInfoButton" layoutX="258.0" layoutY="94.0" mnemonicParsing="false" onAction="#clientViewToFront" styleClass="text-small-bold" text="Tillbaka och ändra kunduppgifter" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="95.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -187,7 +187,7 @@
                                                 <Tooltip text="Tillbaka till kunduppgifter" />
                                              </tooltip>
                                           </Button>
-                                          <Button fx:id="changeCreditCardInfoButton" layoutX="255.0" layoutY="217.0" mnemonicParsing="false" onAction="#creditCardViewToFront" styleClass="text-small-bold" text="Ändra kreditkortsuppgifter" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="255.0">
+                                          <Button fx:id="changeCreditCardInfoButton" layoutX="255.0" layoutY="217.0" mnemonicParsing="false" onAction="#creditCardViewToFront" styleClass="text-small-bold" text="Tillbaka och ändra kreditkortsuppgifter" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="255.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -240,13 +240,13 @@
                                              <children>
                                                 <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="239.0">
                                                    <children>
-                                                      <TextField fx:id="c1" prefHeight="26.0" prefWidth="54.0" styleClass="text-small-bold" />
+                                                      <TextField fx:id="c1" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
                                                       <Label styleClass="title-normal" text="-" />
-                                                      <TextField fx:id="c2" prefHeight="26.0" prefWidth="54.0" styleClass="text-small-bold" />
+                                                      <TextField fx:id="c2" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
                                                       <Label styleClass="title-normal" text="-" />
-                                                      <TextField fx:id="c3" prefHeight="26.0" prefWidth="54.0" styleClass="text-small-bold" />
+                                                      <TextField fx:id="c3" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
                                                       <Label styleClass="title-normal" text="-" />
-                                                      <TextField fx:id="c4" prefHeight="26.0" prefWidth="54.0" styleClass="text-small-bold" />
+                                                      <TextField fx:id="c4" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
                                                    </children>
                                                 </HBox>
                                                 <HBox spacing="4.0">

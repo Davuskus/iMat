@@ -233,6 +233,17 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
+
+        phoneNumberField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    phoneNumberField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
         });
@@ -244,9 +255,19 @@ public class PaymentController extends FXMLController implements Initializable, 
         });
         postcodeField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
+            if(postcodeField.getText().trim().chars().count()>5){
+                String t=postcodeField.getText().trim().substring(0,5);
+                postcodeField.clear();
+                postcodeField.appendText(t);
+            }
         });
         phoneNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
+            if(phoneNumberField.getText().trim().chars().count()>10){
+                String t=phoneNumberField.getText().trim().substring(0,10);
+                phoneNumberField.clear();
+                phoneNumberField.appendText(t);
+            }
         });
 
           /*
@@ -369,10 +390,19 @@ public class PaymentController extends FXMLController implements Initializable, 
       //  creditCardNumberField.appendText(creditCard.getCardNumber());
         fillcreditcard();
 
-        validMonthField.appendText(Integer.toString(creditCard.getValidMonth()));
-        validYearField.appendText(Integer.toString(creditCard.getValidYear()));
-        cvcField.appendText(Integer.toString(creditCard.getVerificationCode()));
+        validMonthField.appendText(removeDefult(creditCard.getValidMonth()));
+        validYearField.appendText(removeDefult(creditCard.getValidYear()));
+        cvcField.appendText(removeDefult(creditCard.getVerificationCode()));
     }
+
+        private String removeDefult(int str){
+
+            if(str==0) {
+                return "";
+            }
+            return ""+str;
+        }
+
 
     private void fillcreditcard(){
         String c=creditCard.getCardNumber();
@@ -397,6 +427,33 @@ public class PaymentController extends FXMLController implements Initializable, 
             creditCard.setValidMonth(Integer.parseInt(validMonthField.getText()));
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
+        }
+        else {
+            customer.setFirstName("");
+            customer.setLastName("");
+            customer.setAddress("");
+            customer.setPostCode("");
+            customer.setPhoneNumber("");
+
+            //  creditCard.setCardNumber(creditCardNumberField.getText());
+            creditCard.setCardNumber("");
+            creditCard.setValidMonth(0);
+            creditCard.setValidYear(0);
+            creditCard.setVerificationCode(0);
+
+            firstNameField.clear();
+            lastNameField.clear();
+            addressField.clear();
+            postcodeField.clear();
+            phoneNumberField.clear();
+            c1.clear();
+            c2.clear();
+            c3.clear();
+            c4.clear();
+            validMonthField.clear();
+            validYearField.clear();
+            cvcField.clear();
+            saveUserInfoCheckBox.setSelected(true);
         }
     }
 
@@ -601,7 +658,7 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         b=isLength(c4,4,dispalyError)&&b;
 
-        if(!b && dispalyError){cardError.setVisible(true);}
+        if(c1.getStyleClass().contains("error")||c2.getStyleClass().contains("error")||c3.getStyleClass().contains("error")||c4.getStyleClass().contains("error")){cardError.setVisible(true);}
         else {cardError.setVisible(false);}
 
         b=isLength(cvcField,3,dispalyError)&&b;
