@@ -216,7 +216,7 @@ public class Model {
         List<Product> products = new ArrayList<>();
 
         for (Product product : IMatDataHandler.getInstance().getProducts()) {
-            if (product.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+            if (product.getName().toLowerCase().contains(searchTerm.trim().toLowerCase())) {
                 products.add(product);
             }
         }
