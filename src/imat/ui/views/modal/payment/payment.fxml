@@ -309,6 +309,8 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="creditCardNumberField" disable="true" layoutX="170.0" layoutY="307.0" promptText="kortnummer" styleClass="text-small-bold" visible="false" />
+                                          <Label fx:id="cardError" layoutX="200.0" layoutY="76.0" styleClass="text-small" text="* för kreditkort fyll i 4 siffror i varje fält" textFill="#e20000" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="72.0" />
+                                          <Label fx:id="cvcError" layoutX="200.0" layoutY="239.0" styleClass="text-small" text="* cvc koden är 3 siffror" textFill="#e20000" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="185.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane fx:id="customerInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">

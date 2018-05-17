@@ -112,6 +112,13 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private TextField c4;
 
+    @FXML
+    private Label cardError;
+
+    @FXML
+    private Label cvcError;
+
+
     private final IMatDataHandler iMatDataHandler;
 
     private final Customer customer;
@@ -594,8 +601,12 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         b=isLength(c4,4,dispalyError)&&b;
 
-        b=isLength(cvcField,3,dispalyError)&&b;
+        if(!b && dispalyError){cardError.setVisible(true);}
+        else {cardError.setVisible(false);}
 
+        b=isLength(cvcField,3,dispalyError)&&b;
+        if(cvcField.getStyleClass().contains("error")){cvcError.setVisible(true);}
+        else {cvcError.setVisible(false);}
 
         return b;
     }
