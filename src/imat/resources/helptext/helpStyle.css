@@ -1,5 +1,15 @@
+@font-face {
+    font-family: "Raleway-Regular";
+    src:url('../fonts/raleway/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Roboto";
+    src:url('../fonts/roboto/Roboto-Regular.ttf');
+}
+
 body {
-    font-family: "Roboto Lt",SansSerif;
+    font-family: "Raleway-Regular", SansSerif;
     -webkit-font-smoothing: antialiased;
     background-color: #f0f0f0;
     padding: 10px;
@@ -13,18 +23,16 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+a:hover{
     color: black;
 }
 
 h3 {
-    font-family: "Raleway Black",SansSerif;
     font-size: 18pt;
     font-weight: bold;
 }
 
 h1 {
-    font-family: "Raleway Black",SansSerif;
     font-size: 22pt;
 }
 
