@@ -424,17 +424,25 @@
 .menu-component {
     -fx-background-color: white;
     -fx-border-width: 1px;
-    -fx-border-color: #d7d7d7;
+    -fx-border-color: #afafaf;
     -fx-border-radius: 2px;
     -fx-background-radius: 2px;
 }
 
-.sidebar-bg {
+.sidebar-container {
     -fx-background-color: #e1e1e1;
     -fx-border-width: 1px;
     -fx-border-color: #b9b9b9;
-    -fx-border-radius: 2px;
-    -fx-background-radius: 2px;
+}
+
+.sidebar-container-borderless {
+    -fx-background-color: #e1e1e1;
+}
+
+.sidebar-container:focused {
+    -fx-border-width: 2px;
+    -fx-border-color: #00adff;
+    -fx-background-color: #e1e1e1;
 }
 
 .center-view-bg {
@@ -447,11 +455,6 @@
     -fx-border-color: #b9b9b9;
     -fx-border-radius: 2px;
     -fx-background-radius: 2px;
-}
-
-.menu-component-container:focused {
-    -fx-border-width: 2px;
-    -fx-border-color: #00adff;
 }
 
 .menu-component-container-borderless {
