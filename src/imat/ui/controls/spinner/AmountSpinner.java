@@ -53,6 +53,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         super();
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
         doubleFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            change.setText(change.getText().replace(",","."));
             return doublePattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
