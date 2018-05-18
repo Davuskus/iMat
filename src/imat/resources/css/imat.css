@@ -257,6 +257,11 @@
     -fx-background-color: #87ff4c;
 }
 
+.to-checkout-button-bg:focused {
+      -fx-border-width: 2px;
+        -fx-border-color: #00adff;
+}
+
 .to-checkout-button-bg:pressed {
     -fx-background-color: #69e143;
     -fx-border-width: 2px;
