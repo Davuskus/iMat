@@ -449,6 +449,11 @@
     -fx-background-radius: 2px;
 }
 
+.menu-component-container:focused {
+    -fx-border-width: 2px;
+    -fx-border-color: #00adff;
+}
+
 .menu-component-container-borderless {
     -fx-background-color: #e1e1e1;
     -fx-background-radius: 2px;
