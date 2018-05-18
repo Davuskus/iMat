@@ -11,7 +11,7 @@
    <children>
       <Button fx:id="button" mnemonicParsing="false" onAction="#onAction" stylesheets="@../../../../resources/css/imat.css" text="Beställning: 2018/05/18 - 15:36" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <graphic>
-            <ImageView fx:id="imageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageView" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../resources/images/icons/order/icon_order.png" />
                </image>
