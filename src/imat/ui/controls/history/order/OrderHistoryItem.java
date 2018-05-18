@@ -7,7 +7,6 @@ import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -29,7 +28,7 @@ public class OrderHistoryItem extends FXMLController {
     private final String dateFormat;
 
     public enum ColorScheme {
-        LIGHT, DARK
+        WHITE, GRAY
     }
 
     public OrderHistoryItem() {
@@ -87,21 +86,17 @@ public class OrderHistoryItem extends FXMLController {
     }
 
     public void setColorScheme(ColorScheme colorScheme) {
+        button.getStyleClass().clear();
         switch (colorScheme) {
-            case LIGHT:
-                button.getStyleClass().clear();
+            case WHITE:
                 button.getStyleClass().add("white-button");
-                button.getStyleClass().add("text-bold");
-                imageView.setImage(new Image("/imat/resources/images/icons/order/icon_order.png"));
                 break;
-            case DARK:
+            case GRAY:
             default:
-                button.getStyleClass().clear();
-                button.getStyleClass().add("dark-gray-button");
-                button.getStyleClass().add("text-bold");
-                imageView.setImage(new Image("/imat/resources/images/icons/order/icon_order_white.png"));
+                button.getStyleClass().add("gray-button");
                 break;
         }
+        button.getStyleClass().add("text-bold");
     }
 
 }

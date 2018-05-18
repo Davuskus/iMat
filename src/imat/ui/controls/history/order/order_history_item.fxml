@@ -12,13 +12,13 @@
          <graphic>
             <ImageView fx:id="imageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../resources/images/icons/order/icon_order_white.png" />
+                  <Image url="@../../../../resources/images/icons/order/icon_order.png" />
                </image>
             </ImageView>
          </graphic>
          <styleClass>
             <String fx:value="text-bold" />
-            <String fx:value="dark-gray-button" />
+            <String fx:value="gray-button" />
          </styleClass>
       </Button>
    </children>
