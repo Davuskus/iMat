@@ -66,7 +66,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     }
 
     private void updateSumLabel() {
-        sumLabel.setText(MathUtils.round(cartPrice, 2) + " kr");
+        sumLabel.setText(MathUtils.asPriceTag(cartPrice));
     }
 
     private void loadCart() {

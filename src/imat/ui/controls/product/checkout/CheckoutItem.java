@@ -78,7 +78,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     }
 
     private void updateTotal(double amount) {
-        total.setText(String.valueOf(MathUtils.round(amount * product.getPrice(), 2)) + " kr");
+        total.setText(MathUtils.asPriceTag(amount * product.getPrice()));
     }
 
 
@@ -92,7 +92,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
         model.addCheckoutItemRemoveEvent(removeEvent);
 
         productName.setText(product.getName());
-        price.setText(String.valueOf(MathUtils.round(product.getPrice(), 2)) + " " + product.getUnit());
+        price.setText(MathUtils.asPriceTag(product.getPrice(), product.getUnit()));
         updateTotal(model.getProductAmount(product));
 
         ecoLabel.setVisible(product.isEcological());

@@ -17,4 +17,12 @@ public final class MathUtils {
         return Double.valueOf(df.format(value).replace(',', '.'));
     }
 
+    public static String asPriceTag(double value) {
+        return asPriceTag(value, "kr");
+    }
+
+    public static String asPriceTag(double value, String unit) {
+        return String.format("%.2f "+unit, MathUtils.round(value, 2));
+    }
+
 }
