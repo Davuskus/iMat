@@ -67,7 +67,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     }
 
     private void updateOrderInfo(Order order) {
-        totalPriceLabel.setText(String.valueOf(getOrderPrice()));
+        totalPriceLabel.setText(String.valueOf(getOrderPrice()) + " kr");
         totalNumArticlesLabel.setText(String.valueOf(order.getItems().size()));
         dateLabel.setText(DateUtils.getFormattedDate(order.getDate(), "yyyy/MM/dd - HH:mm"));
     }
