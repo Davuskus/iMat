@@ -72,6 +72,8 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
             orderHistoryItem.setOrder(order);
             if (ordersVBox.getChildren().size() % 2 == 1) {
                 orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.LIGHT);
+            } else {
+                orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.DARK);
             }
             ordersVBox.getChildren().add(historyItem);
         }
