@@ -15,7 +15,7 @@
     <children>
         <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
-                <VBox alignment="TOP_CENTER" spacing="15.0">
+                <VBox alignment="TOP_CENTER" spacing="25.0">
                     <HBox alignment="CENTER">
                         <children>
                             <Label fx:id="welcomeLabel" styleClass="title-xlarge-dark-gray" text="Välkommen till" />
@@ -34,10 +34,13 @@
                             <Insets left="25.0" right="25.0" />
                         </VBox.margin>
                     </AnchorPane>
-               <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="title-pane">
+               <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0">
                   <children>
                             <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
                   </children>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
                </VBox>
                         <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
                   <VBox.margin>
