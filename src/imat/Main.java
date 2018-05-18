@@ -18,7 +18,6 @@ import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         loadFonts();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/imat.fxml"));

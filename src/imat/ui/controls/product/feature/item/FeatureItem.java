@@ -2,6 +2,7 @@ package imat.ui.controls.product.feature.item;
 
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
+import imat.utils.MathUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -51,7 +52,7 @@ public class FeatureItem extends FXMLController {
         this.product = product;
         nameLabel.setText(product.getName());
         imageView.setImage(new Image("/imat/resources/images/products/" + product.getImageName()));
-        priceLabel.setText(String.valueOf(product.getPrice()) + " " + product.getUnit());
+        priceLabel.setText(MathUtils.asPriceTag(product.getPrice(), product.getUnit()));
         if (!product.isEcological()) {
             infoVBox.getChildren().remove(ecoLabel);
         }

@@ -54,16 +54,14 @@ public class Checkout extends FXMLController implements IShoppingListener,INavig
 
 
     private void updateLabels(double totalPrice) {
-        totalPrice= MathUtils.round(totalPrice, 2);
-        String price = totalPrice + " kr";
-        PriceLabel.setText(price);
+        PriceLabel.setText(MathUtils.asPriceTag(totalPrice));
         int shippingCost=35;
         if(totalPrice==0){
             shippingCost=0;
         }
-        shippingCostLabel.setText(shippingCost+" kr");
+        shippingCostLabel.setText(MathUtils.asPriceTag(shippingCost));
         double tot = totalPrice + shippingCost;
-        totalCostLable.setText(tot + " kr");
+        totalCostLable.setText(MathUtils.asPriceTag(tot));
     }
 
     private void addItemNode(Product product) {
