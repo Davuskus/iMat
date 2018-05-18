@@ -16,6 +16,7 @@ public class Model {
 
     private Map<Product, Double> cart = new HashMap<>();
     private List<Category> categories;
+    private Category currentCategory;
 
     private final List<IShoppingListener> IShoppingListeners;
     private final List<ICategoryListener> categoryListeners;
@@ -203,7 +204,20 @@ public class Model {
     }*/
 
     public void selectCategory(Category category) {
+        currentCategory = category;
         categoryListeners.forEach(x -> x.onCategorySelected(category));
+    }
+
+    public Category getCurrentCategory() {
+        return currentCategory;
+    }
+
+    public void returnToCategoryRoot() {
+        if (currentCategory == null) {
+            navigate(NavigationTarget.HOME);
+        } else {
+            categoryListeners.forEach(x -> x.onCategorySelected(currentCategory));
+        }
     }
 
     public void selectOrder(Order order) {

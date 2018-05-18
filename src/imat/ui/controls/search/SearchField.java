@@ -22,6 +22,8 @@ public class SearchField extends FXMLController {
     private void makeSearch() {
         if (model == null) {
             System.out.println("No imat.model attached to search field!");
+        } else if (searchBox.getText().length() == 0) {
+            model.returnToCategoryRoot();
         } else {
             model.search(searchBox.getText());
             model.navigate(NavigationTarget.CATEGORY);
@@ -46,6 +48,8 @@ public class SearchField extends FXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            makeSearch();
+        });
     }
 }
