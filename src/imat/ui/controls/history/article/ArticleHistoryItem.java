@@ -2,6 +2,7 @@ package imat.ui.controls.history.article;
 
 import imat.model.FXMLController;
 import imat.model.Model;
+import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.utils.ImageUtils;
@@ -40,6 +41,12 @@ public class ArticleHistoryItem extends FXMLController implements Initializable 
     @FXML
     private VBox articleInfoVBox;
 
+    @FXML
+    private AnchorPane spinner;
+
+    @FXML
+    private AmountSpinner spinnerController;
+
     private ShoppingItem shoppingItem;
 
     @FXML
@@ -53,7 +60,10 @@ public class ArticleHistoryItem extends FXMLController implements Initializable 
 
     public void setShoppingItem(ShoppingItem shoppingItem) {
         this.shoppingItem = IMatUtils.cloneShoppingItem(shoppingItem);
+
         Product product = this.shoppingItem.getProduct();
+
+        spinnerController.setProduct(product);
 
         productImageView.setImage(ImageUtils.getSquareImage(new Image("/imat/resources/images/products/" + product.getImageName())));
 
@@ -76,5 +86,6 @@ public class ArticleHistoryItem extends FXMLController implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        spinnerController.setModel(model);
     }
 }

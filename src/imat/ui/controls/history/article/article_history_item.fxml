@@ -63,9 +63,10 @@
                   </HBox>
                </children>
             </VBox>
+            <fx:include fx:id="spinner" source="../../spinner/amount_spinner.fxml"/>
             <AnchorPane prefHeight="200.0" prefWidth="125.0">
                <children>
-                  <Button fx:id="addToCartButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" prefHeight="120.0" prefWidth="120.0" styleClass="white-button" text="Kopiera artikel till kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="addToCartButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copyToCartButtonOnAction" prefHeight="120.0" prefWidth="120.0" styleClass="white-button" text="Lägg till artikel i kundvagnen" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

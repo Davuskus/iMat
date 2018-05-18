@@ -60,7 +60,12 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         valueTextField.setTextFormatter(intFormatter);
         valueTextField.focusedProperty().addListener((observable, oldValue1, newValue) -> {
             if (oldValue1 && !newValue) {
-                submitTextFieldValue(Double.valueOf(valueTextField.getText()));
+                if (valueTextField.getText().equals("")) {
+                    submitTextFieldValue(0);
+                    valueTextField.setText("0");
+                } else {
+                    submitTextFieldValue(Double.valueOf(valueTextField.getText()));
+                }
             }
         });
         model.addShoppingListener(this);
