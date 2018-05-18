@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 
-<Button fx:id="button" maxWidth="1.7976931348623157E308" onAction="#onButtonClick" prefHeight="30.0" prefWidth="600.0" text="Produkt" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.category.CategoryButton">
-   <stylesheets>
-      <URL value="@../../../resources/css/serene-colors.css" />
-      <URL value="@../../../resources/css/imat.css" />
-   </stylesheets>
-   <styleClass>
-      <String fx:value="light-gray-button" />
-      <String fx:value="button-text-normal" />
-      <String fx:value="border-thin-round" />
-   </styleClass>
-</Button>
+<Button fx:id="button" maxWidth="1.7976931348623157E308" onAction="#onButtonClick" prefHeight="30.0" prefWidth="600.0" styleClass="white-button" stylesheets="@../../../resources/css/imat.css" text="Produkt" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.category.CategoryButton" />

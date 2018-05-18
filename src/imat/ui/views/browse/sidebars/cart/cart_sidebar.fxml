@@ -68,9 +68,9 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="sidebar-bg">
                      <content>
-                        <VBox fx:id="cartItemVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                        <VBox fx:id="cartItemVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="sidebar-bg">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding></VBox>
@@ -80,7 +80,7 @@
             </StackPane>
             <VBox fx:id="footerVBox" prefHeight="80.0" prefWidth="100.0">
                <children>
-                  <HBox fx:id="sumHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="border-thin">
+                  <HBox fx:id="sumHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="title-pane">
                      <children>
                         <Label fx:id="sumTitleLabel" styleClass="text-normal-bold" text="Summa: " />
                         <Label fx:id="sumLabel" styleClass="text-normal" text="- kr" />
@@ -107,8 +107,4 @@
          </children>
       </VBox>
    </children>
-   <styleClass>
-      <String fx:value="border-thin" />
-      <String fx:value="scene-default" />
-   </styleClass>
 </AnchorPane>
