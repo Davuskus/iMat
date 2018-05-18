@@ -13,13 +13,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
 
 public class HistoryArticlesPane extends FXMLController implements IOrderListener {
 
@@ -67,7 +65,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     }
 
     private void updateOrderInfo(Order order) {
-        totalPriceLabel.setText(String.valueOf(getOrderPrice()) + " kr");
+        totalPriceLabel.setText(MathUtils.asPriceTag(getOrderPrice()));
         totalNumArticlesLabel.setText(String.valueOf(order.getItems().size()) + " st");
         dateLabel.setText(DateUtils.getFormattedDate(order.getDate(), "yyyy/MM/dd - HH:mm"));
     }
