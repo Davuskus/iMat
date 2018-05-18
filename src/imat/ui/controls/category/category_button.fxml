@@ -10,7 +10,7 @@
       <URL value="@../../../resources/css/imat.css" />
    </stylesheets>
    <styleClass>
-      <String fx:value="white-button" />
+      <String fx:value="light-gray-button" />
       <String fx:value="button-text-normal" />
       <String fx:value="border-thin-round" />
    </styleClass>

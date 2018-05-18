@@ -65,11 +65,14 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
             removePotentialDuplicateProducts(order);
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
             orderHistoryItem.setModel(model);
+
             Node historyItem = FXMLLoader.loadFXMLNodeFromRootPackage(
                     "../../../../../controls/history/order/order_history_item.fxml",
                     this, orderHistoryItem);
             orderHistoryItem.setOrder(order);
-            orderHistoryItem.setOrderHistoryPane(this);
+            if (ordersVBox.getChildren().size() % 2 == 1) {
+                orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.LIGHT);
+            }
             ordersVBox.getChildren().add(historyItem);
         }
 

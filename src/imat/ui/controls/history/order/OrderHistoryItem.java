@@ -2,12 +2,13 @@ package imat.ui.controls.history.order;
 
 import imat.enums.NavigationTarget;
 import imat.model.FXMLController;
-import imat.ui.views.browse.centerviews.history.orders.OrderHistoryPane;
 import imat.utils.DateUtils;
 import imat.utils.IMatUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
@@ -18,16 +19,20 @@ import java.util.ResourceBundle;
 public class OrderHistoryItem extends FXMLController {
 
     @FXML
-    private Label dateLabel;
+    private Button button;
 
-    private OrderHistoryPane orderHistoryPane;
+    @FXML
+    private ImageView imageView;
 
     private Order order;
 
     private final String dateFormat;
 
+    public enum ColorScheme {
+        LIGHT, DARK
+    }
+
     public OrderHistoryItem() {
-        super();
         dateFormat = "yyyy/MM/dd - HH:mm";
     }
 
@@ -72,13 +77,31 @@ public class OrderHistoryItem extends FXMLController {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setOrderHistoryPane(OrderHistoryPane orderHistoryPane) {
-        this.orderHistoryPane = orderHistoryPane;
-    }
-
     public void setOrder(Order order) {
         this.order = order;
-        dateLabel.setText(DateUtils.getFormattedDate(order.getDate(), dateFormat));
+        updateDateText();
+    }
+
+    private void updateDateText() {
+        button.setText("Beställning: " + DateUtils.getFormattedDate(order.getDate(), dateFormat));
+    }
+
+    public void setColorScheme(ColorScheme colorScheme) {
+        switch (colorScheme) {
+            case LIGHT:
+                button.getStyleClass().clear();
+                button.getStyleClass().add("white-button");
+                button.getStyleClass().add("text-bold");
+                imageView.setImage(new Image("/imat/resources/images/icons/order/icon_order.png"));
+                break;
+            case DARK:
+            default:
+                button.getStyleClass().clear();
+                button.getStyleClass().add("dark-gray-button");
+                button.getStyleClass().add("text-bold");
+                imageView.setImage(new Image("/imat/resources/images/icons/order/icon_order_white.png"));
+                break;
+        }
     }
 
 }

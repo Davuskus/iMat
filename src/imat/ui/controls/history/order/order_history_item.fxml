@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onAction" onMouseClicked="#onAction" prefHeight="50.0" prefWidth="315.0" styleClass="white-button" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.order.OrderHistoryItem">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="50.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.history.order.OrderHistoryItem">
    <children>
-      <HBox alignment="CENTER_LEFT" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="button" mnemonicParsing="false" stylesheets="@../../../../resources/css/imat.css" text="Beställning: 2018/05/18 - 15:36" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fx:id="imageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../resources/images/icons/order/icon_order.png" />
+                  <Image url="@../../../../resources/images/icons/order/icon_order_white.png" />
                </image>
             </ImageView>
-            <Label fx:id="dateLabel" styleClass="text-large-dark-gray-bold" text="2018-05-15 - 15:43">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <graphic>
-                  <Label fx:id="orderTitleLabel" styleClass="text-large-dark-gray-bold" text="Beställning: " />
-               </graphic>
-            </Label>
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
+         </graphic>
+         <styleClass>
+            <String fx:value="text-bold" />
+            <String fx:value="dark-gray-button" />
+         </styleClass>
+      </Button>
    </children>
-   <cursor>
-      <Cursor fx:constant="HAND" />
-   </cursor>
 </AnchorPane>

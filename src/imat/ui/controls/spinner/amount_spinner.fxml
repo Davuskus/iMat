@@ -19,7 +19,7 @@
                             <Cursor fx:constant="HAND" />
                         </cursor>
                      <styleClass>
-                        <String fx:value="white-button" />
+                        <String fx:value="light-gray-button" />
                         <String fx:value="button-text-normal-bold" />
                      </styleClass>
                      <tooltip>
@@ -45,7 +45,7 @@
                             <Cursor fx:constant="HAND" />
                         </cursor>
                      <styleClass>
-                        <String fx:value="white-button" />
+                        <String fx:value="light-gray-button" />
                         <String fx:value="button-text-normal-bold" />
                      </styleClass>
                      <tooltip>
