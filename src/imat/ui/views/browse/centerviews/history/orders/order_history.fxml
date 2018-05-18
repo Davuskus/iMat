@@ -30,9 +30,9 @@
             </HBox>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                       <children>
-                          <ScrollPane fx:id="ordersScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <ScrollPane fx:id="ordersScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="menu-component-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <content>
-                                  <VBox fx:id="ordersVBox" prefHeight="200.0" prefWidth="200.0" spacing="5.0" styleClass="center-view-bg">
+                                  <VBox fx:id="ordersVBox" prefHeight="200.0" prefWidth="200.0" spacing="5.0" styleClass="menu-component-container-borderless">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding></VBox>

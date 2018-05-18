@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="scene-default" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.checkout.Checkout">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" styleClass="checkout-bg" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.checkout.Checkout">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -58,9 +58,9 @@
                   <Insets left="40.0" right="8.0" />
                </VBox.margin>
             </GridPane>
-            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="190.0" prefWidth="540.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="190.0" prefWidth="540.0" styleClass="menu-component-container" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox fx:id="VBoxflow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                  <VBox fx:id="VBoxflow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" styleClass="menu-component-container-borderless">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -102,7 +102,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" styleClass="button-text-normal" text="Tillbaka" GridPane.halignment="LEFT" />
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" styleClass="light-gray-button" text="Tillbaka" GridPane.halignment="LEFT" />
                         <Button fx:id="toPaymentButton" mnemonicParsing="false" onAction="#onPayButtonAction" text="Gå till betalning" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <styleClass>
                               <String fx:value="text-normal-bold" />
