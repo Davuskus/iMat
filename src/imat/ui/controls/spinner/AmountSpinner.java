@@ -3,16 +3,24 @@ package imat.ui.controls.spinner;
 import imat.interfaces.ICartTrashListener;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
+import imat.utils.ActionRepeater;
 import imat.utils.IMatUtils;
 import imat.utils.MathUtils;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -88,6 +96,8 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
             }
         });
 
+        addButton.armedProperty().addListener(new ActionRepeater(this::increaseAmount, 500, 5));
+        subtractButton.armedProperty().addListener(new ActionRepeater(this::decreaseAmount, 500, 5));
     }
 
     private void setDisableOnControls(boolean disable) {
@@ -111,13 +121,12 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         setAmount(model.getProductAmount(product));
     }
 
-    @FXML
-    private void addButtonOnAction(Event event) {
+
+    private void increaseAmount() {
         changeValue(isAcceptingDoubles ? 0.1 : 1);
     }
 
-    @FXML
-    private void subtractButtonOnAction(Event event) {
+    private void decreaseAmount() {
         changeValue(-(isAcceptingDoubles ? 0.1 : 1));
     }
 
