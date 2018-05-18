@@ -22,7 +22,7 @@ public final class MathUtils {
     }
 
     public static String asPriceTag(double value, String unit) {
-        return String.format("%.2f "+unit, MathUtils.round(value, 2));
+        return String.format("%.2f ", MathUtils.round(value, 2)).replace(",",".") + unit;
     }
 
 }
