@@ -327,8 +327,8 @@ public class PaymentController extends FXMLController implements Initializable, 
         });
         validYearField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-            if(validYearField.getText().trim().chars().count()>2){
-                String t=validYearField.getText().trim().substring(0,2);
+            if(validYearField.getText().trim().chars().count()>4){
+                String t=validYearField.getText().trim().substring(0,4);
                 validYearField.clear();
                 validYearField.appendText(t);
             }
@@ -621,7 +621,7 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     private void ClientInfoDone() {
-        if (clientInfoFildIn(false)) {
+        if (clientInfoFildIn(false||clientErrorLable.isVisible())) {
             clientErrorLable.setVisible(false);
             clientInfoDoneButton.setDisable(false);
         }
@@ -705,14 +705,16 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     private void CreditCardInfoDone() {
 
-        boolean creditcar=CreditCardInfoFildIn(false);
-        boolean complete= isComplete(false);
+        boolean creditcar=CreditCardInfoFildIn(false || creditCardErrorLable.isVisible());
+        boolean complete= isComplete(false|| creditCardErrorLable.isVisible());
 
         if (creditcar && complete) {
             creditCardErrorLable.setVisible(false);
             creditCardDoneButton.setDisable(false);
         }
     }
+
+
 
     @FXML
     private void clientToSummary() {
