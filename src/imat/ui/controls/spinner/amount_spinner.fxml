@@ -14,7 +14,7 @@
          <children>
             <AnchorPane minHeight="35.0" minWidth="35.0" nodeOrientation="RIGHT_TO_LEFT">
                <children>
-                    <Button fx:id="subtractButton" mnemonicParsing="false" onAction="#subtractButtonOnAction" text="-" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Button fx:id="subtractButton" mnemonicParsing="false" text="-" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
@@ -40,7 +40,7 @@
             </AnchorPane>
             <AnchorPane minHeight="35.0" minWidth="35.0">
                <children>
-                    <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonOnAction" text="+" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Button fx:id="addButton" mnemonicParsing="false" text="+" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
