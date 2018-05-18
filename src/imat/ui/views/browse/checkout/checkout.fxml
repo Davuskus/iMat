@@ -67,25 +67,25 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <VBox fx:id="conclusionVBox" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="115.0" prefWidth="120.0" VBox.vgrow="ALWAYS">
+            <VBox fx:id="conclusionVBox" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="115.0" prefWidth="120.0" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="50.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER">
                            <children>
                               <Label styleClass="button-text-normal-bold" text="Summa:  " />
                               <Label fx:id="PriceLabel" styleClass="text-normal" text="Pris" />
                            </children>
                         </HBox>
                         <Label styleClass="subtitle" text="+" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER">
                            <children>
                               <Label styleClass="text-normal-bold" text="Frakt:  " />
                               <Label fx:id="shippingCostLabel" styleClass="text-normal" text="frakt" />
                            </children>
                         </HBox>
                         <Label styleClass="subtitle" text="=" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER">
                            <children>
                               <Label styleClass="text-normal-bold" text="Att betala:  " />
                               <Label fx:id="totalCostLable" styleClass="text-normal" text="total" />
@@ -93,22 +93,30 @@
                         </HBox>
                      </children>
                   </HBox>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" styleClass="button-text-normal" text="Tillbaka" GridPane.halignment="LEFT" />
+                        <Button fx:id="toPaymentButton" mnemonicParsing="false" onAction="#onPayButtonAction" text="Gå till betalning" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                           <styleClass>
+                              <String fx:value="text-normal-bold" />
+                              <String fx:value="to-checkout-button-bg" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </GridPane>
                </children>
-               <padding>
-                  <Insets left="48.0" right="48.0" />
-               </padding>
             </VBox>
          </children>
          <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
       </VBox>
-      <Button fx:id="toPaymentButton" mnemonicParsing="false" onAction="#onPayButtonAction" text="Gå till betalning" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
-         <styleClass>
-            <String fx:value="text-normal-bold" />
-            <String fx:value="to-checkout-button-bg" />
-         </styleClass>
-      </Button>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" styleClass="button-text-normal" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" />
    </children>
 </AnchorPane>
