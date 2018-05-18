@@ -118,6 +118,12 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private Label cvcError;
 
+    @FXML
+    private Button PayButton;
+
+    @FXML
+    private  Button summaryBackButton;
+
 
     private final IMatDataHandler iMatDataHandler;
 
@@ -133,6 +139,16 @@ public class PaymentController extends FXMLController implements Initializable, 
         creditCard = iMatDataHandler.getCreditCard();
     }
 
+    private boolean hasClientFocus(){
+        return firstNameField.isFocused()||lastNameField.isFocused()||addressField.isFocused()||phoneNumberField.isFocused()||postcodeField.isFocused();
+    }
+    private boolean hasCreditCardFocus(){
+        return c1.isFocused()||c2.isFocused()||c3.isFocused()||c4.isFocused()||validYearField.isFocused()||validMonthField.isFocused()||cvcField.isFocused()|| creditCardDoneButton.isFocused();
+    }
+    private boolean hasSummeryFocus(){
+        return PayButton.isFocused()||summaryBackButton.isFocused()||changeClientInfoButton.isFocused()||changeCreditCardInfoButton.isFocused()||saveUserInfoCheckBox.isFocused();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fillUserData();
@@ -145,6 +161,35 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         model.addNavigationListener(this);
 
+
+        clientInfoDoneButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+               if(oldValue.booleanValue()&& !newValue.booleanValue()&&!(hasClientFocus())){
+                  firstNameField.requestFocus();
+               }
+            }
+        });
+
+        summaryBackButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(oldValue.booleanValue()&& !newValue.booleanValue()&&!(hasSummeryFocus())){
+                    changeClientInfoButton.requestFocus();
+                }
+            }
+        });
+        creditCardBackButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(oldValue.booleanValue()&& !newValue.booleanValue()&&!(hasCreditCardFocus())){
+                    c1.requestFocus();
+                }
+            }
+        });
 
       /*  creditCardNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
