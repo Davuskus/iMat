@@ -26,7 +26,7 @@ public class ActionRepeater implements ChangeListener<Boolean> {
         loopTimeline = new Timeline(new KeyFrame(Duration.millis(delay), actionEvent-> {
             try {
                 action.run();
-                rate = (targetSpeedMultiplier * 0.55 + rate * 0.45);
+                rate = (targetSpeedMultiplier * 0.05 + rate * 0.95);
                 loopTimeline.setRate(rate);
             } catch (Exception e) {
                 e.printStackTrace();
