@@ -237,6 +237,8 @@
     -fx-border-color: #999999;
     -fx-border-radius: 3px;
     -fx-background-radius: 3px;
+    -fx-font-family: "roboto";
+    -fx-font-size: 16px;
 }
 
 .action-button:hover {
@@ -407,4 +409,14 @@
 
 .text-bold {
     -fx-font-weight: bold;
+}
+
+.header {
+    -fx-background-color: white;
+    -fx-border-color: #d7d7d7;
+}
+
+.title-pane {
+    -fx-background-color: white;
+    -fx-border-color: #d7d7d7;
 }

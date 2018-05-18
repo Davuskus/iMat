@@ -13,7 +13,7 @@
 
 <AnchorPane stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.home.Home">
     <children>
-        <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
                 <VBox alignment="TOP_CENTER" spacing="15.0">
                     <HBox alignment="CENTER">
@@ -34,11 +34,11 @@
                             <Insets left="25.0" right="25.0" />
                         </VBox.margin>
                     </AnchorPane>
-                      <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title">
-                  <VBox.margin>
-                     <Insets top="25.0" />
-                  </VBox.margin>
-               </Label>
+               <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="title-pane">
+                  <children>
+                            <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
+                  </children>
+               </VBox>
                         <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
                   <VBox.margin>
                      <Insets bottom="25.0" left="25.0" right="25.0" />

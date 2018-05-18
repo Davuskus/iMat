@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<javafx.scene.layout.AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="52.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.header.Header">
+<javafx.scene.layout.AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="52.0" styleClass="header" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.header.Header">
     <children>
         <GridPane alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -43,11 +42,6 @@
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" top="10.0" />
                      </HBox.margin>
-                     <styleClass>
-                        <String fx:value="border-thin-round" />
-                        <String fx:value="ReseneWhite-background" />
-                        <String fx:value="text-large" />
-                     </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -57,16 +51,15 @@
                               <Image url="@../../../resources/images/icons/help/icon_help.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="text-large" />
+                        <String fx:value="light-gray-button" />
+                     </styleClass></Button>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#onHistoryButtonAction" text="Historik" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </HBox.margin>
-                     <styleClass>
-                        <String fx:value="border-thin-round" />
-                        <String fx:value="ReseneWhite-background" />
-                        <String fx:value="text-large" />
-                     </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -76,7 +69,11 @@
                               <Image url="@../../../resources/images/icons/order_history/icon_order_history.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="text-large" />
+                        <String fx:value="light-gray-button" />
+                     </styleClass></Button>
                </children>
             </HBox>
                 <AnchorPane fx:id="searchFieldPane" minWidth="0.0" GridPane.columnIndex="1">
@@ -85,12 +82,4 @@
             </children>
         </GridPane>
     </children>
-   <stylesheets>
-      <URL value="@../../../resources/css/imat.css" />
-      <URL value="@../../../resources/css/serene-colors.css" />
-   </stylesheets>
-   <styleClass>
-      <String fx:value="ReseneWhite-background" />
-      <String fx:value="border-thin" />
-   </styleClass>
 </javafx.scene.layout.AnchorPane>
