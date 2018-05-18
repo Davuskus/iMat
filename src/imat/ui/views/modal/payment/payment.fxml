@@ -19,14 +19,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" onMousePressed="#moveBack" prefHeight="450.0" prefWidth="700.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.payment.PaymentController">
+<AnchorPane fx:id="rootPane" onMousePressed="#moveBack" prefHeight="450.0" prefWidth="750.0" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.modal.payment.PaymentController">
    <children>
       <VBox alignment="CENTER" fillWidth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <StackPane>
                <children>
                   <fx:include fx:id="confirmationPane" source="confirmation/confirmation.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
-                  <SplitPane fx:id="splitPane" dividerPositions="0.25" focusTraversable="false" prefHeight="450.0" prefWidth="700.0">
+                  <SplitPane fx:id="splitPane" dividerPositions="0.25" focusTraversable="false" prefHeight="450.0" prefWidth="750.0">
                     <items>
                       <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="150.0" SplitPane.resizableWithParent="false">
                            <children>
@@ -217,7 +217,7 @@
                                     </AnchorPane>
                                     <AnchorPane fx:id="creditCardInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                                        <children>
-                                          <VBox layoutX="457.0" layoutY="90.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="73.0" spacing="5.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="90.0">
+                                          <VBox layoutX="457.0" layoutY="90.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="73.0" spacing="25.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="110.0">
                                              <children>
                                                 <ImageView fitHeight="44.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -236,34 +236,49 @@
                                                 </ImageView>
                                              </children>
                                           </VBox>
-                                          <VBox fillWidth="false" layoutX="126.0" layoutY="132.0" spacing="27.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
+                                          <VBox fillWidth="false" layoutX="126.0" layoutY="132.0" spacing="27.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="80.0">
                                              <children>
-                                                <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="239.0">
+                                                <VBox>
                                                    <children>
-                                                      <TextField fx:id="c1" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
-                                                      <Label styleClass="title-normal" text="-" />
-                                                      <TextField fx:id="c2" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
-                                                      <Label styleClass="title-normal" text="-" />
-                                                      <TextField fx:id="c3" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
-                                                      <Label styleClass="title-normal" text="-" />
-                                                      <TextField fx:id="c4" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
+                                                      <Label fx:id="cardError" styleClass="text-small" text="* för kreditkort fyll i 4 siffror i varje fält" textFill="#e20000" visible="false" />
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="239.0">
+                                                         <children>
+                                                            <TextField fx:id="c1" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
+                                                            <Label styleClass="title-normal" text="-" />
+                                                            <TextField fx:id="c2" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
+                                                            <Label styleClass="title-normal" text="-" />
+                                                            <TextField fx:id="c3" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
+                                                            <Label styleClass="title-normal" text="-" />
+                                                            <TextField fx:id="c4" prefHeight="26.0" prefWidth="54.0" promptText="xxxx" styleClass="text-small-bold" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
-                                                </HBox>
-                                                <HBox spacing="4.0">
+                                                </VBox>
+                                                <VBox>
                                                    <children>
-                                                      <TextField fx:id="validMonthField" prefHeight="26.0" prefWidth="48.0" promptText="Mån" styleClass="text-small-bold" />
-                                                      <Label styleClass="title-normal" text="/" />
-                                                      <TextField fx:id="validYearField" prefHeight="26.0" prefWidth="48.0" promptText="År" styleClass="text-small-bold" />
+                                                      <Label visible="false" />
+                                                      <HBox spacing="4.0">
+                                                         <children>
+                                                            <TextField fx:id="validMonthField" prefHeight="26.0" prefWidth="48.0" promptText="Mån" styleClass="text-small-bold" />
+                                                            <Label styleClass="title-normal" text="/" />
+                                                            <TextField fx:id="validYearField" prefHeight="30.0" prefWidth="52.0" promptText="År" styleClass="text-small-bold" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
-                                                </HBox>
-                                                <TextField fx:id="cvcField" prefHeight="26.0" prefWidth="48.0" promptText="cvc" styleClass="text-small-bold">
-                                                   <tooltip>
-                                                      <Tooltip text="CVC kåden hittar du på backsidan av kortet" />
-                                                   </tooltip>
-                                                </TextField>
+                                                </VBox>
+                                                <VBox fillWidth="false">
+                                                   <children>
+                                                      <Label fx:id="cvcError" styleClass="text-small" text="* cvc koden är 3 siffror" textFill="#e20000" visible="false" />
+                                                      <TextField fx:id="cvcField" prefHeight="26.0" prefWidth="48.0" promptText="cvc" styleClass="text-small-bold">
+                                                         <tooltip>
+                                                            <Tooltip text="CVC kåden hittar du på backsidan av kortet" />
+                                                         </tooltip>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
                                              </children>
                                           </VBox>
-                                          <VBox alignment="TOP_RIGHT" layoutX="36.0" layoutY="88.0" prefHeight="158.0" prefWidth="135.0" spacing="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
+                                          <VBox alignment="TOP_RIGHT" layoutX="36.0" layoutY="88.0" prefHeight="158.0" prefWidth="135.0" spacing="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0">
                                              <children>
                                                 <Label styleClass="text-large" text="Kortnummer:">
                                                    <tooltip>
@@ -309,8 +324,6 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="creditCardNumberField" disable="true" layoutX="170.0" layoutY="307.0" promptText="kortnummer" styleClass="text-small-bold" visible="false" />
-                                          <Label fx:id="cardError" layoutX="200.0" layoutY="76.0" styleClass="text-small" text="* för kreditkort fyll i 4 siffror i varje fält" textFill="#e20000" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="72.0" />
-                                          <Label fx:id="cvcError" layoutX="200.0" layoutY="239.0" styleClass="text-small" text="* cvc koden är 3 siffror" textFill="#e20000" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="185.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane fx:id="customerInfoPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
@@ -320,7 +333,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="135.0" spacing="29.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="90.0">
+                                          <VBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="78.0" prefHeight="284.0" prefWidth="135.0" spacing="29.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0">
                                              <children>
                                                 <Label styleClass="text-large" text="Förnamn:" />
                                                 <Label styleClass="text-large" text="Efternamn:" />
@@ -329,7 +342,7 @@
                                                 <Label styleClass="text-large" text="Telefonnummer:" />
                                              </children>
                                           </VBox>
-                                          <VBox fillWidth="false" layoutX="160.0" layoutY="70.0" prefHeight="218.0" prefWidth="194.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0">
+                                          <VBox fillWidth="false" layoutX="160.0" layoutY="70.0" prefHeight="218.0" prefWidth="194.0" spacing="22.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="100.0">
                                              <children>
                                                 <TextField fx:id="firstNameField" promptText="Förnamn" styleClass="text-small-bold" />
                                                 <TextField fx:id="lastNameField" promptText="Efternamn" styleClass="text-small-bold" />
