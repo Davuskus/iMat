@@ -1,9 +1,7 @@
 package imat.ui.controls.history.article;
 
 import imat.model.FXMLController;
-import imat.model.Model;
 import imat.ui.controls.spinner.AmountSpinner;
-import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
 import imat.utils.ImageUtils;
 import imat.utils.MathUtils;
@@ -73,7 +71,7 @@ public class ArticleHistoryItem extends FXMLController implements Initializable 
             articleInfoVBox.getChildren().remove(ecoLabel);
         }
 
-        priceLabel.setText(String.valueOf(Math.round(this.shoppingItem.getTotal())) + " kr");
+        priceLabel.setText(MathUtils.asPriceTag(this.shoppingItem.getTotal()));
 
         boolean suffixIsKg = shoppingItem.getProduct().getUnitSuffix().equals("kg");
         boolean suffixIsL = shoppingItem.getProduct().getUnitSuffix().equals("l");

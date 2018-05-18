@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="paneVBox" spacing="5.0" styleClass="background-fxDefault" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.subcategoryPane.SubcategoryController">
+<VBox id="center-view-bg" fx:id="paneVBox" spacing="5.0" styleClass="menu-component-container" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.subcategoryPane.SubcategoryController">
     <children>
-        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
+        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-pane">
             <children>
                 <Label fx:id="subcategoryLabel" alignment="CENTER" layoutY="6.0" styleClass="title-xlarge-dark-gray" text="Kategori" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>

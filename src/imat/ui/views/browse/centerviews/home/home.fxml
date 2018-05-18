@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -13,9 +12,9 @@
 
 <AnchorPane stylesheets="@../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.home.Home">
     <children>
-        <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ScrollPane fitToWidth="true" styleClass="center-view-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
-                <VBox alignment="TOP_CENTER" spacing="25.0">
+                <VBox alignment="TOP_CENTER" spacing="50.0" styleClass="center-view-bg">
                     <HBox alignment="CENTER">
                         <children>
                             <Label fx:id="welcomeLabel" styleClass="title-xlarge-dark-gray" text="Välkommen till" />
@@ -25,37 +24,37 @@
                                 </image>
                             </ImageView>
                         </children>
+                  <padding>
+                     <Insets top="25.0" />
+                  </padding>
                     </HBox>
                     <AnchorPane>
                         <children>
                             <fx:include fx:id="feature" source="../../../../controls/product/feature/feature.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </children>
                         <VBox.margin>
-                            <Insets left="25.0" right="25.0" />
+                            <Insets left="15.0" right="15.0" />
                         </VBox.margin>
                     </AnchorPane>
-               <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0">
+               <VBox alignment="TOP_CENTER" spacing="10.0" styleClass="menu-component-container" VBox.vgrow="ALWAYS">
                   <children>
-                            <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
+                     <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-pane">
+                        <children>
+                                  <Label fx:id="productsTitle" styleClass="title-large-dark-gray" text="Products title" />
+                        </children>
+                     </VBox>
+                              <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </FlowPane>
                   </children>
                   <VBox.margin>
-                     <Insets />
+                     <Insets bottom="15.0" left="15.0" right="15.0" />
                   </VBox.margin>
                </VBox>
-                        <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
-                  <VBox.margin>
-                     <Insets bottom="25.0" left="25.0" right="25.0" />
-                  </VBox.margin>
-               </FlowPane>
-                    <padding>
-                        <Insets top="25.0" />
-                    </padding>
                 </VBox>
             </content>
         </ScrollPane>
     </children>
-    <styleClass>
-        <String fx:value="scene-default" />
-        <String fx:value="border-thin" />
-    </styleClass>
 </AnchorPane>
