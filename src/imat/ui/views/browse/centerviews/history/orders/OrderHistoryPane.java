@@ -6,7 +6,6 @@ import imat.interfaces.IOrderHistoryRequestListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
-import imat.utils.IMatUtils;
 import imat.utils.ListUtils;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -72,21 +71,23 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
 
     private void addOrdersToFlowPane() {
         for (Order order : ListUtils.getReversedList(IMatDataHandler.getInstance().getOrders())) {
-            removePotentialDuplicateProducts(order);
-            orders.add(order);
-            OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
-            orderHistoryItem.setModel(model);
+            if (!orders.contains(order)) {
+                orders.add(order);
+                removePotentialDuplicateProducts(order);
+                OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
+                orderHistoryItem.setModel(model);
 
-            Node historyItem = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "../../../../../controls/history/order/order_history_item.fxml",
-                    this, orderHistoryItem);
-            orderHistoryItem.setOrder(order);
-            if (ordersVBox.getChildren().size() % 2 == 1) {
-                orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.WHITE);
-            } else {
-                orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.GRAY);
+                Node historyItem = FXMLLoader.loadFXMLNodeFromRootPackage(
+                        "../../../../../controls/history/order/order_history_item.fxml",
+                        this, orderHistoryItem);
+                orderHistoryItem.setOrder(order);
+                if (ordersVBox.getChildren().size() % 2 == 1) {
+                    orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.WHITE);
+                } else {
+                    orderHistoryItem.setColorScheme(OrderHistoryItem.ColorScheme.GRAY);
+                }
+                ordersVBox.getChildren().add(historyItem);
             }
-            ordersVBox.getChildren().add(historyItem);
         }
 
     }
@@ -122,7 +123,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     public Order onNewerOrderRequest(Order sourceOrder) {
 
         if (orders.indexOf(sourceOrder) > 0) {
-            int index = 0;
+            int index = -1;
             for (Order order : orders) {
                 if (order.equals(sourceOrder)) {
                     return orders.get(index);
