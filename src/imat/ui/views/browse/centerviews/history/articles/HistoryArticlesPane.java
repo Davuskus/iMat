@@ -94,4 +94,15 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         }
     }
 
+    @FXML
+    private void showOlderOrderButtonOnAction(Event event) {
+
+    }
+
+
+    @FXML
+    private void showNewerOrderButtonOnAction(Event event) {
+
+    }
+
 }

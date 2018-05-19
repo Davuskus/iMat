@@ -9,7 +9,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="400.0" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.history.articles.HistoryArticlesPane">
@@ -33,13 +36,29 @@
                <children>
                   <AnchorPane prefHeight="40.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="27.0" prefWidth="197.0" styleClass="gray-button" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="27.0" prefWidth="197.0" styleClass="gray-button" text="Tillbaka till köphistorik" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
                      </children>
                   </AnchorPane>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" percentWidth="50.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" percentWidth="50.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#showOlderOrderButtonOnAction" prefHeight="25.0" styleClass="white-button" text="Visa äldre beställning" />
+                        <Button mnemonicParsing="false" onAction="#showNewerOrderButtonOnAction" styleClass="white-button" text="Visa nyare beställning" GridPane.columnIndex="1" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="10.0" />
+                     </VBox.margin>
+                  </GridPane>
                   <Separator prefWidth="200.0">
                      <VBox.margin>
                         <Insets top="5.0" />
@@ -80,7 +99,7 @@
                            <children>
                               <AnchorPane prefHeight="40.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" prefHeight="40.0" styleClass="action-button" text="Kopiera order till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" prefHeight="40.0" styleClass="action-button" text="Kopiera beställning till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
