@@ -9,6 +9,7 @@ import imat.ui.views.browse.centerviews.products.subcategoryPane.SubcategoryCont
 import imat.utils.FXMLLoader;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -62,6 +63,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         if (category == currentCategory) return;
         currentCategory = category;
         productsFlowPane.getChildren().clear();
+        productsFlowPane.setPadding(new Insets(20, 10, 20, 10));
+        productsFlowPane.setVgap(40);
         categoryLabel.setText(category.getName());
         populateWithCategorizedProducts(category, onlyEcologicalProducts);
     }
@@ -78,6 +81,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         }
         categoryLabel.setText(categoryText);
         productsFlowPane.getChildren().clear();
+        productsFlowPane.setPadding(new Insets(10, 10, 10, 10));
+        productsFlowPane.setVgap(10);
         populateWithProducts(products, onlyEcologicalProducts);
 
 //        Category searchResultCategory = model.searchForCategory(searchTerm);
