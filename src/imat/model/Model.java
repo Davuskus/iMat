@@ -291,6 +291,17 @@ public class Model {
         return IMatDataHandler.getInstance().getProducts();
     }
 
+    public Category searchForCategory(String searchTerm) {
+        Category category = null;
+        for (Category c : categories) {
+            if (c.getName().toLowerCase().contains(searchTerm.trim().toLowerCase())) {
+                category = c;
+                break;
+            }
+        }
+        return category;
+    }
+
     public void notifyShutdownListeners() {
         shutdownListeners.forEach(IShutdownListener::onShutdown);
     }

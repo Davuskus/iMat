@@ -38,4 +38,13 @@ public class CategoryButton extends FXMLController {
     public void initialize(URL location, ResourceBundle resources) {
         button.setText(category.getName());
     }
+
+    public void setSelected(boolean selected) {
+        // TODO Make the selection visible somehow
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
 }

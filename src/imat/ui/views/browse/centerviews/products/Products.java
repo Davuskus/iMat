@@ -68,6 +68,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     @Override
     public void onSearch(String searchTerm, List<Product> products) {
+
         currentCategory = null;
         String categoryText;
         if (products.size() == 0) {
@@ -78,6 +79,22 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         categoryLabel.setText(categoryText);
         productsFlowPane.getChildren().clear();
         populateWithProducts(products, onlyEcologicalProducts);
+
+//        Category searchResultCategory = model.searchForCategory(searchTerm);
+//        if (searchResultCategory == null) {
+//            currentCategory = null;
+//            String categoryText;
+//            if (products.size() == 0) {
+//                categoryText = "Din sökning på \"" + searchTerm + "\" gav inga träffar";
+//            } else {
+//                categoryText = "Sökresultat för: \"" + searchTerm + "\"";
+//            }
+//            categoryLabel.setText(categoryText);
+//            productsFlowPane.getChildren().clear();
+//            populateWithProducts(products, onlyEcologicalProducts);
+//        } else {
+//            onCategorySelected(searchResultCategory);
+//        }
     }
 
     private void populateWithProducts(List<Product> products, boolean onlyEcologicalProducts) {
