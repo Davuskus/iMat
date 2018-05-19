@@ -232,7 +232,7 @@
 }
 
 .action-button {
-    -fx-background-color: #7af04c;
+    -fx-background-color: rgba(122, 240, 76, 0.7);
     -fx-border-width: 1px;
     -fx-border-color: #999999;
     -fx-border-radius: 3px;
@@ -242,11 +242,11 @@
 }
 
 .action-button:hover {
-    -fx-background-color: #87ff4c;
+    -fx-background-color: rgba(132, 255, 80, 0.7);
 }
 
 .action-button:pressed {
-    -fx-background-color: #69e143;
+    -fx-background-color: rgba(114, 225, 76, 0.7);
     -fx-border-width: 1px;
     -fx-border-color: #00adff;
 }
@@ -430,13 +430,13 @@
 }
 
 .sidebar-container {
-    -fx-background-color: #e1e1e1;
+    -fx-background-color: rgba(122, 240, 76, 0.16);
     -fx-border-width: 1px;
-    -fx-border-color: #b9b9b9;
+    -fx-border-color: rgb(99, 207, 81);
 }
 
 .sidebar-container-borderless {
-    -fx-background-color: #e1e1e1;
+    -fx-background-color: rgba(122, 240, 76, 0.16);
 }
 
 .sidebar-container:focused {

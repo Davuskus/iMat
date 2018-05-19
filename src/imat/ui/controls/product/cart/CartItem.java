@@ -188,7 +188,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     public void removeButtonMouseExited() {
-        removeVBox.setStyle("-fx-background-color: rgba(255,0,0,0)");
+        // removeVBox.setStyle("-fx-background-color: rgba(255,0,0,0)");
         removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close.png"));
     }
 

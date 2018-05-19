@@ -18,6 +18,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -52,6 +53,9 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     @FXML
     private Button regretButton;
 
+    @FXML
+    private StackPane stackPane;
+
     private final Map<Product, Node> productsInSidebar = new HashMap<>();
 
     private double cartPrice;
@@ -68,6 +72,7 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
         updateSumLabel();
         loadCart();
         disableCheckoutButtonIfPriceIsZero();
+        switchView(scrollPane);
     }
 
     private void updateSumLabel() {
@@ -195,6 +200,12 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
     }
 
     private void switchView(Node node) {
+        stackPane.getChildren().forEach(child -> {
+            child.setDisable(true);
+            child.setVisible(false);
+        });
+        node.setDisable(false);
+        node.setVisible(true);
         node.toFront();
     }
 
