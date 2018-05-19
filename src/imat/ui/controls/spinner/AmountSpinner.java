@@ -47,8 +47,6 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     private Product product;
     private boolean isAcceptingDoubles;
 
-    private boolean cartIsTrashing;
-
     public AmountSpinner() {
         super();
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
@@ -82,7 +80,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         model.addCartTrashListener(new ICartTrashListener() {
             @Override
             public void onCartTrashStarted() {
-                setDisableOnControls(true && model.getProductsInCart().contains(product));
+                setDisableOnControls(true);
             }
 
             @Override
