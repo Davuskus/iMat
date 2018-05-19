@@ -6,6 +6,7 @@ import imat.interfaces.IOrderHistoryRequestListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
+import imat.utils.IMatUtils;
 import imat.utils.ListUtils;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -23,7 +24,13 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     @FXML
     private VBox ordersVBox;
 
+    private final List<Order> orders;
+
     private int numOrders;
+
+    public OrderHistoryPane() {
+        orders = new ArrayList<>(1);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,6 +40,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
 
     private void updateOrderList() {
         if (numOrdersChanged()) {
+            orders.clear();
             numOrders = IMatDataHandler.getInstance().getOrders().size();
             ordersVBox.getChildren().clear();
             addOrdersToFlowPane();
@@ -65,6 +73,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     private void addOrdersToFlowPane() {
         for (Order order : ListUtils.getReversedList(IMatDataHandler.getInstance().getOrders())) {
             removePotentialDuplicateProducts(order);
+            orders.add(order);
             OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
             orderHistoryItem.setModel(model);
 
@@ -96,11 +105,32 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     @Override
     public Order onOlderOrderRequest(Order sourceOrder) {
 
+        if (orders.indexOf(sourceOrder) < orders.size() - 1) {
+            int index = 0;
+            for (Order order : orders) {
+                index++;
+                if (order.equals(sourceOrder)) {
+                    return IMatUtils.cloneOrder(orders.get(index));
+                }
+            }
+        }
+
         return null;
     }
 
     @Override
     public Order onNewerOrderRequest(Order sourceOrder) {
+
+        if (orders.indexOf(sourceOrder) > 0) {
+            int index = 0;
+            for (Order order : orders) {
+                if (order.equals(sourceOrder)) {
+                    return IMatUtils.cloneOrder(orders.get(index));
+                }
+                index++;
+            }
+        }
+
         return null;
     }
 
