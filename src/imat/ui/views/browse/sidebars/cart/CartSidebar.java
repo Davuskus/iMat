@@ -15,6 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
@@ -37,6 +39,9 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     @FXML
     private Button trashButton;
+
+    @FXML
+    private ImageView trashButtonImageView;
 
     @FXML
     private AnchorPane regretPane;
@@ -191,6 +196,21 @@ public class CartSidebar extends FXMLController implements IShoppingListener {
 
     private void switchView(Node node) {
         node.toFront();
+    }
+
+    @FXML
+    public void trashButtonMouseEntered() {
+        trashButtonImageView.setImage(new Image("/imat/resources/images/icons/trash/icon_trash_can_hover.png"));
+    }
+
+    @FXML
+    public void trashButtonMousePressed() {
+        trashButtonImageView.setImage(new Image("/imat/resources/images/icons/trash/icon_trash_can_pressed.png"));
+    }
+
+    @FXML
+    public void trashButtonMouseExited() {
+        trashButtonImageView.setImage(new Image("/imat/resources/images/icons/trash/icon_trash_can.png"));
     }
 
 }

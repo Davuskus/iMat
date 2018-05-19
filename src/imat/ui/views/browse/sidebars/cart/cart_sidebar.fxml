@@ -30,9 +30,9 @@
                         <Label fx:id="cartTitleLabel" styleClass="title-large-dark-gray" text="Kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="trashButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#trashButtonOnAction" prefHeight="30.0" prefWidth="30.0" styleClass="see-through-bg">
+                  <Button fx:id="trashButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#trashButtonOnAction" onMouseEntered="#trashButtonMouseEntered" onMouseExited="#trashButtonMouseExited" onMousePressed="#trashButtonMousePressed" prefHeight="30.0" prefWidth="30.0" styleClass="see-through-bg">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="trashButtonImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../resources/images/icons/trash/icon_trash_can.png" />
                            </image>
