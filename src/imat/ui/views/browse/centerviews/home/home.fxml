@@ -36,7 +36,7 @@
                             <Insets left="15.0" right="15.0" />
                         </VBox.margin>
                     </AnchorPane>
-               <VBox alignment="TOP_CENTER" spacing="10.0" styleClass="menu-component-container" VBox.vgrow="ALWAYS">
+               <VBox alignment="TOP_CENTER" styleClass="menu-component-container" VBox.vgrow="ALWAYS">
                   <children>
                      <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-pane">
                         <children>
@@ -45,7 +45,7 @@
                      </VBox>
                               <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" hgap="5.0" prefHeight="200.0" prefWidth="200.0" vgap="5.0">
                         <VBox.margin>
-                           <Insets />
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </VBox.margin>
                      </FlowPane>
                   </children>
