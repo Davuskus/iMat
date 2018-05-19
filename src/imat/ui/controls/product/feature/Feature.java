@@ -45,6 +45,7 @@ public class Feature extends FXMLController implements IShutdownListener {
     public void initialize(URL location, ResourceBundle resources) {
         model.addShutdownListener(this);
         setRandomProductsToFeature(numProducts);
+        switchFeature(0);
     }
 
     private ScheduledThreadPoolExecutor scheduledThreadExecutor;
@@ -62,10 +63,21 @@ public class Feature extends FXMLController implements IShutdownListener {
                     if (++currentProductIndex >= numProducts) {
                         currentProductIndex = 0;
                     }
-                    productStackPane.getChildren().get(currentProductIndex).toFront();
+                    switchFeature(currentProductIndex);
                 });
             }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
         }
+    }
+
+    private void switchFeature(int featureIndex) {
+        productStackPane.getChildren().forEach(child -> {
+            child.setDisable(true);
+            child.setVisible(false);
+        });
+        Node featureItem = productStackPane.getChildren().get(featureIndex);
+        featureItem.setDisable(false);
+        featureItem.setVisible(true);
+        featureItem.toFront();
     }
 
     private void setRandomProductsToFeature(int numProducts) {
