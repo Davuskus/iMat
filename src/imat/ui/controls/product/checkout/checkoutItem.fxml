@@ -19,7 +19,7 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="50.0" prefWidth="700.0" styleClass="menu-component" stylesheets="@../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.product.checkout.CheckoutItem">
     <children>
-        <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane fx:id="regretPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regret-button-bg">
                <children>

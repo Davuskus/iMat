@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -27,6 +28,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private AnchorPane rootPane;
+
+    @FXML
+    private StackPane stackPane;
 
     @FXML
     private AnchorPane regretPane;
@@ -97,6 +101,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
         model.addShoppingListener(this);
         model.addCartItemRemoveEvent(removeEvent);
+        switchView(itemHBox);
     }
 
     @FXML
@@ -113,6 +118,12 @@ public class CartItem extends FXMLController implements IShoppingListener {
     }
 
     private void switchView(Node view) {
+        stackPane.getChildren().forEach(child -> {
+            child.setDisable(true);
+            child.setVisible(false);
+        });
+        view.setDisable(false);
+        view.setVisible(true);
         view.toFront();
     }
 
