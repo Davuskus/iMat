@@ -52,8 +52,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#showOlderOrderButtonOnAction" prefHeight="25.0" styleClass="white-button" text="Visa äldre beställning" />
-                        <Button mnemonicParsing="false" onAction="#showNewerOrderButtonOnAction" styleClass="white-button" text="Visa nyare beställning" GridPane.columnIndex="1" />
+                        <Button fx:id="olderOrderButton" mnemonicParsing="false" onAction="#showOlderOrderButtonOnAction" prefHeight="25.0" styleClass="white-button" text="Visa äldre beställning" />
+                        <Button fx:id="newerOrderButton" mnemonicParsing="false" onAction="#showNewerOrderButtonOnAction" styleClass="white-button" text="Visa nyare beställning" GridPane.columnIndex="1" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" top="10.0" />

@@ -28,6 +28,12 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     private Button backButton;
 
     @FXML
+    private Button olderOrderButton;
+
+    @FXML
+    private Button newerOrderButton;
+
+    @FXML
     private Label dateLabel;
 
     @FXML
@@ -82,6 +88,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         articlesVBox.getChildren().clear();
         populateArticleList(this.order);
         updateOrderInfo(this.order);
+        updateOrderScrollingButtons();
     }
 
     @FXML
@@ -94,15 +101,28 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         }
     }
 
+    private void updateOlderOrderButton() {
+        olderOrderButton.setDisable(model.getOlderOrder(order) == null);
+    }
+
+    private void updateNewerOrderButton() {
+        newerOrderButton.setDisable(model.getNewerOrder(order) == null);
+    }
+
+    private void updateOrderScrollingButtons() {
+        updateOlderOrderButton();
+        updateNewerOrderButton();
+    }
+
     @FXML
     private void showOlderOrderButtonOnAction(Event event) {
-
+        onOrderSelected(model.getOlderOrder(order));
     }
 
 
     @FXML
     private void showNewerOrderButtonOnAction(Event event) {
-
+        onOrderSelected(model.getNewerOrder(order));
     }
 
 }

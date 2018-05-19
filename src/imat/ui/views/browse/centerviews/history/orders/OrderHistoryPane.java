@@ -2,6 +2,7 @@ package imat.ui.views.browse.centerviews.history.orders;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
+import imat.interfaces.IOrderHistoryRequestListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
@@ -17,7 +18,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.*;
 
-public class OrderHistoryPane extends FXMLController implements INavigationListener {
+public class OrderHistoryPane extends FXMLController implements INavigationListener, IOrderHistoryRequestListener {
 
     @FXML
     private VBox ordersVBox;
@@ -27,6 +28,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
+        model.addOrderHistoryRequestListener(this);
     }
 
     private void updateOrderList() {
@@ -89,6 +91,17 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
         if (navigationTarget == NavigationTarget.ORDER_HISTORY) {
             updateOrderList();
         }
+    }
+
+    @Override
+    public Order onOlderOrderRequest(Order sourceOrder) {
+
+        return null;
+    }
+
+    @Override
+    public Order onNewerOrderRequest(Order sourceOrder) {
+        return null;
     }
 
 }
