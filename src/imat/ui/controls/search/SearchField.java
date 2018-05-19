@@ -6,6 +6,8 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 
 import java.net.URL;
@@ -15,6 +17,9 @@ public class SearchField extends FXMLController {
 
     @FXML
     private Button searchButton;
+
+    @FXML
+    private ImageView searchButtonImageView;
 
     @FXML
     private TextField searchBox;
@@ -52,4 +57,20 @@ public class SearchField extends FXMLController {
             makeSearch();
         });
     }
+
+    @FXML
+    public void searchButtonOnMouseEntered() {
+        searchButtonImageView.setImage(new Image("/imat/resources/images/icons/search/icon_search_hover.png"));
+    }
+
+    @FXML
+    public void searchButtonOnMousePressed() {
+        searchButtonImageView.setImage(new Image("/imat/resources/images/icons/search/icon_search_pressed.png"));
+    }
+
+    @FXML
+    public void searchButtonOnMouseExited() {
+        searchButtonImageView.setImage(new Image("/imat/resources/images/icons/search/icon_search.png"));
+    }
+
 }
