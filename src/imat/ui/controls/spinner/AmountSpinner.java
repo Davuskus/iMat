@@ -102,7 +102,6 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     }
 
     private void setDisableOnControls(boolean disable) {
-        System.out.println("AmountSpinner, setDisableOnControls: " + disable);
         subtractButton.setDisable(disable);
         addButton.setDisable(disable);
         valueTextField.setDisable(disable);
