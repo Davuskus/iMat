@@ -110,7 +110,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
             for (Order order : orders) {
                 index++;
                 if (order.equals(sourceOrder)) {
-                    return IMatUtils.cloneOrder(orders.get(index));
+                    return orders.get(index);
                 }
             }
         }
@@ -125,7 +125,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
             int index = 0;
             for (Order order : orders) {
                 if (order.equals(sourceOrder)) {
-                    return IMatUtils.cloneOrder(orders.get(index));
+                    return orders.get(index);
                 }
                 index++;
             }

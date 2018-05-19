@@ -116,13 +116,13 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
 
     @FXML
     private void showOlderOrderButtonOnAction(Event event) {
-        onOrderSelected(model.getOlderOrder(order));
+        onOrderSelected(model.getOlderOrder(this.order));
     }
 
 
     @FXML
     private void showNewerOrderButtonOnAction(Event event) {
-        onOrderSelected(model.getNewerOrder(order));
+        onOrderSelected(model.getNewerOrder(this.order));
     }
 
 }
