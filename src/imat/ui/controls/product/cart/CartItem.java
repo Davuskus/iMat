@@ -17,7 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -40,6 +39,9 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     private ImageView removeButtonImageView;
+
+    @FXML
+    private VBox removeVBox;
 
     @FXML
     private Label nameLabel;
@@ -174,16 +176,19 @@ public class CartItem extends FXMLController implements IShoppingListener {
 
     @FXML
     public void removeButtonMouseEntered() {
+        // removeVBox.setStyle("-fx-background-color: rgba(255,182,85,0.6)");
         removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close_hover.png"));
     }
 
     @FXML
     public void removeButtonMousePressed() {
+        // removeVBox.setStyle("-fx-background-color: rgba(238,135,0,0.81)");
         removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close_pressed.png"));
     }
 
     @FXML
     public void removeButtonMouseExited() {
+        removeVBox.setStyle("-fx-background-color: rgba(255,0,0,0)");
         removeButtonImageView.setImage(new Image("/imat/resources/images/icons/close/icon_close.png"));
     }
 
