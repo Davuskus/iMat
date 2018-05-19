@@ -105,11 +105,13 @@ public class Products extends FXMLController implements ICategoryListener, ISear
                 }
             }
 
-            SubcategoryController controller = new SubcategoryController(subcategory, subcategoryProducts);
-            controller.setModel(model);
-            String fxmlPath = "../../../../views/browse/centerviews/products/subcategoryPane/SubcategoryPane.fxml";
-            Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-            productsFlowPane.getChildren().add(item);
+            if (subcategoryProducts.size() > 0) {
+                SubcategoryController controller = new SubcategoryController(subcategory, subcategoryProducts);
+                controller.setModel(model);
+                String fxmlPath = "../../../../views/browse/centerviews/products/subcategoryPane/SubcategoryPane.fxml";
+                Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
+                productsFlowPane.getChildren().add(item);
+            }
         }
     }
 
