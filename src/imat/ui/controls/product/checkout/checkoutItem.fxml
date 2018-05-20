@@ -36,7 +36,7 @@
                 </AnchorPane>
             <HBox fx:id="infoHBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" onMouseEntered="#removeButtonMouseEntered" onMouseExited="#removeButtonMouseExited" onMousePressed="#removeButtonMousePressed" prefHeight="20.0" prefWidth="20.0" styleClass="see-through-bg">
+                  <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" onMouseEntered="#removeButtonMouseEntered" onMouseExited="#removeButtonMouseExited" onMousePressed="#removeButtonMousePressed" prefHeight="20.0" prefWidth="20.0" styleClass="transparent-button">
                      <graphic>
                         <ImageView fx:id="removeButtonImageView" fitHeight="20.0" fitWidth="20.0" focusTraversable="true" onKeyPressed="#removeButtonOnAction" onMouseClicked="#removeButtonOnAction" pickOnBounds="true" preserveRatio="true">
                            <cursor>
