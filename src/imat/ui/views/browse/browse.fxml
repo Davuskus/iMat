@@ -22,7 +22,7 @@
               <StackPane minHeight="0.0" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
                   <children>
                       <fx:include fx:id="checkoutPane" minHeight="0.0" source="checkout/checkout.fxml" />
-                      <GridPane fx:id="browseGridPane">
+                      <GridPane fx:id="browseGridPane" styleClass="scene-default">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" percentWidth="25.0" prefWidth="300.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="400.0" />
