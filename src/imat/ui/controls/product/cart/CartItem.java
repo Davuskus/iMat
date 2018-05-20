@@ -114,7 +114,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
     @FXML
     private void removeButtonOnAction(Event event) {
         setAmountBeforeRemoveRequest(model.getProductAmount(product));
-        model.updateShoppingCart(product, 0);
+        model.removeProductFromShoppingCart(product);
     }
 
     private void switchView(Node view) {
