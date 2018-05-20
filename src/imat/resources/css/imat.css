@@ -232,6 +232,7 @@
 }
 
 .action-button {
+    -fx-cursor: hand;
     -fx-background-color: rgba(122, 240, 76, 0.7);
     -fx-border-width: 1px;
     -fx-border-color: #999999;
@@ -251,7 +252,8 @@
     -fx-border-color: #00adff;
 }
 
-.to-checkout-button-bg {
+.to-checkout-button {
+    -fx-cursor: hand;
     -fx-background-color: #7af04c;
     -fx-border-width: 1px;
     -fx-border-color: #999999;
@@ -259,16 +261,16 @@
     -fx-background-radius: 3px;
 }
 
-.to-checkout-button-bg:hover {
+.to-checkout-button:hover {
     -fx-background-color: #87ff4c;
 }
 
-.to-checkout-button-bg:focused {
+.to-checkout-button:focused {
     -fx-border-width: 1px;
     -fx-border-color: #00adff;
 }
 
-.to-checkout-button-bg:pressed {
+.to-checkout-button:pressed {
     -fx-background-color: #69e143;
     -fx-border-width: 1px;
     -fx-border-color: #00adff;

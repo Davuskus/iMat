@@ -199,7 +199,7 @@
                                           <Button fx:id="PayButton" layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#payAndOrder" prefHeight="28.0" prefWidth="177.0" text="Betala och beställ" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
                                              <styleClass>
                                                 <String fx:value="text-small-bold" />
-                                                <String fx:value="to-checkout-button-bg" />
+                                                <String fx:value="to-checkout-button" />
                                              </styleClass>
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -301,7 +301,7 @@
                                           <Button fx:id="creditCardDoneButton" layoutX="258.0" layoutY="227.0" mnemonicParsing="false" onAction="#CreditCardToSummary" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
                                              <styleClass>
                                                 <String fx:value="text-small-bold" />
-                                                <String fx:value="to-checkout-button-bg" />
+                                                <String fx:value="to-checkout-button" />
                                              </styleClass>
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -359,7 +359,7 @@
                                           <Button fx:id="clientInfoDoneButton" layoutX="281.0" layoutY="258.0" mnemonicParsing="false" onAction="#clientToCreditCardInfo" text="Nästa steg" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
                                              <styleClass>
                                                 <String fx:value="text-small-bold" />
-                                                <String fx:value="to-checkout-button-bg" />
+                                                <String fx:value="to-checkout-button" />
                                                 <String fx:value="button-focus-color" />
                                              </styleClass>
                                              <cursor>
