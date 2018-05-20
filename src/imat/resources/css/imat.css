@@ -465,3 +465,11 @@
 .checkout-bg {
     -fx-background-color: white;
 }
+
+.selected-category {
+    -fx-background-color: orange;
+}
+
+.selected-category:hover {
+    -fx-background-color:  yellow;
+}

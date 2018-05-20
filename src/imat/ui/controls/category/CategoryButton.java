@@ -1,5 +1,6 @@
 package imat.ui.controls.category;
 
+import imat.interfaces.ICategoryListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import imat.model.category.Category;
@@ -9,7 +10,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CategoryButton extends FXMLController {
+public class CategoryButton extends FXMLController implements ICategoryListener {
 
     @FXML private Button button;
 
@@ -36,6 +37,7 @@ public class CategoryButton extends FXMLController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         button.setText(category.getName());
+        model.addCategoryListener(this);
     }
 
     public void setSelected(boolean selected) {
@@ -46,4 +48,12 @@ public class CategoryButton extends FXMLController {
         return category;
     }
 
+    @Override
+    public void onCategorySelected(Category category) {
+        if(category == this.category) {
+            button.getStyleClass().add("selected-category");
+        } else {
+            button.getStyleClass().remove("selected-category");
+        }
+    }
 }
