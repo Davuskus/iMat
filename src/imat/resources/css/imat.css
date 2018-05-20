@@ -252,6 +252,11 @@
     -fx-border-color: #00adff;
 }
 
+.action-button:focused {
+    -fx-border-width: 1px;
+    -fx-border-color: #00adff;
+}
+
 .to-checkout-button {
     -fx-cursor: hand;
     -fx-background-color: #7af04c;
@@ -501,4 +506,9 @@
 
 .scroll-pane:disabled {
     -fx-opacity: 1.0;
+}
+
+.text-field:focused {
+    -fx-border-width: 1px;
+    -fx-border-color: #00adff;
 }
