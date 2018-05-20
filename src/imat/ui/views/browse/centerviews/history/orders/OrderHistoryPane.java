@@ -24,7 +24,7 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     }
 
     private void updateOrderFlowPane() {
-        if (model.numOrdersChanged()) {
+        if (model.numOrdersChanged() || (ordersVBox.getChildren().isEmpty() && model.getNumOrders() > 0)) {
             ordersVBox.getChildren().clear();
             for (Order order : model.updateOrderList()) {
                 OrderHistoryItem orderHistoryItem = new OrderHistoryItem();

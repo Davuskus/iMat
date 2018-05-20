@@ -323,6 +323,10 @@ public class Model {
         return ListUtils.cloneList(orders);
     }
 
+    public int getNumOrders() {
+        return orders.size();
+    }
+
     public boolean numOrdersChanged() {
         return numOrders != IMatDataHandler.getInstance().getOrders().size();
     }
