@@ -80,7 +80,7 @@
             </StackPane>
             <VBox fx:id="footerVBox" prefHeight="80.0" prefWidth="100.0">
                <children>
-                  <HBox fx:id="sumHBox" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="title-pane">
+                  <HBox fx:id="sumHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="title-pane">
                      <children>
                         <Label fx:id="sumTitleLabel" styleClass="text-normal-bold" text="Summa: " />
                         <Label fx:id="sumLabel" styleClass="text-normal" text="- kr" />
@@ -89,7 +89,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </HBox>
-                  <AnchorPane prefHeight="40.0" prefWidth="200.0">
+                  <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="toCheckoutButton" mnemonicParsing="false" onAction="#toCheckoutButtonOnAction" text="Gå till kassan" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <styleClass>
