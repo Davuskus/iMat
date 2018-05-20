@@ -397,4 +397,7 @@ public class Model {
         return null;
     }
 
+    public boolean isCartBeingThrownInTheTrash() {
+        return isThrowingCartInTrash;
+    }
 }

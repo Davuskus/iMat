@@ -1,5 +1,6 @@
 package imat.ui.controls.history.article;
 
+import imat.interfaces.ICartTrashListener;
 import imat.model.FXMLController;
 import imat.ui.controls.spinner.AmountSpinner;
 import imat.utils.IMatUtils;
@@ -8,6 +9,7 @@ import imat.utils.MathUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,7 +21,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ArticleHistoryItem extends FXMLController implements Initializable {
+public class ArticleHistoryItem extends FXMLController implements Initializable, ICartTrashListener {
 
     @FXML
     private ImageView productImageView;
@@ -44,6 +46,9 @@ public class ArticleHistoryItem extends FXMLController implements Initializable 
 
     @FXML
     private AmountSpinner spinnerController;
+
+    @FXML
+    private Button addToCartButton;
 
     private ShoppingItem shoppingItem;
 
@@ -85,5 +90,19 @@ public class ArticleHistoryItem extends FXMLController implements Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         spinnerController.setModel(model);
+        model.addCartTrashListener(this);
     }
+
+    @Override
+    public void onCartTrashStarted() {
+        addToCartButton.setDisable(true);
+        spinner.setDisable(true);
+    }
+
+    @Override
+    public void onCartTrashStopped() {
+        addToCartButton.setDisable(false);
+        spinner.setDisable(false);
+    }
+
 }

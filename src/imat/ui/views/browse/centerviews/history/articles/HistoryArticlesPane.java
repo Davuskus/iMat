@@ -1,6 +1,7 @@
 package imat.ui.views.browse.centerviews.history.articles;
 
 import imat.enums.NavigationTarget;
+import imat.interfaces.ICartTrashListener;
 import imat.interfaces.IOrderListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.article.ArticleHistoryItem;
@@ -19,7 +20,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HistoryArticlesPane extends FXMLController implements IOrderListener {
+public class HistoryArticlesPane extends FXMLController implements IOrderListener, ICartTrashListener {
 
     @FXML
     private VBox articlesVBox;
@@ -32,6 +33,9 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
 
     @FXML
     private Button newerOrderButton;
+
+    @FXML
+    private Button copyToCartButton;
 
     @FXML
     private Label dateLabel;
@@ -47,6 +51,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addOrderListener(this);
+        model.addCartTrashListener(this);
     }
 
     private void populateArticleList(Order order) {
@@ -59,6 +64,9 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
                     articleHistoryItem);
             articlesVBox.getChildren().add(articleNode);
             articleHistoryItem.setShoppingItem(shoppingItem);
+            if (model.isCartBeingThrownInTheTrash()) {
+                articleHistoryItem.onCartTrashStarted();
+            }
         }
     }
 
@@ -125,4 +133,13 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
         model.selectOrder(model.getNewerOrder(this.order));
     }
 
+    @Override
+    public void onCartTrashStarted() {
+        copyToCartButton.setDisable(true);
+    }
+
+    @Override
+    public void onCartTrashStopped() {
+        copyToCartButton.setDisable(false);
+    }
 }
