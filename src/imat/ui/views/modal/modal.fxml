@@ -29,7 +29,7 @@
                                               <Insets />
                                           </HBox.margin>
                                           <children>
-                                              <Button fx:id="closeButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#closeButtonOnAction" onMouseEntered="#closeButtonMouseEntered" onMouseExited="#closeButtonMouseExited" onMousePressed="#closeButtonMousePressed" prefHeight="30.0" prefWidth="30.0" styleClass="see-through-bg">
+                                              <Button fx:id="closeButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#closeButtonOnAction" onMouseEntered="#closeButtonMouseEntered" onMouseExited="#closeButtonMouseExited" onMousePressed="#closeButtonMousePressed" prefHeight="30.0" prefWidth="30.0" styleClass="transparent-button">
                                                   <graphic>
                                                       <ImageView fx:id="closeButtonImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                           <image>

@@ -158,4 +158,5 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     public void navigateTo(NavigationTarget navigationTarget) {
         rootPane.setDisable(navigationTarget != NavigationTarget.PRODUCTS);
     }
+
 }
