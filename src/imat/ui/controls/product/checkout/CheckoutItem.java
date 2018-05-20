@@ -18,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -108,10 +107,10 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     private void switchView(Node view) {
         stackPane.getChildren().forEach(child -> {
             child.setDisable(true);
-            child.setVisible(false);
+            // child.setVisible(false);
         });
         view.setDisable(false);
-        view.setVisible(true);
+        // view.setVisible(true);
         view.toFront();
     }
 

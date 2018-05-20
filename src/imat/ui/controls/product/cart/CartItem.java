@@ -120,10 +120,10 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private void switchView(Node view) {
         stackPane.getChildren().forEach(child -> {
             child.setDisable(true);
-            child.setVisible(false);
+            //child.setVisible(false);
         });
         view.setDisable(false);
-        view.setVisible(true);
+        // view.setVisible(true);
         view.toFront();
     }
 
