@@ -328,13 +328,14 @@ public class Model {
     }
 
     private void removePotentialDuplicateOrders(List<Order> orders) {
-        Map<Order, Boolean> orderCountMap = new HashMap<>(orders.size());
+        List<Order> noDuplicates = new ArrayList<>(1);
         orders.forEach(order -> {
-            if (orderCountMap.get(order) == null)
-                orderCountMap.put(order, true);
+            if (!noDuplicates.contains(order)) {
+                noDuplicates.add(order);
+            }
         });
         orders.clear();
-        orders.addAll(orderCountMap.keySet());
+        orders.addAll(noDuplicates);
     }
 
     private void removePotentialDuplicateProducts(Order order) {
