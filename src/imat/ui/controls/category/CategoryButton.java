@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CategoryButton extends FXMLController implements ICategoryListener {
+public class CategoryButton extends FXMLController {
 
     @FXML private Button button;
 
@@ -37,23 +37,19 @@ public class CategoryButton extends FXMLController implements ICategoryListener 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         button.setText(category.getName());
-        model.addCategoryListener(this);
     }
 
     public void setSelected(boolean selected) {
-        // TODO Make the selection visible somehow
+        if(selected) {
+            button.getStyleClass().add("selected-category");
+        } else {
+            button.getStyleClass().remove("selected-category");
+        }
     }
 
     public Category getCategory() {
         return category;
     }
 
-    @Override
-    public void onCategorySelected(Category category) {
-        if(category == this.category) {
-            button.getStyleClass().add("selected-category");
-        } else {
-            button.getStyleClass().remove("selected-category");
-        }
-    }
+
 }
