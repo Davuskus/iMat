@@ -28,7 +28,6 @@ public class Model {
     private List<IRemoveEvent> checkoutItemRemoveEvents;
     private final List<IShutdownListener> shutdownListeners;
     private final List<ICartTrashListener> cartTrashListeners;
-    private final List<IOrderHistoryRequestListener> orderHistoryRequestListeners;
 
     private boolean isThrowingCartInTrash;
 
@@ -47,7 +46,6 @@ public class Model {
         checkoutItemRemoveEvents = new ArrayList<>(1);
         cartItemRemoveEvents = new ArrayList<>(1);
         shutdownListeners = new ArrayList<>(1);
-        orderHistoryRequestListeners = new ArrayList<>(1);
         cartTrashListeners = new ArrayList<>(1);
         cartTrashListeners.add(new ICartTrashListener() {
             @Override
@@ -60,6 +58,7 @@ public class Model {
                 isThrowingCartInTrash = false;
             }
         });
+        orders = new ArrayList<>(1);
         navigationHistory = new ArrayDeque<>();
         navigationHistory.push(NavigationTarget.HOME);
         loadBackendCart();
@@ -310,10 +309,6 @@ public class Model {
 
     public void notifyShutdownListeners() {
         shutdownListeners.forEach(IShutdownListener::onShutdown);
-    }
-
-    public void addOrderHistoryRequestListener(IOrderHistoryRequestListener listener) {
-        orderHistoryRequestListeners.add(listener);
     }
 
     public List<Order> updateOrderList() {
