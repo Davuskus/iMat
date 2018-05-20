@@ -5,6 +5,7 @@ import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,6 +19,9 @@ public class Modal extends FXMLController implements INavigationListener {
 
     @FXML
     private AnchorPane rootPane;
+
+    @FXML
+    private Button closeButton;
 
     @FXML
     private ImageView closeButtonImageView;
@@ -67,6 +71,7 @@ public class Modal extends FXMLController implements INavigationListener {
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
+        rootPane.setDisable(false);
         switch (navigationTarget) {
             case HELP:
                 modalTitleLabel.setText("Hjälp");
@@ -91,6 +96,10 @@ public class Modal extends FXMLController implements INavigationListener {
                 setSize(confirmationPane);
                 setVisible(confirmationPane);
                 confirmationPane.toFront();
+                break;
+            default:
+                rootPane.setDisable(true);
+                System.out.println(closeButton.isDisable());
                 break;
         }
     }

@@ -23,6 +23,9 @@ import java.util.ResourceBundle;
 public class Home extends FXMLController implements INavigationListener {
 
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     private AnchorPane feature;
 
     @FXML
@@ -86,8 +89,11 @@ public class Home extends FXMLController implements INavigationListener {
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.HOME) {
+            rootPane.setDisable(false);
             updateProductsHBox();
             featureController.setFeatureScrolling(navigationTarget == NavigationTarget.HOME);
+        } else {
+            rootPane.setDisable(true);
         }
     }
 

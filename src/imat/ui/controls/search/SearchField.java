@@ -31,7 +31,7 @@ public class SearchField extends FXMLController {
             model.returnToCategoryRoot();
         } else {
             model.search(searchBox.getText());
-            model.navigate(NavigationTarget.CATEGORY);
+            model.navigate(NavigationTarget.PRODUCTS);
         }
     }
 

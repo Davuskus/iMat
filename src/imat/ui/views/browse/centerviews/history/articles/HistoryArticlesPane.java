@@ -2,6 +2,7 @@ package imat.ui.views.browse.centerviews.history.articles;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.ICartTrashListener;
+import imat.interfaces.INavigationListener;
 import imat.interfaces.IOrderListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.article.ArticleHistoryItem;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -20,7 +22,10 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HistoryArticlesPane extends FXMLController implements IOrderListener, ICartTrashListener {
+public class HistoryArticlesPane extends FXMLController implements IOrderListener, ICartTrashListener, INavigationListener {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private VBox articlesVBox;
@@ -141,5 +146,10 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     @Override
     public void onCartTrashStopped() {
         copyToCartButton.setDisable(false);
+    }
+
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        rootPane.setDisable(navigationTarget != NavigationTarget.ORDER_HISTORY_ARTICLE);
     }
 }

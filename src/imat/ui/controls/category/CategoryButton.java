@@ -5,7 +5,6 @@ import imat.enums.NavigationTarget;
 import imat.model.category.Category;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +30,7 @@ public class CategoryButton extends FXMLController {
 
     @FXML private void onButtonClick(){
         model.selectCategory(category);
-        model.navigate(NavigationTarget.CATEGORY);
+        model.navigate(NavigationTarget.PRODUCTS);
     }
 
     @Override

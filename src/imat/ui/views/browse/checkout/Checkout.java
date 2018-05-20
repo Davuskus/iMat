@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class Checkout extends FXMLController implements IShoppingListener,INavigationListener {
+public class Checkout extends FXMLController implements IShoppingListener, INavigationListener {
 
     @FXML
     private Label PriceLabel;
@@ -55,9 +55,9 @@ public class Checkout extends FXMLController implements IShoppingListener,INavig
 
     private void updateLabels(double totalPrice) {
         PriceLabel.setText(MathUtils.asPriceTag(totalPrice));
-        int shippingCost=35;
-        if(totalPrice==0){
-            shippingCost=0;
+        int shippingCost = 35;
+        if (totalPrice == 0) {
+            shippingCost = 0;
         }
         shippingCostLabel.setText(MathUtils.asPriceTag(shippingCost));
         double tot = totalPrice + shippingCost;
@@ -95,9 +95,9 @@ public class Checkout extends FXMLController implements IShoppingListener,INavig
 
     @Override
     public void onProductRemoved(Product product, Double oldAmount) {
-     //   removeItemNode(product);
+        //   removeItemNode(product);
         updateLabels(model.getCartPrice());
-        if(model.getProductsInCart().size() == 0){
+        if (model.getProductsInCart().size() == 0) {
             toPaymentButton.setDisable(true);
         }
     }
@@ -108,19 +108,13 @@ public class Checkout extends FXMLController implements IShoppingListener,INavig
     }
 
     @FXML
-    private void backButton(){
+    private void backButton() {
         model.navigateBack();
     }
 
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
-        if(navigationTarget==NavigationTarget.CHECKOUT){
-            root.setDisable(false);
-        }
-        else {
-            root.setDisable(true);
-        }
-
+        root.setDisable(navigationTarget != NavigationTarget.CHECKOUT);
     }
 }

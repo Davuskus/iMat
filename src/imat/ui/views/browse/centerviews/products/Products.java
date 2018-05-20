@@ -1,6 +1,8 @@
 package imat.ui.views.browse.centerviews.products;
 
+import imat.enums.NavigationTarget;
 import imat.interfaces.ICategoryListener;
+import imat.interfaces.INavigationListener;
 import imat.interfaces.ISearchListener;
 import imat.model.FXMLController;
 import imat.model.category.Category;
@@ -13,13 +15,17 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
 import java.util.*;
 
-public class Products extends FXMLController implements ICategoryListener, ISearchListener {
+public class Products extends FXMLController implements ICategoryListener, ISearchListener, INavigationListener {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private Label categoryLabel;
@@ -148,4 +154,8 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         }
     }
 
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        rootPane.setDisable(navigationTarget != NavigationTarget.PRODUCTS);
+    }
 }

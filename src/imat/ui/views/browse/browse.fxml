@@ -56,7 +56,7 @@
                       </GridPane>
                   </children>
               </StackPane>
-              <fx:include source="../../controls/header/header.fxml" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+              <fx:include fx:id="header" source="../../controls/header/header.fxml" GridPane.columnIndex="0" GridPane.rowIndex="0" />
           </children>
       </GridPane>
     </children>

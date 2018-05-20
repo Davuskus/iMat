@@ -7,6 +7,7 @@ import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Order;
 
@@ -14,6 +15,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class OrderHistoryPane extends FXMLController implements INavigationListener {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private VBox ordersVBox;
@@ -47,7 +51,10 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.ORDER_HISTORY) {
+            rootPane.setDisable(false);
             updateOrderFlowPane();
+        } else {
+            rootPane.setDisable(true);
         }
     }
 

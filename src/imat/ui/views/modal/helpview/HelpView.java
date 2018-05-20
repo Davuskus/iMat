@@ -1,18 +1,20 @@
 package imat.ui.views.modal.helpview;
 
+import imat.enums.NavigationTarget;
+import imat.interfaces.INavigationListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
-import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
-import netscape.javascript.JSObject;
+import javafx.scene.web.WebView;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 // TODO: Match background color of anchorpane and webview
 
-public class HelpView implements Initializable {
+public class HelpView implements Initializable, INavigationListener {
 
     @FXML
     WebView helpTextView;
@@ -46,6 +48,11 @@ public class HelpView implements Initializable {
 
     private void setStyleFromFile(String cssPath) {
         //helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource(cssPath).toString());
+    }
+
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        basePane.setDisable(navigationTarget != NavigationTarget.HELP);
     }
 
 }

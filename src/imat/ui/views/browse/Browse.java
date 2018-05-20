@@ -33,6 +33,9 @@ public class Browse extends FXMLController implements INavigationListener {
     @FXML
     private AnchorPane homePane;
 
+    @FXML
+    private AnchorPane header;
+
     private Model model;
 
     @Override
@@ -53,6 +56,8 @@ public class Browse extends FXMLController implements INavigationListener {
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
+        browseGridPane.setDisable(false);
+        header.setDisable(false);
         switch (navigationTarget) {
             case ORDER_HISTORY:
                 browseGridPane.toFront();
@@ -62,17 +67,21 @@ public class Browse extends FXMLController implements INavigationListener {
                 browseGridPane.toFront();
                 historyArticlesPane.toFront();
                 break;
-            case CATEGORY:
+            case PRODUCTS:
                 browseGridPane.toFront();
                 productPane.toFront();
                 break;
             case CHECKOUT:
-                browseGridPane.toFront();
+                browseGridPane.setDisable(true);
                 checkoutPane.toFront();
                 break;
             case HOME:
                 browseGridPane.toFront();
                 homePane.toFront();
+                break;
+            default:
+                browseGridPane.setDisable(true);
+                header.setDisable(true);
                 break;
         }
     }

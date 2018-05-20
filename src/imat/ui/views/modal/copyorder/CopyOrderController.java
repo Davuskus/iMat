@@ -1,16 +1,22 @@
 package imat.ui.views.modal.copyorder;
 
+import imat.enums.NavigationTarget;
+import imat.interfaces.INavigationListener;
 import imat.interfaces.IOrderListener;
 import imat.model.FXMLController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Order;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CopyOrderController extends FXMLController implements IOrderListener {
+public class CopyOrderController extends FXMLController implements IOrderListener, INavigationListener {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private Button addToButton;
@@ -51,4 +57,8 @@ public class CopyOrderController extends FXMLController implements IOrderListene
         this.order = order;
     }
 
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        rootPane.setDisable(navigationTarget != NavigationTarget.COPY_ORDER);
+    }
 }
