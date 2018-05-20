@@ -24,16 +24,16 @@
                </image>
             </ImageView>
          </graphic>
-         <styleClass>
-            <String fx:value="see-through-bg" />
-            <String fx:value="rounded" />
-         </styleClass>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <tooltip>
             <Tooltip styleClass="text-normal-white-bold" text="Sök bland produkter" />
          </tooltip>
+         <styleClass>
+            <String fx:value="rounded" />
+            <String fx:value="transparent-button" />
+         </styleClass>
       </Button>
    </children>
 </AnchorPane>

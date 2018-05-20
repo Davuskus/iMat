@@ -231,7 +231,7 @@ public class Model {
 
     public void search(String searchTerm) {
         if (searchTerm.length() == 0) return;
-
+        categoryListeners.forEach(x->x.onCategorySelected(null));
         List<Product> products = new ArrayList<>();
 
         for (Product product : IMatDataHandler.getInstance().getProducts()) {
