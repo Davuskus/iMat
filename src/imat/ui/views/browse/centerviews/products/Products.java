@@ -66,7 +66,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
 
     @Override
     public void onCategorySelected(Category category) {
-        if (category == currentCategory) return;
+        if ((category == null) ||(category == currentCategory)) return;
         currentCategory = category;
         productsFlowPane.getChildren().clear();
         productsFlowPane.setPadding(new Insets(20, 10, 20, 10));
