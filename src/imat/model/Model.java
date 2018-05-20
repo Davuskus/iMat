@@ -4,6 +4,7 @@ import imat.enums.NavigationTarget;
 import imat.interfaces.*;
 import imat.model.category.Category;
 import imat.utils.CategoryFactory;
+import imat.utils.ListUtils;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.Product;
@@ -32,6 +33,9 @@ public class Model {
     private boolean isThrowingCartInTrash;
 
     private final Deque<NavigationTarget> navigationHistory;
+
+    private List<Order> orders;
+    private int numOrders;
 
     public Model() {
         categories = CategoryFactory.getCategoriesFromFolder("src/imat/resources/categories");
@@ -312,14 +316,85 @@ public class Model {
         orderHistoryRequestListeners.add(listener);
     }
 
+    public List<Order> updateOrderList() {
+        if (numOrdersChanged()) {
+            orders.clear();
+            List<Order> backendOrders = IMatDataHandler.getInstance().getOrders();
+            numOrders = backendOrders.size();
+            orders = ListUtils.getReversedList(backendOrders);
+            removePotentialDuplicateOrders(orders);
+            orders.forEach(this::removePotentialDuplicateProducts);
+        }
+        return ListUtils.cloneList(orders);
+    }
+
+    public boolean numOrdersChanged() {
+        return numOrders != IMatDataHandler.getInstance().getOrders().size();
+    }
+
+    private void removePotentialDuplicateOrders(List<Order> orders) {
+        Map<Order, Boolean> orderCountMap = new HashMap<>(orders.size());
+        orders.forEach(order -> {
+            if (orderCountMap.get(order) == null)
+                orderCountMap.put(order, true);
+        });
+        orders.clear();
+        orders.addAll(orderCountMap.keySet());
+    }
+
+    private void removePotentialDuplicateProducts(Order order) {
+        List<ShoppingItem> shoppingItems = getUniqueShoppingItems(order);
+        order.getItems().clear();
+        order.setItems(shoppingItems);
+    }
+
+    private List<ShoppingItem> getUniqueShoppingItems(Order order) {
+        Map<Product, Double> shoppingItemMap = new HashMap<>();
+        order.getItems().forEach(shoppingItem -> {
+            Product product = shoppingItem.getProduct();
+            double amount = shoppingItem.getAmount();
+            if (shoppingItemMap.keySet().contains(product)) {
+                shoppingItemMap.put(product, shoppingItemMap.get(product) + amount);
+            } else {
+                shoppingItemMap.put(product, amount);
+            }
+        });
+        List<ShoppingItem> shoppingItems = new ArrayList<>(shoppingItemMap.keySet().size());
+        shoppingItemMap.forEach(((product, amount) -> shoppingItems.add(new ShoppingItem(product, amount))));
+
+        return shoppingItems;
+    }
+
     public Order getOlderOrder(Order sourceOrder) {
-        if (orderHistoryRequestListeners.isEmpty()) return null;
-        return orderHistoryRequestListeners.get(0).onOlderOrderRequest(sourceOrder);
+        if (!orders.isEmpty()) {
+            if (orders.indexOf(sourceOrder) < orders.size() - 1) {
+                int index = 0;
+                for (Order order : orders) {
+                    index++;
+                    if (order.equals(sourceOrder)) {
+                        return orders.get(index);
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
     public Order getNewerOrder(Order sourceOrder) {
-        if (orderHistoryRequestListeners.isEmpty()) return null;
-        return orderHistoryRequestListeners.get(0).onNewerOrderRequest(sourceOrder);
+        if (!orders.isEmpty()) {
+            if (orders.indexOf(sourceOrder) > 0) {
+                int index = -1;
+                for (Order order : orders) {
+                    if (order.equals(sourceOrder)) {
+                        return orders.get(index);
+                    }
+                    index++;
+                }
+            }
+        }
+
+        return null;
     }
 
 }

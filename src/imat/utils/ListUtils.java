@@ -13,4 +13,10 @@ public final class ListUtils {
         return reversedList;
     }
 
+    public static <T> List<T> cloneList(List<T> list) {
+        List<T> clonedList = new ArrayList<>(list.size());
+        clonedList.addAll(list);
+        return clonedList;
+    }
+
 }

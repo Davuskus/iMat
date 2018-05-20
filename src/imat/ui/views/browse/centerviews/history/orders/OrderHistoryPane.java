@@ -2,78 +2,31 @@ package imat.ui.views.browse.centerviews.history.orders;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
-import imat.interfaces.IOrderHistoryRequestListener;
 import imat.model.FXMLController;
 import imat.ui.controls.history.order.OrderHistoryItem;
 import imat.utils.FXMLLoader;
-import imat.utils.ListUtils;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
 
-public class OrderHistoryPane extends FXMLController implements INavigationListener, IOrderHistoryRequestListener {
+public class OrderHistoryPane extends FXMLController implements INavigationListener {
 
     @FXML
     private VBox ordersVBox;
 
-    private final List<Order> orders;
-
-    private int numOrders;
-
-    public OrderHistoryPane() {
-        orders = new ArrayList<>(1);
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
-        model.addOrderHistoryRequestListener(this);
     }
 
-    private void updateOrderList() {
-        if (numOrdersChanged()) {
-            orders.clear();
-            numOrders = IMatDataHandler.getInstance().getOrders().size();
+    private void updateOrderFlowPane() {
+        if (model.numOrdersChanged()) {
             ordersVBox.getChildren().clear();
-            addOrdersToFlowPane();
-        }
-    }
-
-    private void removePotentialDuplicateProducts(Order order) {
-        List<ShoppingItem> shoppingItems = getUniqueShoppingItems(order);
-        order.getItems().clear();
-        order.setItems(shoppingItems);
-    }
-
-    private List<ShoppingItem> getUniqueShoppingItems(Order order) {
-        Map<Product, Double> shoppingItemMap = new HashMap<>();
-        order.getItems().forEach(shoppingItem -> {
-            Product product = shoppingItem.getProduct();
-            double amount = shoppingItem.getAmount();
-            if (shoppingItemMap.keySet().contains(product)) {
-                shoppingItemMap.put(product, shoppingItemMap.get(product) + amount);
-            } else {
-                shoppingItemMap.put(product, amount);
-            }
-        });
-        List<ShoppingItem> shoppingItems = new ArrayList<>(shoppingItemMap.keySet().size());
-        shoppingItemMap.forEach(((product, amount) -> shoppingItems.add(new ShoppingItem(product, amount))));
-
-        return shoppingItems;
-    }
-
-    private void addOrdersToFlowPane() {
-        for (Order order : ListUtils.getReversedList(IMatDataHandler.getInstance().getOrders())) {
-            if (!orders.contains(order)) {
-                orders.add(order);
-                removePotentialDuplicateProducts(order);
+            for (Order order : model.updateOrderList()) {
                 OrderHistoryItem orderHistoryItem = new OrderHistoryItem();
                 orderHistoryItem.setModel(model);
 
@@ -89,50 +42,13 @@ public class OrderHistoryPane extends FXMLController implements INavigationListe
                 ordersVBox.getChildren().add(historyItem);
             }
         }
-
-    }
-
-    private boolean numOrdersChanged() {
-        return numOrders != IMatDataHandler.getInstance().getOrders().size();
     }
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.ORDER_HISTORY) {
-            updateOrderList();
+            updateOrderFlowPane();
         }
-    }
-
-    @Override
-    public Order onOlderOrderRequest(Order sourceOrder) {
-
-        if (orders.indexOf(sourceOrder) < orders.size() - 1) {
-            int index = 0;
-            for (Order order : orders) {
-                index++;
-                if (order.equals(sourceOrder)) {
-                    return orders.get(index);
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    public Order onNewerOrderRequest(Order sourceOrder) {
-
-        if (orders.indexOf(sourceOrder) > 0) {
-            int index = -1;
-            for (Order order : orders) {
-                if (order.equals(sourceOrder)) {
-                    return orders.get(index);
-                }
-                index++;
-            }
-        }
-
-        return null;
     }
 
 }
