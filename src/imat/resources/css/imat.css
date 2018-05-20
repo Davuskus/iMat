@@ -465,3 +465,15 @@
 .checkout-bg {
     -fx-background-color: white;
 }
+
+.pane:disabled {
+    -fx-opacity: 1.0;
+}
+
+.grid:disabled {
+    -fx-opacity: 1.0;
+}
+
+.scroll-pane:disabled {
+    -fx-opacity: 1.0;
+}
