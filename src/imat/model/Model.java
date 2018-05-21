@@ -220,10 +220,6 @@ public class Model {
         checkoutItemRemoveEvents.add(removeEvent);
     }
 
-    /*public void selectCategory(ProductCategory category) {
-        categoryListeners.forEach(x -> x.onCategorySelected(category));
-    }*/
-
     public void selectCategory(Category category) {
         currentCategory = category;
         categoryListeners.forEach(x -> x.onCategorySelected(category));
