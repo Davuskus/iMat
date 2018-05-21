@@ -1,6 +1,8 @@
 package imat.ui.views.browse.sidebars.category;
 
+import imat.enums.NavigationTarget;
 import imat.interfaces.ICategoryListener;
+import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import imat.model.category.Category;
 import imat.ui.controls.category.CategoryButton;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CategorySidebar extends FXMLController implements ICategoryListener {
+public class CategorySidebar extends FXMLController implements ICategoryListener, INavigationListener {
 
     @FXML
     private VBox categoryButtonsVBox;
@@ -25,21 +27,10 @@ public class CategorySidebar extends FXMLController implements ICategoryListener
         categoryButtons = new ArrayList<>(14);
     }
 
-    /*@Override
-    public void initialize(URL location, ResourceBundle resources) {
-        model.verifyExistence();
-        for (ProductCategory category : IMatUtils.getCategories()) {
-            CategoryButton btnController = new CategoryButton(category);
-            btnController.setModel(model);
-            Node btn = FXMLLoader.loadFXMLNodeFromRootPackage(
-                    "../../../../controls/category/category_button.fxml", this, btnController);
-            categoryButtonsVBox.getChildren().add(btn);
-        }
-    }*/
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addCategoryListener(this);
+        model.addNavigationListener(this);
         for (Category category : model.getCategories()) {
             CategoryButton btnController = new CategoryButton(category);
             btnController.setModel(model);
@@ -58,6 +49,17 @@ public class CategorySidebar extends FXMLController implements ICategoryListener
                 button.setSelected(true);
                 break;
             }
+        }
+    }
+
+    private void deselectAllCategoryButtons() {
+        categoryButtons.forEach(categoryButton -> categoryButton.setSelected(false));
+    }
+
+    @Override
+    public void navigateTo(NavigationTarget navigationTarget) {
+        if (navigationTarget != NavigationTarget.CATEGORY) {
+            deselectAllCategoryButtons();
         }
     }
 }

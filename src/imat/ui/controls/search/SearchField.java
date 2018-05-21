@@ -24,13 +24,16 @@ public class SearchField extends FXMLController {
     @FXML
     private TextField searchBox;
 
+    private boolean clearingText;
+
     private void makeSearch() {
         if (model == null) {
             System.out.println("No imat.model attached to search field!");
-        } else if (searchBox.getText().length() == 0 &&
-                model.getCurrentNavigationTarget() == NavigationTarget.SEARCH_RESULTS) {
-            model.returnToCategoryRoot();
-            model.navigateBack();
+        } else if (searchBox.getText().length() == 0) {
+            if (!clearingText && model.getCurrentNavigationTarget() == NavigationTarget.SEARCH_RESULTS) {
+                model.returnToCategoryRoot();
+                model.navigateBack();
+            }
         } else {
             model.search(searchBox.getText());
             model.navigate(NavigationTarget.SEARCH_RESULTS);
@@ -73,6 +76,12 @@ public class SearchField extends FXMLController {
     @FXML
     public void searchButtonOnMouseExited() {
         searchButtonImageView.setImage(new Image("/imat/resources/images/icons/search/icon_search.png"));
+    }
+
+    public void clearText() {
+        clearingText = true;
+        searchBox.clear();
+        clearingText = false;
     }
 
 }

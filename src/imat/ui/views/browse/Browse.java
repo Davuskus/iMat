@@ -5,6 +5,7 @@ import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
 import imat.model.Model;
+import imat.ui.controls.header.Header;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +39,9 @@ public class Browse extends FXMLController implements INavigationListener {
 
     @FXML
     private AnchorPane header;
+
+    @FXML
+    private Header headerController;
 
     private Model model;
 
@@ -75,6 +79,7 @@ public class Browse extends FXMLController implements INavigationListener {
                 searchPane.toFront();
                 break;
             case CATEGORY:
+                headerController.clearSearchField();
                 browseGridPane.toFront();
                 categoryPane.toFront();
                 break;

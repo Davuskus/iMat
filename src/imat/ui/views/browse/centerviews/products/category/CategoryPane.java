@@ -97,6 +97,7 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
             onlyEcoCheckBox.setSelected(model.isOnlyShowingEcologicalProducts());
             updateProductList(onlyEcoCheckBox.isSelected());
         } else {
+
             rootPane.setDisable(true);
         }
     }
