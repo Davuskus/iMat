@@ -9,9 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,9 +29,10 @@ public class SearchField extends FXMLController {
             System.out.println("No imat.model attached to search field!");
         } else if (searchBox.getText().length() == 0) {
             model.returnToCategoryRoot();
+            model.navigateBack();
         } else {
             model.search(searchBox.getText());
-            model.navigate(NavigationTarget.PRODUCTS);
+            model.navigate(NavigationTarget.SEARCH_RESULTS);
         }
     }
 
@@ -59,9 +57,6 @@ public class SearchField extends FXMLController {
         searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
             makeSearch();
         });
-//        searchButton.focusedProperty().addListener((observable, oldValue, newValue) -> {
-//            searchButton.setBorder(new Border(new BorderStroke(new Color())));
-//        });
     }
 
     @FXML

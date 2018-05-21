@@ -28,7 +28,10 @@ public class Browse extends FXMLController implements INavigationListener {
     private AnchorPane historyArticlesPane;
 
     @FXML
-    private AnchorPane productPane;
+    private AnchorPane searchPane;
+
+    @FXML
+    private AnchorPane categoryPane;
 
     @FXML
     private AnchorPane homePane;
@@ -41,7 +44,7 @@ public class Browse extends FXMLController implements INavigationListener {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model.addNavigationListener(this);
-        productPane.toFront();
+        categoryPane.toFront();
     }
 
     @Override
@@ -67,9 +70,13 @@ public class Browse extends FXMLController implements INavigationListener {
                 browseGridPane.toFront();
                 historyArticlesPane.toFront();
                 break;
-            case PRODUCTS:
+            case SEARCH_RESULTS:
                 browseGridPane.toFront();
-                productPane.toFront();
+                searchPane.toFront();
+                break;
+            case CATEGORY:
+                browseGridPane.toFront();
+                categoryPane.toFront();
                 break;
             case CHECKOUT:
                 browseGridPane.setDisable(true);

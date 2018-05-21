@@ -36,6 +36,8 @@ public class Model {
     private List<Order> orders;
     private int numOrders;
 
+    private boolean showOnlyEcologicalProducts;
+
     public Model() {
         categories = CategoryFactory.getCategoriesFromFolder("src/imat/resources/categories");
         IShoppingListeners = new ArrayList<>(1);
@@ -231,7 +233,7 @@ public class Model {
 
     public void search(String searchTerm) {
         if (searchTerm.length() == 0) return;
-        categoryListeners.forEach(x->x.onCategorySelected(null));
+        categoryListeners.forEach(x -> x.onCategorySelected(null));
         List<Product> products = new ArrayList<>();
 
         for (Product product : IMatDataHandler.getInstance().getProducts()) {
@@ -399,5 +401,13 @@ public class Model {
 
     public boolean isCartBeingThrownInTheTrash() {
         return isThrowingCartInTrash;
+    }
+
+    public void setShowOnlyEcologicalProducts(boolean showOnlyEcologicalProducts) {
+        this.showOnlyEcologicalProducts = showOnlyEcologicalProducts;
+    }
+
+    public boolean isOnlyShowingEcologicalProducts() {
+        return showOnlyEcologicalProducts;
     }
 }

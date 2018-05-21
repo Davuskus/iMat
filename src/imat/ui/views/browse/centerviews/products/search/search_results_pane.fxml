@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="rootPane" styleClass="background-fxDefault" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.products.search.SearchResultsPane">
+   <children>
+      <VBox spacing="5.0" styleClass="center-view-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-pane">
+               <children>
+                  <Label fx:id="titleLabel" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" styleClass="title-large-dark-gray" text="Kategorier" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" spacing="10.0">
+               <children>
+                  <CheckBox fx:id="onlyEcoCheckBox" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#checkBoxOnAction" styleClass="text-normal" text="Visa bara ekologiska produkter">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../resources/images/icons/eco/eco_icon_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </VBox.margin>
+               <content>
+                  <StackPane minWidth="0.0" styleClass="center-view-bg">
+                     <children>
+                         <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" minWidth="0.0">
+                             <padding>
+                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                             </padding>
+                         </FlowPane>
+                        <Label fx:id="noResultsLabel" minWidth="0.0" text="Inga resultat matchar de givna kriterierna...">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

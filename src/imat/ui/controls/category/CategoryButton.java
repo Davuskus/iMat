@@ -1,6 +1,5 @@
 package imat.ui.controls.category;
 
-import imat.interfaces.ICategoryListener;
 import imat.model.FXMLController;
 import imat.enums.NavigationTarget;
 import imat.model.category.Category;
@@ -31,7 +30,7 @@ public class CategoryButton extends FXMLController {
 
     @FXML private void onButtonClick(){
         model.selectCategory(category);
-        model.navigate(NavigationTarget.PRODUCTS);
+        model.navigate(NavigationTarget.CATEGORY);
     }
 
     @Override

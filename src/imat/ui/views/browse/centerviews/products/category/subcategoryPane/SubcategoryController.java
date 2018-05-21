@@ -1,4 +1,4 @@
-package imat.ui.views.browse.centerviews.products.subcategoryPane;
+package imat.ui.views.browse.centerviews.products.category.subcategoryPane;
 
 import imat.model.FXMLController;
 import javafx.fxml.FXML;
@@ -8,9 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class SubcategoryController extends FXMLController {

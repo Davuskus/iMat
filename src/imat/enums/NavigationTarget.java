@@ -9,7 +9,8 @@ public enum NavigationTarget {
     COPY_ORDER,
     PAYMENT,
     HOME,
-    PRODUCTS,
+    CATEGORY,
+    SEARCH_RESULTS,
     CONFIRMATION;
 
 }
