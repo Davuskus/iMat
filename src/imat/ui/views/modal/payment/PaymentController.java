@@ -2,7 +2,9 @@ package imat.ui.views.modal.payment;
 
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
+import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
+import imat.utils.MathUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -13,12 +15,13 @@ import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
 
 import javax.xml.stream.events.EndElement;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable, INavigationListener {
+public class PaymentController extends FXMLController implements Initializable, INavigationListener,IShoppingListener {
 
     @FXML
     Button clientInfoDoneButton;
@@ -123,6 +126,9 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     @FXML
     private  Button summaryBackButton;
+
+    @FXML
+    private  Label sumLabel;
 
 
     private final IMatDataHandler iMatDataHandler;
@@ -536,6 +542,11 @@ public class PaymentController extends FXMLController implements Initializable, 
     private void updateTextArea() {
         updateCreditCardTextArea();
         updateClientTextArea();
+        updateOrderText();
+    }
+
+    private void updateOrderText(){
+        sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice()+35));
     }
 
     private void updateCreditCardTextArea() {
@@ -807,4 +818,18 @@ public class PaymentController extends FXMLController implements Initializable, 
         model.navigateBack();
     }
 
+    @Override
+    public void onProductAdded(Product product, Double amount) {
+        updateOrderText();
+    }
+
+    @Override
+    public void onProductRemoved(Product product, Double oldAmount) {
+        updateOrderText();
+    }
+
+    @Override
+    public void onProductUpdate(Product product, Double newAmount) {
+        updateOrderText();
+    }
 }
