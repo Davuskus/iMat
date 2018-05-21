@@ -80,7 +80,7 @@ public class Modal extends FXMLController implements INavigationListener {
                 helpPane.toFront();
                 break;
             case COPY_ORDER:
-                modalTitleLabel.setText("Kopiera order");
+                modalTitleLabel.setText("Kopiera beställning");
                 setSize(copyOrderPane);
                 setVisible(copyOrderPane);
                 copyOrderPane.toFront();
