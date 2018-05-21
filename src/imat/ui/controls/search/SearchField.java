@@ -27,7 +27,8 @@ public class SearchField extends FXMLController {
     private void makeSearch() {
         if (model == null) {
             System.out.println("No imat.model attached to search field!");
-        } else if (searchBox.getText().length() == 0) {
+        } else if (searchBox.getText().length() == 0 &&
+                model.getCurrentNavigationTarget() == NavigationTarget.SEARCH_RESULTS) {
             model.returnToCategoryRoot();
             model.navigateBack();
         } else {

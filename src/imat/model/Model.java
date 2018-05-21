@@ -79,6 +79,10 @@ public class Model {
         return categories;
     }
 
+    public NavigationTarget getCurrentNavigationTarget() {
+        return navigationHistory.peek();
+    }
+
     public void navigateBack() {
         if (navigationHistory.size() >= 1) {
             navigationHistory.pop();
@@ -89,7 +93,9 @@ public class Model {
     }
 
     public void navigate(NavigationTarget navigationTarget) {
-        navigationHistory.push(navigationTarget);
+        if (navigationHistory.peek() != navigationTarget) {
+            navigationHistory.push(navigationTarget);
+        }
         navigationListeners.forEach(x -> x.navigateTo(navigationTarget));
     }
 
@@ -220,9 +226,7 @@ public class Model {
     }
 
     public void returnToCategoryRoot() {
-        if (currentCategory == null) {
-            navigate(NavigationTarget.HOME);
-        } else {
+        if (currentCategory != null) {
             categoryListeners.forEach(x -> x.onCategorySelected(currentCategory));
         }
     }
