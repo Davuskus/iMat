@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" stylesheets="@../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.controls.search.SearchField">
    <children>
-      <TextField fx:id="searchBox" onAction="#onEnter" onKeyTyped="#onSearchBoxUpdate" prefHeight="40.0" promptText="Sök efter en produkt..." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TextField fx:id="searchBox" onAction="#onEnter" prefHeight="40.0" promptText="Sök efter en produkt..." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <styleClass>
             <String fx:value="rounded" />
             <String fx:value="text-normal" />
