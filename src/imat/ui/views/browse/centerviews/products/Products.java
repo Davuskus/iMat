@@ -17,6 +17,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
@@ -31,7 +32,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     private Label categoryLabel;
 
     @FXML
-    private FlowPane productsFlowPane;
+    private VBox productsVBox;
 
     @FXML
     private CheckBox onlyEcoCheckBox;
@@ -68,9 +69,9 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     public void onCategorySelected(Category category) {
         if ((category == null) ||(category == currentCategory)) return;
         currentCategory = category;
-        productsFlowPane.getChildren().clear();
-        productsFlowPane.setPadding(new Insets(20, 10, 20, 10));
-        productsFlowPane.setVgap(40);
+        productsVBox.getChildren().clear();
+        productsVBox.setPadding(new Insets(20, 10, 20, 10));
+        //productsVBox.setVgap(40);
         categoryLabel.setText(category.getName());
         populateWithCategorizedProducts(category, onlyEcologicalProducts);
     }
@@ -86,9 +87,9 @@ public class Products extends FXMLController implements ICategoryListener, ISear
             categoryText = "Sökresultat för: \"" + searchTerm + "\"";
         }
         categoryLabel.setText(categoryText);
-        productsFlowPane.getChildren().clear();
-        productsFlowPane.setPadding(new Insets(10, 10, 10, 10));
-        productsFlowPane.setVgap(10);
+        productsVBox.getChildren().clear();
+        productsVBox.setPadding(new Insets(10, 10, 10, 10));
+        //productsVBox.setVgap(10);
         populateWithProducts(products, onlyEcologicalProducts);
 
 //        Category searchResultCategory = model.searchForCategory(searchTerm);
@@ -114,7 +115,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
         for (Product product : products) {
             if (!onlyEcologicalProducts || product.isEcological()) {
                 numShownProducts++;
-                productsFlowPane.getChildren().add(productMenuItems.get(product));
+                productsVBox.getChildren().add(productMenuItems.get(product));
             }
         }
         noResultsLabel.setVisible(numShownProducts == 0);
@@ -138,7 +139,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
                 controller.setModel(model);
                 String fxmlPath = "../../../../views/browse/centerviews/products/subcategoryPane/SubcategoryPane.fxml";
                 Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
-                productsFlowPane.getChildren().add(item);
+                productsVBox.getChildren().add(item);
             }
         }
     }
@@ -146,7 +147,7 @@ public class Products extends FXMLController implements ICategoryListener, ISear
     @FXML
     private void checkBoxOnAction(Event event) {
         onlyEcologicalProducts = onlyEcoCheckBox.isSelected();
-        productsFlowPane.getChildren().clear();
+        productsVBox.getChildren().clear();
         if (currentCategory == null) {
             populateWithProducts(currentProducts, onlyEcologicalProducts);
         } else {
