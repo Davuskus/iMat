@@ -50,7 +50,7 @@ public class SearchResultsPane extends ProductPane implements ISearchListener, I
         }
         titleLabel.setText(titleText);
         productsFlowPane.getChildren().clear();
-        populateWithProducts(products, model.isOnlyShowingEcologicalProducts());
+        populateWithProducts(products, isOnlyShowingEcoProducts);
 
     }
 
@@ -68,24 +68,29 @@ public class SearchResultsPane extends ProductPane implements ISearchListener, I
 
     @FXML
     private void checkBoxOnAction(Event event) {
-        updateProductList(onlyEcoCheckBox.isSelected());
+        model.notifyEcologicalListeners(onlyEcoCheckBox.isSelected());
+        updateProductList();
     }
 
-    private void updateProductList(boolean onlyEcoProducts) {
-        model.setShowOnlyEcologicalProducts(onlyEcoProducts);
+    private void updateProductList() {
         productsFlowPane.getChildren().clear();
-        populateWithProducts(currentProducts, onlyEcoProducts);
+        populateWithProducts(currentProducts, isOnlyShowingEcoProducts);
     }
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.SEARCH_RESULTS) {
             rootPane.setDisable(false);
-            onlyEcoCheckBox.setSelected(model.isOnlyShowingEcologicalProducts());
-            updateProductList(onlyEcoCheckBox.isSelected());
+            updateProductList();
         } else {
             rootPane.setDisable(true);
         }
+    }
+
+    @Override
+    public void onEcologicalUpdate(boolean isEcological) {
+        super.onEcologicalUpdate(isEcological);
+        onlyEcoCheckBox.setSelected(isEcological);
     }
 
 }

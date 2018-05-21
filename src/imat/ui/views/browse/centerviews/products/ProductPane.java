@@ -1,5 +1,6 @@
 package imat.ui.views.browse.centerviews.products;
 
+import imat.interfaces.IEcologicalListener;
 import imat.model.FXMLController;
 import imat.ui.controls.product.menu.ProductMenuItem;
 import imat.utils.FXMLLoader;
@@ -12,7 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public abstract class ProductPane extends FXMLController {
+public abstract class ProductPane extends FXMLController implements IEcologicalListener {
+
+    protected boolean isOnlyShowingEcoProducts;
 
     protected List<Product> currentProducts;
 
@@ -20,6 +23,7 @@ public abstract class ProductPane extends FXMLController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        model.addEcologicalListener(this);
         productMenuItems = new HashMap<>();
         for (Product product : model.getAllProducts()) {
             ProductMenuItem controller = new ProductMenuItem(product);
@@ -28,6 +32,11 @@ public abstract class ProductPane extends FXMLController {
             Node item = FXMLLoader.loadFXMLNodeFromRootPackage(fxmlPath, this, controller);
             productMenuItems.put(product, item);
         }
+    }
+
+    @Override
+    public void onEcologicalUpdate(boolean isEcological) {
+        isOnlyShowingEcoProducts = isEcological;
     }
 
 }

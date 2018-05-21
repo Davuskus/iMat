@@ -28,6 +28,7 @@ public class Model {
     private List<IRemoveEvent> checkoutItemRemoveEvents;
     private final List<IShutdownListener> shutdownListeners;
     private final List<ICartTrashListener> cartTrashListeners;
+    private final List<IEcologicalListener> ecologicalListeners;
 
     private boolean isThrowingCartInTrash;
 
@@ -36,10 +37,9 @@ public class Model {
     private List<Order> orders;
     private int numOrders;
 
-    private boolean showOnlyEcologicalProducts;
-
     public Model() {
         categories = CategoryFactory.getCategoriesFromFolder("src/imat/resources/categories");
+        ecologicalListeners = new ArrayList<>(1);
         IShoppingListeners = new ArrayList<>(1);
         categoryListeners = new ArrayList<>(1);
         navigationListeners = new ArrayList<>(1);
@@ -97,6 +97,14 @@ public class Model {
             navigationHistory.push(navigationTarget);
         }
         navigationListeners.forEach(x -> x.navigateTo(navigationTarget));
+    }
+
+    public void addEcologicalListener(IEcologicalListener ecologicalListener) {
+        ecologicalListeners.add(ecologicalListener);
+    }
+
+    public void notifyEcologicalListeners(boolean isEcological) {
+        ecologicalListeners.forEach(listener -> listener.onEcologicalUpdate(isEcological));
     }
 
     public void addShoppingListener(IShoppingListener IShoppingListener) {
@@ -407,11 +415,4 @@ public class Model {
         return isThrowingCartInTrash;
     }
 
-    public void setShowOnlyEcologicalProducts(boolean showOnlyEcologicalProducts) {
-        this.showOnlyEcologicalProducts = showOnlyEcologicalProducts;
-    }
-
-    public boolean isOnlyShowingEcologicalProducts() {
-        return showOnlyEcologicalProducts;
-    }
 }

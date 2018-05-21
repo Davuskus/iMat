@@ -53,7 +53,7 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
         currentCategory = category;
         productsVBox.getChildren().clear();
         categoryLabel.setText(category.getName());
-        populateWithCategorizedProducts(category, model.isOnlyShowingEcologicalProducts());
+        populateWithCategorizedProducts(category, isOnlyShowingEcoProducts);
     }
 
     private void populateWithCategorizedProducts(Category category, boolean onlyEcologicalProducts) {
@@ -81,25 +81,30 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
 
     @FXML
     private void checkBoxOnAction(Event event) {
-        updateProductList(onlyEcoCheckBox.isSelected());
+        model.notifyEcologicalListeners(onlyEcoCheckBox.isSelected());
+        updateProductList();
     }
 
-    private void updateProductList(boolean onlyEcoProducts) {
-        model.setShowOnlyEcologicalProducts(onlyEcoProducts);
+    private void updateProductList() {
         productsVBox.getChildren().clear();
-        populateWithCategorizedProducts(currentCategory, onlyEcoProducts);
+        populateWithCategorizedProducts(currentCategory, isOnlyShowingEcoProducts);
     }
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.CATEGORY) {
             rootPane.setDisable(false);
-            onlyEcoCheckBox.setSelected(model.isOnlyShowingEcologicalProducts());
-            updateProductList(onlyEcoCheckBox.isSelected());
+            updateProductList();
         } else {
 
             rootPane.setDisable(true);
         }
+    }
+
+    @Override
+    public void onEcologicalUpdate(boolean isEcological) {
+        super.onEcologicalUpdate(isEcological);
+        onlyEcoCheckBox.setSelected(isEcological);
     }
 
 }
