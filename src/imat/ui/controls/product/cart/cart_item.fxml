@@ -43,7 +43,7 @@
                            <children>
                                     <Button fx:id="removeButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#removeButtonOnAction" onMouseEntered="#removeButtonMouseEntered" onMouseExited="#removeButtonMouseExited" onMousePressed="#removeButtonMousePressed" prefHeight="20.0" prefWidth="20.0" styleClass="transparent-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                         <graphic>
-                                            <ImageView fx:id="removeButtonImageView" fitHeight="20.0" fitWidth="30.0" focusTraversable="true" onKeyPressed="#removeButtonOnAction" onMouseClicked="#removeButtonOnAction" pickOnBounds="true" preserveRatio="true">
+                                            <ImageView fx:id="removeButtonImageView" fitHeight="20.0" fitWidth="30.0" onMouseClicked="#removeButtonOnAction" pickOnBounds="true" preserveRatio="true">
                                                 <cursor>
                                                     <Cursor fx:constant="HAND" />
                                                 </cursor>
@@ -72,7 +72,7 @@
                         <Insets right="-5.0" />
                      </HBox.margin>
                   </VBox>
-                        <Separator orientation="VERTICAL">
+                        <Separator focusTraversable="false" orientation="VERTICAL">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin>
@@ -123,7 +123,7 @@
                                  <children>
                                     <VBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                                  <Label fx:id="priceLabel" styleClass="text-normal-dark-gray" text="- kr" />
+                                                  <Label fx:id="priceLabel" focusTraversable="false" styleClass="text-normal-dark-gray" text="- kr" />
                                        </children>
                                     </VBox>
                                  </children>
