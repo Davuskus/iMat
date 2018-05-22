@@ -65,7 +65,11 @@ public class Main extends Application {
         int stageWidth = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().width * ratio);
         int stageHeight = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().height * ratio);
 
-        primaryStage.setScene(new Scene(root, stageWidth, stageHeight));
+        Scene scene = new Scene(root, stageWidth, stageHeight);
+        scene.focusOwnerProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(newValue);
+        });
+        primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image("imat/resources/images/logo/imat_logo_icon.png"));
         primaryStage.show();
     }
