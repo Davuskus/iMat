@@ -410,19 +410,27 @@
     -fx-background-color: #20721a;
 }
 
-.regret-button-bg {
+.regret-button {
+    -fx-cursor: hand;
     -fx-background-color: rgba(0, 0, 0, 0.65);
     -fx-background-radius: 2px;
 }
 
-.regret-button-bg:hover {
+.regret-button:hover {
     -fx-background-color: rgba(0, 0, 0, 0.45);
     -fx-background-radius: 2px;
 }
 
-.regret-button-bg:pressed {
+.regret-button:pressed {
     -fx-background-color: rgba(0, 0, 0, 0.85);
     -fx-background-radius: 1px;
+    -fx-border-width: 1px;
+    -fx-border-color: #00adff;
+}
+
+.regret-button:focused {
+    -fx-border-width: 1px;
+    -fx-border-color: #00adff;
 }
 
 .background-rounded {

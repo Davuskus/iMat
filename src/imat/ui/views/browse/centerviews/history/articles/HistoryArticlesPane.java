@@ -57,6 +57,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
     public void initialize(URL location, ResourceBundle resources) {
         model.addOrderListener(this);
         model.addCartTrashListener(this);
+        model.addNavigationListener(this);
     }
 
     private void populateArticleList(Order order) {
