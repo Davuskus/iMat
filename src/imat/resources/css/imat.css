@@ -1,3 +1,7 @@
+.root {
+    -focused-color: orange;
+}           
+
 .text-small {
     -fx-font-family: "roboto";
     -fx-font-size: 14px;
@@ -227,8 +231,8 @@
 
 .clickable-list-item:pressed {
     -fx-background-color: #e1e1e1;
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .action-button {
@@ -248,13 +252,13 @@
 
 .action-button:pressed {
     -fx-background-color: rgba(114, 225, 76, 0.7);
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .action-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .to-checkout-button {
@@ -271,14 +275,14 @@
 }
 
 .to-checkout-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .to-checkout-button:pressed {
     -fx-background-color: #69e143;
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .see-through-bg {
@@ -330,13 +334,13 @@
 
 .light-gray-button:pressed {
     -fx-background-color: #DDDDDD;
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .light-gray-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .white-button {
@@ -356,13 +360,13 @@
 
 .white-button:pressed {
     -fx-background-color: #DDDDDD;
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .white-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .gray-button {
@@ -382,13 +386,13 @@
 
 .gray-button:pressed {
     -fx-background-color: #d7d7d7;
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .gray-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .transparent-button {
@@ -397,13 +401,13 @@
 }
 
 .transparent-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .transparent-button:pressed {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .background-eco-green {
@@ -423,14 +427,14 @@
 
 .regret-button:pressed {
     -fx-background-color: rgba(0, 0, 0, 0.85);
-    -fx-background-radius: 1px;
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-background-radius: 2px;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .regret-button:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .background-rounded {
@@ -470,8 +474,8 @@
 }
 
 .sidebar-container:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
     -fx-background-color: #e1e1e1;
 }
 
@@ -497,11 +501,11 @@
 }
 
 .selected-category {
-    -fx-background-color: orange;
+    -fx-background-color: -focused-color;
 }
 
 .selected-category:hover {
-    -fx-background-color: yellow;
+    -fx-background-color: #ffc65c;
 }
 
 .pane:disabled {
@@ -517,6 +521,6 @@
 }
 
 .text-field:focused {
-    -fx-border-width: 1px;
-    -fx-border-color: #00adff;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
