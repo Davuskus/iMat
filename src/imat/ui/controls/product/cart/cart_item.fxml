@@ -22,7 +22,7 @@
                     <children>
                         <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <styleClass>
-                                <String fx:value="scene-transparent" />
+                                <String fx:value="regret-button" />
                                 <String fx:value="button-text-normal-bold-white" />
                             </styleClass>
                             <cursor>
@@ -30,10 +30,6 @@
                             </cursor>
                         </Button>
                     </children>
-               <styleClass>
-                  <String fx:value="regret-button-bg" />
-                  <String fx:value="background-rounded" />
-               </styleClass>
                 </AnchorPane>
                 <HBox fx:id="itemHBox" alignment="CENTER_LEFT" spacing="5.0">
                     <children>

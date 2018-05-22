@@ -21,14 +21,14 @@
     <children>
         <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <AnchorPane fx:id="regretPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regret-button-bg">
+                <AnchorPane fx:id="regretPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <Button fx:id="regretButton" mnemonicParsing="false" onAction="#regretButtonOnAction" text="Ångra borttagning" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <styleClass>
-                        <String fx:value="scene-transparent" />
+                        <String fx:value="regret-button" />
                         <String fx:value="button-text-normal-bold-white" />
                      </styleClass>
                   </Button>
