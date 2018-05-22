@@ -99,7 +99,6 @@ public class Modal extends FXMLController implements INavigationListener {
                 break;
             default:
                 rootPane.setDisable(true);
-                System.out.println(closeButton.isDisable());
                 break;
         }
     }
