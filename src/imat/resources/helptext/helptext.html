@@ -8,14 +8,20 @@
         <meta charset="UTF-8">
     </head>
     <body>
+    <script language="JavaScript">
+        function setFirstElementFocus() {
+            document.getElementById("firstListItem").focus();
+        }
+        window.onload = setFirstElementFocus;
+
+    </script>
     <div id="headerArea">
-        <!--<h1 class="helpHeader" id="testHeader">Hjälp</h1>-->
         <p id="topOfContent">I det här fönstret hittar du svar på vanliga frågor om hur du använder iMat. Klicka på en fråga i innehållsförteckningen för att hoppa direkt till svaret. Vill du avsluta och gå tillbaka till butiken, klicka på krysset högst upp till höger.</p>
     </div>
     <div class="tableOfContents">
         <p>Innehåll:</p>
         <ul class="tableOfContentList">
-            <li><a href="#" onclick="navigateToSection('howToScroll');">Hur navigerar jag upp och ner på sidan?</a></li>
+            <li><a href="#" onclick="navigateToSection('howToScroll');" id="firstListItem">Hur navigerar jag upp och ner på sidan?</a></li>
             <li><a href="#" onclick=navigateToSection('howToSearch')>Hur söker jag i sortimentet?</a></li>
             <li><a href="#" onclick=navigateToSection('howToPurchase')>Hur köper jag en produkt?</a></li>
             <li><a href="#" onclick="navigateToSection('howToRemoveSingleProduct');">Hur tar jag bort en produkt ur kundvagnen?</a></li>

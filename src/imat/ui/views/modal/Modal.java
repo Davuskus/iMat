@@ -3,6 +3,7 @@ package imat.ui.views.modal;
 import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.model.FXMLController;
+import imat.ui.views.modal.helpview.HelpView;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,6 +29,9 @@ public class Modal extends FXMLController implements INavigationListener {
 
     @FXML
     private AnchorPane helpPane;
+
+    @FXML
+    private HelpView helpPaneController;
 
     @FXML
     private AnchorPane copyOrderPane;
@@ -75,9 +79,11 @@ public class Modal extends FXMLController implements INavigationListener {
         switch (navigationTarget) {
             case HELP:
                 modalTitleLabel.setText("Hjälp");
+                helpPaneController.reloadContent();
                 setSize(helpPane);
                 setVisible(helpPane);
                 helpPane.toFront();
+
                 break;
             case COPY_ORDER:
                 modalTitleLabel.setText("Kopiera beställning");

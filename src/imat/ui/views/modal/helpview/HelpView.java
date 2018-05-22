@@ -24,6 +24,8 @@ public class HelpView implements Initializable, INavigationListener {
     @FXML
     AnchorPane basePane;
 
+    private static final String htmlPath = "src/imat/resources/helptext/helptext.html";
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //FXMLLoader.loadFXMLFromRootPackage("helpView.fxml", this, this);
@@ -36,7 +38,7 @@ public class HelpView implements Initializable, INavigationListener {
 
 
         webEngine = helpTextView.getEngine();
-        loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
+        reloadContent();
         helpTextView.getEngine().setUserStyleSheetLocation(getClass().getResource("../../../../resources/helptext/helpStyle.css").toString());
 
     }
@@ -52,7 +54,12 @@ public class HelpView implements Initializable, INavigationListener {
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
+        reloadContent();
         basePane.setDisable(navigationTarget != NavigationTarget.HELP);
+    }
+
+    public void reloadContent() {
+        loadHtmlTextFromFile("src/imat/resources/helptext/helptext.html");
     }
 
 }
