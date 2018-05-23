@@ -94,9 +94,8 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.CATEGORY) {
             rootPane.setDisable(false);
-            updateProductList();
+            model.selectCategory(currentCategory);
         } else {
-
             rootPane.setDisable(true);
         }
     }
