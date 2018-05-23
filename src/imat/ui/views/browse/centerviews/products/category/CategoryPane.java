@@ -51,9 +51,7 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
     public void onCategorySelected(Category category) {
         if ((category == null) || (category == currentCategory)) return;
         currentCategory = category;
-        productsVBox.getChildren().clear();
-        categoryLabel.setText(category.getName());
-        populateWithCategorizedProducts(category, isOnlyShowingEcoProducts);
+        updatePaneContent(currentCategory);
     }
 
     private void populateWithCategorizedProducts(Category category, boolean onlyEcologicalProducts) {
@@ -82,10 +80,11 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
     @FXML
     private void checkBoxOnAction(Event event) {
         model.notifyEcologicalListeners(onlyEcoCheckBox.isSelected());
-        updateProductList();
+        updatePaneContent(currentCategory);
     }
 
-    private void updateProductList() {
+    private void updatePaneContent(Category category) {
+        categoryLabel.setText(category.getName());
         productsVBox.getChildren().clear();
         populateWithCategorizedProducts(currentCategory, isOnlyShowingEcoProducts);
     }
@@ -94,6 +93,7 @@ public class CategoryPane extends ProductPane implements ICategoryListener, INav
     public void navigateTo(NavigationTarget navigationTarget) {
         if (navigationTarget == NavigationTarget.CATEGORY) {
             rootPane.setDisable(false);
+            updatePaneContent(currentCategory);
             model.selectCategory(currentCategory);
         } else {
             rootPane.setDisable(true);
