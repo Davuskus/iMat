@@ -501,11 +501,15 @@
 }
 
 .selected-category {
-    -fx-background-color: -focused-color;
+    -fx-background-color: #ffba33;
 }
 
 .selected-category:hover {
     -fx-background-color: #ffc65c;
+}
+
+.selected-category:pressed {
+    -fx-background-color: #ffba33;
 }
 
 .pane:disabled {
