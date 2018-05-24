@@ -21,7 +21,7 @@
                         <Image url="@../../../../../../resources/images/icons/order_history/icon_order_history.png" />
                      </image>
                   </ImageView>
-                        <Label fx:id="historyTitleLabel" alignment="CENTER" styleClass="title-large-dark-gray" text="Köphistorik">
+                        <Label fx:id="historyTitleLabel" alignment="CENTER" styleClass="title-xlarge-dark-gray" text="Köphistorik">
                             <font>
                                 <Font name="System Bold" size="24.0" />
                             </font>

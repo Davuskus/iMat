@@ -20,7 +20,7 @@
                         <Image url="@../../../../../resources/images/icons/commodity/icon_commodity.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" styleClass="title-large-dark-gray" text="Sortiment" />
+                  <Label alignment="CENTER" styleClass="title-xlarge-dark-gray" text="Sortiment" />
                </children>
             </HBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="sidebar-container" VBox.vgrow="ALWAYS">

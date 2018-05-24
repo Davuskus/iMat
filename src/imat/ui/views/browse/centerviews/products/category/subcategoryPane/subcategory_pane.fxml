@@ -10,7 +10,7 @@
     <children>
         <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="50.0" styleClass="title-pane">
             <children>
-                <Label fx:id="subcategoryLabel" alignment="CENTER" layoutY="6.0" styleClass="title-xlarge-dark-gray" text="Kategori" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <Label fx:id="subcategoryLabel" alignment="CENTER" layoutY="6.0" styleClass="title-large-dark-gray" text="Kategori" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
         </AnchorPane>
           <FlowPane fx:id="productsFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="10.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefWidth="0.0" vgap="10.0" VBox.vgrow="ALWAYS">

@@ -26,9 +26,9 @@
                         <Image url="@../../../../../../resources/images/icons/order/icon_order.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="dateLabel" styleClass="title-large-dark-gray" text="YYYY-MM-DD">
+                  <Label fx:id="dateLabel" styleClass="title-xlarge-dark-gray" text="YYYY-MM-DD">
                      <graphic>
-                        <Label fx:id="orderTitleLabel" styleClass="title-large-dark-gray" text="Beställning: " />
+                        <Label fx:id="orderTitleLabel" styleClass="title-xlarge-dark-gray" text="Beställning: " />
                      </graphic></Label>
                </children>
             </HBox>

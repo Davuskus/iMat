@@ -27,7 +27,7 @@
                   </ImageView>
                   <AnchorPane fx:id="cartTitlePane" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="cartTitleLabel" styleClass="title-large-dark-gray" text="Kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label fx:id="cartTitleLabel" styleClass="title-xlarge-dark-gray" text="Kundvagn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                   <Button fx:id="trashButton" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#trashButtonOnAction" onMouseEntered="#trashButtonMouseEntered" onMouseExited="#trashButtonMouseExited" onMousePressed="#trashButtonMousePressed" prefHeight="30.0" prefWidth="30.0" styleClass="transparent-button">
@@ -82,8 +82,8 @@
                <children>
                   <HBox fx:id="sumHBox" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" spacing="5.0" styleClass="title-pane">
                      <children>
-                        <Label fx:id="sumTitleLabel" styleClass="text-normal-bold" text="Summa: " />
-                        <Label fx:id="sumLabel" styleClass="text-normal" text="- kr" />
+                        <Label fx:id="sumTitleLabel" styleClass="subtitle-dark-gray" text="Summa: " />
+                        <Label fx:id="sumLabel" styleClass="text-large" text="- kr" />
                      </children>
                      <padding>
                         <Insets left="10.0" />

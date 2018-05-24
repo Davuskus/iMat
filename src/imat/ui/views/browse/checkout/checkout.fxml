@@ -17,7 +17,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="title-large" text="Din kundvagn:">
+            <Label styleClass="title-xlarge-dark-gray" text="Din kundvagn:">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
@@ -36,22 +36,22 @@
                <children>
                   <VBox alignment="TOP_CENTER" GridPane.columnIndex="3">
                      <children>
-                        <Label styleClass="text-normal-bold" text="Styckpris" />
+                        <Label styleClass="subtitle-dark-gray" text="Styckpris" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER">
                      <children>
-                        <Label styleClass="text-normal-bold" text="Antal" />
+                        <Label styleClass="subtitle-dark-gray" text="Antal" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" GridPane.columnIndex="1">
                      <children>
-                        <Label styleClass="text-normal-bold" text="Produkt" />
+                        <Label styleClass="subtitle-dark-gray" text="Produkt" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefWidth="71.0" GridPane.columnIndex="4">
                      <children>
-                        <Label styleClass="text-normal-bold" text="Totalt" />
+                        <Label styleClass="subtitle-dark-gray" text="Totalt" />
                      </children>
                   </VBox>
                </children>
@@ -74,22 +74,22 @@
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label styleClass="button-text-normal-bold" text="Summa:  " />
-                              <Label fx:id="PriceLabel" styleClass="text-normal" text="Pris" />
+                              <Label styleClass="text-large-dark-gray-bold" text="Summa:  " />
+                              <Label fx:id="PriceLabel" styleClass="text-large" text="Pris" />
                            </children>
                         </HBox>
                         <Label styleClass="subtitle" text="+" />
                         <HBox alignment="CENTER">
                            <children>
-                              <Label styleClass="text-normal-bold" text="Frakt:  " />
-                              <Label fx:id="shippingCostLabel" styleClass="text-normal" text="frakt" />
+                              <Label styleClass="text-large-dark-gray-bold" text="Frakt:  " />
+                              <Label fx:id="shippingCostLabel" styleClass="text-large" text="frakt" />
                            </children>
                         </HBox>
-                        <Label styleClass="subtitle" text="=" />
+                        <Label styleClass="text-large-dark-gray-bold" text="=" />
                         <HBox alignment="CENTER">
                            <children>
-                              <Label styleClass="text-normal-bold" text="Att betala:  " />
-                              <Label fx:id="totalCostLable" styleClass="text-normal" text="total" />
+                              <Label styleClass="text-large-dark-gray-bold" text="Att betala:  " />
+                              <Label fx:id="totalCostLable" styleClass="text-large" text="total" />
                            </children>
                         </HBox>
                      </children>
@@ -106,7 +106,7 @@
                         <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" styleClass="light-gray-button" text="Tillbaka" GridPane.halignment="LEFT" />
                         <Button fx:id="toPaymentButton" mnemonicParsing="false" onAction="#onPayButtonAction" text="Gå till betalning" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <styleClass>
-                              <String fx:value="text-normal-bold" />
+                              <String fx:value="button-text-normal-bold" />
                               <String fx:value="to-checkout-button" />
                            </styleClass>
                            <cursor>
