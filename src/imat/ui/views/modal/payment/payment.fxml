@@ -333,7 +333,7 @@
                                                 <Label styleClass="text-large" text="Giltighetstid:" />
                                                 <Label styleClass="text-large" text="Säkerhetskod:">
                                                    <tooltip>
-                                                      <Tooltip text="Säkerhetskoden hittar du på baksidan av kortet" />
+                                                      <Tooltip styleClass="text-normal-white-bold" text="Säkerhetskoden hittar du på baksidan av ditt kort" />
                                                    </tooltip>
                                                 </Label>
                                              </children>
