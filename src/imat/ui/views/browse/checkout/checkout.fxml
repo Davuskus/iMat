@@ -61,7 +61,7 @@
             </GridPane>
             <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="190.0" prefWidth="540.0" styleClass="menu-component-container" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox fx:id="VBoxflow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" styleClass="menu-component-container-borderless">
+                  <VBox fx:id="VBoxflow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" styleClass="checkout-cart">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

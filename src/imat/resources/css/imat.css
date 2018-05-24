@@ -479,12 +479,17 @@
     -fx-background-color: #e1e1e1;
 }
 
+.checkout-cart {
+    -fx-background-color: rgba(122, 240, 76, 0.16);
+    -fx-background-radius: 2px;
+}
+
 .center-view-bg {
     -fx-background-color: -fx-background;
 }
 
 .menu-component-container {
-    -fx-background-color: #e1e1e1;
+    -fx-background-color: rgba(122, 240, 76, 0.05);
     -fx-border-width: 1px;
     -fx-border-color: #b9b9b9;
     -fx-border-radius: 2px;
@@ -492,7 +497,7 @@
 }
 
 .menu-component-container-borderless {
-    -fx-background-color: #e1e1e1;
+    -fx-background-color: rgba(122, 240, 76, 0.05);
     -fx-background-radius: 2px;
 }
 
