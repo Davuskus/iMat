@@ -530,11 +530,15 @@
 }
 
 .scroll-pane:focused {
+    -fx-focus-color: -focused-color;
+    -fx-faint-focus-color: -focused-color;
     -fx-border-width: 2px;
     -fx-border-color: -focused-color;
 }
 
 .text-field:focused {
+    -fx-focus-color: -focused-color;
+    -fx-faint-focus-color: rgba(0, 0, 0, 0);
     -fx-border-width: 2px;
     -fx-border-color: -focused-color;
 }
