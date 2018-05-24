@@ -155,7 +155,7 @@
                         </AnchorPane>
                       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="100.0" styleClass="background-fxDefault" SplitPane.resizableWithParent="false">
                            <children>
-                              <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <StackPane fx:id="stackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane fx:id="conclusionPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="scene-default">
                                        <children>
@@ -175,13 +175,17 @@
                                                                   <Cursor fx:constant="DEFAULT" />
                                                                </cursor>
                                                             </TextArea>
-                                                            <Button fx:id="changeClientInfoButton" mnemonicParsing="false" onAction="#clientViewToFront" styleClass="text-small-bold" text="Tillbaka och ändra kunduppgifter">
+                                                            <Button fx:id="changeClientInfoButton" mnemonicParsing="false" onAction="#clientViewToFront" text="Tillbaka och ändra kunduppgifter">
                                                                <cursor>
                                                                   <Cursor fx:constant="HAND" />
                                                                </cursor>
                                                                <tooltip>
                                                                   <Tooltip text="Tillbaka till kunduppgifter" />
                                                                </tooltip>
+                                                               <styleClass>
+                                                                  <String fx:value="text-small-bold" />
+                                                                  <String fx:value="light-gray-button" />
+                                                               </styleClass>
                                                             </Button>
                                                          </children>
                                                       </HBox>
@@ -205,13 +209,17 @@
                                                                   <Cursor fx:constant="DEFAULT" />
                                                                </cursor>
                                                             </TextArea>
-                                                            <Button fx:id="changeCreditCardInfoButton" mnemonicParsing="false" onAction="#creditCardViewToFront" styleClass="text-small-bold" text="Tillbaka och ändra kreditkortsuppgifter">
+                                                            <Button fx:id="changeCreditCardInfoButton" mnemonicParsing="false" onAction="#creditCardViewToFront" text="Tillbaka och ändra kreditkortsuppgifter">
                                                                <cursor>
                                                                   <Cursor fx:constant="HAND" />
                                                                </cursor>
                                                                <tooltip>
                                                                   <Tooltip text="Tillbaka till  kreditkortsuppgifter" />
                                                                </tooltip>
+                                                               <styleClass>
+                                                                  <String fx:value="text-small-bold" />
+                                                                  <String fx:value="light-gray-button" />
+                                                               </styleClass>
                                                             </Button>
                                                          </children>
                                                       </HBox>
@@ -219,7 +227,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <Label styleClass="text-normal" text="Bestälning" underline="true" />
+                                                      <Label styleClass="text-normal" text="Beställning" underline="true" />
                                                       <HBox spacing="10.0">
                                                          <children>
                                                             <Label styleClass="text-large" text="Summa:" />
@@ -233,8 +241,12 @@
                                                 </VBox>
                                              </children>
                                           </VBox>
-                                          <CheckBox fx:id="saveUserInfoCheckBox" layoutX="234.0" layoutY="331.0" mnemonicParsing="false" selected="true" styleClass="text-small" text="Spara nuvarande uppgifter" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="48.0" />
-                                          <Button fx:id="PayButton" layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#payAndOrder" prefHeight="32.0" prefWidth="191.0" text="Betala och beställ" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
+                                          <CheckBox fx:id="saveUserInfoCheckBox" layoutX="234.0" layoutY="331.0" mnemonicParsing="false" selected="true" text="Spara nuvarande uppgifter" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="48.0">
+                                             <styleClass>
+                                                <String fx:value="text-small" />
+                                                <String fx:value="light-gray-button" />
+                                             </styleClass></CheckBox>
+                                          <Button fx:id="PayButton" layoutX="234.0" layoutY="356.0" mnemonicParsing="false" onAction="#payAndOrder" prefHeight="32.0" prefWidth="221.0" text="Betala och beställ" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="48.0">
                                              <styleClass>
                                                 <String fx:value="text-small-bold" />
                                                 <String fx:value="to-checkout-button" />
@@ -243,13 +255,17 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </Button>
-                                          <Button fx:id="summaryBackButton" layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onAction="#creditCardViewToFront" styleClass="text-small-bold" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0">
+                                          <Button fx:id="summaryBackButton" layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onAction="#creditCardViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                              <tooltip>
                                                 <Tooltip text="Tillbaka till kreditkortsuppgifter" />
                                              </tooltip>
+                                             <styleClass>
+                                                <String fx:value="light-gray-button" />
+                                                <String fx:value="text-small-bold" />
+                                             </styleClass>
                                           </Button>
                                        </children>
                                     </AnchorPane>
@@ -306,7 +322,7 @@
                                                 </VBox>
                                                 <VBox fillWidth="false" spacing="2.0">
                                                    <children>
-                                                      <Label fx:id="cvcError" styleClass="text-small" text="* cvc koden är 3 siffror" textFill="#e20000" visible="false" />
+                                                      <Label fx:id="cvcError" styleClass="text-small" text="* Säkerhetskoden är 3 siffror" textFill="#e20000" visible="false" />
                                                       <TextField fx:id="cvcField" prefHeight="26.0" prefWidth="48.0" promptText="cvc" styleClass="text-small-bold">
                                                          <tooltip>
                                                             <Tooltip text="CVC kåden hittar du på backsidan av kortet" />
@@ -324,7 +340,7 @@
                                                    </tooltip>
                                                 </Label>
                                                 <Label styleClass="text-large" text="Giltighetstid:" />
-                                                <Label styleClass="text-large" text="Säkerhetskåd:">
+                                                <Label styleClass="text-large" text="Säkerhetskod:">
                                                    <tooltip>
                                                       <Tooltip text="CVC kåden hittar du på backsidan av kortet" />
                                                    </tooltip>
@@ -348,13 +364,17 @@
                                                 <Tooltip text="Till samanfattning" />
                                              </tooltip>
                                           </Button>
-                                          <Button fx:id="creditCardBackButton" layoutX="48.0" layoutY="227.0" mnemonicParsing="false" onAction="#clientViewToFront" styleClass="text-small-bold" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0">
+                                          <Button fx:id="creditCardBackButton" layoutX="48.0" layoutY="227.0" mnemonicParsing="false" onAction="#clientViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                              <tooltip>
                                                 <Tooltip text="Till baka till kunduppgifter" />
                                              </tooltip>
+                                             <styleClass>
+                                                <String fx:value="text-small-bold" />
+                                                <String fx:value="light-gray-button" />
+                                             </styleClass>
                                           </Button>
                                           <Label fx:id="creditCardErrorLable" layoutX="200.0" layoutY="50.0" prefHeight="20.0" prefWidth="218.0" styleClass="subtitle" text="Var snäll och fyll i alla fält." textFill="RED" visible="false" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="50.0">
                                              <font>

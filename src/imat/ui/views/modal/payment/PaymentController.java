@@ -9,8 +9,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
@@ -21,7 +23,7 @@ import javax.xml.stream.events.EndElement;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaymentController extends FXMLController implements Initializable, INavigationListener,IShoppingListener {
+public class PaymentController extends FXMLController implements Initializable, INavigationListener, IShoppingListener {
 
     @FXML
     Button clientInfoDoneButton;
@@ -72,7 +74,7 @@ public class PaymentController extends FXMLController implements Initializable, 
     TextField phoneNumberField;
 
     //@FXML
-   // TextField creditCardNumberField;
+    // TextField creditCardNumberField;
 
     @FXML
     TextField validMonthField;
@@ -125,10 +127,13 @@ public class PaymentController extends FXMLController implements Initializable, 
     private Button PayButton;
 
     @FXML
-    private  Button summaryBackButton;
+    private Button summaryBackButton;
 
     @FXML
-    private  Label sumLabel;
+    private Label sumLabel;
+
+    @FXML
+    protected StackPane stackPane;
 
 
     private final IMatDataHandler iMatDataHandler;
@@ -145,14 +150,16 @@ public class PaymentController extends FXMLController implements Initializable, 
         creditCard = iMatDataHandler.getCreditCard();
     }
 
-    private boolean hasClientFocus(){
-        return firstNameField.isFocused()||lastNameField.isFocused()||addressField.isFocused()||phoneNumberField.isFocused()||postcodeField.isFocused();
+    private boolean hasClientFocus() {
+        return firstNameField.isFocused() || lastNameField.isFocused() || addressField.isFocused() || phoneNumberField.isFocused() || postcodeField.isFocused();
     }
-    private boolean hasCreditCardFocus(){
-        return c1.isFocused()||c2.isFocused()||c3.isFocused()||c4.isFocused()||validYearField.isFocused()||validMonthField.isFocused()||cvcField.isFocused()|| creditCardDoneButton.isFocused();
+
+    private boolean hasCreditCardFocus() {
+        return c1.isFocused() || c2.isFocused() || c3.isFocused() || c4.isFocused() || validYearField.isFocused() || validMonthField.isFocused() || cvcField.isFocused() || creditCardDoneButton.isFocused();
     }
-    private boolean hasSummeryFocus(){
-        return PayButton.isFocused()||summaryBackButton.isFocused()||changeClientInfoButton.isFocused()||changeCreditCardInfoButton.isFocused()||saveUserInfoCheckBox.isFocused();
+
+    private boolean hasSummeryFocus() {
+        return PayButton.isFocused() || summaryBackButton.isFocused() || changeClientInfoButton.isFocused() || changeCreditCardInfoButton.isFocused() || saveUserInfoCheckBox.isFocused();
     }
 
     @Override
@@ -167,14 +174,14 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         model.addNavigationListener(this);
 
-
+/*
         clientInfoDoneButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
 
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-               if(oldValue.booleanValue()&& !newValue.booleanValue()&&!(hasClientFocus())){
-                  firstNameField.requestFocus();
-               }
+                if (oldValue.booleanValue() && !newValue.booleanValue() && !(hasClientFocus())) {
+                    firstNameField.requestFocus();
+                }
             }
         });
 
@@ -182,7 +189,7 @@ public class PaymentController extends FXMLController implements Initializable, 
 
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(oldValue.booleanValue()&& !newValue.booleanValue()&&!(hasSummeryFocus())){
+                if (oldValue.booleanValue() && !newValue.booleanValue() && !(hasSummeryFocus())) {
                     changeClientInfoButton.requestFocus();
                 }
             }
@@ -191,12 +198,12 @@ public class PaymentController extends FXMLController implements Initializable, 
 
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(oldValue.booleanValue()&& !newValue.booleanValue()&&!(hasCreditCardFocus())){
+                if (oldValue.booleanValue() && !newValue.booleanValue() && !(hasCreditCardFocus())) {
                     c1.requestFocus();
                 }
             }
         });
-
+*/
       /*  creditCardNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -306,88 +313,42 @@ public class PaymentController extends FXMLController implements Initializable, 
         });
         postcodeField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
-            if(postcodeField.getText().trim().chars().count()>5){
-                String t=postcodeField.getText().trim().substring(0,5);
+            if (postcodeField.getText().trim().chars().count() > 5) {
+                String t = postcodeField.getText().trim().substring(0, 5);
                 postcodeField.clear();
                 postcodeField.appendText(t);
             }
         });
         phoneNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
-            if(phoneNumberField.getText().trim().chars().count()>10){
-                String t=phoneNumberField.getText().trim().substring(0,10);
+            if (phoneNumberField.getText().trim().chars().count() > 10) {
+                String t = phoneNumberField.getText().trim().substring(0, 10);
                 phoneNumberField.clear();
                 phoneNumberField.appendText(t);
             }
         });
 
-          /*
-     creditCardNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
-            CreditCardInfoDone();
 
-
-
-            if(creditCardNumberField.getCharacters().length()>0&&creditCardNumberField.getCharacters().charAt(creditCardNumberField.getCharacters().length()-1)=='-'){
-
-             newValue=(""+creditCardNumberField.getCharacters().subSequence(0,creditCardNumberField.getCharacters().length()-1));
-            }
-
-
-    String str=creditCardNumberField.getText();
-   // str.replaceAll("-", "");
-    long num = str.trim().chars().count();
-
-                if(num%5==0&& num<18&&num>3 && creditCardNumberField.getCharacters().charAt(creditCardNumberField.getCharacters().length()-1)!='-'){
-                    newValue=(newValue.substring(0,(int)num-1)+"-"+creditCardNumberField.getCharacters().charAt(creditCardNumberField.getCharacters().length()-1));
-                }
-
-    // creditCardNumberField.clear();
-    //  creditCardNumberField.appendText(newValue);
-
-    if (num > 16) {
-        String t = str.substring(0, 16);
-
-        creditCardNumberField.clear();
-        creditCardNumberField.appendText(t);
-    }
-
-    StringBuilder b = new StringBuilder();
-    for (int i = 0; i < str.length(); i++) {
-        b.append(str.charAt(i));
-        if (i % 4 == 0 && i > 0 && i < 14) {
-            b.append("-");
-        }
-    }
-    str = b.toString();
-
-    System.out.println(str);
-            if(!str.equals(creditCardNumberField.getText())) {
-                creditCardNumberField.clear();
-                 creditCardNumberField.appendText(str);
-            }
-
-        });
-    */
         validMonthField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-            if(validMonthField.getText().trim().chars().count()>2){
-                String t=validMonthField.getText().trim().substring(0,2);
+            if (validMonthField.getText().trim().chars().count() > 2) {
+                String t = validMonthField.getText().trim().substring(0, 2);
                 validMonthField.clear();
                 validMonthField.appendText(t);
             }
         });
         validYearField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-            if(validYearField.getText().trim().chars().count()>4){
-                String t=validYearField.getText().trim().substring(0,4);
+            if (validYearField.getText().trim().chars().count() > 4) {
+                String t = validYearField.getText().trim().substring(0, 4);
                 validYearField.clear();
                 validYearField.appendText(t);
             }
         });
         cvcField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-            if(cvcField.getText().trim().chars().count()>3){
-                String t=cvcField.getText().trim().substring(0,3);
+            if (cvcField.getText().trim().chars().count() > 3) {
+                String t = cvcField.getText().trim().substring(0, 3);
                 cvcField.clear();
                 cvcField.appendText(t);
             }
@@ -395,27 +356,33 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         c1.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-             if(c1.getText().chars().count()==4){c2.requestFocus();}
-            if(c1.getText().trim().chars().count()>4){
-                String t=c1.getText().trim().substring(0,4);
+            if (c1.getText().chars().count() == 4) {
+                c2.requestFocus();
+            }
+            if (c1.getText().trim().chars().count() > 4) {
+                String t = c1.getText().trim().substring(0, 4);
                 c1.clear();
                 c1.appendText(t);
             }
         });
         c2.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-            if(c2.getText().chars().count()==4){c3.requestFocus();}
-            if(c2.getText().trim().chars().count()>4){
-                String t=c2.getText().trim().substring(0,4);
+            if (c2.getText().chars().count() == 4) {
+                c3.requestFocus();
+            }
+            if (c2.getText().trim().chars().count() > 4) {
+                String t = c2.getText().trim().substring(0, 4);
                 c2.clear();
                 c2.appendText(t);
             }
         });
         c3.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
-            if(c3.getText().chars().count()==4){c4.requestFocus();}
-            if(c3.getText().trim().chars().count()>4){
-                String t=c3.getText().trim().substring(0,4);
+            if (c3.getText().chars().count() == 4) {
+                c4.requestFocus();
+            }
+            if (c3.getText().trim().chars().count() > 4) {
+                String t = c3.getText().trim().substring(0, 4);
                 c3.clear();
                 c3.appendText(t);
             }
@@ -423,8 +390,8 @@ public class PaymentController extends FXMLController implements Initializable, 
         c4.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
 
-            if(c4.getText().trim().chars().count()>4){
-                String t=c4.getText().trim().substring(0,4);
+            if (c4.getText().trim().chars().count() > 4) {
+                String t = c4.getText().trim().substring(0, 4);
                 c4.clear();
                 c4.appendText(t);
             }
@@ -438,7 +405,7 @@ public class PaymentController extends FXMLController implements Initializable, 
         postcodeField.appendText(customer.getPostCode());
         phoneNumberField.appendText(customer.getPhoneNumber());
 
-      //  creditCardNumberField.appendText(creditCard.getCardNumber());
+
         fillcreditcard();
 
         validMonthField.appendText(removeDefult(creditCard.getValidMonth()));
@@ -446,22 +413,27 @@ public class PaymentController extends FXMLController implements Initializable, 
         cvcField.appendText(removeDefult(creditCard.getVerificationCode()));
     }
 
-        private String removeDefult(int str){
+    private String removeDefult(int str) {
 
-            if(str==0) {
-                return "";
-            }
-            return ""+str;
+        if (str == 0) {
+            return "";
         }
+        return "" + str;
+    }
 
 
-    private void fillcreditcard(){
-        String c=creditCard.getCardNumber();
-        for (int i = 0; i <c.length() ; i++) {
-            if(i<4){c1.appendText(""+c.charAt(i));}
-            else if(i>3&&i<8){c2.appendText(""+c.charAt(i));}
-            else if(i>7&&i<12){c3.appendText(""+c.charAt(i));}
-            else{c4.appendText(""+c.charAt(i));}
+    private void fillcreditcard() {
+        String c = creditCard.getCardNumber();
+        for (int i = 0; i < c.length(); i++) {
+            if (i < 4) {
+                c1.appendText("" + c.charAt(i));
+            } else if (i > 3 && i < 8) {
+                c2.appendText("" + c.charAt(i));
+            } else if (i > 7 && i < 12) {
+                c3.appendText("" + c.charAt(i));
+            } else {
+                c4.appendText("" + c.charAt(i));
+            }
         }
     }
 
@@ -473,20 +445,19 @@ public class PaymentController extends FXMLController implements Initializable, 
             customer.setPostCode(postcodeField.getText());
             customer.setPhoneNumber(phoneNumberField.getText());
 
-          //  creditCard.setCardNumber(creditCardNumberField.getText());
-            creditCard.setCardNumber(c1.getText()+c2.getText()+c3.getText()+c4.getText());
+
+            creditCard.setCardNumber(c1.getText() + c2.getText() + c3.getText() + c4.getText());
             creditCard.setValidMonth(Integer.parseInt(validMonthField.getText()));
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
             creditCard.setVerificationCode(Integer.parseInt(cvcField.getText()));
-        }
-        else {
+        } else {
             customer.setFirstName("");
             customer.setLastName("");
             customer.setAddress("");
             customer.setPostCode("");
             customer.setPhoneNumber("");
 
-            //  creditCard.setCardNumber(creditCardNumberField.getText());
+
             creditCard.setCardNumber("");
             creditCard.setValidMonth(0);
             creditCard.setValidYear(0);
@@ -545,8 +516,8 @@ public class PaymentController extends FXMLController implements Initializable, 
         updateOrderText();
     }
 
-    private void updateOrderText(){
-        sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice()+35));
+    private void updateOrderText() {
+        sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice() + 35));
     }
 
     private void updateCreditCardTextArea() {
@@ -557,8 +528,8 @@ public class PaymentController extends FXMLController implements Initializable, 
     private String creditCardToString() {
 
         StringBuilder strB = new StringBuilder();
-       // strB.append(creditCardNumberField.getText() + "\n");
-        strB.append(c1.getText()+"-"+c2.getText()+"-"+c3.getText()+"-"+c4.getText()+ "\n");
+        // strB.append(creditCardNumberField.getText() + "\n");
+        strB.append(c1.getText() + "-" + c2.getText() + "-" + c3.getText() + "-" + c4.getText() + "\n");
 
         strB.append(validMonthField.getText() + " / ");
         strB.append(validYearField.getText() + "\n");
@@ -585,48 +556,33 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private void creditCardViewToFront() {
 
-        customerInfoPane.setDisable(true);
-        conclusionPane.setDisable(true);
-        creditCardInfoPane.setDisable(false);
 
-      //  creditCardNumberField.requestFocus();
-        c1.requestFocus();
-
-        creditCardInfoPane.toFront();
+        switchView(creditCardInfoPane);
         secondSidebarVBox.toFront();
     }
 
     @FXML
     private void summaryViewToFront() {
-        customerInfoPane.setDisable(true);
-        conclusionPane.setDisable(false);
-        creditCardInfoPane.setDisable(true);
 
-        changeClientInfoButton.requestFocus();
 
         updateTextArea();
-        conclusionPane.toFront();
+        switchView(conclusionPane);
         thirdSidebarVBox.toFront();
+
     }
 
     @FXML
     private void clientViewToFront() {
 
-        customerInfoPane.setDisable(false);
-        conclusionPane.setDisable(true);
-        creditCardInfoPane.setDisable(true);
-
-        firstNameField.requestFocus();
-
-        customerInfoPane.toFront();
         firstSidebarVBox.toFront();
+
+      switchView(customerInfoPane);
     }
 
 
     @FXML
     private void moveBack() {
-        //SaveUserInfo();
-        //  confirmationPane.setDisable(true);
+
         splitPane.setDisable(true);
         model.navigate(NavigationTarget.CHECKOUT);
     }
@@ -644,7 +600,7 @@ public class PaymentController extends FXMLController implements Initializable, 
             return false;
         }
 
-       if (t.getStyleClass().contains("error")) {
+        if (t.getStyleClass().contains("error")) {
             t.getStyleClass().removeAll("error");
         }
         return true;
@@ -677,7 +633,7 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     private void ClientInfoDone() {
-        if (clientInfoFildIn(false||clientErrorLable.isVisible())) {
+        if (clientInfoFildIn(false || clientErrorLable.isVisible())) {
             clientErrorLable.setVisible(false);
             clientInfoDoneButton.setDisable(false);
         }
@@ -685,7 +641,7 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     private boolean CreditCardInfoFildIn(boolean displayError) {
         boolean fildIn = true;
-      //  fildIn = isFieldIn(creditCardNumberField, displayError) && fildIn;
+        //  fildIn = isFieldIn(creditCardNumberField, displayError) && fildIn;
 
      /*   fildIn=isFieldIn(c1,displayError)&&fildIn;
         fildIn=isFieldIn(c2,displayError)&&fildIn;
@@ -697,49 +653,55 @@ public class PaymentController extends FXMLController implements Initializable, 
 
         fildIn = isFieldIn(validYearField, displayError) && fildIn;
 
-    //    fildIn = isFieldIn(cvcField, displayError) && fildIn;
-
+        //    fildIn = isFieldIn(cvcField, displayError) && fildIn;
 
 
         return fildIn;
     }
 
-    private boolean isComplete(boolean dispalyError){
-        boolean b=true;
-        b=isLength(c1,4,dispalyError)&&b;
+    private boolean isComplete(boolean dispalyError) {
+        boolean b = true;
+        b = isLength(c1, 4, dispalyError) && b;
 
-        b=isLength(c2,4,dispalyError)&&b;
+        b = isLength(c2, 4, dispalyError) && b;
 
-        b=isLength(c3,4,dispalyError)&&b;
+        b = isLength(c3, 4, dispalyError) && b;
 
-        b=isLength(c4,4,dispalyError)&&b;
+        b = isLength(c4, 4, dispalyError) && b;
 
-        if(c1.getStyleClass().contains("error")||c2.getStyleClass().contains("error")||c3.getStyleClass().contains("error")||c4.getStyleClass().contains("error")){cardError.setVisible(true);}
-        else {cardError.setVisible(false);}
+        if (c1.getStyleClass().contains("error") || c2.getStyleClass().contains("error") || c3.getStyleClass().contains("error") || c4.getStyleClass().contains("error")) {
+            cardError.setVisible(true);
+        } else {
+            cardError.setVisible(false);
+        }
 
-        b=isLength(cvcField,3,dispalyError)&&b;
-        if(cvcField.getStyleClass().contains("error")){cvcError.setVisible(true);}
-        else {cvcError.setVisible(false);}
+        b = isLength(cvcField, 3, dispalyError) && b;
+        if (cvcField.getStyleClass().contains("error")) {
+            cvcError.setVisible(true);
+        } else {
+            cvcError.setVisible(false);
+        }
 
         return b;
     }
-    private boolean isLength(TextField textField,int length,boolean displayError){
-        boolean b= textField.getLength()==length;
-        if(!b){
+
+    private boolean isLength(TextField textField, int length, boolean displayError) {
+        boolean b = textField.getLength() == length;
+        if (!b) {
             if (displayError) {
-              //  textField.getStyleClass().add("error");
+                //  textField.getStyleClass().add("error");
                 displayError(textField);
             }
             return false;
         }
         if (textField.getStyleClass().contains("error")) {
-           textField.getStyleClass().removeAll("error");
+            textField.getStyleClass().removeAll("error");
         }
         return true;
     }
 
-    private void displayError(TextField textField){
-        if(!textField.getStyleClass().contains("error")){
+    private void displayError(TextField textField) {
+        if (!textField.getStyleClass().contains("error")) {
             textField.getStyleClass().add("error");
         }
     }
@@ -747,8 +709,8 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private void CreditCardToSummary() {
 
-        boolean creditcar=CreditCardInfoFildIn(true);
-        boolean complete= isComplete(true);
+        boolean creditcar = CreditCardInfoFildIn(true);
+        boolean complete = isComplete(true);
 
         if (creditcar && complete) {
             creditCardErrorLable.setVisible(false);
@@ -761,8 +723,8 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     private void CreditCardInfoDone() {
 
-        boolean creditcar=CreditCardInfoFildIn(false || creditCardErrorLable.isVisible());
-        boolean complete= isComplete(false|| creditCardErrorLable.isVisible());
+        boolean creditcar = CreditCardInfoFildIn(false || creditCardErrorLable.isVisible());
+        boolean complete = isComplete(false || creditCardErrorLable.isVisible());
 
         if (creditcar && complete) {
             creditCardErrorLable.setVisible(false);
@@ -771,13 +733,12 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
 
-
     @FXML
     private void clientToSummary() {
 
-        boolean client=clientInfoFildIn(false);
-        boolean creditcar=CreditCardInfoFildIn(false);
-        boolean complete= isComplete(false);
+        boolean client = clientInfoFildIn(false);
+        boolean creditcar = CreditCardInfoFildIn(false);
+        boolean complete = isComplete(false);
 
         if (client && creditcar && complete) {
             summaryViewToFront();
@@ -804,6 +765,8 @@ public class PaymentController extends FXMLController implements Initializable, 
                 confirmationPane.setDisable(true);
                 splitPane.setDisable(false);
 
+                switchView(stackPane.getChildren().get(stackPane.getChildren().size()-1));
+
                 setSize(splitPane);
             }
         } else {
@@ -816,6 +779,14 @@ public class PaymentController extends FXMLController implements Initializable, 
     private void resizeParent() {
         model.navigate(NavigationTarget.CHECKOUT);
         model.navigateBack();
+    }
+
+    private void switchView(Node node){
+        stackPane.getChildren().forEach(child -> {
+            child.setDisable(true);
+        });
+        node.setDisable(false);
+        node.toFront();
     }
 
     @Override
