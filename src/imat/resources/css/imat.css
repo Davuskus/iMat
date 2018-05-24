@@ -543,11 +543,26 @@
     -fx-border-color: -focused-color;
 }
 
-.check-box .box {
+.check-box {
     -fx-cursor: hand;
+}
+
+.check-box .box {
+    -fx-background-color: #eeeeee;
+    -fx-border-color: #9e9e9e;
+    -fx-border-radius: 1px;
+}
+
+.check-box:hover .box {
     -fx-background-color: white;
     -fx-border-color: #afafaf;
-    -fx-border-radius:1px;
+    -fx-border-radius: 1px;
+}
+
+.check-box:pressed .box {
+    -fx-background-color: #e6e6e6;
+    -fx-border-color: #969696;
+    -fx-border-radius: 1px;
 }
 
 .check-box:focused .box {
