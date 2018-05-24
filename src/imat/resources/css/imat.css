@@ -542,3 +542,15 @@
     -fx-border-width: 2px;
     -fx-border-color: -focused-color;
 }
+
+.check-box .box {
+    -fx-cursor: hand;
+    -fx-background-color: white;
+    -fx-border-color: #afafaf;
+    -fx-border-radius:1px;
+}
+
+.check-box:focused .box {
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
+}

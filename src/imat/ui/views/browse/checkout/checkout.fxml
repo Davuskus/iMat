@@ -78,7 +78,7 @@
                               <Label fx:id="PriceLabel" styleClass="text-large" text="Pris" />
                            </children>
                         </HBox>
-                        <Label styleClass="subtitle" text="+" />
+                        <Label styleClass="text-large-dark-gray-bold" text="+" />
                         <HBox alignment="CENTER">
                            <children>
                               <Label styleClass="text-large-dark-gray-bold" text="Frakt:  " />
