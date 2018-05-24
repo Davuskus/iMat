@@ -1,6 +1,6 @@
 .root {
     -focused-color: orange;
-}           
+}
 
 .text-small {
     -fx-font-family: "roboto";
@@ -500,6 +500,11 @@
     -fx-background-color: white;
 }
 
+.subcategory-header {
+    -fx-background-color: white;
+    -fx-border-color: #d7d7d7;
+}
+
 .selected-category {
     -fx-background-color: #ffba33;
 }
@@ -522,6 +527,11 @@
 
 .scroll-pane:disabled {
     -fx-opacity: 1.0;
+}
+
+.scroll-pane:focused {
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
 }
 
 .text-field:focused {
