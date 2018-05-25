@@ -141,7 +141,7 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private GridPane gridDate1;
 
-    private Node datepicker;
+    private DatePicker datePicker ;
 
     @FXML
     private Label OrderErrorLable;
@@ -164,6 +164,11 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private  VBox orderDateSidePane;
 
+    @FXML
+    private Label summaryDateLabel;
+
+    @FXML
+    private Label summaryTimelabel;
 
     private final IMatDataHandler iMatDataHandler;
 
@@ -177,6 +182,8 @@ public class PaymentController extends FXMLController implements Initializable, 
         iMatDataHandler = IMatDataHandler.getInstance();
         customer = iMatDataHandler.getCustomer();
         creditCard = iMatDataHandler.getCreditCard();
+
+        datePicker= new DatePicker(LocalDate.now());
     }
 
 
@@ -189,17 +196,18 @@ public class PaymentController extends FXMLController implements Initializable, 
 
 
 
-        DatePicker datePicker = new DatePicker(LocalDate.now());
+      //  datePicker = new DatePicker(LocalDate.now());
         DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
-        datepicker = datePickerSkin.getPopupContent();
+        Node node = datePickerSkin.getPopupContent();
 
-         gridDate1.add(datepicker,2,0);
+         gridDate1.add(node,2,0);
 
 
         confirmationPane.setDisable(true);
         splitPane.setDisable(true);
 
         model.addNavigationListener(this);
+
 
 
         hourTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -413,6 +421,9 @@ public class PaymentController extends FXMLController implements Initializable, 
 
 
         hourTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (hourTextField.getText().trim().chars().count() == 2) {
+                minuteTextField.requestFocus();
+            }
 
             if (hourTextField.getText().trim().chars().count() > 2) {
                 String t = hourTextField.getText().trim().substring(0, 2);
@@ -551,9 +562,11 @@ public class PaymentController extends FXMLController implements Initializable, 
         updateOrderText();
     }
 
-   // TODO fixa såå man set datum man får beställningen
+
     private void updateOrderText() {
         sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice() + 35));
+        summaryDateLabel.setText(""+datePicker.getValue());
+        summaryTimelabel.setText(""+hourTextField.getText()+":"+minuteTextField.getText());
     }
 
     private void updateCreditCardTextArea() {
