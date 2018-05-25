@@ -11,16 +11,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.skin.DatePickerSkin;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
-import javax.xml.stream.events.EndElement;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PaymentController extends FXMLController implements Initializable, INavigationListener, IShoppingListener {
@@ -135,6 +138,32 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     protected StackPane stackPane;
 
+    @FXML
+    private GridPane gridDate1;
+
+    private Node datepicker;
+
+    @FXML
+    private Label OrderErrorLable;
+
+    @FXML
+    private Button orderDateBackButton;
+
+    @FXML
+    private Button orderdateNextButton;
+
+    @FXML
+    private TextField hourTextField;
+
+    @FXML
+    private  TextField minuteTextField;
+
+    @FXML
+    private AnchorPane orderDatePane;
+
+    @FXML
+    private  VBox orderDateSidePane;
+
 
     private final IMatDataHandler iMatDataHandler;
 
@@ -150,17 +179,6 @@ public class PaymentController extends FXMLController implements Initializable, 
         creditCard = iMatDataHandler.getCreditCard();
     }
 
-    private boolean hasClientFocus() {
-        return firstNameField.isFocused() || lastNameField.isFocused() || addressField.isFocused() || phoneNumberField.isFocused() || postcodeField.isFocused();
-    }
-
-    private boolean hasCreditCardFocus() {
-        return c1.isFocused() || c2.isFocused() || c3.isFocused() || c4.isFocused() || validYearField.isFocused() || validMonthField.isFocused() || cvcField.isFocused() || creditCardDoneButton.isFocused();
-    }
-
-    private boolean hasSummeryFocus() {
-        return PayButton.isFocused() || summaryBackButton.isFocused() || changeClientInfoButton.isFocused() || changeCreditCardInfoButton.isFocused() || saveUserInfoCheckBox.isFocused();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -169,51 +187,46 @@ public class PaymentController extends FXMLController implements Initializable, 
         setSize(splitPane);
         resize = true;
 
+
+
+        DatePicker datePicker = new DatePicker(LocalDate.now());
+        DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
+        datepicker = datePickerSkin.getPopupContent();
+
+         gridDate1.add(datepicker,2,0);
+
+
         confirmationPane.setDisable(true);
         splitPane.setDisable(true);
 
         model.addNavigationListener(this);
 
-/*
-        clientInfoDoneButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
 
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (oldValue.booleanValue() && !newValue.booleanValue() && !(hasClientFocus())) {
-                    firstNameField.requestFocus();
-                }
-            }
-        });
-
-        summaryBackButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
-
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (oldValue.booleanValue() && !newValue.booleanValue() && !(hasSummeryFocus())) {
-                    changeClientInfoButton.requestFocus();
-                }
-            }
-        });
-        creditCardBackButton.focusedProperty().addListener(new ChangeListener<Boolean>() {
-
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (oldValue.booleanValue() && !newValue.booleanValue() && !(hasCreditCardFocus())) {
-                    c1.requestFocus();
-                }
-            }
-        });
-*/
-      /*  creditCardNumberField.textProperty().addListener(new ChangeListener<String>() {
+        hourTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
                 if (!newValue.matches("\\d*")) {
-                    creditCardNumberField.setText(newValue.replaceAll("[^\\d.-]", ""));
+                    hourTextField.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }
         });
-        */
+
+
+
+        minuteTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    minuteTextField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+
+
+
         c1.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -301,6 +314,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
+
 
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
@@ -396,6 +410,27 @@ public class PaymentController extends FXMLController implements Initializable, 
                 c4.appendText(t);
             }
         });
+
+
+        hourTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (hourTextField.getText().trim().chars().count() > 2) {
+                String t = hourTextField.getText().trim().substring(0, 2);
+                hourTextField.clear();
+                hourTextField.appendText(t);
+            }
+            orderDateDone();
+        });
+        minuteTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (minuteTextField.getText().trim().chars().count() > 2) {
+                String t = minuteTextField.getText().trim().substring(0, 2);
+                minuteTextField.clear();
+                minuteTextField.appendText(t);
+            }
+            orderDateDone();
+        });
+
     }
 
     private void fillUserData() {
@@ -516,6 +551,7 @@ public class PaymentController extends FXMLController implements Initializable, 
         updateOrderText();
     }
 
+   // TODO fixa såå man set datum man får beställningen
     private void updateOrderText() {
         sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice() + 35));
     }
@@ -554,8 +590,13 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     @FXML
-    private void creditCardViewToFront() {
+    private void orderDateToFront(){
+        switchView(orderDatePane);
+        orderDateSidePane.toFront();
+    }
 
+    @FXML
+    private void creditCardViewToFront() {
 
         switchView(creditCardInfoPane);
         secondSidebarVBox.toFront();
@@ -641,20 +682,10 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     private boolean CreditCardInfoFildIn(boolean displayError) {
         boolean fildIn = true;
-        //  fildIn = isFieldIn(creditCardNumberField, displayError) && fildIn;
-
-     /*   fildIn=isFieldIn(c1,displayError)&&fildIn;
-        fildIn=isFieldIn(c2,displayError)&&fildIn;
-        fildIn=isFieldIn(c3,displayError)&&fildIn;
-        fildIn=isFieldIn(c4,displayError)&&fildIn;
-*/
 
         fildIn = isFieldIn(validMonthField, displayError) && fildIn;
 
         fildIn = isFieldIn(validYearField, displayError) && fildIn;
-
-        //    fildIn = isFieldIn(cvcField, displayError) && fildIn;
-
 
         return fildIn;
     }
@@ -706,15 +737,17 @@ public class PaymentController extends FXMLController implements Initializable, 
         }
     }
 
+
+    //TODO byt namn  creditCard to OrderDate
     @FXML
-    private void CreditCardToSummary() {
+    private void CreditCardToOrderDate() {
 
         boolean creditcar = CreditCardInfoFildIn(true);
         boolean complete = isComplete(true);
 
         if (creditcar && complete) {
             creditCardErrorLable.setVisible(false);
-            summaryViewToFront();
+            orderDateToFront();
             return;
         }
         creditCardDoneButton.setDisable(true);
@@ -733,15 +766,16 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
 
+    //Todo byt namn till clientToOrderDate
     @FXML
-    private void clientToSummary() {
+    private void clientToOrderDate() {
 
         boolean client = clientInfoFildIn(false);
         boolean creditcar = CreditCardInfoFildIn(false);
         boolean complete = isComplete(false);
 
         if (client && creditcar && complete) {
-            summaryViewToFront();
+            orderDateToFront();
             return;
         }
 
@@ -749,7 +783,7 @@ public class PaymentController extends FXMLController implements Initializable, 
 
 
             creditCardViewToFront();
-            CreditCardToSummary();
+            CreditCardToOrderDate();
 
             return;
         }
@@ -802,5 +836,113 @@ public class PaymentController extends FXMLController implements Initializable, 
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
         updateOrderText();
+    }
+
+
+
+    private void orderDateDone(){
+        if (orderDateCompleted(false || OrderErrorLable.isVisible())) {
+            OrderErrorLable.setVisible(false);
+            orderdateNextButton.setDisable(false);
+        }
+    }
+
+    private boolean isHour(TextField t,Boolean displayError){
+        if(t.getText().trim().equals("") ) {
+
+            if (displayError) {
+                displayError(t);
+            }
+            return false;
+        }
+            double h = Double.parseDouble(t.getText().trim());
+
+            if (!(h >= 0 && h < 24)) {
+                if (displayError) {
+                    displayError(t);
+                }
+                return false;
+            }
+
+        if (t.getStyleClass().contains("error")) {
+            t.getStyleClass().removeAll("error");
+        }
+        return true;
+    }
+
+    private boolean isMinute(TextField t,Boolean displayError){
+        if(t.getText().trim().equals("") ) {
+
+            if (displayError) {
+                displayError(t);
+            }
+            return false;
+        }
+            double m = Double.parseDouble(t.getText());
+            if (!(m >= 0 && m < 60)) {
+                if (displayError) {
+                    displayError(t);
+                }
+                return false;
+            }
+
+        if (t.getStyleClass().contains("error")) {
+            t.getStyleClass().removeAll("error");
+        }
+        return true;
+    }
+
+    private boolean orderDateCompleted(boolean dispalyError){
+        boolean b = true;
+        b = (isHour(hourTextField, dispalyError) ) && b;
+
+        b = (isMinute(minuteTextField, dispalyError)  )&& b;
+
+      /*
+        if ( hourTextField.getStyleClass().contains("error") || minuteTextField.getStyleClass().contains("error")) {
+          //  cardError.setVisible(true);
+        } else {
+       //     cardError.setVisible(false);
+        }
+        */
+        return b;
+    }
+
+    @FXML
+    private void orderDateToSummary(){
+        if(orderDateCompleted(true)){
+            OrderErrorLable.setVisible(false);
+            summaryViewToFront();
+            return;
+        }
+        OrderErrorLable.setVisible(true);
+        orderdateNextButton.setDisable(true);
+    }
+
+    @FXML
+    private void clientToSummary(){
+        clientToOrderDate();
+
+        boolean creditcar = CreditCardInfoFildIn(false);
+        boolean complete = isComplete(false);
+
+        if((creditcar && complete)&&(clientInfoFildIn(false))){
+            orderDateToSummary();
+        }
+
+    }
+
+    @FXML
+    private void CreditCardToSummary() {
+
+
+        CreditCardToOrderDate();
+
+        boolean creditcar = CreditCardInfoFildIn(false);
+        boolean complete = isComplete(false);
+
+        if (creditcar && complete) {
+            orderDateToSummary();
+        }
     }
 }
