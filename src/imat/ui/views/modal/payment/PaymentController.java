@@ -4,6 +4,7 @@ import imat.enums.NavigationTarget;
 import imat.interfaces.INavigationListener;
 import imat.interfaces.IShoppingListener;
 import imat.model.FXMLController;
+import imat.utils.ListUtils;
 import imat.utils.MathUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,6 +24,7 @@ import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PaymentController extends FXMLController implements Initializable, INavigationListener, IShoppingListener {
@@ -194,8 +196,14 @@ public class PaymentController extends FXMLController implements Initializable, 
         resize = true;
 
         DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
-        Node node = datePickerSkin.getPopupContent();
-        gridDate1.add(node, 2, 0);
+        Node datePicketPopupContentNode = datePickerSkin.getPopupContent();
+
+        List<Node> dateGridChildren = ListUtils.cloneList(gridDate1.getChildren());
+        gridDate1.getChildren().clear();
+        gridDate1.add(dateGridChildren.get(0), 0, 0);
+        gridDate1.add(datePicketPopupContentNode, 2, 0);
+        gridDate1.add(dateGridChildren.get(1), 0, 2);
+        gridDate1.add(dateGridChildren.get(2), 2, 2);
 
         confirmationPane.setDisable(true);
         splitPane.setDisable(true);

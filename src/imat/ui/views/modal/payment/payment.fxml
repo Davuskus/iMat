@@ -432,8 +432,8 @@
                                                 <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label styleClass="text-large" text="Tid:" GridPane.rowIndex="2" />
                                                 <Label styleClass="text-large" text="Datum:" />
+                                                <Label styleClass="text-large" text="Tid:" GridPane.rowIndex="2" />
                                                 <HBox alignment="CENTER_LEFT" spacing="1.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                    <children>
                                                       <TextField fx:id="hourTextField" prefHeight="26.0" prefWidth="52.0" promptText="tim" styleClass="text-small-bold" />
@@ -449,16 +449,16 @@
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="orderDateBackButton" layoutX="133.0" layoutY="384.0" mnemonicParsing="false" onAction="#creditCardViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
-                                             <styleClass>
-                                                <String fx:value="light-gray-button" />
-                                                <String fx:value="button-text-normal" />
-                                             </styleClass>
-                                          </Button>
                                           <Button fx:id="orderdateNextButton" layoutX="259.0" layoutY="384.0" mnemonicParsing="false" onAction="#orderDateToSummary" text="Nästa Steg" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                              <styleClass>
                                                 <String fx:value="to-checkout-button" />
                                                 <String fx:value="button-text-normal-bold" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="orderDateBackButton" layoutX="133.0" layoutY="384.0" mnemonicParsing="false" onAction="#creditCardViewToFront" text="Tillbaka" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                                             <styleClass>
+                                                <String fx:value="light-gray-button" />
+                                                <String fx:value="button-text-normal" />
                                              </styleClass>
                                           </Button>
                                        </children>
