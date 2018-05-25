@@ -8,10 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,6 +51,7 @@ public class Main extends Application {
         primaryStage.setTitle("iMat");
 
         double ratio = 4.0 / 5;
+        /*
         switch (Toolkit.getDefaultToolkit().getScreenResolution()) {
             case 120:
                 ratio *= 1 / 1.25;
@@ -62,13 +63,11 @@ public class Main extends Application {
                 ratio *= 0.5;
                 break;
         }
-        int stageWidth = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().width * ratio);
-        int stageHeight = (int) (0.5 + Toolkit.getDefaultToolkit().getScreenSize().height * ratio);
+        */
+        int stageWidth = (int) (0.5 + Screen.getPrimary().getVisualBounds().getWidth() * ratio);
+        int stageHeight = (int) (0.5 + Screen.getPrimary().getVisualBounds().getHeight() * ratio);
 
         Scene scene = new Scene(root, stageWidth, stageHeight);
-//        scene.focusOwnerProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println(newValue);
-//        });
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image("imat/resources/images/logo/imat_logo_icon.png"));
         primaryStage.show();
@@ -78,12 +77,12 @@ public class Main extends Application {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         URL url = loader.getResource("imat/resources/fonts");
         String path = URLDecoder.decode(url.getFile(), "UTF-8");
-        for(File fontFolder : new File(path).listFiles()) {
-            if(fontFolder.isDirectory())
-            for(File fontFile : fontFolder.listFiles()) {
-                if(fontFile.getName().endsWith(".ttf"))
-                Font.loadFont(new FileInputStream(fontFile), 100);
-            }
+        for (File fontFolder : new File(path).listFiles()) {
+            if (fontFolder.isDirectory())
+                for (File fontFile : fontFolder.listFiles()) {
+                    if (fontFile.getName().endsWith(".ttf"))
+                        Font.loadFont(new FileInputStream(fontFile), 100);
+                }
         }
     }
 
