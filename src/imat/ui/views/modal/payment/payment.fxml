@@ -38,7 +38,7 @@
                                     <VBox fx:id="thirdSidebarVBox" layoutX="10.0" layoutY="10.0" styleClass="background-fxDefault">
                                        <children>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="kunduppgifterLabel2" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
+                                          <Label fx:id="kunduppgifterLabel2" focusTraversable="false" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -52,7 +52,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel2" onMousePressed="#creditCardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. Kortuppgifter">
+                                          <Label fx:id="KreditkortLabel2" focusTraversable="false" onMousePressed="#creditCardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. Kortuppgifter">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -66,7 +66,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label onMousePressed="#orderDateToFront" prefHeight="50.0" prefWidth="180.0" text="3. Leveransdatum">
+                                          <Label focusTraversable="false" onMousePressed="#orderDateToFront" prefHeight="50.0" prefWidth="180.0" text="3. Leveransdatum">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -75,9 +75,12 @@
                                                 <String fx:value="background-hover-lightGray" />
                                                 <String fx:value="background-pressed-darkGray" />
                                              </styleClass>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel2" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="4. Sammanfattning">
+                                          <Label fx:id="samanfattningLabel2" focusTraversable="false" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="4. Sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -88,7 +91,7 @@
                                     <VBox fx:id="orderDateSidePane" layoutX="10.0" layoutY="10.0" styleClass="background-fxDefault">
                                        <children>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="kunduppgifterLabel21" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
+                                          <Label fx:id="kunduppgifterLabel21" focusTraversable="false" onMousePressed="#clientViewToFront" prefHeight="50.0" prefWidth="180.0" text="1. Kunduppgifter">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -102,7 +105,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="KreditkortLabel21" onMousePressed="#creditCardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. Kortuppgifter">
+                                          <Label fx:id="KreditkortLabel21" focusTraversable="false" onMousePressed="#creditCardViewToFront" prefHeight="50.0" prefWidth="180.0" text="2. Kortuppgifter">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -116,13 +119,13 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label fx:id="samanfattningLabel21" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="3. Leveransdatum">
+                                          <Label fx:id="samanfattningLabel21" focusTraversable="false" prefHeight="50.0" prefWidth="180.0" styleClass="text-normal" text="3. Leveransdatum">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label onMousePressed="#orderDateToSummary" prefHeight="50.0" prefWidth="180.0" text="4. Sammanfattning">
+                                          <Label focusTraversable="false" onMousePressed="#orderDateToSummary" prefHeight="50.0" prefWidth="180.0" text="4. Sammanfattning">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -131,6 +134,9 @@
                                                 <String fx:value="background-hover-lightGray" />
                                                 <String fx:value="background-pressed-darkGray" />
                                              </styleClass>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Label>
                                           <Separator prefWidth="200.0" />
                                        </children>
@@ -167,6 +173,9 @@
                                                 <String fx:value="background-hover-lightGray" />
                                                 <String fx:value="background-pressed-darkGray" />
                                              </styleClass>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Label>
                                           <Separator prefWidth="200.0" />
                                           <Label fx:id="samanfattningLabel1" onMousePressed="#CreditCardToSummary" prefHeight="50.0" prefWidth="180.0" text="4. Sammanfattning">
@@ -208,7 +217,7 @@
                                              </styleClass>
                                           </Label>
                                           <Separator prefWidth="200.0" />
-                                          <Label onMousePressed="#clientToOrderDate" prefHeight="50.0" prefWidth="180.0" text="3. Leveransdatum">
+                                          <Label focusTraversable="false" onMousePressed="#clientToOrderDate" prefHeight="50.0" prefWidth="180.0" text="3. Leveransdatum">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -217,6 +226,9 @@
                                                 <String fx:value="background-hover-lightGray" />
                                                 <String fx:value="background-pressed-darkGray" />
                                              </styleClass>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Label>
                                           <Separator prefWidth="200.0" />
                                           <Label fx:id="samanfattningLabel" focusTraversable="false" onMousePressed="#clientToSummary" prefHeight="50.0" prefWidth="180.0" text="4. Sammanfattning">

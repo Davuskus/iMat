@@ -16,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -141,7 +140,7 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private GridPane gridDate1;
 
-    private DatePicker datePicker ;
+    private DatePicker datePicker;
 
     @FXML
     private Label OrderErrorLable;
@@ -156,13 +155,13 @@ public class PaymentController extends FXMLController implements Initializable, 
     private TextField hourTextField;
 
     @FXML
-    private  TextField minuteTextField;
+    private TextField minuteTextField;
 
     @FXML
     private AnchorPane orderDatePane;
 
     @FXML
-    private  VBox orderDateSidePane;
+    private VBox orderDateSidePane;
 
     @FXML
     private Label summaryDateLabel;
@@ -183,7 +182,7 @@ public class PaymentController extends FXMLController implements Initializable, 
         customer = iMatDataHandler.getCustomer();
         creditCard = iMatDataHandler.getCreditCard();
 
-        datePicker= new DatePicker(LocalDate.now());
+        datePicker = new DatePicker(LocalDate.now());
     }
 
 
@@ -194,21 +193,14 @@ public class PaymentController extends FXMLController implements Initializable, 
         setSize(splitPane);
         resize = true;
 
-
-
-      //  datePicker = new DatePicker(LocalDate.now());
         DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
         Node node = datePickerSkin.getPopupContent();
-
-         gridDate1.add(node,2,0);
-
+        gridDate1.add(node, 2, 0);
 
         confirmationPane.setDisable(true);
         splitPane.setDisable(true);
 
         model.addNavigationListener(this);
-
-
 
         hourTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -220,8 +212,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
-
-
         minuteTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -232,9 +222,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
-
-
-
         c1.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -244,6 +231,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
+
         c2.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -253,6 +241,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
+
         c3.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -262,6 +251,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
+
         c4.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -272,7 +262,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
-
         validMonthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -282,6 +271,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
+
         validYearField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -291,6 +281,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
+
         cvcField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -300,7 +291,6 @@ public class PaymentController extends FXMLController implements Initializable, 
                 }
             }
         });
-
 
         postcodeField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -312,7 +302,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
-
         phoneNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -323,16 +312,18 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
-
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
         });
+
         lastNameField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
         });
+
         addressField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
         });
+
         postcodeField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
             if (postcodeField.getText().trim().chars().count() > 5) {
@@ -341,6 +332,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 postcodeField.appendText(t);
             }
         });
+
         phoneNumberField.textProperty().addListener((observable, oldValue, newValue) -> {
             ClientInfoDone();
             if (phoneNumberField.getText().trim().chars().count() > 10) {
@@ -350,7 +342,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
         });
 
-
         validMonthField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
             if (validMonthField.getText().trim().chars().count() > 2) {
@@ -359,6 +350,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 validMonthField.appendText(t);
             }
         });
+
         validYearField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
             if (validYearField.getText().trim().chars().count() > 4) {
@@ -367,6 +359,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 validYearField.appendText(t);
             }
         });
+
         cvcField.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
             if (cvcField.getText().trim().chars().count() > 3) {
@@ -387,6 +380,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 c1.appendText(t);
             }
         });
+
         c2.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
             if (c2.getText().chars().count() == 4) {
@@ -398,6 +392,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 c2.appendText(t);
             }
         });
+
         c3.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
             if (c3.getText().chars().count() == 4) {
@@ -409,6 +404,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 c3.appendText(t);
             }
         });
+
         c4.textProperty().addListener((observable, oldValue, newValue) -> {
             CreditCardInfoDone();
 
@@ -418,7 +414,6 @@ public class PaymentController extends FXMLController implements Initializable, 
                 c4.appendText(t);
             }
         });
-
 
         hourTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (hourTextField.getText().trim().chars().count() == 2) {
@@ -432,6 +427,7 @@ public class PaymentController extends FXMLController implements Initializable, 
             }
             orderDateDone();
         });
+
         minuteTextField.textProperty().addListener((observable, oldValue, newValue) -> {
 
             if (minuteTextField.getText().trim().chars().count() > 2) {
@@ -451,8 +447,7 @@ public class PaymentController extends FXMLController implements Initializable, 
         postcodeField.appendText(customer.getPostCode());
         phoneNumberField.appendText(customer.getPhoneNumber());
 
-
-        fillcreditcard();
+        fillCreditCard();
 
         validMonthField.appendText(removeDefult(creditCard.getValidMonth()));
         validYearField.appendText(removeDefult(creditCard.getValidYear()));
@@ -460,7 +455,6 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     private String removeDefult(int str) {
-
         if (str == 0) {
             return "";
         }
@@ -468,7 +462,7 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
 
-    private void fillcreditcard() {
+    private void fillCreditCard() {
         String c = creditCard.getCardNumber();
         for (int i = 0; i < c.length(); i++) {
             if (i < 4) {
@@ -491,7 +485,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             customer.setPostCode(postcodeField.getText());
             customer.setPhoneNumber(phoneNumberField.getText());
 
-
             creditCard.setCardNumber(c1.getText() + c2.getText() + c3.getText() + c4.getText());
             creditCard.setValidMonth(Integer.parseInt(validMonthField.getText()));
             creditCard.setValidYear(Integer.parseInt(validYearField.getText()));
@@ -502,7 +495,6 @@ public class PaymentController extends FXMLController implements Initializable, 
             customer.setAddress("");
             customer.setPostCode("");
             customer.setPhoneNumber("");
-
 
             creditCard.setCardNumber("");
             creditCard.setValidMonth(0);
@@ -562,11 +554,10 @@ public class PaymentController extends FXMLController implements Initializable, 
         updateOrderText();
     }
 
-
     private void updateOrderText() {
         sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice() + 35));
-        summaryDateLabel.setText(""+datePicker.getValue());
-        summaryTimelabel.setText(""+hourTextField.getText()+":"+minuteTextField.getText());
+        summaryDateLabel.setText("" + datePicker.getValue());
+        summaryTimelabel.setText("" + hourTextField.getText() + ":" + minuteTextField.getText());
     }
 
     private void updateCreditCardTextArea() {
@@ -575,7 +566,6 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     private String creditCardToString() {
-
         StringBuilder strB = new StringBuilder();
         // strB.append(creditCardNumberField.getText() + "\n");
         strB.append(c1.getText() + "-" + c2.getText() + "-" + c3.getText() + "-" + c4.getText() + "\n");
@@ -603,40 +593,33 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     @FXML
-    private void orderDateToFront(){
+    private void orderDateToFront() {
         switchView(orderDatePane);
         orderDateSidePane.toFront();
     }
 
     @FXML
     private void creditCardViewToFront() {
-
         switchView(creditCardInfoPane);
         secondSidebarVBox.toFront();
     }
 
     @FXML
     private void summaryViewToFront() {
-
-
         updateTextArea();
         switchView(conclusionPane);
         thirdSidebarVBox.toFront();
-
     }
 
     @FXML
     private void clientViewToFront() {
-
         firstSidebarVBox.toFront();
-
-      switchView(customerInfoPane);
+        switchView(customerInfoPane);
     }
 
 
     @FXML
     private void moveBack() {
-
         splitPane.setDisable(true);
         model.navigate(NavigationTarget.CHECKOUT);
     }
@@ -755,10 +738,10 @@ public class PaymentController extends FXMLController implements Initializable, 
     @FXML
     private void CreditCardToOrderDate() {
 
-        boolean creditcar = CreditCardInfoFildIn(true);
+        boolean creditCard = CreditCardInfoFildIn(true);
         boolean complete = isComplete(true);
 
-        if (creditcar && complete) {
+        if (creditCard && complete) {
             creditCardErrorLable.setVisible(false);
             orderDateToFront();
             return;
@@ -769,15 +752,14 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     private void CreditCardInfoDone() {
 
-        boolean creditcar = CreditCardInfoFildIn(false || creditCardErrorLable.isVisible());
+        boolean creditCard = CreditCardInfoFildIn(false || creditCardErrorLable.isVisible());
         boolean complete = isComplete(false || creditCardErrorLable.isVisible());
 
-        if (creditcar && complete) {
+        if (creditCard && complete) {
             creditCardErrorLable.setVisible(false);
             creditCardDoneButton.setDisable(false);
         }
     }
-
 
     //Todo byt namn till clientToOrderDate
     @FXML
@@ -793,11 +775,8 @@ public class PaymentController extends FXMLController implements Initializable, 
         }
 
         if (client && (!creditcar || !complete)) {
-
-
             creditCardViewToFront();
             CreditCardToOrderDate();
-
             return;
         }
 
@@ -812,7 +791,7 @@ public class PaymentController extends FXMLController implements Initializable, 
                 confirmationPane.setDisable(true);
                 splitPane.setDisable(false);
 
-                switchView(stackPane.getChildren().get(stackPane.getChildren().size()-1));
+                switchView(stackPane.getChildren().get(stackPane.getChildren().size() - 1));
 
                 setSize(splitPane);
             }
@@ -828,7 +807,7 @@ public class PaymentController extends FXMLController implements Initializable, 
         model.navigateBack();
     }
 
-    private void switchView(Node node){
+    private void switchView(Node node) {
         stackPane.getChildren().forEach(child -> {
             child.setDisable(true);
         });
@@ -851,31 +830,29 @@ public class PaymentController extends FXMLController implements Initializable, 
         updateOrderText();
     }
 
-
-
-    private void orderDateDone(){
+    private void orderDateDone() {
         if (orderDateCompleted(false || OrderErrorLable.isVisible())) {
             OrderErrorLable.setVisible(false);
             orderdateNextButton.setDisable(false);
         }
     }
 
-    private boolean isHour(TextField t,Boolean displayError){
-        if(t.getText().trim().equals("") ) {
+    private boolean isHour(TextField t, Boolean displayError) {
+        if (t.getText().trim().equals("")) {
 
             if (displayError) {
                 displayError(t);
             }
             return false;
         }
-            double h = Double.parseDouble(t.getText().trim());
+        double h = Double.parseDouble(t.getText().trim());
 
-            if (!(h >= 0 && h < 24)) {
-                if (displayError) {
-                    displayError(t);
-                }
-                return false;
+        if (!(h >= 0 && h < 24)) {
+            if (displayError) {
+                displayError(t);
             }
+            return false;
+        }
 
         if (t.getStyleClass().contains("error")) {
             t.getStyleClass().removeAll("error");
@@ -883,21 +860,21 @@ public class PaymentController extends FXMLController implements Initializable, 
         return true;
     }
 
-    private boolean isMinute(TextField t,Boolean displayError){
-        if(t.getText().trim().equals("") ) {
+    private boolean isMinute(TextField t, Boolean displayError) {
+        if (t.getText().trim().equals("")) {
 
             if (displayError) {
                 displayError(t);
             }
             return false;
         }
-            double m = Double.parseDouble(t.getText());
-            if (!(m >= 0 && m < 60)) {
-                if (displayError) {
-                    displayError(t);
-                }
-                return false;
+        double m = Double.parseDouble(t.getText());
+        if (!(m >= 0 && m < 60)) {
+            if (displayError) {
+                displayError(t);
             }
+            return false;
+        }
 
         if (t.getStyleClass().contains("error")) {
             t.getStyleClass().removeAll("error");
@@ -905,11 +882,11 @@ public class PaymentController extends FXMLController implements Initializable, 
         return true;
     }
 
-    private boolean orderDateCompleted(boolean dispalyError){
+    private boolean orderDateCompleted(boolean dispalyError) {
         boolean b = true;
-        b = (isHour(hourTextField, dispalyError) ) && b;
+        b = (isHour(hourTextField, dispalyError)) && b;
 
-        b = (isMinute(minuteTextField, dispalyError)  )&& b;
+        b = (isMinute(minuteTextField, dispalyError)) && b;
 
       /*
         if ( hourTextField.getStyleClass().contains("error") || minuteTextField.getStyleClass().contains("error")) {
@@ -922,8 +899,8 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     @FXML
-    private void orderDateToSummary(){
-        if(orderDateCompleted(true)){
+    private void orderDateToSummary() {
+        if (orderDateCompleted(true)) {
             OrderErrorLable.setVisible(false);
             summaryViewToFront();
             return;
@@ -933,13 +910,13 @@ public class PaymentController extends FXMLController implements Initializable, 
     }
 
     @FXML
-    private void clientToSummary(){
+    private void clientToSummary() {
         clientToOrderDate();
 
-        boolean creditcar = CreditCardInfoFildIn(false);
+        boolean creditCard = CreditCardInfoFildIn(false);
         boolean complete = isComplete(false);
 
-        if((creditcar && complete)&&(clientInfoFildIn(false))){
+        if ((creditCard && complete) && (clientInfoFildIn(false))) {
             orderDateToSummary();
         }
 
@@ -947,15 +924,14 @@ public class PaymentController extends FXMLController implements Initializable, 
 
     @FXML
     private void CreditCardToSummary() {
-
-
         CreditCardToOrderDate();
 
-        boolean creditcar = CreditCardInfoFildIn(false);
+        boolean creditCard = CreditCardInfoFildIn(false);
         boolean complete = isComplete(false);
 
-        if (creditcar && complete) {
+        if (creditCard && complete) {
             orderDateToSummary();
         }
     }
+
 }
