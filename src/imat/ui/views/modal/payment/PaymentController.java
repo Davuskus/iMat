@@ -557,7 +557,12 @@ public class PaymentController extends FXMLController implements Initializable, 
     private void updateOrderText() {
         sumLabel.setText(MathUtils.asPriceTag(model.getCartPrice() + 35));
         summaryDateLabel.setText("" + datePicker.getValue());
-        summaryTimelabel.setText("" + hourTextField.getText() + ":" + minuteTextField.getText());
+        String minutes = minuteTextField.getText();
+        if (minutes.length() == 1) {
+            summaryTimelabel.setText("" + hourTextField.getText() + ":0" + minuteTextField.getText());
+        } else {
+            summaryTimelabel.setText("" + hourTextField.getText() + ":" + minuteTextField.getText());
+        }
     }
 
     private void updateCreditCardTextArea() {
