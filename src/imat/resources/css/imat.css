@@ -261,6 +261,32 @@
     -fx-border-color: -focused-color;
 }
 
+.action-button-orange {
+    -fx-cursor: hand;
+    -fx-background-color: #ffcf61;
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-font-family: "roboto";
+    -fx-font-size: 16px;
+}
+
+.action-button-orange:hover {
+    -fx-background-color: #ffdb90;
+}
+
+.action-button-orange:pressed {
+    -fx-background-color: #ffc754;
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
+}
+
+.action-button-orange:focused {
+    -fx-border-width: 2px;
+    -fx-border-color: -focused-color;
+}
+
 .to-checkout-button {
     -fx-cursor: hand;
     -fx-background-color: #7af04c;
