@@ -239,19 +239,19 @@ public class Model {
         orderListeners.forEach(listener -> listener.onOrderSelected(order));
     }
 
-    public void search(String searchTerm) {
-        if (searchTerm.length() == 0) return;
+    public boolean search(String searchTerm) {
+        if (searchTerm.length() == 0) return false;
         categoryListeners.forEach(x -> x.onCategorySelected(null));
         List<Product> products = new ArrayList<>();
 
         for (Product product : IMatDataHandler.getInstance().getProducts()) {
-            if (product.getName().toLowerCase().contains(searchTerm.trim().toLowerCase())) {
+            if (product.getName().toLowerCase().contains(searchTerm)) {
                 products.add(product);
             }
         }
 
         searchListeners.forEach(x -> x.onSearch(searchTerm, products));
-
+        return true;
     }
 
     public void verifyExistence() {

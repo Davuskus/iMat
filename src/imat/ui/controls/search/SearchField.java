@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,8 +33,7 @@ public class SearchField extends FXMLController {
                 model.returnToCategoryRoot();
                 model.navigateBack();
             }
-        } else {
-            model.search(searchBox.getText());
+        } else if (model.search(searchBox.getText().trim().toLowerCase())) {
             model.navigate(NavigationTarget.SEARCH_RESULTS);
         }
     }
@@ -48,12 +46,6 @@ public class SearchField extends FXMLController {
     @FXML
     private void searchButtonOnAction(Event event) {
         makeSearch();
-    }
-
-    @FXML
-    private void onSearchBoxUpdate(InputEvent event) {
-        // System.out.println(searchBox.getText());
-        // TODO Show suggestions depending on the input
     }
 
     @Override
