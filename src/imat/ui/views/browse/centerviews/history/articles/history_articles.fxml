@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="400.0" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.history.articles.HistoryArticlesPane">
+<AnchorPane fx:id="rootPane" minHeight="0.0" prefHeight="450.0" prefWidth="400.0" stylesheets="@../../../../../../resources/css/imat.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.ui.views.browse.centerviews.history.articles.HistoryArticlesPane">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -36,14 +36,14 @@
                <children>
                   <AnchorPane prefHeight="40.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="27.0" prefWidth="197.0" styleClass="gray-button" text="Tillbaka till köphistoriken" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="backButton" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="40.0" styleClass="gray-button" text="Tillbaka till köphistoriken" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
                      </children>
                   </AnchorPane>
-                  <GridPane>
+                  <GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" percentWidth="50.0" prefWidth="100.0" />
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" percentWidth="50.0" />
@@ -52,8 +52,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="olderOrderButton" mnemonicParsing="false" onAction="#showOlderOrderButtonOnAction" prefHeight="25.0" styleClass="white-button" text="Visa äldre beställning" />
-                        <Button fx:id="newerOrderButton" mnemonicParsing="false" onAction="#showNewerOrderButtonOnAction" styleClass="white-button" text="Visa nyare beställning" GridPane.columnIndex="1" />
+                        <Button fx:id="olderOrderButton" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showOlderOrderButtonOnAction" prefHeight="39.0" styleClass="white-button" text="Visa äldre beställning" />
+                        <Button fx:id="newerOrderButton" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#showNewerOrderButtonOnAction" prefHeight="39.0" styleClass="white-button" text="Visa nyare beställning" GridPane.columnIndex="1" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" top="10.0" />
@@ -63,7 +63,7 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin></Separator>
-                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0">
                      <children>
                         <Label styleClass="text-large-dark-gray-bold" text="Antal artiklar: ">
                            <HBox.margin>
@@ -97,9 +97,9 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane prefHeight="40.0" prefWidth="200.0">
+                              <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0">
                                  <children>
-                                    <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" prefHeight="40.0" styleClass="action-button" text="Kopiera beställningen till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Button fx:id="copyToCartButton" mnemonicParsing="false" onAction="#copyOrderToCartButtonOnAction" styleClass="action-button" text="Kopiera beställningen till kundvagnen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
