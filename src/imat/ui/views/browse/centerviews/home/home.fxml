@@ -14,7 +14,7 @@
     <children>
         <ScrollPane fitToWidth="true" styleClass="center-view-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
-                <VBox alignment="TOP_CENTER" spacing="50.0" styleClass="center-view-bg">
+                <VBox alignment="TOP_CENTER" spacing="20.0" styleClass="center-view-bg">
                     <HBox alignment="CENTER">
                         <children>
                             <Label fx:id="welcomeLabel" styleClass="title-xlarge-dark-gray" text="Välkommen till" />
