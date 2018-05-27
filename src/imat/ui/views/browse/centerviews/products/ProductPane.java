@@ -28,7 +28,7 @@ public abstract class ProductPane extends FXMLController implements IEcologicalL
         productMenuItems = new ConcurrentHashMap<>();
 
         long startTime = System.currentTimeMillis();
-        populateParallelStream(model.getAllProducts());
+        populateParallelStream(model.getAllProducts()); 
         //populateMultiThreaded(model.getAllProducts());
         //populateSingleThreaded(model.getAllProducts());
         long stopTime = System.currentTimeMillis();
