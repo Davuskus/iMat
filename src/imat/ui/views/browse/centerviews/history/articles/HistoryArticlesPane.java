@@ -95,6 +95,7 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
 
     @Override
     public void onOrderSelected(Order order) {
+        if (this.order != null && this.order.equals(order)) return;
         this.order = order;
         articlesVBox.getChildren().clear();
         populateArticleList(this.order);
@@ -148,6 +149,8 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
 
     @Override
     public void navigateTo(NavigationTarget navigationTarget) {
-        rootPane.setDisable(navigationTarget != NavigationTarget.ORDER_HISTORY_ARTICLE);
+        boolean shouldDisable = navigationTarget != NavigationTarget.ORDER_HISTORY_ARTICLE;
+        rootPane.setDisable(shouldDisable);
+        articlesVBox.getChildren().forEach(node -> node.setOpacity(1));
     }
 }
