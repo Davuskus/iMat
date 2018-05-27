@@ -25,8 +25,6 @@ public class Feature extends FXMLController implements IShutdownListener {
 
     private final long scrollIntervalMillis;
 
-    private int currentProductIndex;
-
     private boolean featureScrolling;
 
     @FXML
@@ -47,7 +45,7 @@ public class Feature extends FXMLController implements IShutdownListener {
     public void initialize(URL location, ResourceBundle resources) {
         model.addShutdownListener(this);
         setRandomProductsToFeature(numProducts);
-        switchFeature(0);
+        switchFeature();
     }
 
     private void startFeatureScrolling() {
@@ -57,11 +55,7 @@ public class Feature extends FXMLController implements IShutdownListener {
                 progressAnimation = AnimationHandler.getAnimation(
                         v -> {
                             if (featureScrolling) {
-                                if (++currentProductIndex >= numProducts) {
-                                    currentProductIndex = 0;
-                                }
-                                System.out.println(currentProductIndex);
-                                switchFeature(currentProductIndex);
+                                switchFeature();
                                 progressBar.setProgress(0);
                                 progressAnimation.play();
                             }
@@ -77,10 +71,9 @@ public class Feature extends FXMLController implements IShutdownListener {
         }
     }
 
-    private void switchFeature(int featureIndex) {
-        currentProductIndex = featureIndex;
+    private void switchFeature() {
         productStackPane.getChildren().forEach(child -> child.setDisable(true));
-        Node featureItem = productStackPane.getChildren().get(featureIndex);
+        Node featureItem = productStackPane.getChildren().get(0);
         featureItem.setDisable(false);
         featureItem.toFront();
     }
@@ -98,7 +91,6 @@ public class Feature extends FXMLController implements IShutdownListener {
                         this,
                         featureItem);
                 productStackPane.getChildren().add(featureItemNode);
-                System.out.println(product);
             }
         }
     }
