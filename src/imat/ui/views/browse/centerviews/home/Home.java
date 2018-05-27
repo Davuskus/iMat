@@ -92,8 +92,9 @@ public class Home extends FXMLController implements INavigationListener {
         if (navigationTarget == NavigationTarget.HOME) {
             rootPane.setDisable(false);
             updateProductsHBox();
-            featureController.setFeatureScrolling(navigationTarget == NavigationTarget.HOME);
+            featureController.setFeatureScrolling(true);
         } else {
+            featureController.setFeatureScrolling(false);
             rootPane.setDisable(true);
         }
     }

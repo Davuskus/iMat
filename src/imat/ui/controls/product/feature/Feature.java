@@ -100,13 +100,13 @@ public class Feature extends FXMLController implements IShutdownListener {
             startFeatureScrolling();
         } else {
             this.featureScrolling = false;
+            progressAnimation.stop();
         }
     }
 
     @Override
     public void onShutdown() {
-        featureScrolling = false;
-        progressAnimation.stop();
+        setFeatureScrolling(false);
     }
 
 }
