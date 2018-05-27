@@ -8,6 +8,7 @@ import imat.utils.IMatUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -26,6 +27,7 @@ public class Feature extends FXMLController implements IShutdownListener {
     private final int numProducts;
 
     private final long scrollIntervalMillis;
+    private long time;
 
     private int currentProductIndex;
 
@@ -33,6 +35,9 @@ public class Feature extends FXMLController implements IShutdownListener {
 
     @FXML
     private StackPane productStackPane;
+
+    @FXML
+    private ProgressBar progressBar;
 
     public Feature() {
         super();
@@ -59,13 +64,21 @@ public class Feature extends FXMLController implements IShutdownListener {
                 if (!featureScrolling) {
                     scheduledFuture.cancel(true);
                 }
-                Platform.runLater(() -> {
-                    if (++currentProductIndex >= numProducts) {
-                        currentProductIndex = 0;
-                    }
-                    switchFeature(currentProductIndex);
-                });
-            }, scrollIntervalMillis, scrollIntervalMillis, TimeUnit.MILLISECONDS);
+
+                Platform.runLater(() -> progressBar.setProgress(++time * 1000.0 / scrollIntervalMillis));
+
+                if (time >= scrollIntervalMillis / 1000.0) {
+                    time = 0;
+                    Platform.runLater(() -> {
+                        if (++currentProductIndex >= numProducts) {
+                            currentProductIndex = 0;
+                        }
+                        switchFeature(currentProductIndex);
+                        progressBar.setProgress(0);
+                    });
+                }
+
+            }, 0, 1000, TimeUnit.MILLISECONDS);
         }
     }
 

@@ -23,7 +23,8 @@
                                         <Image url="@../../../../../resources/images/icons/eco/eco_icon_1.png" />
                                     </image>
                                 </ImageView>
-                            </graphic></Label>
+                            </graphic>
+                  </Label>
                         <Label fx:id="priceLabel" styleClass="text-large" text="Product price" />
                         <AnchorPane VBox.vgrow="ALWAYS">
                             <children>

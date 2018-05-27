@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -26,7 +27,7 @@ public class Home extends FXMLController implements INavigationListener {
     private AnchorPane rootPane;
 
     @FXML
-    private AnchorPane feature;
+    private VBox feature;
 
     @FXML
     private Feature featureController;
