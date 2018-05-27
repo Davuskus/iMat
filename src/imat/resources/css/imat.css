@@ -434,6 +434,7 @@
 
 .regret-button:focused {
     -fx-border-width: 2px;
+    -fx-border-radius: 2px;
     -fx-border-color: -focused-color;
 }
 
