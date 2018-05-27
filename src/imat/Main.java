@@ -51,19 +51,6 @@ public class Main extends Application {
         primaryStage.setTitle("iMat");
 
         double ratio = 4.0 / 5;
-        /*
-        switch (Toolkit.getDefaultToolkit().getScreenResolution()) {
-            case 120:
-                ratio *= 1 / 1.25;
-                break;
-            case 144:
-                ratio *= 1 / 1.5;
-                break;
-            case 192:
-                ratio *= 0.5;
-                break;
-        }
-        */
         int stageWidth = (int) (0.5 + Screen.getPrimary().getVisualBounds().getWidth() * ratio);
         int stageHeight = (int) (0.5 + Screen.getPrimary().getVisualBounds().getHeight() * ratio);
 

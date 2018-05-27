@@ -416,7 +416,7 @@
 
 .regret-button {
     -fx-cursor: hand;
-    -fx-background-color: rgba(0, 0, 0, 0.81);
+    -fx-background-color: rgba(0, 0, 0, 0.8);
     -fx-background-radius: 2px;
 }
 
