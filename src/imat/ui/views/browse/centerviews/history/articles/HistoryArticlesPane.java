@@ -70,9 +70,6 @@ public class HistoryArticlesPane extends FXMLController implements IOrderListene
                     articleHistoryItem);
             articlesVBox.getChildren().add(articleNode);
             articleHistoryItem.setShoppingItem(shoppingItem);
-            if (model.isCartBeingThrownInTheTrash()) {
-                articleHistoryItem.onCartTrashStarted();
-            }
         }
     }
 

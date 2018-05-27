@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class AmountSpinner extends FXMLController implements IShoppingListener {
+public class AmountSpinner extends FXMLController implements IShoppingListener, ICartTrashListener {
 
     @FXML
     private Button subtractButton;
@@ -70,17 +70,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         });
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
-        model.addCartTrashListener(new ICartTrashListener() {
-            @Override
-            public void onCartTrashStarted() {
-                setDisableOnControls(true);
-            }
-
-            @Override
-            public void onCartTrashStopped() {
-                setDisableOnControls(false);
-            }
-        });
+        model.addCartTrashListener(this);
 
         valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 0 && !newValue.equals("0") && !newValue.equals("0.")) {
@@ -90,6 +80,9 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
         addButton.armedProperty().addListener(new ActionRepeater(this::increaseAmount, 500, 5));
         subtractButton.armedProperty().addListener(new ActionRepeater(this::decreaseAmount, 500, 5));
+
+        setDisableOnControls(model.isCartBeingThrownInTheTrash());
+
     }
 
     private void setDisableOnControls(boolean disable) {
@@ -185,10 +178,20 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     }
 
-
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
         if (product != this.product) return;
         setAmount(newAmount);
     }
+
+    @Override
+    public void onCartTrashStarted() {
+        setDisableOnControls(true);
+    }
+
+    @Override
+    public void onCartTrashStopped() {
+        setDisableOnControls(false);
+    }
+
 }

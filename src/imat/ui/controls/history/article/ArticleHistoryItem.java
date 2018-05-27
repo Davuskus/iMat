@@ -91,18 +91,18 @@ public class ArticleHistoryItem extends FXMLController implements Initializable,
     public void initialize(URL location, ResourceBundle resources) {
         spinnerController.setModel(model);
         model.addCartTrashListener(this);
+        addToCartButton.setDisable(model.isCartBeingThrownInTheTrash());
+
     }
 
     @Override
     public void onCartTrashStarted() {
         addToCartButton.setDisable(true);
-        spinner.setDisable(true);
     }
 
     @Override
     public void onCartTrashStopped() {
         addToCartButton.setDisable(false);
-        spinner.setDisable(false);
     }
 
 }
