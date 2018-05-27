@@ -38,7 +38,7 @@ public class Feature extends FXMLController implements IShutdownListener {
     public Feature() {
         super();
         numProducts = 4;
-        scrollIntervalMillis = 5000;
+        scrollIntervalMillis = 30000;
     }
 
     @Override
