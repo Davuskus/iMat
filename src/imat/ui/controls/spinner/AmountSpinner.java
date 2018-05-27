@@ -6,21 +6,14 @@ import imat.model.FXMLController;
 import imat.utils.ActionRepeater;
 import imat.utils.IMatUtils;
 import imat.utils.MathUtils;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -28,7 +21,7 @@ import java.util.regex.Pattern;
 /**
  * Works as a regular Spinner but has its value changing buttons on the left and right of the text field.
  */
-public class AmountSpinner extends FXMLController implements IShoppingListener {
+public class AmountSpinner extends FXMLController implements IShoppingListener, ICartTrashListener {
 
     @FXML
     private Button subtractButton;
@@ -51,7 +44,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         super();
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
         doubleFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            change.setText(change.getText().replace(",","."));
+            change.setText(change.getText().replace(",", "."));
             return doublePattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
@@ -77,17 +70,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         });
         model.addShoppingListener(this);
         setAmount(model.getProductAmount(product));
-        model.addCartTrashListener(new ICartTrashListener() {
-            @Override
-            public void onCartTrashStarted() {
-                setDisableOnControls(true);
-            }
-
-            @Override
-            public void onCartTrashStopped() {
-                setDisableOnControls(false);
-            }
-        });
+        model.addCartTrashListener(this);
 
         valueTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 0 && !newValue.equals("0") && !newValue.equals("0.")) {
@@ -97,12 +80,19 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
         addButton.armedProperty().addListener(new ActionRepeater(this::increaseAmount, 500, 5));
         subtractButton.armedProperty().addListener(new ActionRepeater(this::decreaseAmount, 500, 5));
+
+        setDisableOnControls(model.isCartBeingThrownInTheTrash());
+
     }
 
     private void setDisableOnControls(boolean disable) {
         subtractButton.setDisable(disable);
         addButton.setDisable(disable);
         valueTextField.setDisable(disable);
+        
+        subtractButton.setOpacity(disable ? 0.5 : 1);
+        addButton.setOpacity(disable ? 0.5 : 1);
+        valueTextField.setOpacity(disable ? 0.5 : 1);
     }
 
     public void setProduct(Product product) {
@@ -141,9 +131,9 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     }
 
     private void changeValue(double value) {
-        double newValue = MathUtils.round(oldValue + value,10);
-        if (newValue >= 0) {
-            setAmount(newValue);
+        double result = oldValue + value;
+        if (result >= 0) {
+            setAmount(MathUtils.round(result, 10));
         }
     }
 
@@ -163,7 +153,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      */
     public void setAmount(double amount) {
         if (oldValue == amount) return;
-            oldValue = amount;
+        oldValue = amount;
         if (isAcceptingDoubles && ((int) amount) != amount) {
             valueTextField.setText(String.valueOf(amount));
         } else {
@@ -192,10 +182,20 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
 
     }
 
-
     @Override
     public void onProductUpdate(Product product, Double newAmount) {
         if (product != this.product) return;
         setAmount(newAmount);
     }
+
+    @Override
+    public void onCartTrashStarted() {
+        setDisableOnControls(true);
+    }
+
+    @Override
+    public void onCartTrashStopped() {
+        setDisableOnControls(false);
+    }
+
 }

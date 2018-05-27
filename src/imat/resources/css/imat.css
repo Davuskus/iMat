@@ -305,17 +305,19 @@
 .text-input.error {
     -fx-focus-color: #d35244;
     -fx-faint-focus-color: #d3524422;
-
+   -fx-background-color:  #d3524422;
     -fx-highlight-fill: -fx-accent;
     -fx-highlight-text-fill: white;
-    -fx-background-color: -fx-focus-color,
-    -fx-control-inner-background,
-    -fx-faint-focus-color,
-    linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+
     -fx-background-insets: -0.2, 1, -1.4, 3;
     -fx-background-radius: 3, 2, 4, 0;
-    -fx-prompt-text-fill: transparent;
+
+    -fx-border-color:#d35244;
+   
+
 }
+
+
 
 .light-gray-button {
     -fx-background-color: #EEEEEE;
@@ -416,17 +418,17 @@
 
 .regret-button {
     -fx-cursor: hand;
-    -fx-background-color: rgba(0, 0, 0, 0.65);
+    -fx-background-color: rgba(0, 0, 0, 0.8);
     -fx-background-radius: 2px;
 }
 
 .regret-button:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.45);
+    -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-background-radius: 2px;
 }
 
 .regret-button:pressed {
-    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-background-color: rgba(0, 0, 0, 0.9);
     -fx-background-radius: 2px;
     -fx-border-width: 2px;
     -fx-border-color: -focused-color;
@@ -434,6 +436,7 @@
 
 .regret-button:focused {
     -fx-border-width: 2px;
+    -fx-border-radius: 2px;
     -fx-border-color: -focused-color;
 }
 

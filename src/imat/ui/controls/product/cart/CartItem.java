@@ -108,6 +108,7 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private void regretButtonOnAction(Event event) {
         shouldBeRemoved = false;
         model.updateShoppingCart(product, amountBeforeRemoveRequest);
+        resetComponentOpacityValues();
         switchView(itemHBox);
     }
 
@@ -120,14 +121,20 @@ public class CartItem extends FXMLController implements IShoppingListener {
     private void switchView(Node view) {
         stackPane.getChildren().forEach(child -> {
             child.setDisable(true);
-            //child.setVisible(false);
         });
         view.setDisable(false);
-        // view.setVisible(true);
         view.toFront();
     }
 
+    private void resetComponentOpacityValues() {
+        regretButton.setOpacity(1);
+        itemHBox.setOpacity(1);
+        rootPane.setOpacity(1);
+    }
+
     private void startRemovalProcess() {
+
+        resetComponentOpacityValues();
 
         switchView(regretPane);
 

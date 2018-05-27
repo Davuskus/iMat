@@ -26,7 +26,7 @@ public final class FXMLLoader {
             if (IFXMLController.class.isAssignableFrom(type)) {
                 IFXMLController controller = (IFXMLController) type.newInstance();
                 controller.setModel(model);
-                System.out.println("loaded " + type.getName());
+                // System.out.println("loaded " + type.getName());
                 return controller;
             }
             System.out.println("failed to load " + type.getName());
