@@ -6,21 +6,14 @@ import imat.model.FXMLController;
 import imat.utils.ActionRepeater;
 import imat.utils.IMatUtils;
 import imat.utils.MathUtils;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.Product;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -51,7 +44,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
         super();
         Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
         doubleFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            change.setText(change.getText().replace(",","."));
+            change.setText(change.getText().replace(",", "."));
             return doublePattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
@@ -141,9 +134,9 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
     }
 
     private void changeValue(double value) {
-        double newValue = MathUtils.round(oldValue + value,10);
-        if (newValue >= 0) {
-            setAmount(newValue);
+        double result = oldValue + value;
+        if (result >= 0) {
+            setAmount(MathUtils.round(result, 10));
         }
     }
 
@@ -163,7 +156,7 @@ public class AmountSpinner extends FXMLController implements IShoppingListener {
      */
     public void setAmount(double amount) {
         if (oldValue == amount) return;
-            oldValue = amount;
+        oldValue = amount;
         if (isAcceptingDoubles && ((int) amount) != amount) {
             valueTextField.setText(String.valueOf(amount));
         } else {

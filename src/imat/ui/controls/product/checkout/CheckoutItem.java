@@ -139,6 +139,7 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
     private void regretButtonOnAction(Event event) {
         shouldBeRemoved = false;
         model.updateShoppingCart(product, amountBeforeRemoveRequest);
+        resetComponentOpacityValues();
         switchView(infoHBox);
     }
 
@@ -153,7 +154,15 @@ public class CheckoutItem extends FXMLController implements IShoppingListener {
             amountBeforeRemoveRequest = amount;
     }
 
+    private void resetComponentOpacityValues() {
+        regretButton.setOpacity(1);
+        infoHBox.setOpacity(1);
+        rootPane.setOpacity(1);
+    }
+
     private void startRemovalProcess() {
+
+        resetComponentOpacityValues();
 
         switchView(regretPane);
 
