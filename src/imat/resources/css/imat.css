@@ -416,17 +416,17 @@
 
 .regret-button {
     -fx-cursor: hand;
-    -fx-background-color: rgba(0, 0, 0, 0.65);
+    -fx-background-color: rgba(0, 0, 0, 0.81);
     -fx-background-radius: 2px;
 }
 
 .regret-button:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.45);
+    -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-background-radius: 2px;
 }
 
 .regret-button:pressed {
-    -fx-background-color: rgba(0, 0, 0, 0.85);
+    -fx-background-color: rgba(0, 0, 0, 0.9);
     -fx-background-radius: 2px;
     -fx-border-width: 2px;
     -fx-border-color: -focused-color;
