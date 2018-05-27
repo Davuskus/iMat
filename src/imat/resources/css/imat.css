@@ -573,3 +573,7 @@
     -fx-border-width: 2px;
     -fx-border-color: -focused-color;
 }
+
+.progress-bar .bar {
+    -fx-background-color: orange;
+}

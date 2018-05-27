@@ -3,8 +3,10 @@ package imat.ui.controls.product.feature;
 import imat.interfaces.IShutdownListener;
 import imat.model.FXMLController;
 import imat.ui.controls.product.feature.item.FeatureItem;
+import imat.utils.AnimationHandler;
 import imat.utils.FXMLLoader;
 import imat.utils.IMatUtils;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,18 +18,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public class Feature extends FXMLController implements IShutdownListener {
-
-    private final List<Product> products;
 
     private final int numProducts;
 
     private final long scrollIntervalMillis;
-    private long time;
 
     private int currentProductIndex;
 
@@ -39,11 +35,12 @@ public class Feature extends FXMLController implements IShutdownListener {
     @FXML
     private ProgressBar progressBar;
 
+    private Timeline progressAnimation;
+
     public Feature() {
         super();
         numProducts = 4;
-        scrollIntervalMillis = 30000;
-        products = new ArrayList<>(numProducts);
+        scrollIntervalMillis = 5000;
     }
 
     @Override
@@ -53,50 +50,47 @@ public class Feature extends FXMLController implements IShutdownListener {
         switchFeature(0);
     }
 
-    private ScheduledThreadPoolExecutor scheduledThreadExecutor;
-    private ScheduledFuture<?> scheduledFuture;
-
     private void startFeatureScrolling() {
         if (!featureScrolling) {
             featureScrolling = true;
-            scheduledThreadExecutor = new ScheduledThreadPoolExecutor(1);
-            scheduledFuture = scheduledThreadExecutor.scheduleAtFixedRate(() -> {
-                if (!featureScrolling) {
-                    scheduledFuture.cancel(true);
-                }
-
-                Platform.runLater(() -> progressBar.setProgress(++time * 1000.0 / scrollIntervalMillis));
-
-                if (time >= scrollIntervalMillis / 1000.0) {
-                    time = 0;
-                    Platform.runLater(() -> {
-                        if (++currentProductIndex >= numProducts) {
-                            currentProductIndex = 0;
-                        }
-                        switchFeature(currentProductIndex);
-                        progressBar.setProgress(0);
-                    });
-                }
-
-            }, 0, 1000, TimeUnit.MILLISECONDS);
+            Platform.runLater(() -> {
+                progressAnimation = AnimationHandler.getAnimation(
+                        v -> {
+                            if (featureScrolling) {
+                                if (++currentProductIndex >= numProducts) {
+                                    currentProductIndex = 0;
+                                }
+                                System.out.println(currentProductIndex);
+                                switchFeature(currentProductIndex);
+                                progressBar.setProgress(0);
+                                progressAnimation.play();
+                            }
+                        },
+                        AnimationHandler.getAnimationKeyFrame(
+                                progressBar.progressProperty(),
+                                scrollIntervalMillis,
+                                1
+                        )
+                );
+                progressAnimation.play();
+            });
         }
     }
 
     private void switchFeature(int featureIndex) {
-        productStackPane.getChildren().forEach(child -> {
-            child.setDisable(true);
-            child.setVisible(false);
-        });
+        currentProductIndex = featureIndex;
+        productStackPane.getChildren().forEach(child -> child.setDisable(true));
         Node featureItem = productStackPane.getChildren().get(featureIndex);
         featureItem.setDisable(false);
-        featureItem.setVisible(true);
         featureItem.toFront();
     }
 
     private void setRandomProductsToFeature(int numProducts) {
+        List<Product> products = new ArrayList<>(numProducts);
         while (productStackPane.getChildren().size() < numProducts) {
             Product product = IMatUtils.getRandomProduct();
-            if (product != null) {
+            if (product != null && !products.contains(product)) {
+                products.add(product);
                 FeatureItem featureItem = new FeatureItem(product);
                 featureItem.setModel(model);
                 Node featureItemNode = FXMLLoader.loadFXMLNodeFromRootPackage(
@@ -104,6 +98,7 @@ public class Feature extends FXMLController implements IShutdownListener {
                         this,
                         featureItem);
                 productStackPane.getChildren().add(featureItemNode);
+                System.out.println(product);
             }
         }
     }
@@ -119,7 +114,7 @@ public class Feature extends FXMLController implements IShutdownListener {
     @Override
     public void onShutdown() {
         featureScrolling = false;
-        scheduledThreadExecutor.shutdownNow();
+        progressAnimation.stop();
     }
 
 }
