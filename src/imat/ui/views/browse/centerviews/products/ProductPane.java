@@ -28,7 +28,7 @@ public abstract class ProductPane extends FXMLController implements IEcologicalL
 
         long startTime = System.currentTimeMillis();
         try {
-            populateMultiThreaded(model.getAllProducts())
+            populateMultiThreaded(model.getAllProducts());
         } catch (ConcurrentModificationException e) {
             e.printStackTrace();
             populateSingleThreaded(model.getAllProducts());
