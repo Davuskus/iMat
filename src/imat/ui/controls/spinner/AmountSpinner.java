@@ -89,6 +89,10 @@ public class AmountSpinner extends FXMLController implements IShoppingListener, 
         subtractButton.setDisable(disable);
         addButton.setDisable(disable);
         valueTextField.setDisable(disable);
+        
+        subtractButton.setOpacity(disable ? 0.5 : 1);
+        addButton.setOpacity(disable ? 0.5 : 1);
+        valueTextField.setOpacity(disable ? 0.5 : 1);
     }
 
     public void setProduct(Product product) {
