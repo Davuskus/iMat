@@ -12,6 +12,7 @@ import se.chalmers.cse.dat216.project.Product;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public abstract class ProductPane extends FXMLController implements IEcologicalListener {
 
@@ -27,7 +28,8 @@ public abstract class ProductPane extends FXMLController implements IEcologicalL
         productMenuItems = new ConcurrentHashMap<>();
 
         long startTime = System.currentTimeMillis();
-        populateMultiThreaded(model.getAllProducts());
+        populateParallelStream(model.getAllProducts());
+        //populateMultiThreaded(model.getAllProducts());
         //populateSingleThreaded(model.getAllProducts());
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
@@ -38,6 +40,10 @@ public abstract class ProductPane extends FXMLController implements IEcologicalL
         for (Product product : productList) {
             productMenuItems.put(product, ProductNodeFactory.makeNodeFromProduct(product, this, model));
         }
+    }
+
+    private void populateParallelStream(List<Product> productList) {
+        productList.parallelStream().forEach(product -> productMenuItems.put(product, ProductNodeFactory.makeNodeFromProduct(product, this, model)));
     }
 
     private void populateMultiThreaded(List<Product> productList) {
